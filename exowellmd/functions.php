@@ -36,6 +36,13 @@ function MDB_setup() {
 }
 add_action('after_setup_theme', 'MDB_setup');
 
+function posts_link_attributes() {
+  return 'class="page-link"';
+}
+
+add_filter('next_posts_link_attributes', 'posts_link_attributes');
+add_filter('previous_posts_link_attributes', 'posts_link_attributes');
+
 /**
  * Register sidebars and widgetized areas.
  */

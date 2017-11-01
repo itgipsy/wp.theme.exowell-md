@@ -38,6 +38,11 @@ main {
   list-style-type: none;
 }
 
+/* Pagination */
+#page-nav ul.pagination {
+  justify-content: center;
+}
+
 /* Footer menu */
 .footer-menu {
   text-align: center;
