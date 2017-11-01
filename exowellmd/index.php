@@ -22,6 +22,7 @@
       <?php if ( is_active_sidebar( 'sidebar' ) ) : ?>
       <?php dynamic_sidebar( 'sidebar' ); ?>
       <?php endif; ?>
+      <?php mdb_pagination(); ?>
     </div>
     <!--/Sidebar-->  
   </div>

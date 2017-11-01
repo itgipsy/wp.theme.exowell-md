@@ -4,6 +4,7 @@
   * Include external files
   */
 require_once('inc/mdb_navwalker.php');
+require_once('inc/mdb_pagination.php'); 
 
 /**
  * Include CSS/JS dependencies 
