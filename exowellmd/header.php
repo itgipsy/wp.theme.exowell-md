@@ -14,14 +14,14 @@
 <body>
 
 <!--Navbar-->
-<nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten3">
-  <div class="container">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-      aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+<nav class="navbar navbar-expand-lg navbar-dark mdb-color darken-2">
+  <!-- Navbar brand -->
+  <a class="navbar-brand" href="#">Navbar</a>
+  <!-- Collapse button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+  <!-- Collapsible content -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <?php
           if ( has_nav_menu( 'navbar' ) ) {
@@ -30,17 +30,19 @@
               'theme_location'    => 'navbar',
               'depth'             => 2,
               'menu_class'        => 'navbar-nav mr-auto',
-              'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+              'fallback_cb'       => '__return_false',
+              'items_wrap'        => '<ul id="%1$s" class="%2$s">%3$s</ul>',
               'container'         => false,
-              'walker'            => new MDBBootstrapNavMenuWalker())
+              'walker'            => new bootstrap_4_walker_nav_menu())
         	  );
         	} else {
          	  echo "Please assign Navbar Menu in Wordpress Admin -> Appearance -> Menus -> Manage Locations";
-					}
+            }
         ?> 
       </ul>
-      <form class="form-inline">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+      <form role="search" method="get" id="searchform" class="form-inline" action="">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="s" 
+          value="<?= htmlspecialchars($_GET['s']) ?>">
       </form>
     </div>
   </div>

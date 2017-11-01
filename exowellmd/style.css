@@ -38,6 +38,11 @@ main {
   list-style-type: none;
 }
 
+/* Navbar */
+.navbar .dropdown-menu a:hover {
+  color: #000!important;
+}
+
 /* Pagination */
 #page-nav ul.pagination {
   justify-content: center;
