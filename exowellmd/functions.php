@@ -26,7 +26,8 @@ add_action( 'wp_enqueue_scripts', 'theme_enqueue_scripts' );
 function MDB_setup() {
   // Navigation Menus
   register_nav_menus(array(
-    'navbar' => __( 'Navbar Menu')
+    'navbar' => __( 'Navbar Menu'),
+    'footer' => __( 'Footer Menu')
   ));
   // Add featured image support
   add_theme_support('post-thumbnails');
