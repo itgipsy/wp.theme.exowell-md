@@ -16,7 +16,7 @@
     the_content();
   }
   else {
-    the_excerpt();
+    the_content('', false);
   ?>
     <!--"Read more" button-->
     <a href="<?php echo get_permalink() ?>"><button class="btn mdb-color darken-2">Read more</button></a>
