@@ -26,8 +26,3 @@
 </div>
 <!--/.Post-->
 <hr>
-<?php
-  } // end while
-} // end if
-?>
-</div>

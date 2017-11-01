@@ -12,6 +12,10 @@
       ?>
       <!--Post-->
       <?php get_template_part('template-parts/content', get_post_format()); ?>
+      <?php
+        }
+      }
+      ?>
     </div>
     <!--Sidebar-->
     <div class="col-xs-12 col-md-4">
