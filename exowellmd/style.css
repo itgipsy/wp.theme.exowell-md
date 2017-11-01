@@ -6,3 +6,8 @@ Version: 1
 Author: g1@exowell.com
 Author URI: https://exowell.com/g1
 */
+
+main {
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+}
