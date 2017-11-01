@@ -6,18 +6,14 @@
     if ( has_nav_menu( 'footer' ) ) {
   ?>
   <div class="footer-menu container-fluid">
-    <div class="row">
-      <div class="col-xs-12">
-      <?php
-    		wp_nav_menu( array(
-    				'menu' => 'footer',
-    				'theme_location' => 'footer',
-    				'depth' => 1
-    			)
-    		);
-    	?>
-      </div>
-    </div>
+    <?php
+    wp_nav_menu( array(
+      'menu' => 'footer',
+      'theme_location' => 'footer',
+      'depth' => 1
+   		)
+   	);
+    ?>
   </div>
   <?php
     }
