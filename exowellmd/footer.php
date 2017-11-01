@@ -1,11 +1,11 @@
 
 <!--Footer-->
-<footer class="page-footer light-blue accent-4 center-on-small-only">
+<footer class="page-footer mdb-color lighten3 center-on-small-only">
   <!--Footer menu -->
   <?php
     if ( has_nav_menu( 'footer' ) ) {
   ?>
-  <div class="container-fluid">
+  <div class="footer-menu container-fluid">
     <div class="row">
       <div class="col-xs-12">
       <?php

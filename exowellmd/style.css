@@ -21,17 +21,37 @@ main {
   background-color: #fff;
   border: 1px solid #ddd;
 }
+
 .current-cat{
   z-index: 2;
   color: #fff;
   background-color: #0091ea;
   border-color: #0091ea;
 }
-.current-cat>a{
+
+.current-cat > a{
   color: #fff;  
 }
 
 .widget-item ul {
   padding-left: 0;
   list-style-type: none;
+}
+
+/* Footer menu */
+.footer-menu {
+  text-align: center;
+}
+
+.footer-menu ul {
+  list-style: none;
+}
+
+.footer-menu li {
+  display: inline-block;
+}
+
+.footer-menu li:not(:first-child):before {
+  margin: 0 15px 0 15px;
+  content: "|";
 }

@@ -14,7 +14,7 @@
 <body>
 
 <!--Navbar-->
-<nav class="navbar navbar-expand-lg navbar-dark light-blue accent-4">
+<nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten3">
   <div class="container">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
