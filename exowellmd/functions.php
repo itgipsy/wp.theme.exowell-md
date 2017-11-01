@@ -1,6 +1,11 @@
 <?php
 
 /**
+  * Include external files
+  */
+require_once('inc/mdb_navwalker.php');
+
+/**
  * Include CSS/JS dependencies 
  */
 function theme_enqueue_scripts() {
@@ -16,11 +21,6 @@ function theme_enqueue_scripts() {
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_scripts' );
 
 /**
-  * Include external files
-  */
-require_once('inc/mdb_navwalker.php');
-
-/**
  * Setup Theme
  */
 function MDB_setup() {
@@ -33,5 +33,22 @@ function MDB_setup() {
   add_image_size('main-full', 1078, 516, false); // main post image in full width
 }
 add_action('after_setup_theme', 'MDB_setup');
+
+/**
+ * Register sidebars and widgetized areas.
+ */
+function exowellmd_widgets_init() {
+
+  register_sidebar( array(
+    'name'          => 'Sidebar',
+    'id'            => 'sidebar',
+    'before_widget' => '',
+    'after_widget'  => '',
+    'before_title'  => '',
+    'after_title'   => '',
+  ) );
+
+}
+add_action( 'widgets_init', 'exowellmd_widgets_init' );
 
 ?>
