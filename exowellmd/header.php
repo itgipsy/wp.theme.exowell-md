@@ -40,10 +40,12 @@
             }
         ?> 
       </ul>
+      <?php if (get_theme_mod('navbar_search', 'show') == 'show') : ?>
       <form role="search" method="get" id="searchform" class="form-inline" action="">
         <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="s" 
           value="<?= htmlspecialchars($_GET['s']) ?>">
       </form>
+      <?php endif ?>
     </div>
   </div>
 </nav>

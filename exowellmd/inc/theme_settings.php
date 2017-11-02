@@ -2,6 +2,7 @@
 //Based on https://gist.github.com/ajskelton/8ae331406bd99254874b42c69ff0aa48
 
 function exowellmd_customize_register( $wp_customize ) {
+  /* Color theme selector */
   $wp_customize->add_setting('color_theme', array(
     'default' => 'mdb_dark',
 	'type' => 'theme_mod'
@@ -17,6 +18,26 @@ function exowellmd_customize_register( $wp_customize ) {
 	  'mdb_light' => __('MDB Light')
 	),
     'sanitize_callback' => 'exowellmd_sanitize_select'
+  ));
+
+  $wp_customize->add_section('navbar', array(
+    'title' => __('Navigation bar'),
+	'priority' => 20
+  ));
+  /* Search form in navigation bar */
+  $wp_customize->add_setting('navbar_search', array(
+    'default' => 'show',
+	'type' => 'theme_mod'
+  ));
+  $wp_customize->add_control('navbar_search', array(
+    'type' => 'radio',
+	'section' => 'navbar',
+	'label' => __('Search bar'),
+	'description' => __('Show search form in navigation bar'),
+	'choices' => array(
+	  'show' => __('Show'),
+	  'hide' => __('Hide')
+	)
   ));
 }
 
