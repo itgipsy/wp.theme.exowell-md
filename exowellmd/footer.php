@@ -1,6 +1,6 @@
 
 <!--Footer-->
-<footer class="page-footer mdb-color lighten3 center-on-small-only">
+<footer class="page-footer center-on-small-only themecolor">
   <!--Footer menu -->
   <?php
     if ( has_nav_menu( 'footer' ) ) {

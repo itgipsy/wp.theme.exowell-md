@@ -14,7 +14,7 @@
 <body>
 
 <!--Navbar-->
-<nav class="navbar navbar-expand-lg navbar-dark mdb-color darken-2">
+<nav class="navbar navbar-expand-lg themecolor">
   <!-- Navbar brand -->
   <a class="navbar-brand" href="#">Navbar</a>
   <!-- Collapse button -->

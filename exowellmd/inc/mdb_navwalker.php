@@ -10,7 +10,7 @@ class bootstrap_4_walker_nav_menu extends Walker_Nav_menu {
     function start_lvl( &$output, $depth = 0, $args = array() ){ // ul
         $indent = str_repeat("\t",$depth); // indents the outputted HTML
         $submenu = ($depth > 0) ? ' sub-menu' : '';
-        $output .= "\n$indent<ul class=\"dropdown-menu$submenu depth_$depth\">\n";
+        $output .= "\n$indent<ul class=\"dropdown-menu$submenu depth_$depth themecolor\">\n";
     }
   
   function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ){ // li a span
@@ -26,6 +26,7 @@ class bootstrap_4_walker_nav_menu extends Walker_Nav_menu {
         $classes[] = ($item->current || $item->current_item_anchestor) ? 'active' : '';
         $classes[] = 'nav-item';
         $classes[] = 'nav-item-' . $item->ID;
+        $classes[] = 'themecolor';
         if( $depth && $args->walker->has_children ){
             $classes[] = 'dropdown-menu';
         }
@@ -43,10 +44,10 @@ class bootstrap_4_walker_nav_menu extends Walker_Nav_menu {
         $attributes .= ! empty( $item->xfn ) ? ' rel="' . esc_attr($item->xfn) . '"' : '';
         $attributes .= ! empty( $item->url ) ? ' href="' . esc_attr($item->url) . '"' : '';
         
-        $attributes .= ( $args->walker->has_children ) ? ' class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"' : ' class="nav-link"';
+        $attributes .= ( $args->walker->has_children ) ? ' class="nav-link dropdown-toggle themecolor" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"' : ' class="nav-link themecolor"';
         
         $item_output = $args->before;
-        $item_output .= ( $depth > 0 ) ? '<a class="dropdown-item"' . $attributes . '>' : '<a' . $attributes . '>';
+        $item_output .= ( $depth > 0 ) ? '<a class="dropdown-item themecolor"' . $attributes . '>' : '<a' . $attributes . '>';
         $item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
         $item_output .= '</a>';
         $item_output .= $args->after;

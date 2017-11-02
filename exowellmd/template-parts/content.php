@@ -19,7 +19,7 @@
     the_content('', false);
   ?>
     <!--"Read more" button-->
-    <a href="<?php echo get_permalink() ?>"><button class="btn mdb-color darken-2">Read more</button></a>
+    <a href="<?php echo get_permalink() ?>"><button class="btn themecolor">Read more</button></a>
   <?php
   }
   ?>

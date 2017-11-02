@@ -3,6 +3,7 @@
 /**
   * Include external files
   */
+require_once('inc/theme_settings.php');
 require_once('inc/mdb_navwalker.php');
 require_once('inc/mdb_pagination.php'); 
 
@@ -42,6 +43,17 @@ function posts_link_attributes() {
 
 add_filter('next_posts_link_attributes', 'posts_link_attributes');
 add_filter('previous_posts_link_attributes', 'posts_link_attributes');
+
+function exowellmd_customize_css()
+{
+  $theme_css = '/css/themes/mdb_dark.css';
+  switch (get_theme_mod('color_theme')) {
+    case 'mdb_light': $theme_css = '/css/themes/mdb_light.css';
+    break;
+  }
+  wp_enqueue_style( 'ColorTheme_css', get_template_directory_uri() . $theme_css );
+}
+add_action( 'wp_enqueue_scripts', 'exowellmd_customize_css');
 
 /**
  * Register sidebars and widgetized areas.
