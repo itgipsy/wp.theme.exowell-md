@@ -13,29 +13,24 @@ main {
 }
 
 /* Sidebar */
-.cat-item {
-  position: relative;
-  display: block;
-  padding: .75rem 1.25rem;
-  margin-bottom: -1px;
-  background-color: #fff;
-  border: 1px solid #ddd;
+#sidebar .widget {
+  margin-bottom: 30px;
 }
 
-.current-cat{
-  z-index: 2;
-  color: #fff;
-  background-color: #0091ea;
-  border-color: #0091ea;
+#sidebar .widget ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.current-cat > a{
-  color: #fff;  
+#sidebar .widget li:not(:last-child) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  padding-bottom: 5px;
 }
 
-.widget-item ul {
-  padding-left: 0;
-  list-style-type: none;
+#sidebar .widget li:not(:first-child) {
+  padding-top: 5px;
 }
 
 /* Navbar */
@@ -56,6 +51,6 @@ main {
 
 .footer-menu li {
   display: inline-block;
-  padding: 0 15px 0 15px;
+  margin: 0 15px 0 15px;
 }
 

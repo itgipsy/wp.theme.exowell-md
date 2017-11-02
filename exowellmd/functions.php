@@ -44,6 +44,7 @@ function posts_link_attributes() {
 add_filter('next_posts_link_attributes', 'posts_link_attributes');
 add_filter('previous_posts_link_attributes', 'posts_link_attributes');
 
+/* Load custom CSS based on the selected color theme */
 function exowellmd_customize_css()
 {
   $theme_css = '/css/themes/mdb_dark.css';
@@ -63,10 +64,11 @@ function exowellmd_widgets_init() {
   register_sidebar( array(
     'name'          => 'Sidebar',
     'id'            => 'sidebar',
-    'before_widget' => '',
-    'after_widget'  => '',
-    'before_title'  => '',
-    'after_title'   => '',
+    'description'   => 'Main sidebar',
+    'before_widget' => '<div id="%1$s" class="card widget %2$s">',
+    'after_widget'  => '</div></div></div>',
+    'before_title'  => '<div class="card-header widget-title themecolor">',
+    'after_title'   => '</div><div class="card-body"><div class="card-text">',
   ) );
 
 }

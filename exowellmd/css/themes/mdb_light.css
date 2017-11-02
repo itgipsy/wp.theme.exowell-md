@@ -1,0 +1,59 @@
+/* base: mdb-color lighten-4 #b1bace */
+body {
+  background-color: #fff;
+  color: #000;
+}
+
+a, a:visited {
+  color: #7283a7;
+}
+
+a:hover {
+  color: #45526e;
+}
+
+.themecolor {
+  background-color: #b1bace;
+  color: #000;
+}
+
+.btn.themecolor {
+  background-color: #b1bace !important;
+  color: #000 !important;
+}
+
+/* Navbar */
+.navbar a,
+.navbar a:visited {
+  background-color: #b1bace !important;
+  color: #000 !important;
+}
+
+.navbar .dropdown-menu a,
+.navbar .dropdown-menu a:visited {
+  background-color: #b1bace !important;
+  color: #000 !important;
+}
+
+.navbar a:hover,
+.navbar .dropdown-menu a:hover {
+  color: #000 !important;
+  background-color: rgba(255,255,255,0.05) !important;
+}
+
+/* Widget area */
+.card.widget li {
+  border-color: #b1bace;
+}
+
+/* Pagination */
+.page-item.active .page-link {
+  background-color: #b1bace;
+  border-color: #b1bace;
+  color: #000;
+}
+
+.page-item .page-link {
+  color: #b1bace;
+}
+
