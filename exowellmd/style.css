@@ -48,6 +48,29 @@ main {
   padding-top: 5px;
 }
 
+.widget_calendar table {
+  width: 100%;
+}
+
+.widget_calendar th,
+.widget_calendar td,
+.widget_calendar caption {
+  text-align: center;
+}
+
+.widget_calendar tfoot td {
+  border: 0;
+}
+
+.widget_calendar #today {
+  border-style: solid;
+  border-width: 1px;
+}
+
+.widget_calendar td > a {
+  font-weight: bold;
+}
+
 /* Navbar */
 
 /* Pagination */

@@ -46,6 +46,10 @@ a:hover {
   border-color: #b1bace;
 }
 
+.widget_calendar #today {
+  border-color: #b1bace;
+}
+
 /* Pagination */
 .page-item.active .page-link {
   background-color: #b1bace;
