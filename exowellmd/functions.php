@@ -59,16 +59,17 @@ add_action( 'wp_enqueue_scripts', 'exowellmd_customize_css');
 /**
  * Register sidebars and widgetized areas.
  */
+
 function exowellmd_widgets_init() {
 
   register_sidebar( array(
     'name'          => 'Sidebar',
     'id'            => 'sidebar',
     'description'   => 'Main sidebar',
-    'before_widget' => '<div id="%1$s" class="card widget %2$s">',
-    'after_widget'  => '</div></div></div>',
-    'before_title'  => '<div class="card-header widget-title themecolor">',
-    'after_title'   => '</div><div class="card-body"><div class="card-text">',
+    'before_widget' => '<div id="%1$s" class="card widget %2$s"><div class="card-body">',
+    'after_widget'  => '</div></div>',
+    'before_title'  => '<div class="card-title widget-title themecolor">',
+    'after_title'   => '</div>',
   ) );
 
 }

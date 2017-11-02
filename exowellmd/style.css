@@ -17,10 +17,25 @@ main {
   margin-bottom: 30px;
 }
 
+#sidebar .widget-title {
+  /* smaller * margin: -15px -15px 10px -15px; */
+  /* fit * margin: -20px -20px 15px -20px; */
+  /* wider */
+  margin: -25px -25px 15px -25px;
+  padding: 15px;
+  border-radius: 5px;
+}
+
 #sidebar .widget ul {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+#sidebar .widget li {
+  /* workaround missing card-text class */
+  font-size: 0.9rem;
+  font-weight: 400;
 }
 
 #sidebar .widget li:not(:last-child) {
