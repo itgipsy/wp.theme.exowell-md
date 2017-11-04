@@ -4,6 +4,7 @@
   * Include external files
   */
 require_once('inc/theme_settings.php');
+require_once('widgets/class-wp-widget-archives.php');
 require_once('inc/mdb_navwalker.php');
 require_once('inc/mdb_pagination.php'); 
 
@@ -72,7 +73,10 @@ function exowellmd_widgets_init() {
     'after_title'   => '</div>',
   ) );
 
+  unregister_widget('WP_Widget_Archives');
+  register_widget('WP_Widget_ArchivesMD');
 }
+
 add_action( 'widgets_init', 'exowellmd_widgets_init' );
 
 ?>
