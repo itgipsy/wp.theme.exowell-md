@@ -77,6 +77,10 @@ main {
 }
 
 /* Navbar */
+/* using fa-bars instead of background svg */
+.navbar-toggler-icon {
+    background-image: none !important;
+}
 
 /* Pagination */
 #page-nav ul.pagination {
