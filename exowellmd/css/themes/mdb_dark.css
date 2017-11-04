@@ -13,8 +13,8 @@ a:hover {
 }
 
 .themecolor {
-  background-color: #2e3951;
-  color: #fff;
+  background-color: #2e3951 !important;
+  color: #fff !important;
 }
 
 .btn.themecolor {
