@@ -77,9 +77,14 @@ main {
 }
 
 /* Navbar */
-/* using fa-bars instead of background svg */
-.navbar-toggler-icon {
-    background-image: none !important;
+/* fix navbar below the wp toolbar */
+.customize-support .navbar.fixed-top {
+  position: fixed;
+  top: 25px;
+}
+
+header.fixed ~ main{
+  margin-top: 3rem;
 }
 
 /* Pagination */

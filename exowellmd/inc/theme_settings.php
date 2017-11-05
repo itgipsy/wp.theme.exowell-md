@@ -1,5 +1,6 @@
 <?php
 //Based on https://gist.github.com/ajskelton/8ae331406bd99254874b42c69ff0aa48
+require_once('color_themes.php');
 
 function exowellmd_customize_register( $wp_customize ) {
   /* Color theme selector */
@@ -13,10 +14,7 @@ function exowellmd_customize_register( $wp_customize ) {
 	'section' => 'colors',
 	'label' => __('Color theme'),
 	'description' => __('Defines tone of the theme'),
-	'choices' => array(
-	  'mdb_dark' => __('MDB Dark'),
-	  'mdb_light' => __('MDB Light')
-	),
+	'choices' => getColorThemeNames(), 
     'sanitize_callback' => 'exowellmd_sanitize_select'
   ));
 
@@ -38,6 +36,32 @@ function exowellmd_customize_register( $wp_customize ) {
 	  'show' => __('Show'),
 	  'hide' => __('Hide')
 	)
+  ));
+  /* Navbar fix on top */
+  $wp_customize->add_setting('navbar_fixing', array(
+  	'default' => 'scroll',
+	'type' => 'theme_mod'
+  ));
+  $wp_customize->add_control('navbar_fixing', array(
+  	'type' => 'radio',
+	'section' => 'navbar',
+	'label' => __('Navbar fixed on top'),
+	'description' => __('Fix the navigation bar on the top of the screen'),
+	'choices' => array(
+	  'fix' => __('Fixed'),
+	  'scroll' => __('Scrolling')
+	)
+  ));
+  /* Transparent navbar */
+  $wp_customize->add_setting('navbar_transparent', array(
+  	'default' => 'scroll',
+	'type' => 'theme_mod'
+  ));
+  $wp_customize->add_control('navbar_transparent', array(
+  	'type' => 'select',
+	'section' => 'navbar',
+	'label' => __('Transparent navbar'),
+	'description' => __('Transparent navigation bar')
   ));
 }
 

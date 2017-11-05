@@ -12,14 +12,25 @@
   <?php wp_head(); ?>
 </head>
 <body>
-
+<?php
+  $navbar_class = '';
+  if (get_theme_mod('navbar_fixing', 'scroll') =='fix') {
+    $navbar_class .= ' fixed-top scrolling-navbar';
+    $header_class = 'fixed'; //using this the control main style via sibling selector
+  }
+  $colorThemeConf = getColorTheme(get_theme_mod('color_theme'));
+  if ($colorThemeConf['style'] == 'dark') {
+    $navbar_class .= ' navbar-dark';
+  }
+?>
+<header class="<?= $header_class ?>">
 <!--Navbar-->
-<nav class="navbar navbar-expand-lg themecolor">
+<nav class="navbar navbar-expand-lg themecolor<?= $navbar_class ?>">
   <!-- Navbar brand -->
   <a class="navbar-brand" href="#">Navbar</a>
   <!-- Collapse button -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-      aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon fa fa-bars themecolor"></span></button>
+      aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon themecolor"></span></button>
   <!-- Collapsible content -->
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
@@ -50,3 +61,4 @@
   </div>
 </nav>
 <!--/Navbar-->
+</header>
