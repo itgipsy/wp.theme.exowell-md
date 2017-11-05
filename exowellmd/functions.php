@@ -48,7 +48,7 @@ add_filter('previous_posts_link_attributes', 'posts_link_attributes');
 
 
 
-/* Load custom CSS based on the selected color theme */
+/* Load custom CSS based on the selected color theme and settings */
 function exowellmd_customize_css()
 {
   $colorTheme = get_theme_mod('color_theme');
@@ -57,8 +57,21 @@ function exowellmd_customize_css()
   }
   $colorThemeConf = getColorTheme($colorTheme);
   wp_enqueue_style( 'ColorTheme_css', get_template_directory_uri() . $colorThemeConf['css'] );
+  if (get_theme_mod('navbar_transparent')) {
+    add_action('wp_head', 'transparent_navbar_css');
+  }
 }
 add_action( 'wp_enqueue_scripts', 'exowellmd_customize_css');
+
+function transparent_navbar_css() {
+?>
+	<style type="text/css">
+		.top-nav-collapse {
+		    opacity: 0.6;
+		}
+	</style>
+<?php
+}
 
 /**
  * Register sidebars and widgetized areas.

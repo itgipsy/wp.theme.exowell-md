@@ -52,16 +52,16 @@ function exowellmd_customize_register( $wp_customize ) {
 	  'scroll' => __('Scrolling')
 	)
   ));
-  /* Transparent navbar */
+  /* Transparent navbar on scroll*/
   $wp_customize->add_setting('navbar_transparent', array(
-  	'default' => 'scroll',
+  	'default' => false,
 	'type' => 'theme_mod'
   ));
   $wp_customize->add_control('navbar_transparent', array(
-  	'type' => 'select',
+  	'type' => 'checkbox',
 	'section' => 'navbar',
 	'label' => __('Transparent navbar'),
-	'description' => __('Transparent navigation bar')
+	'description' => __('Transparent navigation bar on scroll (when fixed)')
   ));
 }
 
