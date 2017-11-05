@@ -67,7 +67,10 @@ function transparent_navbar_css() {
 ?>
 	<style type="text/css">
 		.top-nav-collapse {
-		    opacity: 0.6;
+		    opacity: 0.5;
+		}
+		.top-nav-collapse:hover {
+			opacity: 1;
 		}
 	</style>
 <?php

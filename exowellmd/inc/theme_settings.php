@@ -22,6 +22,17 @@ function exowellmd_customize_register( $wp_customize ) {
     'title' => __('Navigation bar'),
 	'priority' => 20
   ));
+  /* Display/remove navigation bar */
+  $wp_customize->add_setting('navbar_remove', array(
+    'default' => false,
+	'type' => 'theme_mod'
+  ));
+  $wp_customize->add_control('navbar_remove', array(
+    'type' => 'checkbox',
+	'section' => 'navbar',
+	'label' => __('Hide navigation bar'),
+	'description' => __('Hide top navigation bar')
+  ));
   /* Search form in navigation bar */
   $wp_customize->add_setting('navbar_search', array(
     'default' => 'show',

@@ -14,7 +14,7 @@
 <body>
 <?php
   $navbar_class = '';
-  if (get_theme_mod('navbar_fixing', 'scroll') =='fix') {
+  if (get_theme_mod('navbar_fixing', 'scroll') =='fix' && !get_theme_mod('navbar_remove', false)) {
     $navbar_class .= ' fixed-top scrolling-navbar';
     $header_class = 'fixed'; //using this the control main style via sibling selector
   }
@@ -25,7 +25,9 @@
 ?>
 <header class="<?= $header_class ?>">
 <!--Navbar-->
+<?php if (! get_theme_mod('navbar_remove', false)) : ?>
 <nav class="navbar navbar-expand-lg themecolor<?= $navbar_class ?>">
+<div class="container">
   <!-- Navbar brand -->
   <a class="navbar-brand" href="#">Navbar</a>
   <!-- Collapse button -->
@@ -59,6 +61,8 @@
       <?php endif ?>
     </div>
   </div>
+</div>
 </nav>
+<?php endif; ?>
 <!--/Navbar-->
 </header>
