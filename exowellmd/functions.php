@@ -1,13 +1,14 @@
 <?php
 
 /**
-  * Include external files
-  */
+	* Include external files
+	*/
 require_once('inc/color_themes.php');
 require_once('inc/theme_settings.php');
 require_once('widgets/class-wp-widget-archives.php');
 require_once('inc/mdb_navwalker.php');
 require_once('inc/mdb_pagination.php'); 
+require_once('inc/hero.php');
 
 /**
  * Include CSS/JS dependencies 
@@ -28,19 +29,19 @@ add_action( 'wp_enqueue_scripts', 'theme_enqueue_scripts' );
  * Setup Theme
  */
 function MDB_setup() {
-  // Navigation Menus
-  register_nav_menus(array(
-    'navbar' => __( 'Navbar Menu'),
-    'footer' => __( 'Footer Menu')
-  ));
-  // Add featured image support
-  add_theme_support('post-thumbnails');
-  add_image_size('main-full', 1078, 516, false); // main post image in full width
+	// Navigation Menus
+	register_nav_menus(array(
+		'navbar' => __( 'Navbar Menu'),
+		'footer' => __( 'Footer Menu')
+	));
+	// Add featured image support
+	add_theme_support('post-thumbnails');
+	add_image_size('main-full', 1078, 516, false); // main post image in full width
 }
 add_action('after_setup_theme', 'MDB_setup');
 
 function posts_link_attributes() {
-  return 'class="page-link"';
+	return 'class="page-link"';
 }
 
 add_filter('next_posts_link_attributes', 'posts_link_attributes');
@@ -51,15 +52,15 @@ add_filter('previous_posts_link_attributes', 'posts_link_attributes');
 /* Load custom CSS based on the selected color theme and settings */
 function exowellmd_customize_css()
 {
-  $colorTheme = get_theme_mod('color_theme');
-  if (colorThemeExists($colortheme)) {
-    $colorTheme = 'mdb_dark';
-  }
-  $colorThemeConf = getColorTheme($colorTheme);
-  wp_enqueue_style( 'ColorTheme_css', get_template_directory_uri() . $colorThemeConf['css'] );
-  if (get_theme_mod('navbar_transparent')) {
-    add_action('wp_head', 'transparent_navbar_css');
-  }
+	$colorTheme = get_theme_mod('color_theme');
+	if (colorThemeExists($colortheme)) {
+		$colorTheme = 'mdb_dark';
+	}
+	$colorThemeConf = getColorTheme($colorTheme);
+	wp_enqueue_style( 'ColorTheme_css', get_template_directory_uri() . $colorThemeConf['css'] );
+	if (get_theme_mod('navbar_transparent')) {
+		add_action('wp_head', 'transparent_navbar_css');
+	}
 }
 add_action( 'wp_enqueue_scripts', 'exowellmd_customize_css');
 
@@ -67,7 +68,7 @@ function transparent_navbar_css() {
 ?>
 	<style type="text/css">
 		.top-nav-collapse {
-		    opacity: 0.5;
+				opacity: 0.5;
 		}
 		.top-nav-collapse:hover {
 			opacity: 1;
@@ -82,18 +83,18 @@ function transparent_navbar_css() {
 
 function exowellmd_widgets_init() {
 
-  register_sidebar( array(
-    'name'          => 'Sidebar',
-    'id'            => 'sidebar',
-    'description'   => 'Main sidebar',
-    'before_widget' => '<div id="%1$s" class="card widget %2$s"><div class="card-body">',
-    'after_widget'  => '</div></div>',
-    'before_title'  => '<div class="card-title widget-title themecolor">',
-    'after_title'   => '</div>',
-  ) );
+	register_sidebar( array(
+		'name'					=> 'Sidebar',
+		'id'						=> 'sidebar',
+		'description'	 => 'Main sidebar',
+		'before_widget' => '<div id="%1$s" class="card widget %2$s"><div class="card-body">',
+		'after_widget'	=> '</div></div>',
+		'before_title'	=> '<div class="card-title widget-title themecolor">',
+		'after_title'	 => '</div>',
+	) );
 
-  unregister_widget('WP_Widget_Archives');
-  register_widget('WP_Widget_ArchivesMD');
+	unregister_widget('WP_Widget_Archives');
+	register_widget('WP_Widget_ArchivesMD');
 }
 
 add_action( 'widgets_init', 'exowellmd_widgets_init' );

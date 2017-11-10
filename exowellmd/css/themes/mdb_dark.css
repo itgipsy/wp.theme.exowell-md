@@ -40,7 +40,14 @@ a:hover {
   color: #fff !important;
 }
 
-.navbar a:hover,
+a.nav-link:hover {
+  border-bottom: 2px solid #fff;
+}
+
+.active a.nav-link {
+  border-bottom: 2px solid #eceff1;
+}
+
 .navbar .dropdown-menu a:hover {
   color: #fff !important;
   background-color: rgba(255,255,255,0.05) !important;

@@ -25,8 +25,8 @@ class WP_Widget_ArchivesMD extends WP_Widget {
 	/**
 	 * Outputs the content for the current Archives widget instance.
 	 *
-	 * @param array $args     Display arguments including 'before_title', 'after_title',
-	 *                        'before_widget', and 'after_widget'.
+	 * @param array $args		 Display arguments including 'before_title', 'after_title',
+	 *												'before_widget', and 'after_widget'.
 	 * @param array $instance Settings for the current Archives widget instance.
 	 */
 	public function widget( $args, $instance ) {
@@ -57,8 +57,8 @@ class WP_Widget_ArchivesMD extends WP_Widget {
 			 * @param array $args An array of Archives widget drop-down arguments.
 			 */
 			$dropdown_args = apply_filters( 'widget_archives_dropdown_args', array(
-				'type'            => 'monthly',
-				'format'          => 'custom',
+				'type'						=> 'monthly',
+				'format'					=> 'custom',
 				'after'	=> ',',
 				'show_post_count' => $c,
 				'echo' => 0
@@ -88,7 +88,7 @@ class WP_Widget_ArchivesMD extends WP_Widget {
 				</button>
 				<div class="dropdown-menu">
 				<?php
-					$getarch =  wp_get_archives( $dropdown_args );
+					$getarch =	wp_get_archives( $dropdown_args );
 					$archives = explode(',', $getarch);
 					foreach ($archives as $archive) {
 						$link = preg_replace('/(<a.*a>).*/', '$1', $archive);
@@ -115,7 +115,7 @@ class WP_Widget_ArchivesMD extends WP_Widget {
 		 * @param array $args An array of Archives option arguments.
 		 */
 		wp_get_archives( apply_filters( 'widget_archives_args', array(
-			'type'            => 'monthly',
+			'type'						=> 'monthly',
 			'show_post_count' => $c
 		) ) );
 		?>
@@ -133,7 +133,7 @@ class WP_Widget_ArchivesMD extends WP_Widget {
 	 * @access public
 	 *
 	 * @param array $new_instance New settings for this instance as input by the user via
-	 *                            WP_Widget_Archives::form().
+	 *														WP_Widget_Archives::form().
 	 * @param array $old_instance Old settings for this instance.
 	 * @return array Updated settings to save.
 	 */

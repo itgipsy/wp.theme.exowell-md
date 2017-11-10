@@ -1,32 +1,32 @@
 
 <!--Footer-->
 <footer class="page-footer center-on-small-only themecolor">
-  <!--Footer menu -->
-  <?php
-    if ( has_nav_menu( 'footer' ) ) {
-  ?>
-  <div class="footer-menu container-fluid">
-    <?php
-    wp_nav_menu( array(
-      'menu' => 'footer',
-      'theme_location' => 'footer',
-      'depth' => 1
-   		)
-   	);
-    ?>
-  </div>
-  <?php
-    }
-  ?>
-  <!--/Footer menu-->
+	<!--Footer menu -->
+	<?php
+		if ( has_nav_menu( 'footer' ) ) {
+	?>
+	<div class="footer-menu container-fluid">
+		<?php
+		wp_nav_menu( array(
+			'menu' => 'footer',
+			'theme_location' => 'footer',
+			'depth' => 1
+	 		)
+	 	);
+		?>
+	</div>
+	<?php
+		}
+	?>
+	<!--/Footer menu-->
 
-  <!--Copyright-->
-  <div class="footer-copyright">
-    <div class="container-fluid">
-      ©2017 Copyright <a href="https://exowell.com"  rel="nofollow">ExoWell.com</a>
-    </div>
-  </div>
-  <!--/Copyright-->
+	<!--Copyright-->
+	<div class="footer-copyright">
+		<div class="container-fluid">
+			©2017 Copyright <a href="https://exowell.com"	rel="nofollow">ExoWell.com</a>
+		</div>
+	</div>
+	<!--/Copyright-->
 
 </footer>
 <!--/Footer-->
