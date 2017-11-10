@@ -91,6 +91,11 @@ nav.fixed-top ~ .hero {
 	margin-top: 4rem;
 }
 
+/* Hero */
+.hero-button-area {
+	text-align: right;
+}
+
 /* Pagination */
 #page-nav ul.pagination {
 	justify-content: center;

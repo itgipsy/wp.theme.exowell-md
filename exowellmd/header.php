@@ -67,17 +67,23 @@
 <!--/Navbar-->
 <!-- Hero -->
 <?php
+if (get_theme_mod('hero_show', false)) {
 	$hero_config = array(
-		'title' => 'ExoWell',
-		'description' => ' - Focus on the solution - ',
+		'title' => get_theme_mod('hero_title', ''),
+		'description' => get_theme_mod('hero_description', ''),
 		'button' => array(
-			'text' => 'Go about',
-			'href' => '/about'
+			'text' => get_theme_mod('hero_button_text', ''),
+			'href' => get_theme_mod('hero_button_href', ''),
+			'color' => get_theme_mod('hero_button_color', ''),
+			'bgcolor' => get_theme_mod('hero_button_bgcolor', '')
 		),
-		'color' => '#fff',
-		'image' => 'https://exowell.com/wp-content/uploads/2017/11/Keyboard2dark-1.jpeg'
+		'color' => get_theme_mod('hero_color', ''),
+		'bgcolor' => get_theme_mod('hero_bgcolor', ''),
+		'image' => get_theme_mod('hero_image', ''),
+		'position' => get_theme_mod('hero_position', '')
 	);
 	displayHero($hero_config);
+}
 ?>
 <!--/Hero -->
 </header>
