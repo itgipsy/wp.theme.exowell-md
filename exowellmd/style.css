@@ -12,6 +12,18 @@ main {
 	padding-bottom: 2rem;
 }
 
+.btn.btn-round {
+	border-radius: 50%;
+	width: 45px;
+	height: 45px;
+	padding: 0;
+	text-align: center;
+}
+
+.btn.btn-round i {
+	line-height: 45px;
+}
+
 /* Sidebar */
 #sidebar .widget {
 	margin-bottom: 30px;
@@ -115,3 +127,10 @@ nav.fixed-top ~ .hero {
 	margin: 0 15px 0 15px;
 }
 
+.page-footer {
+	padding-top: 0;
+}
+
+.footer-menu {
+	line-height: 50px;
+}
