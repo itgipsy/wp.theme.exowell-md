@@ -3,7 +3,9 @@
 <footer class="container page-footer themecolor">
 	<div class="row">
 	<div class="footer-social col-xs-6 col-md-3">
-		<a href="http://fb.com" class="btn btn-round themecolor"><i class="fa fa-facebook"></i></a>
+		<?php
+			display_social_buttons();
+		?>
 	</div>
 
 	<!--Footer menu -->

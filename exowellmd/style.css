@@ -24,6 +24,14 @@ main {
 	line-height: 45px;
 }
 
+ul.social_buttons {
+	list-type: none;
+}
+
+ul.social_buttons > li {
+	display: inline;
+}
+
 /* Sidebar */
 #sidebar .widget {
 	margin-bottom: 30px;
