@@ -66,7 +66,7 @@ function get_available_social_buttons () {
 
 function display_social_buttons() {
 	?>
-	<ul class="social_buttons">
+	<div class="social_buttons">
 	<?php
 	foreach (get_available_social_buttons() as $id => $settings) {
 		if (get_theme_mod('social_' . $id . '_show', false)) {
@@ -78,15 +78,15 @@ function display_social_buttons() {
 				$style='';
 			}
 			?>
-			<li><a href="<?= $url ?>" class="btn btn-round" <?= $style ?>>
-					<i class="fa <?= $settings['icon'] ?>"></i>
-				</a>
-			</li>
+			<a href="<?= $url ?>" class="btn btn-round btn-social themecolor" <?= $style ?>>
+				<i class="fa <?= $settings['icon'] ?>"></i>
+				<span class="sr-only"><?= __($settings['name'] . ' page of this site')?></a>
+			</a>
 			<?php
 		}
 	}
 	?>
-	</ul>
+	</div>
 	<?php
 }
 
@@ -103,7 +103,8 @@ function customize_social_buttons($wp_customize) {
 		$wp_customize->add_control('social_' . $id . '_show', array(
 			'type' => 'checkbox',
 			'section' => 'social',
-			'label' => __('Show ' . $settings['name'] . ' button')
+			'label' => __('Display ' . $settings['name'] . ' button'),
+			'description' => __('Show this social button in the footer and in the social widget')
 		));
 		$wp_customize->add_setting('social_' . $id . '_url', array(
 			'default' => 'https://',
@@ -112,7 +113,7 @@ function customize_social_buttons($wp_customize) {
 		$wp_customize->add_control('social_' . $id . '_url', array(
 			'type' => 'text',
 			'section' => 'social',
-			'label' => __('Your ' . $settings['name'] . ' URL')
+			'label' => __($settings['name'] . ' URL')
 		));
 		$wp_customize->add_setting('social_' . $id . '_bgcolor', array(
 			'default' => '',
