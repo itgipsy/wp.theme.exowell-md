@@ -1,2 +1,2 @@
-# wp.theme.exowell-md
-ExoWell Material Design WordPress Theme
+# wp.theme.seabadger-md
+SeaBadger Material Design WordPress Theme

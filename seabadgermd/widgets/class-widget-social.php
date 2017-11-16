@@ -1,9 +1,9 @@
 <?php
 /**
- * Widget API: EWMD_Widget_Social - display social icons configured for ExoWellMD theme
+ * Widget API: SBMD_Widget_Social - display social icons configured for SeaBadgerMD theme
  */
 
-class EWMD_Widget_Social extends WP_Widget {
+class SBMD_Widget_Social extends WP_Widget {
 
 	/**
 	 * Sets up a new Social widget instance.
@@ -41,7 +41,7 @@ class EWMD_Widget_Social extends WP_Widget {
 	 * Handles updating settings for the current Social widget instance.
 	 *
 	 * @param array $new_instance New settings for this instance as input by the user via
-	 *														EWMD_Widget_Social::form().
+	 *														SBMD_Widget_Social::form().
 	 * @param array $old_instance Old settings for this instance.
 	 * @return array Updated settings to save.
 	 */

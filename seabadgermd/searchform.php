@@ -1,6 +1,6 @@
 <?php
 /**
- * Template for displaying search forms in ExoWellMD
+ * Template for displaying search forms in SeaBadgerMD
  */
 ?>
 <form method="get" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">

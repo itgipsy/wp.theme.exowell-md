@@ -2,20 +2,20 @@
 //Based on https://gist.github.com/ajskelton/8ae331406bd99254874b42c69ff0aa48
 require_once('color_themes.php');
 
-function exowellmd_customize_register( $wp_customize ) {
+function seabadgermd_customize_register( $wp_customize ) {
 	/* Color theme selector */
 	$wp_customize->add_setting('color_theme', array(
 		'default' => 'mdb_dark',
-	'type' => 'theme_mod'
+		'type' => 'theme_mod'
 	));
 	$wp_customize->add_control('color_theme', array(
 		'type' => 'select',
-	'priority' => 10,
-	'section' => 'colors',
-	'label' => __('Color theme'),
-	'description' => __('Defines tone of the theme'),
-	'choices' => getColorThemeNames(), 
-		'sanitize_callback' => 'exowellmd_sanitize_select'
+		'priority' => 10,
+		'section' => 'colors',
+		'label' => __('Color theme'),
+		'description' => __('Defines tone of the theme'),
+		'choices' => getColorThemeNames(), 
+		'sanitize_callback' => 'seabadgermd_sanitize_select'
 	));
 
 	$wp_customize->add_section('navbar', array(
@@ -55,13 +55,13 @@ function exowellmd_customize_register( $wp_customize ) {
 	));
 	$wp_customize->add_control('navbar_fixing', array(
 		'type' => 'radio',
-	'section' => 'navbar',
-	'label' => __('Navbar fixed on top'),
-	'description' => __('Fix the navigation bar on the top of the screen'),
-	'choices' => array(
-		'fix' => __('Fixed'),
-		'scroll' => __('Scrolling')
-	)
+		'section' => 'navbar',
+		'label' => __('Navbar fixed on top'),
+		'description' => __('Fix the navigation bar on the top of the screen'),
+		'choices' => array(
+			'fix' => __('Fixed'),
+			'scroll' => __('Scrolling')
+		)
 	));
 	/* Transparent navbar on scroll*/
 	$wp_customize->add_setting('navbar_transparent', array(
@@ -214,7 +214,7 @@ function exowellmd_customize_register( $wp_customize ) {
 	/* /Hero section */
 }
 
-function exowellmd_sanitize_select( $input, $setting ) {
+function seabadgermd_sanitize_select( $input, $setting ) {
 	// Ensure input is a slug.
 	$input = sanitize_key( $input );
 	// Get list of choices from the control associated with the setting.
@@ -223,5 +223,5 @@ function exowellmd_sanitize_select( $input, $setting ) {
 	return ( array_key_exists( $input, $choices ) ? $input : $setting->default );
 }
 
-add_action( 'customize_register', 'exowellmd_customize_register' );
+add_action( 'customize_register', 'seabadgermd_customize_register' );
 ?>

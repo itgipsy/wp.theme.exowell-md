@@ -52,10 +52,10 @@ add_filter('previous_posts_link_attributes', 'posts_link_attributes');
 
 
 /* Load custom CSS based on the selected color theme and settings */
-function exowellmd_customize_css()
+function seabadgermd_customize_css()
 {
 	$colorTheme = get_theme_mod('color_theme');
-	if (colorThemeExists($colortheme)) {
+	if (!colorThemeExists($colortheme)) {
 		$colorTheme = 'mdb_dark';
 	}
 	$colorThemeConf = getColorTheme($colorTheme);
@@ -64,7 +64,7 @@ function exowellmd_customize_css()
 		add_action('wp_head', 'transparent_navbar_css');
 	}
 }
-add_action( 'wp_enqueue_scripts', 'exowellmd_customize_css');
+add_action( 'wp_enqueue_scripts', 'seabadgermd_customize_css');
 
 function transparent_navbar_css() {
 ?>
@@ -83,12 +83,12 @@ function transparent_navbar_css() {
  * Register sidebars and widgetized areas.
  */
 
-function exowellmd_widgets_init() {
+function seabadgermd_widgets_init() {
 
 	register_sidebar( array(
-		'name'					=> 'Sidebar',
-		'id'						=> 'sidebar',
-		'description'	 => 'Main sidebar',
+		'name'			=> 'Sidebar',
+		'id'			=> 'sidebar',
+		'description'	=> 'Main sidebar',
 		'before_widget' => '<div id="%1$s" class="card widget %2$s"><div class="card-body">',
 		'after_widget'	=> '</div></div>',
 		'before_title'	=> '<div class="card-title widget-title themecolor">',
@@ -97,9 +97,9 @@ function exowellmd_widgets_init() {
 
 	unregister_widget('WP_Widget_Archives');
 	register_widget('WP_Widget_ArchivesMD');
-	register_widget('EWMD_Widget_Social');
+	register_widget('SBMD_Widget_Social');
 }
 
-add_action( 'widgets_init', 'exowellmd_widgets_init' );
+add_action( 'widgets_init', 'seabadgermd_widgets_init' );
 
 ?>
