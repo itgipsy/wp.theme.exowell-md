@@ -99,6 +99,16 @@ function seabadgermd_customize_register( $wp_customize ) {
 		'label' => __('Hero title'),
 		'description' => __('Header title, title is hidden when empty')
 	));
+	$wp_customize->add_setting('hero_title_url', array(
+		'default' => '',
+		'type' => 'theme_mod'
+	));
+	$wp_customize->add_control('hero_title_url', array(
+		'type' => 'text',
+		'section' => 'hero',
+		'label' => __('Hero title URL'),
+		'description' => __('Adds link to the hero title if not empty')
+	));
 	$wp_customize->add_setting('hero_description', array(
 		'default' => '',
 		'type' => 'theme_mod'

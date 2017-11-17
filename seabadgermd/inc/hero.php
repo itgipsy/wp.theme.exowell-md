@@ -1,7 +1,7 @@
 <?php
 /** 
 * Displays a Hero / jumbotron based on the configuration
-* $config keys : title, description, button[text, href, bgcolor, color], image, bgcolor, color, position
+* $config keys : title, title_url, description, button[text, href, bgcolor, color], image, bgcolor, color, position
 */
 function displayHero($config) {
 	$hero_style="";
@@ -26,7 +26,19 @@ function displayHero($config) {
 		<div class="jumbotron" style="<?= $hero_style ?>">
 			<div class="<?= $arrangeclass ?>">
 	<?php if ($config['title']) : ?>
-		<h1 class="display-3 hero-title"><?= $config['title'] ?></h1>
+		<h1 class="display-3 hero-title">
+			<?php
+				if ($config['title_url']) {
+					$style = '';
+					if ($config['color']) {
+						$style = sprintf('style="color: %s!important"', $config['color']);
+					}
+					printf('<a href="%s" %s>%s</a>', $config['title_url'], $style, $config['title']);
+				} else {
+					echo $config['title'];
+				}
+			?>
+		</h1>
 	<?php endif; ?>
 	<?php if ($config['description']) : ?>
 		<p class="lead hero-description"><?= $config['description'] ?></p>

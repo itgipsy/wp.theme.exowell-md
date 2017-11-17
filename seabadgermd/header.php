@@ -70,6 +70,7 @@
 if (get_theme_mod('hero_show', false)) {
 	$hero_config = array(
 		'title' => get_theme_mod('hero_title', ''),
+		'title_url' => get_theme_mod('hero_title_url', ''),
 		'description' => get_theme_mod('hero_description', ''),
 		'button' => array(
 			'text' => get_theme_mod('hero_button_text', ''),
