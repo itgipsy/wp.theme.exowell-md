@@ -55,7 +55,7 @@ add_filter('previous_posts_link_attributes', 'posts_link_attributes');
 function seabadgermd_customize_css()
 {
 	$colorTheme = get_theme_mod('color_theme');
-	if (!colorThemeExists($colortheme)) {
+	if (!colorThemeExists($colorTheme)) {
 		$colorTheme = 'mdb_dark';
 	}
 	$colorThemeConf = getColorTheme($colorTheme);

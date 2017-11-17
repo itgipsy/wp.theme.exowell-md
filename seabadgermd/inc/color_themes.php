@@ -8,6 +8,11 @@ if (! function_exists('getColorThemes')) {
 				'css' => '/css/themes/mdb_dark.css',
 				'style' => 'dark'
 			),
+			'mdb_blue' => array(
+				'name' => __('MDB Blue'),
+				'css' => '/css/themes/mdb_blue.css',
+				'style' => 'blue'
+			),
 			'mdb_light' => array(
 				'name' => __('MDB Light'),
 				'css' => '/css/themes/mdb_light.css',
