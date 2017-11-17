@@ -102,4 +102,36 @@ function seabadgermd_widgets_init() {
 
 add_action( 'widgets_init', 'seabadgermd_widgets_init' );
 
+function seabadgermd_post_navigation(){
+	if ( "" != get_adjacent_post( false, "", false ) || "" != get_adjacent_post( false, "", true ) ):
+?>
+	<div class="row post-navigation">
+		<div class="col-6 post-navigation-next">
+<?php
+	if ( "" != get_adjacent_post( false, "", false ) ):
+		next_post_link( '%link', __( 'Next post' ) );
+	endif;
+?>
+		</div>
+		<div class="col-6 post-navigation-prev">
+<?php
+	if ( "" != get_adjacent_post( false, "", true ) ):
+		previous_post_link( '%link', __( 'Previous post' ) );
+	endif;
+?>
+		</div>
+	</div>
+<?php
+endif;
+}
+
+/** https://justinklemm.com/add-class-to-wordpress-next_post_link-and-previous_post_link-links/ **/ 
+add_filter('next_post_link', 'post_navlink_attributes');
+add_filter('previous_post_link', 'post_navlink_attributes');
+
+function post_navlink_attributes($output) {
+    $class = 'class="btn themecolor"';
+    return str_replace('<a href=', '<a ' . $class . ' href=', $output);
+}
+
 ?>

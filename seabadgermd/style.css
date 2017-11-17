@@ -49,6 +49,10 @@ main {
 	text-align: center;
 }
 
+.post-navigation-prev {
+	text-align: right;
+}
+
 /* Sidebar */
 #sidebar .widget {
 	margin-bottom: 30px;
