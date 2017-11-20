@@ -11,19 +11,34 @@ function displayHero($config) {
 		$hero_style .= 'background-image: url(\'' . $config['image'] . '\');';
 		$hero_style .= 'background-size: cover;';
 	}
+	if ($config['logo']) {
+		$offset_right = '5';
+		$offset_center = '2';
+	} else {
+		$offset_right = '7';
+		$offset_center = '4';
+	}
 	switch($config['position']) {
-		case 'right': $arrangeclass = 'col-xs-12 col-md-5 offset-md-7';
+		case 'right': $arrangeclass = 'col-xs-12 col-md-5 offset-md-' . $offset_right;
 			break;
-		case 'center': $arrangeclass = 'col-xs-12 col-md-5 offset-md-4';
+		case 'center': $arrangeclass = 'col-xs-12 col-md-5 offset-md-' . $offset_center;
 			break;
 		case 'left': $arrangeclass = 'col-xs-12 col-md-5';
 			break;
 		default: //full
 			$arrangeclass = 'col-xs-12';
+			if ($config['logo']) {
+				$arrangeclass .= ' col-md-10';
+			}
 	}
 ?>
 	<div class="container hero">
-		<div class="jumbotron" style="<?= $hero_style ?>">
+		<div class="jumbotron row" style="<?= $hero_style ?>">
+	<?php if ($config['logo']): ?>
+		<div class="col-xs-12 col-md-2 text-center hero-logo">
+			<a href="/"><img class="logo" aria-label="Logo to homepage" src="<?= $config['logo'] ?>"></a>
+		</div>
+	<?php endif; ?>
 			<div class="<?= $arrangeclass ?>">
 	<?php if ($config['title']) : ?>
 		<h1 class="display-3 hero-title">

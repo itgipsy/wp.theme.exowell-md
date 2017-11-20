@@ -133,6 +133,20 @@ function seabadgermd_customize_register( $wp_customize ) {
 			'section' => 'hero'
 		)
 	));
+    $wp_customize->add_setting('hero_logo', array(
+        'default' => '',
+        'type' => 'theme_mod'
+    ));
+    $wp_customize->add_control(new WP_Customize_Image_Control(
+        $wp_customize,
+        'hero_logo',
+        array(
+            'label' => __('Custom page logo'),
+            'description' => __('Logo image to show in header'),
+            'settings' => 'hero_logo',
+            'section' => 'hero'
+        )
+    ));
 	$wp_customize->add_setting('hero_button_text', array(
 		'default' => 'About',
 		'type' => 'theme_mod'

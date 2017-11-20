@@ -1,0 +1,74 @@
+body {
+  background-color: #fff;
+  color: #000;
+}
+
+a, a:visited {
+  color: #23819C;
+}
+
+a:hover {
+  color: #2F74D0;
+}
+
+.themecolor {
+  background-color: #23819C;
+  color: #fff;
+}
+
+.btn.themecolor {
+  background-color: #23819C;
+  color: #fff;
+}
+
+.themecolor a,
+.themecolor a:visited {
+  color: #fff !important;
+}
+
+/* Navbar */
+.navbar a,
+.navbar a:visited {
+  background-color: #23819C !important;
+  color: #fff !important;
+}
+
+.navbar .dropdown-menu a,
+.navbar .dropdown-menu a:visited {
+  background-color: #23819C !important;
+  color: #fff !important;
+}
+
+a.nav-link:hover {
+  border-bottom: 2px solid #fff;
+}
+
+.active a.nav-link {
+  border-bottom: 2px solid #eceff1;
+}
+
+.navbar .dropdown-menu a:hover {
+  color: #fff !important;
+  background-color: rgba(255,255,255,0.05) !important;
+}
+
+/* Widget area */
+.card.widget li {
+  border-color: #4985D6;
+}
+
+.widget_calendar #today {
+  border-color:  #4985D6;
+}
+
+/* Pagination */
+.page-item.active .page-link {
+  background-color: #23819C;
+  border-color: #23819C;
+  color: #fff;
+}
+
+.page-item .page-link {
+  color: #23819C;
+}
+
