@@ -11,7 +11,7 @@ if (! function_exists('seabadgermd_get_color_themes')) {
 			'mdb_blue' => array(
 				'name' => __('Blue', 'seabadgermd'),
 				'css' => '/css/themes/mdb_blue.css',
-				'style' => 'blue'
+				'style' => 'dark'
 			),
 			'mdb_light' => array(
 				'name' => __('Light', 'seabadgermd'),
