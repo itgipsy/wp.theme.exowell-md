@@ -37,4 +37,5 @@
 	}
 ?>
 <!--/Hero -->
+<?php get_template_part( 'template-parts/breadcrumb' ); ?>
 </header>
