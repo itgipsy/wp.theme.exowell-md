@@ -4,235 +4,234 @@ require_once('color_themes.php');
 
 function seabadgermd_customize_register( $wp_customize ) {
 	/* Color theme selector */
-	$wp_customize->add_setting('color_theme', array(
+	$wp_customize->add_setting('seabadgermd_color_theme', array(
 		'default' => 'mdb_dark',
-		'type' => 'theme_mod'
+		'sanitize_callback' => 'seabadgermd_sanitize_select'
 	));
-	$wp_customize->add_control('color_theme', array(
+	$wp_customize->add_control('seabadgermd_color_theme', array(
 		'type' => 'select',
 		'priority' => 10,
 		'section' => 'colors',
-		'label' => __('Color theme'),
-		'description' => __('Defines tone of the theme'),
-		'choices' => getColorThemeNames(), 
-		'sanitize_callback' => 'seabadgermd_sanitize_select'
+		'label' => __('Color theme', 'seabadgermd'),
+		'description' => __('Defines tone of the theme', 'seabadgermd'),
+		'choices' => seabadgermd_get_color_theme_names(), 
 	));
 
 	$wp_customize->add_section('navbar', array(
-		'title' => __('Navigation bar'),
+		'title' => __('Navigation bar', 'seabadgermd'),
 		'priority' => 20
 	));
 	/* Display/remove navigation bar */
-	$wp_customize->add_setting('navbar_remove', array(
+	$wp_customize->add_setting('seabadgermd_navbar_remove', array(
 		'default' => false,
-		'type' => 'theme_mod'
+		'sanitize_callback' => 'seabadgermd_sanitize_checkbox'
 	));
-	$wp_customize->add_control('navbar_remove', array(
+	$wp_customize->add_control('seabadgermd_navbar_remove', array(
 		'type' => 'checkbox',
 		'section' => 'navbar',
-		'label' => __('Hide navigation bar'),
-		'description' => __('Hide top navigation bar')
+		'label' => __('Hide navigation bar', 'seabadgermd'),
+		'description' => __('Hide top navigation bar', 'seabadgermd')
 	));
 	/* Search form in navigation bar */
-	$wp_customize->add_setting('navbar_search', array(
+	$wp_customize->add_setting('seabadgermd_navbar_search', array(
 		'default' => 'show',
-		'type' => 'theme_mod'
+		'sanitize_callback' => 'seabadgermd_sanitize_showhide'
 	));
-	$wp_customize->add_control('navbar_search', array(
+	$wp_customize->add_control('seabadgermd_navbar_search', array(
 		'type' => 'radio',
 		'section' => 'navbar',
-		'label' => __('Search bar'),
-		'description' => __('Show search form in navigation bar'),
+		'label' => __('Search bar', 'seabadgermd'),
+		'description' => __('Show search form in navigation bar', 'seabadgermd'),
 		'choices' => array(
-			'show' => __('Show'),
-			'hide' => __('Hide')
+			'show' => __('Show', 'seabadgermd'),
+			'hide' => __('Hide', 'seabadgermd')
 		)
 	));
 	/* Navbar fix on top */
-	$wp_customize->add_setting('navbar_fixing', array(
+	$wp_customize->add_setting('seabadgermd_navbar_fixing', array(
 		'default' => 'scroll',
-	'type' => 'theme_mod'
+		'sanitize_callback' => 'seabadgermd_sanitize_onoff'
 	));
-	$wp_customize->add_control('navbar_fixing', array(
+	$wp_customize->add_control('seabadgermd_navbar_fixing', array(
 		'type' => 'radio',
 		'section' => 'navbar',
-		'label' => __('Navbar fixed on top'),
-		'description' => __('Fix the navigation bar on the top of the screen'),
+		'label' => __('Navbar fixed on top', 'seabadgermd'),
+		'description' => __('Fix the navigation bar on the top of the screen', 'seabadgermd'),
 		'choices' => array(
-			'fix' => __('Fixed'),
-			'scroll' => __('Scrolling')
+			'on' => __('Fixed', 'seabadgermd'),
+			'off' => __('Scrolling', 'seabadgermd')
 		)
 	));
 	/* Transparent navbar on scroll*/
-	$wp_customize->add_setting('navbar_transparent', array(
+	$wp_customize->add_setting('seabadgermd_navbar_transparent', array(
 		'default' => false,
-		'type' => 'theme_mod'
+		'sanitize_callback' => 'seabadgermd_sanitize_checkbox'
 	));
-	$wp_customize->add_control('navbar_transparent', array(
+	$wp_customize->add_control('seabadgermd_navbar_transparent', array(
 		'type' => 'checkbox',
 		'section' => 'navbar',
-		'label' => __('Transparent navbar'),
-		'description' => __('Transparent navigation bar on scroll (when fixed)')
+		'label' => __('Transparent navbar', 'seabadgermd'),
+		'description' => __('Transparent navigation bar on scroll (when fixed)', 'seabadgermd')
 	));
 	/* Hero section */
-	$wp_customize->add_section('hero', array(
-		title => __('Hero'),
-		priority => __(20)
+	$wp_customize->add_section('seabadgermd_hero', array(
+		title => __('Hero', 'seabadgermd'),
+		priority => 20
 	));
-	$wp_customize->add_setting('hero_show', array(
+	$wp_customize->add_setting('seabadgermd_hero_show', array(
 		'default' => false,
-		'type' => 'theme_mod'
+		'sanitize_callback' => 'seabadgermd_sanitize_checkbox'
 	));
-	$wp_customize->add_control('hero_show', array(
+	$wp_customize->add_control('seabadgermd_hero_show', array(
 		'type' => 'checkbox',
-		'section' => 'hero',
-		'label' => __('Display Hero header'),
-		'description' => __('Display a configurable header section')
+		'section' => 'seabadgermd_hero',
+		'label' => __('Display Hero header', 'seabadgermd'),
+		'description' => __('Display a configurable header section', 'seabadgermd')
 	));
-	$wp_customize->add_setting('hero_title', array(
+	$wp_customize->add_setting('seabadgermd_hero_title', array(
 		'default' => '',
-		'type' => 'theme_mod'
+		'sanitize_callback' => 'sanitize_text_field'
 	));
-	$wp_customize->add_control('hero_title', array(
+	$wp_customize->add_control('seabadgermd_hero_title', array(
 		'type' => 'text',
-		'section' => 'hero',
-		'label' => __('Hero title'),
-		'description' => __('Header title, title is hidden when empty')
+		'section' => 'seabadgermd_hero',
+		'label' => __('Hero title', 'seabadgermd'),
+		'description' => __('Header title, title is hidden when empty', 'seabadgermd')
 	));
-	$wp_customize->add_setting('hero_title_url', array(
+	$wp_customize->add_setting('seabadgermd_hero_title_url', array(
 		'default' => '',
-		'type' => 'theme_mod'
+		'sanitize_callback' => 'esc_url_raw'
 	));
-	$wp_customize->add_control('hero_title_url', array(
+	$wp_customize->add_control('seabadgermd_hero_title_url', array(
 		'type' => 'text',
-		'section' => 'hero',
-		'label' => __('Hero title URL'),
-		'description' => __('Adds link to the hero title if not empty')
+		'section' => 'seabadgermd_hero',
+		'label' => __('Hero title URL', 'seabadgermd'),
+		'description' => __('Adds link to the hero title if not empty', 'seabadgermd')
 	));
-	$wp_customize->add_setting('hero_description', array(
+	$wp_customize->add_setting('seabadgermd_hero_description', array(
 		'default' => '',
-		'type' => 'theme_mod'
+		'sanitize_callback' => 'sanitize_text_field'
 	));
-	$wp_customize->add_control('hero_description', array(
+	$wp_customize->add_control('seabadgermd_hero_description', array(
 		'type' => 'text',
-		'section' => 'hero',
-		'label' => __('Hero text'),
-		'description' => __('Header text, text block is hidden when empty')
+		'section' => 'seabadgermd_hero',
+		'label' => __('Hero text', 'seabadgermd'),
+		'description' => __('Header text, text block is hidden when empty', 'seabadgermd')
 	));
-	$wp_customize->add_setting('hero_image', array(
+	$wp_customize->add_setting('seabadgermd_hero_image', array(
 		'default' => '',
-		'type' => 'theme_mod'
+		'sanitize_callback' => 'sanitize_text_field'
 	));
 	$wp_customize->add_control(new WP_Customize_Image_Control(
 		$wp_customize,
-		'hero_background',
+		'seabadgermd_hero_background',
 		array(
-			'label' => __('Header background image'),
-			'description' => __('Recommended width 1140px'),
-			'settings' => 'hero_image',
-			'section' => 'hero'
+			'label' => __('Header background image', 'seabadgermd'),
+			'description' => __('Recommended width 1140px', 'seabadgermd'),
+			'settings' => 'seabadgermd_hero_image',
+			'section' => 'seabadgermd_hero'
 		)
 	));
-    $wp_customize->add_setting('hero_logo', array(
+    $wp_customize->add_setting('seabadgermd_hero_logo', array(
         'default' => '',
-        'type' => 'theme_mod'
+        'sanitize_callback' => 'sanitize_text_field'
     ));
     $wp_customize->add_control(new WP_Customize_Image_Control(
         $wp_customize,
-        'hero_logo',
+        'seabadgermd_hero_logo',
         array(
-            'label' => __('Custom page logo'),
-            'description' => __('Logo image to show in header'),
-            'settings' => 'hero_logo',
-            'section' => 'hero'
+            'label' => __('Custom page logo', 'seabadgermd'),
+            'description' => __('Logo image to show in header', 'seabadgermd'),
+            'settings' => 'seabadgermd_hero_logo',
+            'section' => 'seabadgermd_hero'
         )
     ));
-	$wp_customize->add_setting('hero_button_text', array(
-		'default' => 'About',
-		'type' => 'theme_mod'
+	$wp_customize->add_setting('seabadgermd_hero_button_text', array(
+		'default' => '',
+		'sanitize_callback' => 'sanitize_text_field'
 	));
-	$wp_customize->add_control('hero_button_text', array(
+	$wp_customize->add_control('seabadgermd_hero_button_text', array(
 		'type' => 'text',
-		'section' => 'hero',
-		'label' => __('Button text'),
-		'description' => __('Hero button text, button is removed if empty') 
+		'section' => 'seabadgermd_hero',
+		'label' => __('Button text', 'seabadgermd'),
+		'description' => __('Hero button text, button is removed if empty', 'seabadgermd') 
 	));
-	$wp_customize->add_setting('hero_button_href', array(
-		'default' => '/about',
-		'type' => 'theme_mod'
+	$wp_customize->add_setting('seabadgermd_hero_button_href', array(
+		'default' => '',
+		'sanitize_callback' => 'sanitize_text_field'
 	));
-	$wp_customize->add_control('hero_button_href', array(
+	$wp_customize->add_control('seabadgermd_hero_button_href', array(
 		'type' => 'text',
-		'section' => 'hero',
-		'label' => __('Button URL'),
-		'description' => __('Target URL of the button, button is removed if empty') 
+		'section' => 'seabadgermd_hero',
+		'label' => __('Button URL', 'seabadgermd'),
+		'description' => __('Target URL of the button, button is removed if empty', 'seabadgermd') 
 	));
-	$wp_customize->add_setting('hero_position', array(
+	$wp_customize->add_setting('seabadgermd_hero_position', array(
 		'default' => 'full',
-		'type' => 'theme_mod'
+		'sanitize_callback' => 'seabadgermd_sanitizie_hero_position'
 	));
-	$wp_customize->add_control('hero_position', array(
+	$wp_customize->add_control('seabadgermd_hero_position', array(
 		'type' => 'select',
-		'section' => 'hero',
-		'label' => __('Position'),
-		'description' => __('Position and width of hero text and control container'),
+		'section' => 'seabadgermd_hero',
+		'label' => __('Position', 'seabadgermd'),
+		'description' => __('Position and width of hero text and control container', 'seabadgermd'),
 		'choices' => array(
-			'full' => __('Full width (left)'),
-			'left' => __('Left narrow'),
-			'center' => __('Center narrow'),
-			'right' => __('Right narrow')
+			'full' => __('Full width (left)', 'seabadgermd'),
+			'left' => __('Left narrow', 'seabadgermd'),
+			'center' => __('Center narrow', 'seabadgermd'),
+			'right' => __('Right narrow', 'seabadgermd')
 		)
 	));
-	$wp_customize->add_setting('hero_bgcolor', array(
-		'default' => '#000',
-		'type' => 'theme_mod'
+	$wp_customize->add_setting('seabadgermd_hero_bgcolor', array(
+		'default' => '',
+		'sanitize_callback' => 'sanitize_hex_color'
 	));
 	$wp_customize->add_control(new WP_Customize_Color_Control(
 		$wp_customize,
-		'hero_bgcolor',
+		'seabadgermd_hero_bgcolor',
 		array(
-			'label' => __('Hero background color'),
-			'section' => 'hero',
-			'settings' => 'hero_bgcolor'
+			'label' => __('Hero background color', 'seabadgermd'),
+			'section' => 'seabadgermd_hero',
+			'settings' => 'seabadgermd_hero_bgcolor'
 		)
 	));
-	$wp_customize->add_setting('hero_color', array(
-		'default' => '#fff',
-		'type' => 'theme_mod'
+	$wp_customize->add_setting('seabadgermd_hero_color', array(
+		'default' => '',
+		'sanitize_callback' => 'sanitize_hex_color'
 	));
 	$wp_customize->add_control(new WP_Customize_Color_Control(
 		$wp_customize,
-		'hero_color',
+		'seabadgermd_hero_color',
 		array(
-			'label' => __('Hero text color'),
-			'section' => 'hero',
-			'settings' => 'hero_color'
+			'label' => __('Hero text color', 'seabadgermd'),
+			'section' => 'seabadgermd_hero',
+			'settings' => 'seabadgermd_hero_color'
 		)
 	));
-	$wp_customize->add_setting('hero_button_bgcolor', array(
-		'default' => '#f00',
-		'type' => 'theme_mod'
+	$wp_customize->add_setting('seabadgermd_hero_button_bgcolor', array(
+		'default' => '',
+		'sanitize_callback' => 'sanitize_hex_color'
 	));
 	$wp_customize->add_control(new WP_Customize_Color_Control(
 		$wp_customize,
-		'hero_button_bgcolor',
+		'seabadgermd_hero_button_bgcolor',
 		array(
-			'label' => __('Hero button color'),
-			'section' => 'hero',
-			'settings' => 'hero_button_bgcolor'
+			'label' => __('Hero button color', 'seabadgermd'),
+			'section' => 'seabadgermd_hero',
+			'settings' => 'seabadgermd_hero_button_bgcolor'
 		)
 	));
-	$wp_customize->add_setting('hero_button_color', array(
-		'default' => '#000',
-		'type' => 'theme_mod'
+	$wp_customize->add_setting('seabadgermd_hero_button_color', array(
+		'default' => '',
+		'sanitize_callback' => 'sanitize_hex_color'
 	));
 	$wp_customize->add_control(new WP_Customize_Color_Control(
 		$wp_customize,
-		'hero_button_color',
+		'seabadgermd_hero_button_color',
 		array(
-			'label' => __('Hero button text color'),
-			'section' => 'hero',
-			'settings' => 'hero_button_color'
+			'label' => __('Hero button text color', 'seabadgermd'),
+			'section' => 'seabadgermd_hero',
+			'settings' => 'seabadgermd_hero_button_color'
 		)
 	));
 	/* /Hero section */
@@ -245,6 +244,38 @@ function seabadgermd_sanitize_select( $input, $setting ) {
 	$choices = $setting->manager->get_control( $setting->id )->choices;
 	// If the input is a valid key, return it; otherwise, return the default.
 	return ( array_key_exists( $input, $choices ) ? $input : $setting->default );
+}
+
+function seabadgermd_sanitize_checkbox( $input ) {
+	if (is_bool($input)) return $input;
+	return false;
+}
+
+function seabadgermd_sanitize_showhide( $input ) {
+	$choices = array( 'show', 'hide' );
+	if ( in_array( $input, $choices ) ) {
+		return $input;
+	} else {
+		return '';
+	}
+}
+
+function seabadgermd_sanitize_onoff( $input ) {
+	$choices = array( 'on', 'off' );
+	if ( in_array( $input, $choices ) ) {
+		return $input;
+	} else {
+		return '';
+	}
+}
+
+function seabadgermd_sanitize_hero_position ( $input ) {
+	$choices = array( 'full', 'left', 'center', 'right' );
+	if ( in_array( $input, $choices ) ) {
+		return $input;
+	} else {
+		return '';
+	}
 }
 
 add_action( 'customize_register', 'seabadgermd_customize_register' );

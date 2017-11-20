@@ -4,7 +4,7 @@
 	<div class="row">
 	<div class="footer-social col-xs-6 col-md-3">
 		<?php
-			display_social_buttons();
+			seabadgermd_display_social_buttons();
 		?>
 	</div>
 

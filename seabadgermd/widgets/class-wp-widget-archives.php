@@ -16,10 +16,10 @@ class WP_Widget_ArchivesMD extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array(
 			'classname' => 'widget_archive',
-			'description' => __( 'A monthly archive of your site&#8217;s Posts.' ),
+			'description' => __( 'A monthly archive of your site&#8217;s Posts.', 'seabadgermd' ),
 			'customize_selective_refresh' => true,
 		);
-		parent::__construct('archives', __('Archives'), $widget_ops);
+		parent::__construct('archives', __('Archives', 'seabadgermd'), $widget_ops);
 	}
 
 	/**
@@ -34,7 +34,7 @@ class WP_Widget_ArchivesMD extends WP_Widget {
 		$d = ! empty( $instance['dropdown'] ) ? '1' : '0';
 
 		/** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
-		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Archives' ) : $instance['title'], $instance, $this->id_base );
+		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Archives', 'seabadgermd' ) : $instance['title'], $instance, $this->id_base );
 
 		echo $args['before_widget'];
 		if ( $title ) {
@@ -66,19 +66,19 @@ class WP_Widget_ArchivesMD extends WP_Widget {
 
 			switch ( $dropdown_args['type'] ) {
 				case 'yearly':
-					$label = __( 'Select Year' );
+					$label = __( 'Select Year', 'seabadgermd' );
 					break;
 				case 'monthly':
-					$label = __( 'Select Month' );
+					$label = __( 'Select Month', 'seabadgermd' );
 					break;
 				case 'daily':
-					$label = __( 'Select Day' );
+					$label = __( 'Select Day', 'seabadgermd' );
 					break;
 				case 'weekly':
-					$label = __( 'Select Week' );
+					$label = __( 'Select Week', 'seabadgermd' );
 					break;
 				default:
-					$label = __( 'Select Post' );
+					$label = __( 'Select Post', 'seabadgermd' );
 					break;
 			}
 			?>

@@ -1,8 +1,16 @@
 <?php
 
+// Theme Constants
+define( "SBMD_THEME_DIR", get_template_directory() );
+define( "SBMD_THEME_DIR_URI", get_template_directory_uri() );
+define( "SBMD_STYLESHEET_DIR", get_stylesheet_directory() );
+define( "SBMD_STYLESHEET_DIR_URI", get_stylesheet_directory_uri() );
+$sbmd_theme = wp_get_theme();
+define( "SBMD_THEME_VERSION", $sbmd_theme->get( 'Version' ) );
+
 /**
-	* Include external files
-	*/
+* Include external files
+*/
 require_once('inc/color_themes.php');
 require_once('inc/theme_settings.php');
 require_once('widgets/class-wp-widget-archives.php');
@@ -17,56 +25,58 @@ require_once('inc/social_buttons.php');
  */
 function theme_enqueue_scripts() {
 	wp_enqueue_style( 'Font_Awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' );
-	wp_enqueue_style( 'Bootstrap_css', get_template_directory_uri() . '/css/bootstrap.min.css' );
-	wp_enqueue_style( 'MDB', get_template_directory_uri() . '/css/mdb.min.css' );
-	wp_enqueue_style( 'Style', get_template_directory_uri() . '/style.css' );
-	wp_enqueue_script( 'jQuery', get_template_directory_uri() . '/js/jquery-3.2.1.min.js', array(), '3.2.1', true );
-	wp_enqueue_script( 'Tether', get_template_directory_uri() . '/js/popper.min.js', array(), '1.0.0', true );
-	wp_enqueue_script( 'Bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array(), '1.0.0', true );
-	wp_enqueue_script( 'MDB', get_template_directory_uri() . '/js/mdb.min.js', array(), '1.0.0', true );
+	wp_enqueue_style( 'Bootstrap_css', SBMD_THEME_DIR_URI . '/css/bootstrap.min.css' );
+	wp_enqueue_style( 'MDB', SBMD_THEME_DIR_URI . '/css/mdb.min.css' );
+	wp_enqueue_style( 'Style', SBMD_THEME_DIR_URI . '/style.css', array(), SBMD_THEME_VERSION );
+	wp_enqueue_script( 'jQuery', SBMD_THEME_DIR_URI . '/js/jquery-3.2.1.min.js', array(), '3.2.1', true );
+	wp_enqueue_script( 'Tether', SBMD_THEME_DIR_URI . '/js/popper.min.js', array(), '1.0.0', true );
+	wp_enqueue_script( 'Bootstrap', SBMD_THEME_DIR_URI . '/js/bootstrap.min.js', array(), '1.0.0', true );
+	wp_enqueue_script( 'MDB', SBMD_THEME_DIR_URI . '/js/mdb.min.js', array(), '1.0.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_scripts' );
 
 /**
  * Setup Theme
  */
-function MDB_setup() {
+function seabadgermd_setup() {
+	// Add text domain
+	load_theme_textdomain( 'seabadgermd', SBMD_THEME_DIR . '/languages' );
 	// Navigation Menus
 	register_nav_menus(array(
-		'navbar' => __( 'Navbar Menu'),
-		'footer' => __( 'Footer Menu')
+		'navbar' => __( 'Navbar Menu', 'seabadgermd'),
+		'footer' => __( 'Footer Menu', 'seabadgermd')
 	));
 	// Add featured image support
 	add_theme_support('post-thumbnails');
 	add_image_size('main-full', 1078, 516, false); // main post image in full width
 }
-add_action('after_setup_theme', 'MDB_setup');
+add_action('after_setup_theme', 'seabadgermd_setup');
 
-function posts_link_attributes() {
+function seabadgermd_posts_link_attributes() {
 	return 'class="page-link"';
 }
 
-add_filter('next_posts_link_attributes', 'posts_link_attributes');
-add_filter('previous_posts_link_attributes', 'posts_link_attributes');
+add_filter('next_posts_link_attributes', 'seabadgermd_posts_link_attributes');
+add_filter('previous_posts_link_attributes', 'seabadgermd_posts_link_attributes');
 
 
 
 /* Load custom CSS based on the selected color theme and settings */
 function seabadgermd_customize_css()
 {
-	$colorTheme = get_theme_mod('color_theme');
-	if (!colorThemeExists($colorTheme)) {
+	$colorTheme = get_theme_mod('seabadgermd_color_theme');
+	if (!seabadgermd_color_theme_exists($colorTheme)) {
 		$colorTheme = 'mdb_dark';
 	}
-	$colorThemeConf = getColorTheme($colorTheme);
+	$colorThemeConf = seabadgermd_get_color_theme($colorTheme);
 	wp_enqueue_style( 'ColorTheme_css', get_template_directory_uri() . $colorThemeConf['css'] );
-	if (get_theme_mod('navbar_transparent')) {
-		add_action('wp_head', 'transparent_navbar_css');
+	if (get_theme_mod('seabadgermd_navbar_transparent')) {
+		add_action('wp_head', 'seabadgermd_transparent_navbar_css');
 	}
 }
 add_action( 'wp_enqueue_scripts', 'seabadgermd_customize_css');
 
-function transparent_navbar_css() {
+function seabadgermd_transparent_navbar_css() {
 ?>
 	<style type="text/css">
 		.top-nav-collapse {
@@ -109,14 +119,14 @@ function seabadgermd_post_navigation(){
 		<div class="col-6 post-navigation-next">
 <?php
 	if ( "" != get_adjacent_post( false, "", false ) ):
-		next_post_link( '%link', __( 'Next post' ) );
+		next_post_link( '%link', __( 'Next post', 'seabadgermd') );
 	endif;
 ?>
 		</div>
 		<div class="col-6 post-navigation-prev">
 <?php
 	if ( "" != get_adjacent_post( false, "", true ) ):
-		previous_post_link( '%link', __( 'Previous post' ) );
+		previous_post_link( '%link', __( 'Previous post', 'seabadgermd' ) );
 	endif;
 ?>
 		</div>
@@ -126,10 +136,10 @@ endif;
 }
 
 /** https://justinklemm.com/add-class-to-wordpress-next_post_link-and-previous_post_link-links/ **/ 
-add_filter('next_post_link', 'post_navlink_attributes');
-add_filter('previous_post_link', 'post_navlink_attributes');
+add_filter('next_post_link', 'seabadgermd_post_navlink_attributes');
+add_filter('previous_post_link', 'seabadgermd_post_navlink_attributes');
 
-function post_navlink_attributes($output) {
+function seabadgermd_post_navlink_attributes($output) {
     $class = 'class="btn themecolor"';
     return str_replace('<a href=', '<a ' . $class . ' href=', $output);
 }

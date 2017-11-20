@@ -1,17 +1,17 @@
 
 <?php
 	$navbar_class = '';
-	if (get_theme_mod('navbar_fixing', 'scroll') =='fix' && !get_theme_mod('navbar_remove', false)) {
+	if (get_theme_mod('seabadgermd_navbar_fixing', 'off') =='on' && !get_theme_mod('navbar_remove', false)) {
 		$navbar_class .= ' fixed-top scrolling-navbar';
 		$header_class = 'fixed'; //using this to control main style via sibling selector
 	}
-	$colorThemeConf = getColorTheme(get_theme_mod('color_theme'));
+	$colorThemeConf = seabadgermd_get_color_theme(get_theme_mod('seabadgermd_color_theme'));
 	if ($colorThemeConf['style'] == 'dark') {
 		$navbar_class .= ' navbar-dark';
 	}
 ?>
 <!--Navbar-->
-<?php if (! get_theme_mod('navbar_remove', false)) : ?>
+<?php if (! get_theme_mod('seabadgermd_navbar_remove', false)) : ?>
 	<nav class="navbar navbar-expand-lg themecolor<?= $navbar_class ?>">
 		<div class="container">
 			<!-- Navbar brand -->
@@ -39,7 +39,7 @@
 						}
 					?> 
 				</ul>
-				<?php if (get_theme_mod('navbar_search', 'show') == 'show') : ?>
+				<?php if (get_theme_mod('seabadgermd_navbar_search', 'show') == 'show') : ?>
 					<form role="search" method="get" id="searchform" class="form-inline" action="">
 						<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="s" 
 							value="<?= htmlspecialchars($_GET['s']) ?>">
