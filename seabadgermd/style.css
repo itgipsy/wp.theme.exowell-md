@@ -24,6 +24,10 @@ main {
 	line-height: 45px;
 }
 
+.form-control:focus {
+	color: inherit;
+}
+
 /* Post */
 
 .post-wrapper {
