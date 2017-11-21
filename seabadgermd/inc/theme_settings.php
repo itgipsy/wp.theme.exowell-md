@@ -62,7 +62,7 @@ function seabadgermd_customize_register( $wp_customize ) {
 			'off' => __('Scrolling', 'seabadgermd')
 		)
 	));
-	/* Transparent navbar on scroll*/
+	/* Hide/show navbar on scroll*/
 	$wp_customize->add_setting('seabadgermd_navbar_transparent', array(
 		'default' => false,
 		'sanitize_callback' => 'seabadgermd_sanitize_checkbox'
@@ -71,7 +71,7 @@ function seabadgermd_customize_register( $wp_customize ) {
 		'type' => 'checkbox',
 		'section' => 'navbar',
 		'label' => __('Transparent navbar', 'seabadgermd'),
-		'description' => __('Transparent navigation bar on scroll (when fixed)', 'seabadgermd')
+		'description' => __('Hide/show the main navigation bar on scroll (when fixed)', 'seabadgermd')
 	));
 	/* Hero section */
 	$wp_customize->add_section('seabadgermd_hero', array(

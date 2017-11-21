@@ -71,24 +71,8 @@ function seabadgermd_customize_css()
 	}
 	$colorThemeConf = seabadgermd_get_color_theme($colorTheme);
 	wp_enqueue_style( 'ColorTheme_css', get_template_directory_uri() . $colorThemeConf['css'] );
-	if (get_theme_mod('seabadgermd_navbar_transparent')) {
-		add_action('wp_head', 'seabadgermd_transparent_navbar_css');
-	}
 }
 add_action( 'wp_enqueue_scripts', 'seabadgermd_customize_css');
-
-function seabadgermd_transparent_navbar_css() {
-?>
-	<style type="text/css">
-		.top-nav-collapse {
-				opacity: 0.5;
-		}
-		.top-nav-collapse:hover {
-			opacity: 1;
-		}
-	</style>
-<?php
-}
 
 /**
  * Register sidebars and widgetized areas.

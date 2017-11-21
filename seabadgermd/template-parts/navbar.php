@@ -4,6 +4,9 @@
 	if (get_theme_mod('seabadgermd_navbar_fixing', 'off') =='on' && !get_theme_mod('navbar_remove', false)) {
 		$navbar_class .= ' fixed-top scrolling-navbar';
 		$header_class = 'fixed'; //using this to control main style via sibling selector
+		if (get_theme_mod('seabadgermd_navbar_transparent', false)) {
+			$navbar_class .= ' autohide';
+		}
 	}
 	$colorThemeConf = seabadgermd_get_color_theme(get_theme_mod('seabadgermd_color_theme'));
 	if ($colorThemeConf['style'] == 'dark') {
@@ -12,7 +15,7 @@
 ?>
 <!--Navbar-->
 <?php if (! get_theme_mod('seabadgermd_navbar_remove', false)) : ?>
-	<nav class="navbar navbar-expand-lg themecolor<?= $navbar_class ?>">
+	<nav id="main-navbar" class="navbar navbar-expand-lg themecolor<?= $navbar_class ?>">
 		<div class="container">
 			<!-- Navbar brand -->
 			<!-- <a class="navbar-brand" href="#">Navbar</a> -->
