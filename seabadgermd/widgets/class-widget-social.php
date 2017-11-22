@@ -11,11 +11,11 @@ class SBMD_Widget_Social extends WP_Widget {
 	 */
 	public function __construct() {
 		$widget_ops = array(
-			'classname' => 'widget_social',
+			'classname' => 'seabadgermd_widget_social',
 			'description' => __( 'Display your social site buttons', 'seabadgermd' ),
 			'customize_selective_refresh' => true,
 		);
-		parent::__construct('social', __('Social buttons', 'seabadgermd'), $widget_ops);
+		parent::__construct('social', __('SeaBadgerMD Social buttons', 'seabadgermd'), $widget_ops);
 	}
 
 	/**
