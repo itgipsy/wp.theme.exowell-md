@@ -90,8 +90,14 @@ class SBMD_Widget_Recent_Posts_Grid extends WP_Widget {
 								echo get_the_post_thumbnail($recent_post->ID, 'thumbnail', array('class' => 'img-fluid'));
 							} else {
 								// post has no thumbnail
-								printf('<img src="%s/img/NoPhotoCat.png" class="img-fluid">', SBMD_THEME_DIR_URI);
+								printf('<img src="%s/img/NoThumbnail.png" class="img-fluid">', SBMD_THEME_DIR_URI);
 							}
+							if (strlen($title) > 15) {
+								$stitle = preg_replace('/[\s\.,][^\s\.,]*$/u', '', substr($title, 0, 15)).'...';
+							} else {
+								$stitle = $title;
+							}
+							printf('<span class="recent-posts-grid-textover">%s</span>', $stitle);
 							echo '</a>';
 							echo '</div>';
 						} else {
