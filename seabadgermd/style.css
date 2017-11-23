@@ -2,7 +2,7 @@
 Theme Name: SeaBadger MD
 Theme URI: https://seabadger.io
 Description: Material Design WP Blog theme based on mdbootstrap
-Version: 0.2.0
+Version: 0.2.1
 Author: sb@seabadger.io
 Author URI: https://seabadger.io
 */
@@ -151,7 +151,7 @@ main {
 }
 
 .recent-posts-grid-textover {
-	font-size: 10pt;
+	font-size: 9pt;
 	position: absolute;
 	bottom: 20px;
 	left: 5%;

@@ -8,13 +8,13 @@ a, a:visited {
 }
 
 a:hover {
-	color: $main-color;
+	color: $body-link-color;
 }
 
 .themecolor {
 	background-color: $main-background;
 	color: $main-color;
-	a, a:visited {
+	a, a:visited, a:hover {
 		color: $main-color !important;
 	}
 }

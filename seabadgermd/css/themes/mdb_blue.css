@@ -6,12 +6,12 @@ a, a:visited {
   color: #23819c; }
 
 a:hover {
-  color: white; }
+  color: #23819c; }
 
 .themecolor, .themecolor.btn {
   background-color: #23819c;
   color: white; }
-  .themecolor a, .themecolor.btn a, .themecolor a:visited, .themecolor.btn a:visited {
+  .themecolor a, .themecolor.btn a, .themecolor a:visited, .themecolor.btn a:visited, .themecolor a:hover, .themecolor.btn a:hover {
     color: white !important; }
 
 .btn.themecolor {

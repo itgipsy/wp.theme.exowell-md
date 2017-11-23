@@ -11,7 +11,7 @@ a:hover {
 .themecolor, .themecolor.btn {
   background-color: #e7f3f1;
   color: #2b3856; }
-  .themecolor a, .themecolor.btn a, .themecolor a:visited, .themecolor.btn a:visited {
+  .themecolor a, .themecolor.btn a, .themecolor a:visited, .themecolor.btn a:visited, .themecolor a:hover, .themecolor.btn a:hover {
     color: #2b3856 !important; }
 
 .btn.themecolor {
