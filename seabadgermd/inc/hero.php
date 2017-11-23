@@ -65,7 +65,7 @@ function displayHero($config) {
 		if ($button['color']) $btn_style .= 'color: ' . $button['color'] . ';';
 	?>
 		<p class="lead hero-button-area">
-			<a class="btn btn-lg themecolor" style="<?= $btn_style ?>" href="<?= $button['href'] ?>" 
+			<a class="btn btn-lg" style="<?= $btn_style ?>" href="<?= $button['href'] ?>" 
 				role="button"><?= $button['text'] ?></a>
 		</p>
 	<?php } ?>

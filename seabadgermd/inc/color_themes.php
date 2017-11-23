@@ -17,6 +17,11 @@ if (! function_exists('seabadgermd_get_color_themes')) {
 				'name' => __('Light', 'seabadgermd'),
 				'css' => '/css/themes/mdb_light.css',
 				'style' => 'light'
+			),
+			'mdb_brown' => array(
+				'name' => __('Brown', 'seabadgermd'),
+				'css' => '/css/themes/mdb_brown.css',
+				'style' => 'dark'
 			)
 		);
 		return $colorThemes;

@@ -1,74 +1,44 @@
 body {
-  background-color: #fff;
-  color: #000;
-}
+  background-color: white;
+  color: black; }
 
 a, a:visited {
-  color: #23819C;
-}
+  color: #23819c; }
 
 a:hover {
-  color: #2F74D0;
-}
+  color: white; }
 
-.themecolor {
-  background-color: #23819C;
-  color: #fff;
-}
+.themecolor, .themecolor.btn {
+  background-color: #23819c;
+  color: white; }
+  .themecolor a, .themecolor.btn a, .themecolor a:visited, .themecolor.btn a:visited {
+    color: white !important; }
 
 .btn.themecolor {
-  background-color: #23819C;
-  color: #fff;
-}
-
-.themecolor a,
-.themecolor a:visited {
-  color: #fff !important;
-}
+  color: white !important; }
 
 /* Navbar */
-.navbar a,
-.navbar a:visited {
-  background-color: #23819C !important;
-  color: #fff !important;
-}
-
-.navbar .dropdown-menu a,
-.navbar .dropdown-menu a:visited {
-  background-color: #23819C !important;
-  color: #fff !important;
-}
+.navbar, .navbar a, .navbar a:visited, .navbar .dropdown-menu a, .navbar .dropdown-menu a:visited, .navbar .dropdown-menu a:hover {
+  background-color: #23819c !important;
+  color: white !important; }
+  .navbar .dropdown-menu a:hover, .navbar a .dropdown-menu a:hover, .navbar a:visited .dropdown-menu a:hover, .navbar .dropdown-menu a .dropdown-menu a:hover, .navbar .dropdown-menu a:visited .dropdown-menu a:hover, .navbar .dropdown-menu a:hover .dropdown-menu a:hover {
+    background-color: rgba(255, 255, 255, 0.2) !important; }
 
 a.nav-link:hover {
-  border-bottom: 2px solid #fff;
-}
+  border-bottom: 2px solid white; }
 
 .active a.nav-link {
-  border-bottom: 2px solid #eceff1;
-}
-
-.navbar .dropdown-menu a:hover {
-  color: #fff !important;
-  background-color: rgba(255,255,255,0.05) !important;
-}
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2); }
 
 /* Widget area */
 .card.widget li {
-  border-color: #4985D6;
-}
-
-.widget_calendar #today {
-  border-color:  #4985D6;
-}
+  border-color: #23819c; }
 
 /* Pagination */
 .page-item.active .page-link {
-  background-color: #23819C;
-  border-color: #23819C;
-  color: #fff;
-}
+  background-color: #23819c;
+  border-color: #23819c;
+  color: white; }
 
 .page-item .page-link {
-  color: #23819C;
-}
-
+  color: #23819c; }

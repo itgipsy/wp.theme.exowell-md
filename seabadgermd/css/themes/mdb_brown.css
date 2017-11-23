@@ -3,13 +3,13 @@ body {
   color: black; }
 
 a, a:visited {
-  color: #2e3951; }
+  color: #b05f3c; }
 
 a:hover {
   color: white; }
 
 .themecolor, .themecolor.btn {
-  background-color: #2e3951;
+  background-color: #c98a4b;
   color: white; }
   .themecolor a, .themecolor.btn a, .themecolor a:visited, .themecolor.btn a:visited {
     color: white !important; }
@@ -19,7 +19,7 @@ a:hover {
 
 /* Navbar */
 .navbar, .navbar a, .navbar a:visited, .navbar .dropdown-menu a, .navbar .dropdown-menu a:visited, .navbar .dropdown-menu a:hover {
-  background-color: #2e3951 !important;
+  background-color: #c98a4b !important;
   color: white !important; }
   .navbar .dropdown-menu a:hover, .navbar a .dropdown-menu a:hover, .navbar a:visited .dropdown-menu a:hover, .navbar .dropdown-menu a .dropdown-menu a:hover, .navbar .dropdown-menu a:visited .dropdown-menu a:hover, .navbar .dropdown-menu a:hover .dropdown-menu a:hover {
     background-color: rgba(255, 255, 255, 0.2) !important; }
@@ -32,13 +32,13 @@ a.nav-link:hover {
 
 /* Widget area */
 .card.widget li {
-  border-color: #2e3951; }
+  border-color: #c98a4b; }
 
 /* Pagination */
 .page-item.active .page-link {
-  background-color: #2e3951;
-  border-color: #2e3951;
+  background-color: #c98a4b;
+  border-color: #c98a4b;
   color: white; }
 
 .page-item .page-link {
-  color: #2e3951; }
+  color: #c98a4b; }

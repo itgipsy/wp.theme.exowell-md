@@ -1,4 +1,5 @@
 *.log
 wp-config.php
+.sass-cache
 
 MDB_Free

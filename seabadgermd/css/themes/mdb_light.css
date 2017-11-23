@@ -1,68 +1,44 @@
-/* base: mdb-color lighten-4 #b1bace */
 body {
-  background-color: #fff;
-  color: #000;
-}
+  background-color: white;
+  color: black; }
 
 a, a:visited {
-  color: #7283a7;
-}
+  color: #2b3856; }
 
 a:hover {
-  color: #45526e;
-}
+  color: #2b3856; }
 
-.themecolor {
-  background-color: #b1bace !important;
-  color: #000 !important;
-}
+.themecolor, .themecolor.btn {
+  background-color: #e7f3f1;
+  color: #2b3856; }
+  .themecolor a, .themecolor.btn a, .themecolor a:visited, .themecolor.btn a:visited {
+    color: #2b3856 !important; }
 
 .btn.themecolor {
-  background-color: #b1bace !important;
-  color: #000 !important;
-}
-
-.themecolor a,
-.themecolor a:visited {
-  color: #000 !important;
-}
+  color: #2b3856 !important; }
 
 /* Navbar */
-.navbar a,
-.navbar a:visited {
-  background-color: #b1bace !important;
-  color: #000 !important;
-}
+.navbar, .navbar a, .navbar a:visited, .navbar .dropdown-menu a, .navbar .dropdown-menu a:visited, .navbar .dropdown-menu a:hover {
+  background-color: #e7f3f1 !important;
+  color: #2b3856 !important; }
+  .navbar .dropdown-menu a:hover, .navbar a .dropdown-menu a:hover, .navbar a:visited .dropdown-menu a:hover, .navbar .dropdown-menu a .dropdown-menu a:hover, .navbar .dropdown-menu a:visited .dropdown-menu a:hover, .navbar .dropdown-menu a:hover .dropdown-menu a:hover {
+    background-color: rgba(0, 0, 0, 0.2) !important; }
 
-.navbar .dropdown-menu a,
-.navbar .dropdown-menu a:visited {
-  background-color: #b1bace !important;
-  color: #000 !important;
-}
+a.nav-link:hover {
+  border-bottom: 2px solid #2b3856; }
 
-.navbar a:hover,
-.navbar .dropdown-menu a:hover {
-  color: #000 !important;
-  background-color: rgba(255,255,255,0.05) !important;
-}
+.active a.nav-link {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2); }
 
 /* Widget area */
 .card.widget li {
-  border-color: #b1bace;
-}
-
-.widget_calendar #today {
-  border-color: #b1bace;
-}
+  border-color: #e7f3f1; }
 
 /* Pagination */
 .page-item.active .page-link {
-  background-color: #b1bace;
-  border-color: #b1bace;
-  color: #000;
-}
+  background-color: #e7f3f1;
+  border-color: #e7f3f1;
+  color: #2b3856; }
 
 .page-item .page-link {
-  color: #b1bace;
-}
-
+  color: #e7f3f1; }

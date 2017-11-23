@@ -1,0 +1,66 @@
+body {
+	background-color: $body-background;
+	color: $body-color;
+}
+
+a, a:visited {
+	color: $body-link-color;
+}
+
+a:hover {
+	color: $main-color;
+}
+
+.themecolor {
+	background-color: $main-background;
+	color: $main-color;
+	a, a:visited {
+		color: $main-color !important;
+	}
+}
+
+.themecolor.btn { 
+	@extend .themecolor;
+	color: $main-color !important;
+}
+
+/* Navbar */
+
+.navbar {
+	background-color: $main-background !important;
+	color: $main-color !important;
+	a, a:visited { @extend .navbar; }
+	.dropdown-menu {
+		a, a:visited { @extend .navbar; }
+		a:hover {
+			@extend .navbar;
+			background-color: $main-background-highlight !important;
+		}
+	}
+}
+
+a.nav-link:hover {
+	border-bottom: 2px solid $main-color;
+}
+
+.active a.nav-link {
+	border-bottom: 2px solid $main-background-highlight;
+}
+
+
+/* Widget area */
+.card.widget li {
+	border-color: $main-background;
+}
+
+/* Pagination */
+.page-item.active .page-link {
+	background-color: $main-background;
+	border-color: $main-background;
+	color: $main-color;
+}
+
+.page-item .page-link {
+	color: $main-background;
+}
+
