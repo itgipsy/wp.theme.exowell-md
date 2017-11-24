@@ -47,7 +47,7 @@
 				the_content();
 				seabadgermd_post_navigation();
 				if ( comments_open() || get_comments_number()!=0 ) {
-				?><div class="comments"><?php
+				?><div class="comments" id="comments"><?php
 					comments_template( '', true );
 				?></div><?php // end comment section
 				}
@@ -60,7 +60,7 @@
 				if (comments_open() || get_comments_number()!=0) {
 					comments_popup_link( __('Comment', 'seabadgermd'),
 						__('View comment', 'seabadgermd'),
-						__('View comments (%s)', 'seabadgermd'),
+						__('View comments (%)', 'seabadgermd'),
 						'btn themecolor comment-link',
 						__('Comments off', 'seabadgermd'));
 				}
