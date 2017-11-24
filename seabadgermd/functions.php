@@ -131,4 +131,32 @@ function seabadgermd_post_navlink_attributes($output) {
     return str_replace('<a href=', '<a ' . $class . ' href=', $output);
 }
 
+
+function seabadgermd_comments_callback( $comment, $args, $depth ) {
+?>
+	<div class="media comment" id="comment-<?php comment_ID(); ?>">
+		<?= get_avatar($comment, $args['avatar_size'], 'gravatar_default', '', array('class' => 'd-flex rounded-circle mr-3')); ?>
+		<div class="media-body comment">
+			<h5 class="mt-0 comment-header"><?= get_comment_author_link( $comment ); ?>
+				<?php printf('%s ago', human_time_diff(get_comment_time( 'U' ), current_time( 'timestamp' ))); ?>
+			</h5>
+			<?php
+				if ( '0' == $comment->comment_approved ) {
+					echo '<div class="alert alert-warning">' . __('You comment is awaiting moderation', 'seabadgermd') . '</div>';
+				}
+				comment_text();
+				echo preg_replace('/comment-reply-link/','comment-reply-link btn btn-sm themecolor',
+					get_comment_reply_link( array_merge( $args, array(
+					'add_below' => 'div-comment',
+					'depth'      => $depth,
+					'max_depth' => $args['max_depth'],
+				))));
+				printf('<a href="%s" class="comment-edit-link btn btn-sm themecolor">%s</a>',
+					get_edit_comment_link($comment), __('Edit', 'seabadgermd'));
+			?>
+		</div>
+	</div>
+<?php
+}
+
 ?>

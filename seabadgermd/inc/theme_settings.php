@@ -168,7 +168,7 @@ function seabadgermd_customize_register( $wp_customize ) {
 	));
 	$wp_customize->add_setting('seabadgermd_hero_position', array(
 		'default' => 'full',
-		'sanitize_callback' => 'seabadgermd_sanitizie_hero_position'
+		'sanitize_callback' => 'seabadgermd_sanitize_hero_position'
 	));
 	$wp_customize->add_control('seabadgermd_hero_position', array(
 		'type' => 'select',
