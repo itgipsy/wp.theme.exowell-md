@@ -40,5 +40,8 @@ if ( have_comments() ) {
 }
 
 if ( comments_open() ) {
-	comment_form();
+	comment_form(array(
+		'comment_field' => '<label for="comment">' . __('Comment', 'seabadgermd') . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" class="form-control"></textarea>',
+		'class_submit' => 'btn btn-sm themecolor'
+	));
 }
