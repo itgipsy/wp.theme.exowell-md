@@ -216,3 +216,7 @@ nav.breadcrumb {
 .footer-menu {
 	line-height: 50px;
 }
+
+.tagline > a:before {
+	content: '#';
+}
