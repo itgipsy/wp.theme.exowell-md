@@ -14,11 +14,13 @@ let toTopIsOn = false; // is the toTheTop button displayed
 let navbarIsOn = true; // if the main navbar displayed
 let mainNavbarDisplay; // stores previous state of the navbar display
 let scrollOffset = 0; // offset scrolled in the current direction
+let autoHideToTopTimer;
 
 /** Handle show/hide of "to the top" button based on scrolling **/
 function showToTop() {
 	toTheTopBtn.style.display = 'block';
 	toTopIsOn = true;
+	toTheTopAutohide();
 }
 
 function hideToTop() {
@@ -32,7 +34,21 @@ function toTheTop(event) {
 	return false;
 }
 
+function toTheTopAutohide() {
+	clearTimeout(autoHideToTopTimer);
+	autoHideToTopTimer = setTimeout(() => {
+		hideToTop();
+	}, 4000);
+}
+
 toTheTopBtn.addEventListener('click', toTheTop);
+toTheTopBtn.addEventListener('mouseenter', () => {
+	clearTimeout(autoHideToTopTimer);
+});
+
+toTheTopBtn.addEventListener('mouseout', () => {
+	toTheTopAutohide();
+});
 
 /** Hide the main navbar when scrolling down, show when scrolling up **/
 function hideNavbar() {
