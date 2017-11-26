@@ -29,7 +29,7 @@
 
 	<!--Copyright-->
 	<div class="footer-copyright col-xs-12 col-md-4">
-		©2017 Copyright <a href="https:/seabadger.io" rel="nofollow">SeaBadger.io</a>
+		2017 Copyright <a href="https:/seabadger.io" rel="nofollow">SeaBadger.io</a>
 	</div>
 	<!--/Copyright-->
 	</div>
