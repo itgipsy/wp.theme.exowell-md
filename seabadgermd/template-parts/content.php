@@ -1,5 +1,5 @@
 <!--Post-->
-<div class="card post-wrapper">
+<div class="card post-wrapper <?php post_class(); ?>">
 	<!--Featured image -->
 	<?php if ( has_post_thumbnail() ) : ?>
 		<div class="view overlay post-image-overlay">
