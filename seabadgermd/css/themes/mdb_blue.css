@@ -42,3 +42,9 @@ a.nav-link:hover {
 
 .page-item .page-link {
   color: #23819c; }
+
+/* Post paging */
+.active.post-paging-link.themecolor, .active.post-paging-link.themecolor.btn {
+  color: #23819c;
+  background-color: white;
+  border: 1px solid #23819c; }

@@ -45,6 +45,17 @@
 			<?php
 			if (is_single()){
 				the_content();
+ 				$wplink_options = array(
+					'before'           => '<div class="row"><div class="post-paging col-12">' . __('Jump to page ', 'seabadgermd'),
+					'after'            => '</div></div>',
+					'link_before'      => '<span class="post-paging-link themecolor">',
+					'link_after'       => '</span>',
+					'next_or_number'   => 'number',
+					'separator'        => ' ',
+					'pagelink'         => '%',
+					'echo'             => 1
+				);
+				wp_link_pages($wplink_options);
 				seabadgermd_post_navigation();
 				if ( comments_open() || get_comments_number()!=0 ) {
 				?><div class="comments" id="comments"><?php

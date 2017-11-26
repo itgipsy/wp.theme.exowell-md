@@ -81,6 +81,15 @@ main {
 	text-align: right;
 }
 
+.post-paging {
+	text-align: center;
+}
+
+.post-paging-link {
+	width: 2rem;
+	display: inline-block;
+}
+
 /* Sidebar */
 #sidebar .widget {
 	margin-bottom: 30px;

@@ -159,4 +159,12 @@ function seabadgermd_comments_callback( $comment, $args, $depth ) {
 <?php
 }
 
+function seabadgermd_wp_link_pages_link ($link) {
+	if (!preg_match('/href=/', $link)) {
+		return preg_replace('/class="/','class="active ', $link);
+	}
+	return $link;
+}
+add_filter( 'wp_link_pages_link',  'seabadgermd_wp_link_pages_link' );
+
 ?>
