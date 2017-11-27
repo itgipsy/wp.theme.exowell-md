@@ -41,6 +41,9 @@ add_action( 'wp_enqueue_scripts', 'theme_enqueue_scripts' );
  * Setup Theme
  */
 function seabadgermd_setup() {
+	// Automated feed link support
+	add_theme_support('automatic-feed-links');
+	// Default width to bootstrap lg container width
 	if ( ! isset( $content_width ) ) $content_width = 1170;
 	// Add text domain
 	load_theme_textdomain( 'seabadgermd', SBMD_THEME_DIR . '/languages' );
