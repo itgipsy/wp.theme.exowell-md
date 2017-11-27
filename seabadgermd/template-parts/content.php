@@ -58,6 +58,9 @@
 				wp_link_pages($wplink_options);
 				seabadgermd_post_navigation();
 				if ( comments_open() || get_comments_number()!=0 ) {
+					if (get_option('thread_comments')) {
+						wp_enqueue_script('comment-reply');
+					}
 				?><div class="comments" id="comments"><?php
 					comments_template( '', true );
 				?></div><?php // end comment section
