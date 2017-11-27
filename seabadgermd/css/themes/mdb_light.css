@@ -1,6 +1,6 @@
 body {
   background-color: white;
-  color: black; }
+  color: #494c4e; }
 
 a, a:visited {
   color: #2b3856; }
@@ -16,6 +16,11 @@ a:hover {
 
 .btn.themecolor {
   color: #2b3856 !important; }
+
+/* Posts */
+.card-text.post-content {
+  background-color: white;
+  color: #494c4e; }
 
 /* Navbar */
 .navbar, .navbar a, .navbar a:visited, .navbar .dropdown-menu a, .navbar .dropdown-menu a:visited, .navbar .dropdown-menu a:hover {

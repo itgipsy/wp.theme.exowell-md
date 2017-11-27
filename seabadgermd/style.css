@@ -2,7 +2,7 @@
 Theme Name: SeaBadgerMD
 Theme URI: https://seabadger.io/seabadgermd-wordpress-theme
 Description: Material Design WP Blog theme based on MDBootstrap
-Version: 0.4.1
+Version: 0.4.2
 Author: sb@seabadger.io
 Author URI: https://seabadger.io/about
 License: GNU General Public License v3 or later
@@ -89,6 +89,10 @@ main {
 .post-paging-link {
 	width: 2rem;
 	display: inline-block;
+}
+
+.card-text.post-content {
+	font-size: 1rem;
 }
 
 /* Sidebar */
