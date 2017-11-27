@@ -133,7 +133,3 @@ function seabadgermd_customize_social_buttons($wp_customize) {
 
 add_action( 'customize_register', 'seabadgermd_customize_social_buttons' );
 
-function seabadgermd_sanitize_checkbox( $input ) {
-	if (is_bool($input)) return $input;
-	return false;
-}
