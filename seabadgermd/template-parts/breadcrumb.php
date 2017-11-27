@@ -180,7 +180,7 @@ function seabadgermd_breadcrumbs() {
 			echo '<span class="breadcrumb-item active" title="' . $userdata->display_name . '"><i class="fa fa-user"></i> ' . $userdata->display_name . '</span>';
 		} else if ( get_query_var('paged') ) {
 			// Paginated archives
-			echo '<span class="breadcrumb-item active" title="Page ' . get_query_var('paged') . '">'.__('Page') . ' ' . get_query_var('paged') . '</span>';
+			echo '<span class="breadcrumb-item active" title="Page ' . get_query_var('paged') . '">'.__('Page', 'seabadgermd') . ' ' . get_query_var('paged') . '</span>';
 		} else if ( is_search() ) {
 			// Search results page
 			echo '<span class="breadcrumb-item active" title="Search results for: ' . get_search_query() . '">Search results for: ' . get_search_query() . '</span>';

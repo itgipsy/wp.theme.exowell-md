@@ -115,7 +115,7 @@ class WP_Widget_ArchivesMD extends WP_Widget {
 		 * @param array $args An array of Archives option arguments.
 		 */
 		wp_get_archives( apply_filters( 'widget_archives_args', array(
-			'type'						=> 'monthly',
+			'type'			=> 'monthly',
 			'show_post_count' => $c
 		) ) );
 		?>
@@ -159,11 +159,11 @@ class WP_Widget_ArchivesMD extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'count' => 0, 'dropdown' => '') );
 		$title = sanitize_text_field( $instance['title'] );
 		?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php __('Title:', 'seabadgermd'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
 		<p>
-			<input class="checkbox" type="checkbox"<?php checked( $instance['dropdown'] ); ?> id="<?php echo $this->get_field_id('dropdown'); ?>" name="<?php echo $this->get_field_name('dropdown'); ?>" /> <label for="<?php echo $this->get_field_id('dropdown'); ?>"><?php _e('Display as dropdown'); ?></label>
+			<input class="checkbox" type="checkbox"<?php checked( $instance['dropdown'] ); ?> id="<?php echo $this->get_field_id('dropdown'); ?>" name="<?php echo $this->get_field_name('dropdown'); ?>" /> <label for="<?php echo $this->get_field_id('dropdown'); ?>"><?php __('Display as dropdown','seabadgermd'); ?></label>
 			<br/>
-			<input class="checkbox" type="checkbox"<?php checked( $instance['count'] ); ?> id="<?php echo $this->get_field_id('count'); ?>" name="<?php echo $this->get_field_name('count'); ?>" /> <label for="<?php echo $this->get_field_id('count'); ?>"><?php _e('Show post counts'); ?></label>
+			<input class="checkbox" type="checkbox"<?php checked( $instance['count'] ); ?> id="<?php echo $this->get_field_id('count'); ?>" name="<?php echo $this->get_field_name('count'); ?>" /> <label for="<?php echo $this->get_field_id('count'); ?>"><?php __('Show post counts', 'seabadgermd'); ?></label>
 		</p>
 		<?php
 	}

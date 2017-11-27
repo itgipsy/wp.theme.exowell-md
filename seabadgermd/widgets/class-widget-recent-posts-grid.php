@@ -13,10 +13,10 @@ class SBMD_Widget_Recent_Posts_Grid extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array(
 			'classname' => 'seabadgermd_widget_recent_posts_grid',
-			'description' => __( 'Show most recent posts of category with thumbnails' ),
+			'description' => __( 'Show most recent posts of category with thumbnails', 'seabadgermd' ),
 			'customize_selective_refresh' => false,
 		);
-		parent::__construct( 'sbmd-recent-posts-grid', __( 'SeaBadgerMD Recent Posts Grid' ), $widget_ops );
+		parent::__construct( 'sbmd-recent-posts-grid', __( 'SeaBadgerMD Recent Posts Grid', 'seabadgermd' ), $widget_ops );
 		$this->alt_option_name = 'sbmd_widget_recent_posts_grid';
 	}
 
@@ -82,7 +82,7 @@ class SBMD_Widget_Recent_Posts_Grid extends WP_Widget {
 							printf('<div class="col-%d recent-posts-grid-item">', $w);
 							$recent_post = $posts[$pos];
 							$post_title = get_the_title( $recent_post->ID );
-							$title      = ( ! empty( $post_title ) ) ? $post_title : __( '(no title)' );
+							$title      = ( ! empty( $post_title ) ) ? $post_title : __( '(no title)', 'seabadgermd' );
 							printf('<a href="%s" title="%s">', 
 								get_the_permalink( $recent_post->ID ),
 								$title);
