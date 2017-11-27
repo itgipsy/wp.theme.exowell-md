@@ -41,12 +41,14 @@ add_action( 'wp_enqueue_scripts', 'theme_enqueue_scripts' );
  * Setup Theme
  */
 function seabadgermd_setup() {
+	// Let WP manage the title tag
+	add_theme_support('title-tag');
 	// Automated feed link support
 	add_theme_support('automatic-feed-links');
 	// Default width to bootstrap lg container width
-	if ( ! isset( $content_width ) ) $content_width = 1170;
+	if (!isset($content_width)) $content_width = 1170;
 	// Add text domain
-	load_theme_textdomain( 'seabadgermd', SBMD_THEME_DIR . '/languages' );
+	load_theme_textdomain('seabadgermd', SBMD_THEME_DIR . '/languages');
 	// Navigation Menus
 	register_nav_menus(array(
 		'navbar' => __( 'Navbar Menu', 'seabadgermd'),
