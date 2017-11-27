@@ -60,6 +60,12 @@ function seabadgermd_setup() {
 }
 add_action('after_setup_theme', 'seabadgermd_setup');
 
+function seabadgermd_editor_style() {
+	// Add some text style to the editor
+	add_editor_style('css/editor.css');
+}
+add_action('admin_init', 'seabadgermd_editor_style');
+
 function seabadgermd_posts_link_attributes() {
 	return 'class="page-link"';
 }

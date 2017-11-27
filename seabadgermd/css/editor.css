@@ -1,0 +1,7 @@
+body#tinymce.wp-editor {
+	font-family: Roboto,sans-serif;
+	font-size: 1rem;
+	line-height: 1.5rem;
+	font-weight: 400;
+	word-wrap: break-word;
+}
