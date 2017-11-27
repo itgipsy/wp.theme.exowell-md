@@ -52,7 +52,8 @@ class SBMD_Widget_Recent_Posts_Grid extends WP_Widget {
 		);
 
 		if (!is_front_page() && $from_same_category && !empty($category)) {
-			$last_category = end(array_values($category));
+			$categories = array_values($category);
+			$last_category = end($categories);
 			$parent_categories = rtrim(get_category_parents($last_category->term_id, false, ',', true),',');
 			$query_filter['category_name'] = $parent_categories;
 		}

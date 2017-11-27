@@ -79,7 +79,7 @@ switch($config['position']) {
 <?php endif; ?>
 <?php if (is_array($config['button']) && $config['button']['text'] && $config['button']['href']) {
 	$button = $config['button'];
-	$btn_style;
+	$btn_style = '';
 	if ($button['bgcolor']) $btn_style .= 'background-color: ' . $button['bgcolor'] . ';';
 	if ($button['color']) $btn_style .= 'color: ' . $button['color'] . ';';
 ?>

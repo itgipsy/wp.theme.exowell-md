@@ -28,8 +28,8 @@ class SBMD_Widget_Social extends WP_Widget {
 	public function widget( $args, $instance ) {
 
 		echo $args['before_widget'];
-		if ( $title ) {
-			echo $args['before_title'] . $title . $args['after_title'];
+		if ( array_key_exists('title', $instance) && $instance['title'] ) {
+			echo $args['before_title'] . $instance['title'] . $args['after_title'];
 		}
 
 		seabadgermd_display_social_buttons();

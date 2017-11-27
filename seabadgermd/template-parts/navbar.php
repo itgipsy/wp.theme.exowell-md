@@ -42,10 +42,13 @@
 						}
 					?> 
 				</ul>
-				<?php if (get_theme_mod('seabadgermd_navbar_search', 'show') == 'show') : ?>
+				<?php
+					if (get_theme_mod('seabadgermd_navbar_search', 'show') == 'show') :
+						$s = array_key_exists('s', $_GET) ? htmlspecialchars($_GET['s']) : '';
+				?>
 					<form role="search" method="get" id="searchform" class="form-inline" action="">
 						<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="s" 
-							value="<?php echo htmlspecialchars($_GET['s']) ?>">
+							value="<?php echo $s ?>">
 					</form>
 				<?php endif ?>
 				</div>

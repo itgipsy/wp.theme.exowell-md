@@ -60,7 +60,8 @@ function seabadgermd_breadcrumbs() {
 			if(!empty($category)) {
 			  
 				// Get last category post is in
-				$last_category = end(array_values($category));
+				$categories = array_values($category);
+				$last_category = end($categories); // end() expects variable
 				  
 				// Get parent any categories and create array
 				$get_cat_parents = rtrim(get_category_parents($last_category->term_id, true, ','),',');
