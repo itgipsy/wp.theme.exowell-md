@@ -1,8 +1,8 @@
 /*
 Theme Name: SeaBadgerMD
 Theme URI: https://seabadger.io/seabadgermd-wordpress-theme
-Description: Material Design WP Blog theme based on MDBootstrap
-Version: 0.4.2
+Description: Material Design WordPress blog theme
+Version: 0.4.3
 Author: sb@seabadger.io
 Author URI: https://seabadger.io/about
 License: GNU General Public License v3 or later
@@ -46,7 +46,7 @@ main {
     cursor: pointer;
     border-radius: 50%;
 	box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
-	opacity: 0.5;
+	opacity: 0.8;
 }
 
 #to-the-top .fa {

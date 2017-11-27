@@ -75,8 +75,8 @@ function seabadgermd_customize_register( $wp_customize ) {
 	));
 	/* Hero section */
 	$wp_customize->add_section('seabadgermd_hero', array(
-		title => __('Hero', 'seabadgermd'),
-		priority => 20
+		'title' => __('Hero', 'seabadgermd'),
+		'priority' => 20
 	));
 	$wp_customize->add_setting('seabadgermd_hero_show', array(
 		'default' => false,
@@ -237,8 +237,8 @@ function seabadgermd_customize_register( $wp_customize ) {
 	/* /Hero section */
 	/* Breadcrumb section */
     $wp_customize->add_section('seabadgermd_breadcrumb', array(
-        title => __('Breadcrumb', 'seabadgermd'),
-        priority => 20
+        'title' => __('Breadcrumb', 'seabadgermd'),
+        'priority' => 20
     ));
     $wp_customize->add_setting('seabadgermd_breadcrumb_show', array(
         'default' => false,
