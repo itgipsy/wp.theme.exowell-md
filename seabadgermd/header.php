@@ -9,7 +9,7 @@
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-	<header class="<?= $header_class ?>">
+	<header class="<?php echo $header_class ?>">
 		<?php get_template_part( 'template-parts/navbar' ); ?>
 <!-- Hero -->
 <?php

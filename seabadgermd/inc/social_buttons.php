@@ -78,8 +78,8 @@ function seabadgermd_display_social_buttons() {
 				$style='';
 			}
 			?>
-			<a href="<?= $url ?>" class="btn btn-round btn-social themecolor" <?= $style ?>>
-				<i class="fa <?= $settings['icon'] ?>"></i>
+			<a href="<?php echo $url ?>" class="btn btn-round btn-social themecolor" <?php echo $style ?>>
+				<i class="fa <?php echo $settings['icon'] ?>"></i>
 				<span class="sr-only"><?php printf(__('%s page of this site', 'seabadgermd'), $settings['name']) ?></a>
 			</a>
 			<?php

@@ -15,7 +15,7 @@
 ?>
 <!--Navbar-->
 <?php if (! get_theme_mod('seabadgermd_navbar_remove', false)) : ?>
-	<nav id="main-navbar" class="navbar navbar-expand-lg themecolor<?= $navbar_class ?>">
+	<nav id="main-navbar" class="navbar navbar-expand-lg themecolor<?php echo $navbar_class ?>">
 		<div class="container">
 			<!-- Navbar brand -->
 			<!-- <a class="navbar-brand" href="#">Navbar</a> -->
@@ -45,7 +45,7 @@
 				<?php if (get_theme_mod('seabadgermd_navbar_search', 'show') == 'show') : ?>
 					<form role="search" method="get" id="searchform" class="form-inline" action="">
 						<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="s" 
-							value="<?= htmlspecialchars($_GET['s']) ?>">
+							value="<?php echo htmlspecialchars($_GET['s']) ?>">
 					</form>
 				<?php endif ?>
 				</div>

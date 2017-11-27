@@ -33,13 +33,13 @@ function displayHero($config) {
 	}
 ?>
 	<div class="container hero">
-		<div class="jumbotron row" style="<?= $hero_style ?>">
+		<div class="jumbotron row" style="<?php echo $hero_style ?>">
 	<?php if ($config['logo']): ?>
 		<div class="col-xs-12 col-md-2 text-center hero-logo">
-			<a href="/"><img class="logo" aria-label="Logo to homepage" src="<?= $config['logo'] ?>"></a>
+			<a href="/"><img class="logo" aria-label="Logo to homepage" src="<?php echo $config['logo'] ?>"></a>
 		</div>
 	<?php endif; ?>
-			<div class="<?= $arrangeclass ?>">
+			<div class="<?php echo $arrangeclass ?>">
 	<?php if ($config['title']) : ?>
 		<h1 class="display-3 hero-title">
 			<?php
@@ -56,7 +56,7 @@ function displayHero($config) {
 		</h1>
 	<?php endif; ?>
 	<?php if ($config['description']) : ?>
-		<p class="lead hero-description"><?= $config['description'] ?></p>
+		<p class="lead hero-description"><?php echo $config['description'] ?></p>
 	<?php endif; ?>
 	<?php if (is_array($config['button']) && $config['button']['text'] && $config['button']['href']) {
 		$button = $config['button'];
@@ -65,8 +65,8 @@ function displayHero($config) {
 		if ($button['color']) $btn_style .= 'color: ' . $button['color'] . ';';
 	?>
 		<p class="lead hero-button-area">
-			<a class="btn btn-lg" style="<?= $btn_style ?>" href="<?= $button['href'] ?>" 
-				role="button"><?= $button['text'] ?></a>
+			<a class="btn btn-lg" style="<?php echo $btn_style ?>" href="<?php echo $button['href'] ?>" 
+				role="button"><?php echo $button['text'] ?></a>
 		</p>
 	<?php } ?>
 			</div>
