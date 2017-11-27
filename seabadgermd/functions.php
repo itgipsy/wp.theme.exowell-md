@@ -18,7 +18,6 @@ require_once('widgets/class-widget-social.php');
 require_once('widgets/class-widget-recent-posts-grid.php');
 require_once('inc/mdb_navwalker.php');
 require_once('inc/mdb_pagination.php'); 
-require_once('inc/hero.php');
 require_once('inc/social_buttons.php');
 
 /**
