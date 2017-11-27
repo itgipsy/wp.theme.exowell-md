@@ -98,7 +98,7 @@ function seabadgermd_customize_social_buttons($wp_customize) {
 	foreach (seabadgermd_get_available_social_buttons() as $id => $settings) {
 		$wp_customize->add_setting('seabadgermd_social_' . $id . '_show', array(
 			'default' => false,
-			'type' => 'theme_mod'
+			'sanitize_callback' => 'seabadgermd_sanitize_checkbox'
 		));
 		$wp_customize->add_control('seabadgermd_social_' . $id . '_show', array(
 			'type' => 'checkbox',
@@ -108,7 +108,7 @@ function seabadgermd_customize_social_buttons($wp_customize) {
 		));
 		$wp_customize->add_setting('seabadgermd_social_' . $id . '_url', array(
 			'default' => 'https://',
-			'type' => 'theme_mod'
+			'sanitize_callback' => 'esc_url'
 		));
 		$wp_customize->add_control('seabadgermd_social_' . $id . '_url', array(
 			'type' => 'text',
@@ -117,7 +117,7 @@ function seabadgermd_customize_social_buttons($wp_customize) {
 		));
 		$wp_customize->add_setting('seabadgermd_social_' . $id . '_bgcolor', array(
 			'default' => '',
-			'type' => 'theme_mod'
+			'sanitize_callback' => 'sanitize_hex_color'
 		));
 		$wp_customize->add_control(new WP_Customize_Color_Control(
 			$wp_customize,
@@ -132,3 +132,8 @@ function seabadgermd_customize_social_buttons($wp_customize) {
 }
 
 add_action( 'customize_register', 'seabadgermd_customize_social_buttons' );
+
+function seabadgermd_sanitize_checkbox( $input ) {
+	if (is_bool($input)) return $input;
+	return false;
+}
