@@ -40,7 +40,9 @@
 	</div>
 	<div class="row footer-themeinfo">
 		<div class="col-12">
-			Theme by <a href="https://seabadger.io" rel="nofollow">SeaBadger.io</a>
+		<?php $sbmd_theme = wp_get_theme(); ?>
+			Theme by <a href="<?php echo $sbmd_theme->get('AuthorURI'); ?>" rel="nofollow">
+			<?php echo $sbmd_theme->get('Author'); ?></a>
 		</div>
 	</div>
 </footer>
