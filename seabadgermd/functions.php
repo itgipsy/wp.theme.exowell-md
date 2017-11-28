@@ -14,11 +14,9 @@ define( "SBMD_THEME_VERSION", $sbmd_theme->get( 'Version' ) );
 require_once('inc/color_themes.php');
 require_once('inc/theme_settings.php');
 require_once('widgets/class-wp-widget-archives.php');
-require_once('widgets/class-widget-social.php');
 require_once('widgets/class-widget-recent-posts-grid.php');
 require_once('inc/mdb_navwalker.php');
 require_once('inc/mdb_pagination.php'); 
-require_once('inc/social_buttons.php');
 
 /**
  * Include CSS/JS dependencies 
@@ -102,9 +100,18 @@ function seabadgermd_widgets_init() {
 		'after_title'	 => '</div>',
 	) );
 
+	register_sidebar( array(
+		'name'			=> 'Footer',
+		'id'			=> 'footer',
+		'description'	=> 'Footer area',
+		'before_widget' => '',
+		'after_widget'	=> '',
+		'before_title'	=> '<span style="display:none">',
+		'after_title'	 => '</span>',
+	) );
+
 	unregister_widget('WP_Widget_Archives');
 	register_widget('WP_Widget_ArchivesMD');
-	register_widget('SBMD_Widget_Social');
 	register_widget('SBMD_Widget_Recent_Posts_Grid');
 }
 

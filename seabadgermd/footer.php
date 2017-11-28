@@ -2,15 +2,17 @@
 <!--Footer-->
 <footer class="container page-footer themecolor">
 	<div class="row">
-		<div class="footer-social col-xs-6 col-md-3">
+		<div class="footer-widget col-xs-6 col-md-3">
 			<?php
-				seabadgermd_display_social_buttons();
+				if (is_active_sidebar('footer')) {
+					dynamic_sidebar('footer');
+				}
 			?>
 		</div>
 	
 		<!--Footer menu -->
 		<?php
-			if ( has_nav_menu( 'footer' ) ) {
+			if (has_nav_menu('footer')) {
 		?>
 		<div class="footer-menu col-xs-6 col-md-5">
 			<?php
