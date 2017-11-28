@@ -36,12 +36,12 @@
 		</div>
 		<!--/Copyright-->
 	</div>
-</footer>
-<div class="row footer-themeinfo">
-	<div class="col-12">
-		Theme by <a href="https://seabadger.io" rel="nofollow">SeaBadger.io</a>
+	<div class="row footer-themeinfo">
+		<div class="col-12">
+			Theme by <a href="https://seabadger.io" rel="nofollow">SeaBadger.io</a>
+		</div>
 	</div>
-</div>
+</footer>
 <!--/Footer-->
 <button class="btn themecolor" id="to-the-top" title="Back to the top">
 	<i class="fa fa-arrow-circle-up" aria-hidden="true"></i><span class="sr-only">Back to the top</span>
