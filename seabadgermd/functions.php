@@ -11,8 +11,7 @@ define( "SBMD_THEME_VERSION", $sbmd_theme->get( 'Version' ) );
 /**
 * Include external files
 */
-require_once('inc/color_themes.php');
-require_once('inc/theme_settings.php');
+require_once('inc/seabadgermd_customizer.php');
 require_once('widgets/class-wp-widget-archives.php');
 require_once('widgets/class-widget-recent-posts-grid.php');
 require_once('inc/mdb_navwalker.php');
@@ -28,8 +27,8 @@ function theme_enqueue_scripts() {
 	wp_enqueue_style( 'Style', SBMD_THEME_DIR_URI . '/style.css', array(), SBMD_THEME_VERSION );
 	wp_enqueue_script( 'jQuery', SBMD_THEME_DIR_URI . '/js/jquery-3.2.1.min.js', array(), '3.2.1', true );
 	wp_enqueue_script( 'Tether', SBMD_THEME_DIR_URI . '/js/popper.min.js', array(), '1.0.0', true );
-	wp_enqueue_script( 'Bootstrap', SBMD_THEME_DIR_URI . '/js/bootstrap.min.js', array(), '1.0.0', true );
-	wp_enqueue_script( 'MDB', SBMD_THEME_DIR_URI . '/js/mdb.min.js', array(), '1.0.0', true );
+	wp_enqueue_script( 'Bootstrap', SBMD_THEME_DIR_URI . '/js/bootstrap.min.js', array(), '4.0.0', true );
+	wp_enqueue_script( 'MDB', SBMD_THEME_DIR_URI . '/js/mdb.min.js', array(), '4.4.3', true );
 	wp_enqueue_script( 'SBMDJS', SBMD_THEME_DIR_URI . '/js/site.js', array(), SBMD_THEME_VERSION, true );
 }
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_scripts' );
