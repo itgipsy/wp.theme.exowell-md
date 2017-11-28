@@ -3,16 +3,21 @@ Copyright (C) 2017 Gabor Szoboszlai - SeaBadger.io
 
 == About SeabadgerMD ==
 
-SeabadgerMD is a responsible, Material Design based free WordPress theme. It
-utilizes the Bootstrap grid system, which makes it easily extendable with
-responsive components.
+SeabadgerMD is a responsive, Material Design based free WordPress theme. Every
+component utilizes the Bootstrap grid system, it comes with responsive gallery
+and sidebar widgets.
 
 == Customize theme ==
 
 
 == Credit ==
 
-This theme uses GPL or GPL license compatible open source projects. It is based on MDBootstrap (https://mdbootstrap.com) which relies on Bootstrap (http://getbootstrap.com), jQuery (https://jquery.com), Popper (https://popper.js.org)
+This theme relies on the following GPL or GPL license compatible open source projects:
+ * MDBootstrap free (https://mdbootstrap.com) - Material Design Bootstrap framework (MIT license)
+ * Bootstrap (http://getbootstrap.com) - Responsive front-end framework (MIT license)
+ * jQuery (https://jquery.com) - JS library (MIT license)
+ * Popper (https://popper.js.org) - JS library (MIT license)
+ * Font Awesome (http://fontawesome.io/) - Icon Font library (SIL OFL 1.1,MIT license)
 
 == License ==
 

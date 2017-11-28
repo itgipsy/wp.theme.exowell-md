@@ -245,6 +245,14 @@ nav.breadcrumb {
 	line-height: 50px;
 }
 
+.footer-themeinfo {
+	text-align: center;
+	font-size: .9rem;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	opacity: .8;
+}
+
 .tagline > a:before {
 	content: '#';
 }
