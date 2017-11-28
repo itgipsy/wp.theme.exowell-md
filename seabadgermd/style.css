@@ -78,6 +78,12 @@ main {
 	text-align: center;
 }
 
+.post-author,
+.post-date,
+.post-categories {
+	padding: .3rem .6rem .3rem .6rem;
+}
+
 .post-navigation-prev {
 	text-align: right;
 }
