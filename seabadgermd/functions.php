@@ -170,12 +170,126 @@ function seabadgermd_comments_callback( $comment, $args, $depth ) {
 <?php
 }
 
-function seabadgermd_wp_link_pages_link ($link) {
+function seabadgermd_wp_link_pages_link($link) {
 	if (!preg_match('/href=/', $link)) {
 		return preg_replace('/class="/','class="active ', $link);
 	}
 	return $link;
 }
 add_filter( 'wp_link_pages_link',  'seabadgermd_wp_link_pages_link' );
+
+// https://wordpress.stackexchange.com/questions/43558/how-to-manually-fix-the-wordpress-gallery-code-using-php-in-functions-php
+// responsive image gallery
+function seabadgermd_post_gallery($output, $attr) {
+    global $post;
+
+    static $instance = 0;
+    $instance++;
+
+    // We're trusting author input, so let's at least make sure it looks like a valid orderby statement
+    if ( isset( $attr['orderby'] ) ) {
+        $attr['orderby'] = sanitize_sql_orderby( $attr['orderby'] );
+        if ( !$attr['orderby'] )
+            unset( $attr['orderby'] );
+    }
+
+    extract(shortcode_atts(array(
+        'order'      => 'ASC',
+        'orderby'    => 'menu_order ID',
+        'id'         => $post->ID,
+        'columns'    => 3,
+        'size'       => 'thumbnail',
+        'include'    => '',
+        'exclude'    => ''
+    ), $attr));
+
+    $id = intval($id);
+    if ( 'RAND' == $order )
+        $orderby = 'none';
+
+    if ( !empty($include) ) {
+        $include = preg_replace( '/[^0-9,]+/', '', $include );
+        $_attachments = get_posts( array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+
+        $attachments = array();
+        foreach ( $_attachments as $key => $val ) {
+            $attachments[$val->ID] = $_attachments[$key];
+        }
+    } elseif ( !empty($exclude) ) {
+        $exclude = preg_replace( '/[^0-9,]+/', '', $exclude );
+        $attachments = get_children( array('post_parent' => $id, 'exclude' => $exclude, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+    } else {
+        $attachments = get_children( array('post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+    }
+
+    if ( empty($attachments) )
+        return '';
+
+    if ( is_feed() ) {
+        $output = "\n";
+        foreach ( $attachments as $att_id => $attachment )
+            $output .= wp_get_attachment_link($att_id, $size, true) . "\n";
+        return $output;
+    }
+
+    $columns = intval($columns);
+	if ($columns > 12) {
+		$columns = 12;
+	} else if (12 % $columns != 0) {
+		while (12 % $columns != 0) {
+			$columns--;
+		}
+	}
+    $itemwidth = $columns > 0 ? 12 / $columns : 12;
+
+    $selector = "gallery-{$instance}";
+
+    $size_class = sanitize_html_class( $size );
+    $output = "<div id='$selector' class='row gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
+	$output .= '<div class="col-12">';
+
+    $i = 0;
+    foreach ( $attachments as $id => $attachment ) {
+        // $link = isset($attr['link']) && 'file' == $attr['link'] ? wp_get_attachment_link($id, $size, false, false) : wp_get_attachment_link($id, $size, true, false);
+		if ($i === 0) $output .= '<div class="row">';
+        $output .= sprintf("<div class='col-xs-12 col-md-%d gallery-item'>", $itemwidth);
+		$get_icon = isset($attr['link']) && 'file' == $attr['link'];
+		$src = wp_get_attachment_image_src($id, $size, $get_icon)[0];
+		$srcs = array();
+		foreach (get_intermediate_image_sizes() as $s) {
+			$imgsrc = wp_get_attachment_image_src($id, $s, $get_icon);
+			if ($imgsrc)
+				array_push($srcs, $imgsrc[0] . ' ' . $imgsrc[1] . 'w');
+		}
+		$srcset = implode(',', $srcs);
+		$sizelist = array();
+		array_push($sizelist, '(max-width: 767px) 750px'); // no columns on xs screen
+		array_push($sizelist, sprintf('(max-width: 992px) %dpx', 750 / $columns)); // a very rough maximum width of space to fill
+		array_push($sizelist, sprintf('(max-width: 1200px) %dpx', 970 / $columns));
+		array_push($sizelist, sprintf('%dpx', 1170 / $columns));
+		$sizes = implode(',', $sizelist);
+        //$output .= preg_replace('/class="/', 'class="img-fluid ', $link);
+		$output .= sprintf('<img src="%s" srcset="%s" sizes="%s" class="img-thumbnail">', $src, $srcset, $sizes);
+        if ( trim($attachment->post_excerpt) ) {
+            $output .= "
+                <p class='wp-caption-text gallery-caption'>
+                " . wptexturize($attachment->post_excerpt) . "
+                </p>";
+        } else {
+			$output .= '<p class="wp-caption-text gallery-caption"><!-- no caption --></p>';
+		}
+        $output .= "</div>";
+		if (++$i === $columns) {
+			$output .= '</div>'; //close row
+			$i = 0;
+		}
+    }
+
+    $output .= "</div>
+		</div>\n";
+
+    return $output;
+}
+add_filter("post_gallery", "seabadgermd_post_gallery",10,2);
 
 ?>

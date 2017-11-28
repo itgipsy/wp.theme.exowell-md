@@ -15,7 +15,7 @@
 ?>
 <!--Navbar-->
 <?php if (! get_theme_mod('seabadgermd_navbar_remove', false)) : ?>
-	<nav id="main-navbar" class="navbar navbar-expand-lg themecolor<?php echo $navbar_class ?>">
+	<nav id="main-navbar" class="navbar navbar-expand-lg themecolor<?php echo $navbar_class ?>" role="navigation">
 		<div class="container">
 			<!-- Navbar brand -->
 			<!-- <a class="navbar-brand" href="#">Navbar</a> -->
