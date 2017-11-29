@@ -55,6 +55,14 @@ function seabadgermd_setup() {
 	add_image_size('main-full', 1078, 516, false); // main post image in full width
 	// Allow custom background
 	add_theme_support('custom-background');
+	// Support custom header image
+	add_theme_support('custom-header', array(
+		'width' => 1160,
+		'flex-width' => true,
+		'flex-height' => true,
+		'header-text' => true,
+		'default-text-color' => '#ffffff'
+	));
 }
 add_action('after_setup_theme', 'seabadgermd_setup');
 

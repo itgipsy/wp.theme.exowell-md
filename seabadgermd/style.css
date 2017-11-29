@@ -12,7 +12,7 @@ Tags: blog,two-columns,right-sidebar,grid-layout,custom-colors,custom-menu,featu
 */
 
 main {
-	padding-top: 3rem;
+	padding-top: 2rem;
 	padding-bottom: 2rem;
 }
 
@@ -201,7 +201,7 @@ header.fixed ~ main {
 }
 
 nav.fixed-top ~ .hero {
-	margin-top: 4rem;
+	margin-top: 5rem;
 }
 
 /* Hero */
