@@ -32,7 +32,7 @@ function mdb_pagination() {
 			if ( ! in_array( 1, $links ) ) {
 				$class = 1 == $paged ? ' active' : '';
 				printf( '<li class="page-item%s"><a href="%s" class="page-link">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( 1 ) ), '1' );
-				if ( ! in_array( 2, $links ) ) echo '<li class="page-item"><i class="fa fa-angle-double-left"></i></li>';
+				if ( ! in_array( 2, $links ) ) echo '<li class="page-item">&hellip;</i></li>';
 			}
 			/** Link to current page, plus 2 pages in either direction if necessary */
 			sort( $links );
@@ -42,7 +42,7 @@ function mdb_pagination() {
 			}
 			/** Link to last page, plus ellipses if necessary */
 			if ( ! in_array( $max, $links ) ) {
-				if ( ! in_array( $max - 1, $links ) ) echo '<li><i class="fa fa-angle-double-right"></i></li>' . "\n";
+				if ( ! in_array( $max - 1, $links ) ) echo '<li>&hellip;</li>' . "\n";
 				$class = $paged == $max ? ' active' : '';
 				printf( '<li class="page-item%s"><a href="%s" class="page-link">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $max ) ), $max );
 			}
