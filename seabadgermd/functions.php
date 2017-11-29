@@ -21,9 +21,9 @@ require_once('inc/mdb_pagination.php');
  * Include CSS/JS dependencies 
  */
 function theme_enqueue_scripts() {
-	wp_enqueue_style( 'Font_Awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' );
-	wp_enqueue_style( 'Bootstrap_css', SBMD_THEME_DIR_URI . '/css/bootstrap.min.css' );
-	wp_enqueue_style( 'MDB', SBMD_THEME_DIR_URI . '/css/mdb.min.css' );
+	wp_enqueue_style( 'Font_Awesome', SBMD_THEME_DIR_URI . '/css/font-awesome.min.css', array(), '4.7.0' );
+	wp_enqueue_style( 'Bootstrap_css', SBMD_THEME_DIR_URI . '/css/bootstrap.min.css', array(), '4.0.0' );
+	wp_enqueue_style( 'MDB', SBMD_THEME_DIR_URI . '/css/mdb.min.css', array(), '4.4.3' );
 	wp_enqueue_style( 'Style', SBMD_THEME_DIR_URI . '/style.css', array(), SBMD_THEME_VERSION );
 	wp_enqueue_script( 'jQuery', SBMD_THEME_DIR_URI . '/js/jquery-3.2.1.min.js', array(), '3.2.1', true );
 	wp_enqueue_script( 'Tether', SBMD_THEME_DIR_URI . '/js/popper.min.js', array(), '1.0.0', true );
