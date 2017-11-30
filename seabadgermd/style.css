@@ -131,6 +131,10 @@ main {
 	padding: 0;
 }
 
+#sidebar .widget ul.children {
+	padding-left: 20px;
+}
+
 #sidebar .widget li {
 	/* workaround missing card-text class */
 	font-size: 0.9rem;
