@@ -308,9 +308,29 @@ function seabadgermd_post_gallery($output, $attr) {
 }
 add_filter("post_gallery", "seabadgermd_post_gallery",10,2);
 
-function add_default_table_format($content) {
+function seabadgermd_default_table_format($content) {
 	return str_replace('<table>', '<table class="table">', $content);
 }
-add_filter("the_content", "add_default_table_format");
+add_filter("the_content", "seabadgermd_default_table_format");
+
+function seabadgermd_format_passwordform($output) {
+	$post = get_post();
+	$label = 'pwbox-' . ( empty($post->ID) ? rand() : $post->ID );
+	$output = '<form action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" class="post-password-form" method="post">
+		    <p>' . __( 'This content is password protected. To view it please enter your password below:' ) . '</p>
+			<div class="form-row align-items-center">
+				<div class="col-auto">
+					<label for="' . $label . '" class="sr-only">' . __( 'Password:' ) . '</label>
+					<input class="form-control" name="post_password" id="' . $label . '" type="password" size="20" placeholder="' . __( 'Password' ) . '">
+				</div>
+				<div class="col-auto">
+					<input class="btn themecolor" type="submit" name="Submit" value="' . esc_attr_x( 'Enter', 'post password form' ) . '">
+				</div>
+			</div>
+			</form>
+			';
+	return $output;
+}
+add_filter("the_password_form", seabadgermd_format_passwordform);
 
 ?>
