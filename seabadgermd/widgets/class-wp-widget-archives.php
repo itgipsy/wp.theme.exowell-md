@@ -94,7 +94,7 @@ class WP_Widget_ArchivesMD extends WP_Widget {
 						$link = preg_replace('/(<a.*a>).*/', '$1', $archive);
 						$link = str_replace('<a ', '<a class="dropdown-item archive-item" ', $link);
 						$count = preg_replace('/.*\((.*)\).*/', '$1', $archive);
-						if ($count !== '') {
+						if ($count !== '' && $count !== $archive) {
 							$link = str_replace('</a>', ' <span class="badge badge-pill themecolor archive_count_badge">' . $count . '</span></a>', $link);
 						}
 						echo $link;
@@ -161,9 +161,9 @@ class WP_Widget_ArchivesMD extends WP_Widget {
 		?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php __('Title:', 'seabadgermd'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
 		<p>
-			<input class="checkbox" type="checkbox"<?php checked( $instance['dropdown'] ); ?> id="<?php echo $this->get_field_id('dropdown'); ?>" name="<?php echo $this->get_field_name('dropdown'); ?>" /> <label for="<?php echo $this->get_field_id('dropdown'); ?>"><?php __('Display as dropdown','seabadgermd'); ?></label>
+			<input class="checkbox" type="checkbox"<?php checked( $instance['dropdown'] ); ?> id="<?php echo $this->get_field_id('dropdown'); ?>" name="<?php echo $this->get_field_name('dropdown'); ?>" /> <label for="<?php echo $this->get_field_id('dropdown'); ?>"><?php echo __('Display as dropdown','seabadgermd'); ?></label>
 			<br/>
-			<input class="checkbox" type="checkbox"<?php checked( $instance['count'] ); ?> id="<?php echo $this->get_field_id('count'); ?>" name="<?php echo $this->get_field_name('count'); ?>" /> <label for="<?php echo $this->get_field_id('count'); ?>"><?php __('Show post counts', 'seabadgermd'); ?></label>
+			<input class="checkbox" type="checkbox"<?php checked( $instance['count'] ); ?> id="<?php echo $this->get_field_id('count'); ?>" name="<?php echo $this->get_field_name('count'); ?>" /> <label for="<?php echo $this->get_field_id('count'); ?>"><?php echo __('Show post counts', 'seabadgermd'); ?></label>
 		</p>
 		<?php
 	}
