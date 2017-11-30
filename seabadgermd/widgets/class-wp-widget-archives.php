@@ -32,6 +32,8 @@ class WP_Widget_ArchivesMD extends WP_Widget {
 	public function widget( $args, $instance ) {
 		$c = ! empty( $instance['count'] ) ? '1' : '0';
 		$d = ! empty( $instance['dropdown'] ) ? '1' : '0';
+		$limit = !empty($instance['limit']) ? absint($instance['limit']) : 12;
+		if (!$limit) { $limit = 12; };
 
 		/** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
 		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Archives', 'seabadgermd' ) : $instance['title'], $instance, $this->id_base );
@@ -61,6 +63,7 @@ class WP_Widget_ArchivesMD extends WP_Widget {
 				'format'					=> 'custom',
 				'after'	=> ',',
 				'show_post_count' => $c,
+				'limit' => $limit,
 				'echo' => 0
 			) );
 
@@ -116,7 +119,8 @@ class WP_Widget_ArchivesMD extends WP_Widget {
 		 */
 		wp_get_archives( apply_filters( 'widget_archives_args', array(
 			'type'			=> 'monthly',
-			'show_post_count' => $c
+			'show_post_count' => $c,
+			'limit' => $limit
 		) ) );
 		?>
 		</ul>
@@ -143,6 +147,7 @@ class WP_Widget_ArchivesMD extends WP_Widget {
 		$instance['title'] = sanitize_text_field( $new_instance['title'] );
 		$instance['count'] = $new_instance['count'] ? 1 : 0;
 		$instance['dropdown'] = $new_instance['dropdown'] ? 1 : 0;
+		$instance['limit'] = (int) $new_instance['limit'];
 
 		return $instance;
 	}
@@ -158,12 +163,18 @@ class WP_Widget_ArchivesMD extends WP_Widget {
 	public function form( $instance ) {
 		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'count' => 0, 'dropdown' => '') );
 		$title = sanitize_text_field( $instance['title'] );
+		$limit = isset( $instance['limit'] ) ? absint( $instance['limit'] ) : 12;
 		?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php __('Title:', 'seabadgermd'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
 		<p>
 			<input class="checkbox" type="checkbox"<?php checked( $instance['dropdown'] ); ?> id="<?php echo $this->get_field_id('dropdown'); ?>" name="<?php echo $this->get_field_name('dropdown'); ?>" /> <label for="<?php echo $this->get_field_id('dropdown'); ?>"><?php echo __('Display as dropdown','seabadgermd'); ?></label>
 			<br/>
 			<input class="checkbox" type="checkbox"<?php checked( $instance['count'] ); ?> id="<?php echo $this->get_field_id('count'); ?>" name="<?php echo $this->get_field_name('count'); ?>" /> <label for="<?php echo $this->get_field_id('count'); ?>"><?php echo __('Show post counts', 'seabadgermd'); ?></label>
+			<br/>
+		</p>
+		<p><label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php echo __( 'Limit displayed items to:', 'seabadgermd' ); ?></label>
+			<input class="tiny-text" id="<?php echo $this->get_field_id( 'limit' ); ?>" name="<?php echo $this->get_field_name( 'limit' ); ?>"
+				type="number" step="1" min="1" value="<?php echo $limit; ?>" size="3" /></p>
 		</p>
 		<?php
 	}
