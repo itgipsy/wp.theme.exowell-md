@@ -270,22 +270,26 @@ nav.breadcrumb {
 -------------------------------------------------------------- */
 .alignnone {
     margin: 5px 20px 20px 0;
+	max-width: 100%;
 }
 
 .aligncenter,
 div.aligncenter {
     display: block;
     margin: 5px auto 5px auto;
+	max-width: 100%;
 }
 
 .alignright {
     float:right;
     margin: 5px 0 20px 20px;
+	max-width: 100%;
 }
 
 .alignleft {
     float: left;
     margin: 5px 20px 20px 0;
+	max-width: 100%;
 }
 
 a img.alignright {
