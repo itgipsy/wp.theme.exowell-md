@@ -22,6 +22,9 @@ a:hover {
   background-color: white;
   color: #494c4e; }
 
+.sticky_icon {
+  color: red; }
+
 /* Navbar */
 .navbar, .navbar a, .navbar a:visited, .navbar .dropdown-menu a, .navbar .dropdown-menu a:visited, .navbar .dropdown-menu a:hover {
   background-color: #23819c !important;

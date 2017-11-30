@@ -1,5 +1,5 @@
 <!--Post-->
-<div class="card post-wrapper <?php post_class(); ?>">
+<div <?php post_class('card post-wrapper'); ?>>
 	<!--Featured image -->
 	<?php if ( has_post_thumbnail() ) : ?>
     	<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="post-image">
@@ -8,7 +8,14 @@
 	<?php endif; ?>
 	<!--Post data-->
 	<div class="card-body post-block">
-		<a href="<?php echo get_permalink() ?>"><h4 class="card-title post-title"><?php the_title(); ?></h4></a>
+		<a href="<?php echo get_permalink() ?>">
+			<h4 class="card-title post-title <?php echo (is_sticky()) ? 'sticky' : ''; ?>">
+				<?php the_title(); ?>
+				<?php
+					if (is_sticky()) echo '<i class="fa fa-anchor sticky_icon"></i>';
+				?>
+			</h4>
+		</a>
 		<?php if (get_post_type() == 'post') : ?>
 			<div class="card-text post-meta">
 				<span class="badge badge-pill post-author themecolor">

@@ -106,6 +106,13 @@ main {
 	line-height: 1rem;
 }
 
+.sticky_icon {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	opacity: 0.6;
+}
+
 /* Sidebar */
 #sidebar .widget {
 	margin-bottom: 30px;
