@@ -265,6 +265,14 @@ nav.breadcrumb {
 	content: '#';
 }
 
+.clear {
+	clear: both;
+	width: 0;
+	height: 0;
+	visibility: hidden;
+	overflow: hidden;
+}
+
 
 /* =WordPress Core
 -------------------------------------------------------------- */

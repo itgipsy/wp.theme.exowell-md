@@ -74,6 +74,7 @@
 			} else {
 				the_content('', false);
 			?>
+			<br class="clear">
 			<!--"Read more" button-->
 			<a href="<?php echo get_permalink() ?>"><button class="btn themecolor">Read more</button></a>
 			<!-- Comment button -->
