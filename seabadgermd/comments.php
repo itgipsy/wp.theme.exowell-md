@@ -13,11 +13,11 @@ if ( post_password_required() ) {
 
 if ( have_comments() ) {
 
-	?><h3 class="h3 comments-title">
+	?><h4 class="h4 comments-title">
 	<?php
 		printf( _n( '%1$s response to %2$s', '%1$s responses to %2$s', get_comments_number(), 'seabadgermd' ),
 									number_format_i18n( get_comments_number() ),  get_the_title() );
-	?></h3>
+	?></h4>
 	<div class="row">
 		<div class="commentlist col-12"><?php
 			wp_list_comments( array( 'avatar_size' => 45, 'callback' => 'seabadgermd_comments_callback' ) );
@@ -25,10 +25,16 @@ if ( have_comments() ) {
 	</div>	
 	<div class="row">
 		<div class="col-6">
-			<?php previous_comments_link(__('Older comments', 'seabadgermd')) ?>
+			<?php 
+				echo str_replace('<a ', '<a class="btn btn-sm themecolor" ',
+					get_previous_comments_link(__('Older comments', 'seabadgermd')));
+			?>
 		</div>
 		<div class="col-6 text-right">
-			<?php next_comments_link(__('Newer comments', 'seabadgermd')) ?>
+			<?php
+				echo str_replace('<a ', '<a class="btn btn-sm themecolor" ',
+					get_next_comments_link(__('Newer comments', 'seabadgermd')));
+			?>
 		</div>
 	</div>
 <?php
