@@ -308,4 +308,9 @@ function seabadgermd_post_gallery($output, $attr) {
 }
 add_filter("post_gallery", "seabadgermd_post_gallery",10,2);
 
+function add_default_table_format($content) {
+	return str_replace('<table>', '<table class="table">', $content);
+}
+add_filter("the_content", "add_default_table_format");
+
 ?>
