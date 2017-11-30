@@ -37,7 +37,7 @@
 				</span>
 				<?php
 					$categories = array();
-					foreach ( (get_the_category()) as $category ){
+					foreach ( array_slice((get_the_category()), 0, 5) as $category ){
 						$categories[] = sprintf('<a href="%s">%s</a>', get_category_link($category->term_id),
 											$category->cat_name);
 					}

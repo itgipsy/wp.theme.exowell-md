@@ -331,6 +331,6 @@ function seabadgermd_format_passwordform($output) {
 			';
 	return $output;
 }
-add_filter("the_password_form", seabadgermd_format_passwordform);
+add_filter("the_password_form", "seabadgermd_format_passwordform");
 
 ?>
