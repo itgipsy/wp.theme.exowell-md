@@ -335,4 +335,12 @@ function seabadgermd_format_passwordform($output) {
 }
 add_filter("the_password_form", "seabadgermd_format_passwordform");
 
+function seabadgermd_has_readmore() {
+	global $post;
+	if (has_excerpt($post) || (preg_match('/<!--more( .*? )?-->/', $post->post_content) || preg_match('/<!--nextpage-->/', $post->post_content))) {
+		return true;
+	}
+	return false;
+}
+
 ?>

@@ -75,11 +75,18 @@
 				?></div><?php // end comment section
 				}
 			} else {
-				the_content('', false);
+				// this theme only displays excerpt, if one is explicitly defined
+				if (!has_excerpt()) {
+					the_content('', false);
+				} else {
+					the_excerpt();
+				}
 			?>
 			<br class="clear">
-			<!--"Read more" button-->
-			<a href="<?php echo get_permalink() ?>"><button class="btn themecolor">Read more</button></a>
+			<?php if (seabadgermd_has_readmore()): ?>
+				<!--"Read more" button-->
+				<a href="<?php echo get_permalink() ?>"><button class="btn themecolor">Read more</button></a>
+			<?php endif; ?>
 			<!-- Comment button -->
 			<?php
 				if (comments_open() || get_comments_number()!=0) {
