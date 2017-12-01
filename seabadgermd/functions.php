@@ -65,6 +65,11 @@ function seabadgermd_setup() {
 		'header-text' => true,
 		'default-text-color' => '#ffffff'
 	));
+	// Support custom logo in page header
+	add_theme_support('custom-logo', array(
+		'height' => 150,
+		'width' => 150,
+	));
 }
 add_action('after_setup_theme', 'seabadgermd_setup');
 

@@ -4,8 +4,8 @@
 */
 $header_image = get_header_image();
 $text_color = get_header_textcolor();
-// only show header if both header image and text are enabled
-if (!$header_image || $text_color == 'blank') {
+// only show header if both header image and text or logo are enabled
+if (!$header_image || ($text_color == 'blank' && !has_custom_logo())) {
 	return;
 }
 
@@ -13,6 +13,7 @@ $hero_style="";
 $hero_style .= 'color:' . get_header_textcolor() . ';';
 $hero_style .= 'background-image: url(\'' . $header_image . '\');';
 $hero_style .= 'background-size: cover;';
+
 ?>
 <div class="container hero">
 	<div class="jumbotron row" style="<?php echo $hero_style ?>">
@@ -27,5 +28,14 @@ $hero_style .= 'background-size: cover;';
 			</h1>
 			<p class="lead hero-description"><?php bloginfo('description'); ?></p>
 		</div>
+		<?php
+			if (has_custom_logo()) {
+		?>
+		<div class="col-xs-12 col-md-2 text-center hero-logo">
+				<?php the_custom_logo(); ?>
+		</div>
+		<?php
+			}
+		?>
 	</div>
 </div>
