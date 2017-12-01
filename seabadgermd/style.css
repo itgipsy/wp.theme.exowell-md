@@ -2,7 +2,7 @@
 Theme Name: SeaBadgerMD
 Theme URI: https://seabadger.io/seabadgermd-wordpress-theme
 Description: Responsive Material Design WordPress blog theme
-Version: 0.5.6
+Version: 0.5.7
 Author: SeaBadger.io
 Author URI: https://seabadger.io/about
 License: GNU General Public License v3 or later
@@ -14,6 +14,10 @@ Tags: blog,two-columns,right-sidebar,grid-layout,custom-colors,custom-menu,featu
 main {
 	padding-top: 2rem;
 	padding-bottom: 2rem;
+}
+
+.card {
+	border-radius: 0;
 }
 
 .btn.btn-round {
@@ -121,7 +125,8 @@ main {
 #sidebar .widget-title {
 	margin: -15px -15px 10px -15px;
 	padding: 5px;
-	border-radius: 5px 5px 0px 0px;
+	/* border-radius: 5px 5px 0px 0px; */
+	border-radius: 0;
 	box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
 }
 
@@ -174,9 +179,13 @@ main {
 	font-weight: bold;
 }
 
+.tagcloud {
+	text-align: center;
+}
+
 .tag-cloud-link {
-	border-radius: 1em;
-	padding: 1px .5em 1px .5em;
+	border-radius: .5em;
+	padding: 1px .2em 1px .2em;
 	margin: 0 0.1em 0 0.1em;
 	box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
 }
