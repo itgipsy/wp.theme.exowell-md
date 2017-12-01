@@ -237,8 +237,8 @@ nav.fixed-top ~ .hero {
 	margin-top: 5rem;
 }
 
-nav.fixed-top ~ .breadcrumb {
-	margin-top: 5rem;
+nav ~ .breadcrumb {
+	margin-top: 3rem;
 }
 
 /* Hero */
