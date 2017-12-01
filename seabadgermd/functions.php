@@ -162,7 +162,7 @@ function seabadgermd_post_navlink_attributes($output) {
 function seabadgermd_comments_callback( $comment, $args, $depth ) {
 ?>
 	<div class="row media comment" id="comment-<?php comment_ID(); ?>">
-		<?php echo get_avatar($comment, $args['avatar_size'], 'gravatar_default', '', array('class' => 'd-flex rounded-circle mr-3')); ?>
+		<?php echo get_avatar($comment, $args['avatar_size'], null, '', array('class' => 'd-flex rounded-circle mr-3')); ?>
 		<div class="col-12 media-body comment">
 			<h5 class="mt-0 comment-header"><?php echo get_comment_author_link( $comment ); ?>
 				<?php printf('%s ago', human_time_diff(get_comment_time( 'U' ), current_time( 'timestamp' ))); ?>
