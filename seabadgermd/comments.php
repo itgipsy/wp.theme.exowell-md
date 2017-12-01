@@ -40,7 +40,7 @@ if ( have_comments() ) {
 <?php
 	if ( !comments_open() ) {
 		// if there are comments, but commenting is disabled, show info
-		?><p class="alert alert-info"><?php _e( 'Comments are disabled', 'seabadgermd' ); ?></p><?php
+		?><p class="alert themecolor"><?php _e( 'Comments are disabled', 'seabadgermd' ); ?></p><?php
 	}
 }
 

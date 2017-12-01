@@ -302,6 +302,10 @@ function seabadgermd_post_gallery($output, $attr) {
 			$i = 0;
 		}
     }
+	// close partial row
+	if ($i !== 0) {
+		$output .= '</div>';
+	}
 
     $output .= "</div>
 		</div>\n";
