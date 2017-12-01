@@ -57,6 +57,10 @@ main {
 	font-size: 45px;
 }
 
+table.table a {
+	color: inherit;
+}
+
 /* Post */
 
 .post-wrapper {
