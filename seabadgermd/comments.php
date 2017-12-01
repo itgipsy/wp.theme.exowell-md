@@ -38,9 +38,8 @@ if ( have_comments() ) {
 		</div>
 	</div>
 <?php
-} else {
-	if ( comments_open() ) {
-	} else {
+	if ( !comments_open() ) {
+		// if there are comments, but commenting is disabled, show info
 		?><p class="alert alert-info"><?php _e( 'Comments are disabled', 'seabadgermd' ); ?></p><?php
 	}
 }
