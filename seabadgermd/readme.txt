@@ -1,14 +1,44 @@
-SeabadgerMD WordPress Theme by SeaBadger.io | https://seabadger.io
+SeaBadgerMD WordPress Theme by SeaBadger.io | https://seabadger.io
 Copyright (C) 2017 Gabor Szoboszlai - SeaBadger.io
 
-== About SeabadgerMD ==
+== About SeaBadgerMD ==
 
-SeabadgerMD is a responsive, Material Design based free WordPress theme. Every
+SeaBadgerMD is a responsive, Material Design based free WordPress theme. Every
 component utilizes the Bootstrap grid system, it comes with responsive gallery
 and sidebar widgets.
 
 == Customize theme ==
 
+The SeaBadgerMD supports the following customizations via the Customizer:
+ * custom predefined color themes
+ * custom header with background-image, logo and site title/description
+ * navigation bar with menu and search bar
+ * navigation bar can stick to the top of the page and hide automatically
+ * display breadcrumb
+
+== Features ==
+
+Theme features include:
+ * responsive design
+ * right sidebar
+ * custom header
+ * custom navigation bar, stick to top, hide/show on scroll
+ * menu areas in the navigation bar and in the footer
+ * widget area in the sidebar and in the footer
+ * jump to the top of the page button
+ * responsive image gallery
+ * display featured image
+ * recent posts grid widget
+
+== Limitations ==
+
+ * the footer menu only displays the top level menu
+ * automatic excerpts are not implemented, it's expected to add read more tag
+   or explicitly specify an excerpt for the post, otherwise the whole post is
+   displayed
+ * the custom header is only shown if header background image is set and
+   either or both the Site title / description and the Site logo are shown
+ * displaying vertical featured images is not ideal
 
 == Credit ==
 
