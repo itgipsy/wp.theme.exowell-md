@@ -162,6 +162,11 @@ if (! function_exists('seabadgermd_get_color_themes')) {
 				'name' => __('Red', 'seabadgermd'),
 				'css' => '/css/themes/mdb_red.css',
 				'style' => 'dark'
+			),
+			'mdb_green' => array(
+				'name' => __('Green', 'seabadgermd'),
+				'css' => '/css/themes/mdb_green.css',
+				'style' => 'dark'
 			)
 		);
 		return $colorThemes;
