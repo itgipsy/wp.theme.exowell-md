@@ -341,7 +341,7 @@ add_filter("the_password_form", "seabadgermd_format_passwordform");
 
 function seabadgermd_has_readmore() {
 	global $post;
-	if (has_excerpt($post) || (preg_match('/<!--more( .*? )?-->/', $post->post_content) || preg_match('/<!--nextpage-->/', $post->post_content))) {
+	if (has_excerpt($post) || (preg_match('/<!--more( .*? )?-->/', $post->post_content) || preg_match('/<!--nextpage-->/', $post->post_content)) || !$post->post_title) {
 		return true;
 	}
 	return false;
