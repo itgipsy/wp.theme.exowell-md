@@ -61,6 +61,11 @@ table.table a {
 	color: inherit;
 }
 
+.blockquote {
+	margin-bottom: 1rem;
+	font-size: 1.25rem;
+}
+
 /* Post */
 
 .post-wrapper {
