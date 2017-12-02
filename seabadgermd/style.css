@@ -32,6 +32,11 @@ main {
 	line-height: 45px;
 }
 
+.btn-social > i.fa {
+	font-size: 25px;
+	margin-top: 0;
+}
+
 .form-control:focus {
 	color: inherit;
 }
