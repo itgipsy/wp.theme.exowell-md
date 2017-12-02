@@ -48,6 +48,7 @@ This theme relies on the following GPL or GPL license compatible open source pro
  * jQuery (https://jquery.com) - JS library (MIT license)
  * Popper (https://popper.js.org) - JS library (MIT license)
  * Font Awesome (http://fontawesome.io/) - Icon Font library (SIL OFL 1.1,MIT license)
+ * Roboto, Roboto Slab fonts by Christian Robertson (Apache License 2.0)
 
 == License ==
 

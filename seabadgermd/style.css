@@ -2,7 +2,7 @@
 Theme Name: SeaBadgerMD
 Theme URI: https://seabadger.io/seabadgermd-wordpress-theme
 Description: Responsive Material Design WordPress blog theme
-Version: 0.6.3
+Version: 0.6.4
 Author: SeaBadger.io
 Author URI: https://seabadger.io/about
 License: GNU General Public License v3 or later
@@ -68,6 +68,10 @@ table.table a {
 
 pre {
 	color: inherit;
+}
+
+h1, h2, h3, h4 {
+	font-family: "Roboto Slab", Roboto, sans-serif;
 }
 
 /* Post */
@@ -307,6 +311,25 @@ nav.breadcrumb {
 	height: 0;
 	visibility: hidden;
 	overflow: hidden;
+}
+
+/* Font definition */
+@font-face {
+    font-family: 'Roboto Slab';
+    src: url('../font/roboto_slab/robotoslab-bold-webfont.woff2') format('woff2'),
+         url('../font/roboto_slab/robotoslab-bold-webfont.woff') format('woff'),
+         url('../font/roboto_slab/robotoslab-bold-webfont.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto Slab';
+    src: url('../font/roboto_slab/robotoslab-regular-webfont.woff2') format('woff2'),
+         url('../font/roboto_slab/robotoslab-regular-webfont.woff') format('woff'),
+         url('../font/roboto_slab/robotoslab-regular-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 

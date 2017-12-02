@@ -6,6 +6,13 @@ body#tinymce.wp-editor {
 	word-wrap: break-word;
 }
 
+body#tinymce.wp-editor h1,
+body#tinymce.wp-editor h2,
+body#tinymce.wp-editor h3,
+body#tinymce.wp-editor h4 {
+	font-family: "Roboto Slab", Roboto, sans-serif;
+}
+
 body#tinymce.wp-editor h1 {
 	font-weight: 300;
 	font-size: 2.5rem;
