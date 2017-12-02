@@ -1,10 +1,9 @@
 
 <?php
 	$navbar_class = '';
-	if (get_theme_mod('seabadgermd_navbar_fixing', 'off') =='on' && !get_theme_mod('navbar_remove', false)) {
+	if (get_theme_mod('seabadgermd_navbar_fixing', 'on') == 'on' && !get_theme_mod('navbar_remove', false)) {
 		$navbar_class .= ' fixed-top scrolling-navbar';
-		$header_class = 'fixed'; //using this to control main style via sibling selector
-		if (get_theme_mod('seabadgermd_navbar_transparent', false)) {
+		if (get_theme_mod('seabadgermd_navbar_transparent', true)) {
 			$navbar_class .= ' autohide';
 		}
 	}

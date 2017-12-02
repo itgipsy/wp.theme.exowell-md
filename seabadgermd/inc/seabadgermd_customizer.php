@@ -47,7 +47,7 @@ function seabadgermd_customize_register( $wp_customize ) {
 	));
 	/* Navbar fix on top */
 	$wp_customize->add_setting('seabadgermd_navbar_fixing', array(
-		'default' => 'scroll',
+		'default' => 'on',
 		'sanitize_callback' => 'seabadgermd_sanitize_onoff'
 	));
 	$wp_customize->add_control('seabadgermd_navbar_fixing', array(
@@ -62,7 +62,7 @@ function seabadgermd_customize_register( $wp_customize ) {
 	));
 	/* Hide/show navbar on scroll*/
 	$wp_customize->add_setting('seabadgermd_navbar_transparent', array(
-		'default' => false,
+		'default' => true,
 		'sanitize_callback' => 'seabadgermd_sanitize_checkbox'
 	));
 	$wp_customize->add_control('seabadgermd_navbar_transparent', array(
