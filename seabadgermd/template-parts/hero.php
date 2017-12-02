@@ -23,7 +23,7 @@ $hero_style .= 'background-size: cover;';
 	</div>
 <?php endif; **/?>
 		<div class="col-xs-12 col-md-10" style="color:#<?php echo $text_color; ?>!important">
-			<h1 class="display-3 hero-title" style="color:#<?php echo $text_color; ?>">
+			<h1 class="hero-title" style="color:#<?php echo $text_color; ?>">
 				<?php bloginfo('name'); ?>
 			</h1>
 			<p class="lead hero-description"><?php bloginfo('description'); ?></p>
@@ -32,7 +32,15 @@ $hero_style .= 'background-size: cover;';
 			if (has_custom_logo()) {
 		?>
 		<div class="col-xs-12 col-md-2 text-center hero-logo">
-				<?php the_custom_logo(); ?>
+				<?php
+					$custom_logo = get_custom_logo();
+					if (preg_match('/class=/', $custom_logo)) {
+						$custom_logo = str_replace('class="', 'class="img-fluid ', $custom_logo);
+					} else {
+						$custom_logo = str_replace('<img','<img class="img-fluid"', $custom_logo);
+					}
+					echo $custom_logo;
+				?>
 		</div>
 		<?php
 			}
