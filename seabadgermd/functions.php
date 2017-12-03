@@ -328,14 +328,14 @@ function seabadgermd_format_passwordform($output) {
 	$post = get_post();
 	$label = 'pwbox-' . ( empty($post->ID) ? rand() : $post->ID );
 	$output = '<form action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" class="post-password-form" method="post">
-		    <p>' . __( 'This content is password protected. To view it please enter your password below:' ) . '</p>
+		    <p>' . __( 'This content is password protected. To view it please enter your password below:', 'seabadgermd' ) . '</p>
 			<div class="form-row align-items-center">
 				<div class="col-auto">
-					<label for="' . $label . '" class="sr-only">' . __( 'Password:' ) . '</label>
-					<input class="form-control" name="post_password" id="' . $label . '" type="password" size="20" placeholder="' . __( 'Password' ) . '">
+					<label for="' . $label . '" class="sr-only">' . __( 'Password', 'seabadgermd' ) . '</label>
+					<input class="form-control" name="post_password" id="' . $label . '" type="password" size="20" placeholder="' . __( 'Password', 'seabadgermd' ) . '">
 				</div>
 				<div class="col-auto">
-					<input class="btn themecolor" type="submit" name="Submit" value="' . esc_attr_x( 'Enter', 'post password form' ) . '">
+					<input class="btn themecolor" type="submit" name="Submit" value="' . esc_attr_x( 'Enter', 'post password form', 'seabadgermd' ) . '">
 				</div>
 			</div>
 			</form>
