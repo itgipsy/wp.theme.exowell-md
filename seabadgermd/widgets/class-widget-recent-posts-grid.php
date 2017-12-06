@@ -16,7 +16,7 @@ class SBMD_Widget_Recent_Posts_Grid extends WP_Widget {
 			'description' => __( 'Show most recent posts of category with thumbnails', 'seabadgermd' ),
 			'customize_selective_refresh' => false,
 		);
-		parent::__construct( 'sbmd-recent-posts-grid', __( 'SeaBadgerMD Recent Posts Grid', 'seabadgermd' ), $widget_ops );
+		parent::__construct( 'sbmd-recent-posts-grid', __( 'Recent Posts Grid [SeaBadgerMD]', 'seabadgermd' ), $widget_ops );
 		$this->alt_option_name = 'sbmd_widget_recent_posts_grid';
 	}
 
