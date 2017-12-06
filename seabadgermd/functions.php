@@ -75,7 +75,10 @@ add_action('after_setup_theme', 'seabadgermd_setup');
 
 function seabadgermd_editor_style() {
 	// Add some text style to the editor
-	add_editor_style('css/editor.css');
+	add_editor_style('css/bootstrap.min.css');
+	add_editor_style('css/mdb.min.css');
+	add_editor_style('style.css');
+	add_editor_style(seabadgermd_get_colortheme_css());
 }
 add_action('admin_init', 'seabadgermd_editor_style');
 
@@ -87,16 +90,20 @@ add_filter('next_posts_link_attributes', 'seabadgermd_posts_link_attributes');
 add_filter('previous_posts_link_attributes', 'seabadgermd_posts_link_attributes');
 
 
-
-/* Load custom CSS based on the selected color theme and settings */
-function seabadgermd_customize_css()
-{
+/* Fetch path of current color theme css */
+function seabadgermd_get_colortheme_css() {
 	$colorTheme = get_theme_mod('seabadgermd_color_theme');
 	if (!seabadgermd_color_theme_exists($colorTheme)) {
 		$colorTheme = 'mdb_dark';
 	}
 	$colorThemeConf = seabadgermd_get_color_theme($colorTheme);
-	wp_enqueue_style( 'ColorTheme_css', get_template_directory_uri() . $colorThemeConf['css'] );
+	return $colorThemeConf['css'];
+}
+
+/* Load custom CSS based on the selected color theme and settings */
+function seabadgermd_customize_css()
+{
+	wp_enqueue_style( 'ColorTheme_css', get_template_directory_uri() . seabadgermd_get_colortheme_css() );
 }
 add_action( 'wp_enqueue_scripts', 'seabadgermd_customize_css');
 
