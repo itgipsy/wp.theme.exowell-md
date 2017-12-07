@@ -11,8 +11,11 @@
 					the_post();
 			?>
 			<!--Post-->
+			<div <?php post_class('card post-wrapper'); ?>>
+				<?php get_template_part('template-parts/content', get_post_format()); ?>
+			</div>
+			<!--/Post-->
 			<?php
-					get_template_part('template-parts/content', get_post_format());
 				}
 			}
 			?>

@@ -11,7 +11,10 @@
 					the_post();
 			?>
 			<!--Post-->
-			<?php get_template_part('template-parts/content', get_post_format()); ?>
+			<div <?php post_class('card post-wrapper'); ?>>
+				<?php get_template_part('template-parts/content-single', get_post_format()); ?>
+			</div>
+			<!--/Post-->
 			<?php
 				}
 			}
