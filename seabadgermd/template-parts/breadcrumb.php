@@ -33,7 +33,7 @@ function seabadgermd_breadcrumbs() {
 				$post_type_object = get_post_type_object($post_type);
 				$post_type_archive = get_post_type_archive_link($post_type);
 			  
-				echo '<a class="breadcrumb-item" href="' . $post_type_archive . '" title="' . $post_type_object->labels->name . '">' . $post_type_object->labels->name . '</a>';
+				echo '<a class="breadcrumb-item" href="' . $post_type_archive . '" title="' . wp_strip_all_tags($post_type_object->labels->name) . '">' . $post_type_object->labels->name . '</a>';
 			  
 			}
 			  
@@ -51,7 +51,7 @@ function seabadgermd_breadcrumbs() {
 				$post_type_object = get_post_type_object($post_type);
 				$post_type_archive = get_post_type_archive_link($post_type);
 			  
-				echo '<a class="breadcrumb-item" href="' . $post_type_archive . '" title="' . $post_type_object->labels->name . '">' . $post_type_object->labels->name . '</a>';
+				echo '<a class="breadcrumb-item" href="' . $post_type_archive . '" title="' . wp_strip_all_tags($post_type_object->labels->name) . '">' . $post_type_object->labels->name . '</a>';
 			}
 			  
 			// Get post category info
@@ -90,17 +90,17 @@ function seabadgermd_breadcrumbs() {
 			// Check if the post is in a category
 			if(!empty($last_category)) {
 				echo $cat_display;
-				echo '<span class="breadcrumb-item active" title="' . get_the_title() . '">' . get_the_title() . '</span>';
+				echo '<span class="breadcrumb-item active" title="' . wp_strip_all_tags(get_the_title()) . '">' . get_the_title() . '</span>';
 				  
 			// Else if post is in a custom taxonomy
 			} else if(!empty($cat_id)) {
 				  
 				echo '<a class="breadcrumb-item" href="' . $cat_link . '" title="' . $cat_name . '">' . $cat_name . '</a>';
-				echo '<span class="breadcrumb-item active" title="' . get_the_title() . '">' . get_the_title() . '</span>';
+				echo '<span class="breadcrumb-item active" title="' . wp_strip_all_tags(get_the_title()) . '">' . get_the_title() . '</span>';
 			  
 			} else {
 				  
-				echo '<span class="breadcrumb-item active" title="' . get_the_title() . '">' . get_the_title() . '</span>';
+				echo '<span class="breadcrumb-item active" title="' . wp_strip_all_tags(get_the_title()) . '">' . get_the_title() . '</span>';
 				  
 			}
 			  
@@ -123,14 +123,14 @@ function seabadgermd_breadcrumbs() {
 				// Parent page loop
 				if ( !isset( $parents ) ) $parents = null;
 				foreach ( $anc as $ancestor ) {
-					$parents .= '<a class="breadcrumb-item" href="' . get_permalink($ancestor) . '" title="' . get_the_title($ancestor) . '">' . get_the_title($ancestor) . '</a>';
+					$parents .= '<a class="breadcrumb-item" href="' . get_permalink($ancestor) . '" title="' . wp_strip_all_tags(get_the_title($ancestor)) . '">' . get_the_title($ancestor) . '</a>';
 				}
 				   
 				// Display parent pages
 				echo $parents;
 				   
 				// Current page
-				echo '<span class="breadcrumb-item active" title="' . get_the_title() . '"> ' . get_the_title() . '</span>';
+				echo '<span class="breadcrumb-item active" title="' . wp_strip_all_tags(get_the_title()) . '"> ' . get_the_title() . '</span>';
 				   
 			} else {
 				   
@@ -184,7 +184,7 @@ function seabadgermd_breadcrumbs() {
 			echo '<span class="breadcrumb-item active" title="Page ' . get_query_var('paged') . '">'.__('Page', 'seabadgermd') . ' ' . get_query_var('paged') . '</span>';
 		} else if ( is_search() ) {
 			// Search results page
-			echo '<span class="breadcrumb-item active" title="Search results for: ' . get_search_query() . '">Search results for: ' . get_search_query() . '</span>';
+			echo '<span class="breadcrumb-item active" title="Search results for: ' . wp_strip_all_tags(get_search_query()) . '">Search results for: ' . get_search_query() . '</span>';
 		} elseif ( is_404() ) {
 			// 404 page
 			echo '<span class="breadcrumb-item active">' . 'Error 404' . '</span>';
