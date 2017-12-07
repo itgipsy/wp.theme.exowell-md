@@ -1,6 +1,5 @@
 <?php get_header(); ?>
 <main>
-<span id="top" style="display:none"></span>
 <!--Main layout-->
 <div class="container">
 	<div class="row">

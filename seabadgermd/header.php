@@ -15,6 +15,7 @@
 		}
 	?>
 	<header class="page_header <?php echo $header_class; ?>">
+		<span id="top" style="display:none"></span>
 		<?php get_template_part('template-parts/navbar'); ?>
 		<?php get_template_part('template-parts/hero'); ?>
 		<?php get_template_part('template-parts/breadcrumb'); ?>
