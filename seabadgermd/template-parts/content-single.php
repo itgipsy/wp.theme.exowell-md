@@ -5,6 +5,9 @@
 	<div class="card-text post-content">
 		<?php
 			the_content();
+		?>
+		<br class="clear">
+		<?php
 			$wplink_options = array(
 				'before'           => '<div class="row"><div class="post-paging col-12">' . __('Jump to page ', 'seabadgermd'),
 				'after'            => '</div></div>',
@@ -26,7 +29,6 @@
 			?></div><?php // end comment section
 			}
 		?>
-		<br class="clear">
 		<?php get_template_part('template-parts/content/footer'); ?>
 	</div>
 </div>
