@@ -2,7 +2,7 @@
 <!--Footer-->
 <footer class="container page-footer themecolor">
 	<div class="row">
-		<div class="footer-widget col-xs-6 col-md-3">
+		<div class="footer-widget col-md-6 col-lg-3">
 			<?php
 				if (is_active_sidebar('footer')) {
 					dynamic_sidebar('footer');
@@ -14,7 +14,7 @@
 		<?php
 			if (has_nav_menu('footer')) {
 		?>
-		<div class="footer-menu col-xs-6 col-md-5">
+		<div class="footer-menu col-md-6 col-lg-5">
 			<?php
 			wp_nav_menu( array(
 				'menu' => 'footer',
@@ -30,7 +30,7 @@
 		<!--/Footer menu-->
 	
 		<!--Copyright-->
-		<div class="footer-copyright col-xs-12 col-md-4">
+		<div class="footer-copyright col-md-12 col-lg-4">
 			<?php
 				printf('Copyright &copy; %s <a href="%s" rel="nofollow">%s</a>',
 					date("Y"), get_site_url(), get_bloginfo('name'));
