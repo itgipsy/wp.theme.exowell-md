@@ -2,7 +2,7 @@
 Theme Name: SeaBadgerMD
 Theme URI: https://seabadger.io/seabadgermd-wordpress-theme
 Description: Responsive Material Design WordPress blog theme
-Version: 0.7.7
+Version: 0.8.0
 Author: SeaBadger.io
 Author URI: https://seabadger.io/about
 License: GNU General Public License v3 or later
@@ -80,6 +80,17 @@ h1, h2, h3, h4 {
 }
 
 /* Post */
+
+@media (max-width: 576px) {
+	.posts-col {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.btn {
+		font-size: .6rem;
+		padding: .5rem 1.6rem;
+	}
+}
 
 .post-wrapper {
 	margin-bottom: 2rem;
