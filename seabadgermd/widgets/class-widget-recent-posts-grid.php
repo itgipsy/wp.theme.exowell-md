@@ -86,7 +86,7 @@ class SBMD_Widget_Recent_Posts_Grid extends WP_Widget {
 							$title      = ( ! empty( $post_title ) ) ? $post_title : __( '(no title)', 'seabadgermd' );
 							printf('<a href="%s" title="%s">', 
 								get_the_permalink( $recent_post->ID ),
-								$title);
+								wp_strip_all_tags($title));
 							if (get_post_thumbnail_id($recent_post->ID)) {
 								echo get_the_post_thumbnail($recent_post->ID, 'thumbnail', array('class' => 'img-fluid'));
 							} else {
