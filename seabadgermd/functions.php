@@ -21,15 +21,14 @@ require_once('inc/mdb_pagination.php');
  * Include CSS/JS dependencies 
  */
 function theme_enqueue_scripts() {
-	wp_enqueue_style( 'Font_Awesome', SBMD_THEME_DIR_URI . '/css/font-awesome.min.css', array(), '4.7.0' );
-	wp_enqueue_style( 'Bootstrap_css', SBMD_THEME_DIR_URI . '/css/bootstrap.min.css', array(), '4.0.0' );
-	wp_enqueue_style( 'MDB_css', SBMD_THEME_DIR_URI . '/css/mdb.min.css', array(), '4.4.3' );
-	wp_enqueue_style( 'Style', SBMD_THEME_DIR_URI . '/style.css', array(), SBMD_THEME_VERSION );
-	wp_enqueue_script( 'jQuery', SBMD_THEME_DIR_URI . '/js/jquery-3.2.1.min.js', array(), '3.2.1', true );
-	wp_enqueue_script( 'Tether', SBMD_THEME_DIR_URI . '/js/popper.min.js', array(), '1.0.0', true );
-	wp_enqueue_script( 'Bootstrap', SBMD_THEME_DIR_URI . '/js/bootstrap.min.js', array(), '4.0.0', true );
-	wp_enqueue_script( 'MDB', SBMD_THEME_DIR_URI . '/js/mdb.min.js', array(), '4.4.3', true );
-	wp_enqueue_script( 'SBMDJS', SBMD_THEME_DIR_URI . '/js/site.js', array(), SBMD_THEME_VERSION, true );
+	wp_enqueue_style( 'SBMD_Font_Awesome', SBMD_THEME_DIR_URI . '/css/font-awesome.min.css', array(), '4.7.0' );
+	wp_enqueue_style( 'SBMD_Bootstrap_css', SBMD_THEME_DIR_URI . '/css/bootstrap.min.css', array(), '4.0.0' );
+	wp_enqueue_style( 'SBMD_MDB_css', SBMD_THEME_DIR_URI . '/css/mdb.min.css', array(), '4.4.3' );
+	wp_enqueue_style( 'SBMDStyle', SBMD_THEME_DIR_URI . '/style.css', array(), SBMD_THEME_VERSION );
+	wp_enqueue_script( 'SBMD_Tether', SBMD_THEME_DIR_URI . '/js/popper.min.js', array(), '1.0.0', true );
+	wp_enqueue_script( 'SBMD_Bootstrap', SBMD_THEME_DIR_URI . '/js/bootstrap.js', array('jquery'), '4.0.0', true );
+	wp_enqueue_script( 'SBMD_MDB', SBMD_THEME_DIR_URI . '/js/mdb.js', array('jquery'), '4.4.3', true );
+	wp_enqueue_script( 'SBMDJS', SBMD_THEME_DIR_URI . '/js/site.js', array('jquery'), SBMD_THEME_VERSION, true );
 }
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_scripts' );
 
@@ -353,7 +352,8 @@ add_filter("the_password_form", "seabadgermd_format_passwordform");
 
 function seabadgermd_has_readmore() {
 	global $post;
-	if (has_excerpt($post) || (preg_match('/<!--more( .*? )?-->/', $post->post_content) || preg_match('/<!--nextpage-->/', $post->post_content)) || !$post->post_title) {
+	if (has_excerpt($post) || (preg_match('/<!--more( .*? )?-->/', $post->post_content) || 
+		preg_match('/<!--nextpage-->/', $post->post_content)) || !$post->post_title) {
 		return true;
 	}
 	return false;

@@ -13383,18 +13383,20 @@ WOW.prototype.doSync = function (node) {
 
 };
 
-'use strict';
+(function ($) {
+  'use strict';
 
-/* SCROLLING NAVBAR */
-var OFFSET_TOP = 50;
+  /* SCROLLING NAVBAR */
+  var OFFSET_TOP = 50;
 
-$(window).scroll(function () {
-  if ($('.navbar').offset().top > OFFSET_TOP) {
-    $('.scrolling-navbar').addClass('top-nav-collapse');
-  } else {
-    $('.scrolling-navbar').removeClass('top-nav-collapse');
-  }
-});
+  $(window).scroll(function () {
+    if ($('.navbar').offset().top > OFFSET_TOP) {
+      $('.scrolling-navbar').addClass('top-nav-collapse');
+    } else {
+      $('.scrolling-navbar').removeClass('top-nav-collapse');
+    }
+  });
+})(jQuery);
 /*!
  * Waves v0.7.5
  * http://fian.my.id/Waves
@@ -14152,23 +14154,25 @@ Waves.init();
     office@mdbootstrap.com
 */
 
-$('body').on('shown.bs.modal', '.modal', function() {
-    if($('.modal-backdrop').length) {
-    } else {
-
-        $modal_dialog = $(this).children('.modal-dialog')
-
-        if($modal_dialog.hasClass('modal-side')) {
-            $(this).addClass('modal-scrolling');
-            $('body').addClass('scrollable');
-        }
-
-        if($modal_dialog.hasClass('modal-frame')) {
-            $(this).addClass('modal-content-clickable');
-            $('body').addClass('scrollable');
-        }
-    }
-});
-$('body').on('hidden.bs.modal', '.modal', function() {
-    $('body').removeClass('scrollable');
-});
+(function ($) {
+  $('body').on('shown.bs.modal', '.modal', function() {
+      if($('.modal-backdrop').length) {
+      } else {
+  
+          $modal_dialog = $(this).children('.modal-dialog')
+  
+          if($modal_dialog.hasClass('modal-side')) {
+              $(this).addClass('modal-scrolling');
+              $('body').addClass('scrollable');
+          }
+  
+          if($modal_dialog.hasClass('modal-frame')) {
+              $(this).addClass('modal-content-clickable');
+              $('body').addClass('scrollable');
+          }
+      }
+  });
+  $('body').on('hidden.bs.modal', '.modal', function() {
+      $('body').removeClass('scrollable');
+  });
+})(jQuery);
