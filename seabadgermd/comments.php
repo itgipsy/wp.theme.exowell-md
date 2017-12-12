@@ -4,7 +4,7 @@
  */
 
 if ( !empty( $_SERVER['SCRIPT_FILENAME'] ) && 'comments.php' == basename( $_SERVER['SCRIPT_FILENAME'] ) )
-	die ( 'Can not load page directly' );
+	die ( __('Can not load page directly', 'seabadgermd') );
 
 if ( post_password_required() ) {
 	?><p class="alert alert-danger"><?php _e( 'This post is password protected. Enter the password to view comments.', 'seabadgermd' ); ?></p><?php

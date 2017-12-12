@@ -113,9 +113,9 @@ add_action( 'wp_enqueue_scripts', 'seabadgermd_customize_css');
 function seabadgermd_widgets_init() {
 
 	register_sidebar( array(
-		'name'			=> 'Sidebar',
+		'name'			=> __('Sidebar', 'seabadgermd'),
 		'id'			=> 'sidebar',
-		'description'	=> 'Main sidebar',
+		'description'	=> __('Main sidebar', 'seabadgermd'),
 		'before_widget' => '<div id="%1$s" class="card widget %2$s"><div class="card-body">',
 		'after_widget'	=> '</div></div>',
 		'before_title'	=> '<div class="card-title widget-title themecolor">',
@@ -123,9 +123,9 @@ function seabadgermd_widgets_init() {
 	) );
 
 	register_sidebar( array(
-		'name'			=> 'Footer',
+		'name'			=> __('Footer', 'seabadgermd'),
 		'id'			=> 'footer',
-		'description'	=> 'Footer area',
+		'description'	=> __('Footer area', 'seabadgermd'),
 		'before_widget' => '',
 		'after_widget'	=> '',
 		'before_title'	=> '<span style="display:none">',
@@ -178,7 +178,7 @@ function seabadgermd_comments_callback( $comment, $args, $depth ) {
 		<?php echo get_avatar($comment, $args['avatar_size'], null, '', array('class' => 'd-flex rounded-circle mr-3')); ?>
 		<div class="col-12 media-body comment">
 			<h5 class="mt-0 comment-header"><?php echo get_comment_author_link( $comment ); ?>
-				<?php printf('%s ago', human_time_diff(get_comment_time( 'U' ), current_time( 'timestamp' ))); ?>
+				<?php printf(__('%s ago', 'seabadgermd'), human_time_diff(get_comment_time( 'U' ), current_time( 'timestamp' ))); ?>
 			</h5>
 			<?php
 				if ( '0' == $comment->comment_approved ) {

@@ -1,4 +1,3 @@
-
 <!--Footer-->
 <footer class="container page-footer themecolor">
 	<div class="row">
@@ -32,7 +31,7 @@
 		<!--Copyright-->
 		<div class="footer-copyright col-md-12 col-lg-4">
 			<?php
-				printf('Copyright &copy; %s <a href="%s" rel="nofollow">%s</a>',
+				printf(__('Copyright &copy; %s <a href="%s" rel="nofollow">%s</a>', 'seabadgermd'),
 					date("Y"), get_site_url(), get_bloginfo('name'));
 			?>
 		</div>
