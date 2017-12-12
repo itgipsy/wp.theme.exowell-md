@@ -31,7 +31,7 @@
 		<!--Copyright-->
 		<div class="footer-copyright col-md-12 col-lg-4">
 			<?php
-				printf(__('Copyright &copy; %s <a href="%s" rel="nofollow">%s</a>', 'seabadgermd'),
+				printf(__('Copyright &copy; %1$s <a href="%2$s" rel="nofollow">%3$s</a>', 'seabadgermd'),
 					date("Y"), get_site_url(), get_bloginfo('name'));
 			?>
 		</div>

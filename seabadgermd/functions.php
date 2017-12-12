@@ -283,7 +283,7 @@ function seabadgermd_post_gallery($output, $attr) {
 		if ($i === 0) $output .= '<div class="row">';
         $output .= sprintf("<div class='col-xs-12 col-md-%d gallery-item'>", $itemwidth);
 		$get_icon = isset($attr['link']) && 'file' == $attr['link'];
-		$src = wp_get_attachment_image_src($id, $size, $get_icon)[0];
+		$src = (wp_get_attachment_image_src($id, $size, $get_icon))[0];
 		$srcs = array();
 		foreach (get_intermediate_image_sizes() as $s) {
 			$imgsrc = wp_get_attachment_image_src($id, $s, $get_icon);
