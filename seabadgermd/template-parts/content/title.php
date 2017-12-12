@@ -5,7 +5,7 @@
 	<h4 class="card-title post-title <?php echo ($is_sticky) ? 'sticky' : ''; ?>">
 		<?php the_title(); ?>
 		<?php
-			if ($is_sticky) echo '<i class="fa fa-anchor sticky_icon" aria-label="Sticky post"></i>';
+			if ($is_sticky) echo '<i class="fa fa-anchor sticky_icon" aria-label="' . __('Sticky post', 'seabadgermd') . '"></i>';
 		?>
 	</h4>
 </a>

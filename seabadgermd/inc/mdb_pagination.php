@@ -24,7 +24,7 @@ function mdb_pagination() {
 			if ( get_previous_posts_link() ) {
 				printf( ' <li>%s</li>
 					' . "\n", get_previous_posts_link('
-					<span aria-hidden="true"><i class="fa fa-angle-left"></i></span><span class="sr-only">Previous</span>
+					<span aria-hidden="true"><i class="fa fa-angle-left"></i></span><span class="sr-only">' . __('Previous', 'seabadgermd') . '</span>
 					')
 				);
 			}
@@ -49,7 +49,8 @@ function mdb_pagination() {
 			/** Next Post Link */
 			if ( get_next_posts_link() ) {
 				printf( '<li class="page-item">%s</li>
-				 ' . "\n", get_next_posts_link('<span aria-hidden="true"><i class="fa fa-angle-right"></i></span><span class="sr-only">Next</span>')
+          ' . "\n", get_next_posts_link('<span aria-hidden="true"><i class="fa fa-angle-right"></i></span><span class="sr-only">' .
+          __('Next', 'seabadgermd') . '</span>')
 				);
 			}
 		echo '</ul>' . "\n";

@@ -4,7 +4,7 @@
 function seabadgermd_breadcrumbs() {
 	// Settings
 	if (!get_theme_mod('seabadgermd_breadcrumb_show', false)) return;
-	$home_title		 = get_theme_mod('seabadgermd_breadcrumb_home', 'Homepage');
+	$home_title		 = get_theme_mod('seabadgermd_breadcrumb_home', __('Homepage', 'seabadgermd'));
 	  
 	// If you have any custom post types with custom taxonomies, put the taxonomy name below (e.g. product_cat)
 	$custom_taxonomy	= 'product_cat';
@@ -181,13 +181,15 @@ function seabadgermd_breadcrumbs() {
 			echo '<span class="breadcrumb-item active" title="' . $userdata->display_name . '"><i class="fa fa-user"></i> ' . $userdata->display_name . '</span>';
 		} else if ( get_query_var('paged') ) {
 			// Paginated archives
-			echo '<span class="breadcrumb-item active" title="Page ' . get_query_var('paged') . '">'.__('Page', 'seabadgermd') . ' ' . get_query_var('paged') . '</span>';
+      echo '<span class="breadcrumb-item active" title="' . __('Page', 'seabadgermd') . 
+        get_query_var('paged') . '">'.__('Page', 'seabadgermd') . ' ' . get_query_var('paged') . '</span>';
 		} else if ( is_search() ) {
 			// Search results page
-			echo '<span class="breadcrumb-item active" title="Search results for: ' . wp_strip_all_tags(get_search_query()) . '">Search results for: ' . get_search_query() . '</span>';
+      echo '<span class="breadcrumb-item active" title="' . __('Search results for: ', 'seabadgermd') .
+        wp_strip_all_tags(get_search_query()) . '">' . __('Search results for: ', 'seabadgermd') . get_search_query() . '</span>';
 		} elseif ( is_404() ) {
 			// 404 page
-			echo '<span class="breadcrumb-item active">' . 'Error 404' . '</span>';
+			echo '<span class="breadcrumb-item active">' . __('Error 404', 'seabadgermd') . '</span>';
 		}
 		else if ( is_archive() && !is_tax() && !is_category() && !is_tag() ) {
 			echo '<span class="breadcrumb-item active">' . post_type_archive_title($prefix, false) . '</span>';
