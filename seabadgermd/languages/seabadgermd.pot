@@ -1,0 +1,368 @@
+# Copyright (C) 2017 SeaBadger.io
+# This file is distributed under the GNU General Public License v3 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: SeaBadgerMD 0.9.1\n"
+"Report-Msgid-Bugs-To: https://github.com/seabadger-io/wp.theme.seabadger-md/issues\n"
+"POT-Creation-Date: 2017-12-12 14:51:34+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Gabor Szoboszlai <sb@seabadger.io>\n"
+"Language-Team: SeaBadger <blog@seabadger.io>\n"
+
+#: 404.php:13
+msgid "404 - Not found"
+msgstr ""
+
+#: 404.php:14
+msgid ""
+"Sorry, the content you are looking for is not available. Best I can offer "
+"you is this search bar. \n"
+"            Please feel free to use it and hope you will find what you are "
+"looking for."
+msgstr ""
+
+#: comments.php:7
+msgid "Can not load page directly"
+msgstr ""
+
+#: comments.php:10
+msgid "This post is password protected. Enter the password to view comments."
+msgstr ""
+
+#: comments.php:18
+msgid "%1$s response to %2$s"
+msgid_plural "%1$s responses to %2$s"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:30
+msgid "Older comments"
+msgstr ""
+
+#: comments.php:36
+msgid "Newer comments"
+msgstr ""
+
+#: comments.php:43
+msgid "Comments are disabled"
+msgstr ""
+
+#: comments.php:49 template-parts/content.php:25
+msgid "Comment"
+msgstr ""
+
+#: footer.php:34
+msgid "Copyright &copy; %s <a href=\"%s\" rel=\"nofollow\">%s</a>"
+msgstr ""
+
+#: functions.php:49
+msgid "Navbar Menu"
+msgstr ""
+
+#: functions.php:50
+msgid "Footer Menu"
+msgstr ""
+
+#: functions.php:116
+msgid "Sidebar"
+msgstr ""
+
+#: functions.php:118
+msgid "Main sidebar"
+msgstr ""
+
+#: functions.php:126
+msgid "Footer"
+msgstr ""
+
+#: functions.php:128
+msgid "Footer area"
+msgstr ""
+
+#: functions.php:149
+msgid "Next post"
+msgstr ""
+
+#: functions.php:156
+msgid "Previous post"
+msgstr ""
+
+#: functions.php:181
+msgid "%s ago"
+msgstr ""
+
+#: functions.php:185
+msgid "You comment is awaiting moderation"
+msgstr ""
+
+#: functions.php:195
+msgid "Edit"
+msgstr ""
+
+#: functions.php:337
+msgid ""
+"This content is password protected. To view it please enter your password "
+"below:"
+msgstr ""
+
+#: functions.php:340 functions.php:341
+msgid "Password"
+msgstr ""
+
+#: functions.php:344
+msgctxt "post password form"
+msgid "Enter"
+msgstr ""
+
+#: inc/mdb_pagination.php:27
+msgid "Previous"
+msgstr ""
+
+#: inc/mdb_pagination.php:53
+msgid "Next"
+msgstr ""
+
+#: inc/seabadgermd_customizer.php:13
+msgid "Color theme"
+msgstr ""
+
+#: inc/seabadgermd_customizer.php:14
+msgid "Defines tone of the theme"
+msgstr ""
+
+#: inc/seabadgermd_customizer.php:19
+msgid "Navigation bar"
+msgstr ""
+
+#: inc/seabadgermd_customizer.php:30
+msgid "Hide navigation bar"
+msgstr ""
+
+#: inc/seabadgermd_customizer.php:31
+msgid "Hide top navigation bar"
+msgstr ""
+
+#: inc/seabadgermd_customizer.php:41
+msgid "Search bar"
+msgstr ""
+
+#: inc/seabadgermd_customizer.php:42
+msgid "Show search form in navigation bar"
+msgstr ""
+
+#: inc/seabadgermd_customizer.php:44
+msgid "Show"
+msgstr ""
+
+#: inc/seabadgermd_customizer.php:45
+msgid "Hide"
+msgstr ""
+
+#: inc/seabadgermd_customizer.php:56
+msgid "Navbar fixed on top"
+msgstr ""
+
+#: inc/seabadgermd_customizer.php:57
+msgid "Fix the navigation bar on the top of the screen"
+msgstr ""
+
+#: inc/seabadgermd_customizer.php:59
+msgid "Fixed"
+msgstr ""
+
+#: inc/seabadgermd_customizer.php:60
+msgid "Scrolling"
+msgstr ""
+
+#: inc/seabadgermd_customizer.php:71
+msgid "Transparent navbar"
+msgstr ""
+
+#: inc/seabadgermd_customizer.php:72
+msgid "Hide/show the main navigation bar on scroll (when fixed)"
+msgstr ""
+
+#: inc/seabadgermd_customizer.php:76
+msgid "Breadcrumb"
+msgstr ""
+
+#: inc/seabadgermd_customizer.php:86
+msgid "Display breadcrumb"
+msgstr ""
+
+#: inc/seabadgermd_customizer.php:95
+msgid "Homepage text"
+msgstr ""
+
+#: inc/seabadgermd_customizer.php:96
+msgid "Text of the link pointing to the homepage"
+msgstr ""
+
+#: inc/seabadgermd_customizer.php:142
+msgid "Dark"
+msgstr ""
+
+#: inc/seabadgermd_customizer.php:147
+msgid "Blue"
+msgstr ""
+
+#: inc/seabadgermd_customizer.php:152
+msgid "Light"
+msgstr ""
+
+#: inc/seabadgermd_customizer.php:157
+msgid "Brown"
+msgstr ""
+
+#: inc/seabadgermd_customizer.php:162
+msgid "Red"
+msgstr ""
+
+#: inc/seabadgermd_customizer.php:167
+msgid "Green"
+msgstr ""
+
+#: searchform.php:7 searchform.php:11 template-parts/navbar.php:48
+#: template-parts/navbar.php:49
+msgid "Search"
+msgstr ""
+
+#: template-parts/breadcrumb.php:7
+msgid "Homepage"
+msgstr ""
+
+#: template-parts/breadcrumb.php:184 template-parts/breadcrumb.php:185
+msgid "Page"
+msgstr ""
+
+#: template-parts/breadcrumb.php:188 template-parts/breadcrumb.php:189
+msgid "Search results for: "
+msgstr ""
+
+#: template-parts/breadcrumb.php:192
+msgid "Error 404"
+msgstr ""
+
+#: template-parts/content/footer.php:4
+msgid "Tagged with "
+msgstr ""
+
+#: template-parts/content/meta.php:5
+msgid "Author"
+msgstr ""
+
+#: template-parts/content/meta.php:14
+msgid "Posted on"
+msgstr ""
+
+#: template-parts/content/meta.php:27
+msgid "Post categories"
+msgstr ""
+
+#: template-parts/content/title.php:8
+msgid "Sticky post"
+msgstr ""
+
+#: template-parts/content-single.php:12
+msgid "Jump to page "
+msgstr ""
+
+#: template-parts/content.php:20
+msgid "Read more"
+msgstr ""
+
+#: template-parts/content.php:26
+msgid "View comment"
+msgstr ""
+
+#: template-parts/content.php:27
+msgid "View comments (%)"
+msgstr ""
+
+#: template-parts/content.php:29
+msgid "Comments off"
+msgstr ""
+
+#: template-parts/navbar.php:22
+msgid "Toggle navigation"
+msgstr ""
+
+#: template-parts/navbar.php:39
+msgid ""
+"Please assign Navbar Menu in Wordpress Admin -> Appearance -> Menus -> "
+"Manage Locations"
+msgstr ""
+
+#: widgets/class-widget-recent-posts-grid.php:16
+msgid "Show most recent posts of category with thumbnails"
+msgstr ""
+
+#: widgets/class-widget-recent-posts-grid.php:19
+msgid "Recent Posts Grid [SeaBadgerMD]"
+msgstr ""
+
+#: widgets/class-widget-recent-posts-grid.php:86
+msgid "(no title)"
+msgstr ""
+
+#: widgets/class-widget-recent-posts-grid.php:148
+#: widgets/class-wp-widget-archives.php:168
+msgid "Title:"
+msgstr ""
+
+#: widgets/class-widget-recent-posts-grid.php:152
+msgid "Number of rows:"
+msgstr ""
+
+#: widgets/class-widget-recent-posts-grid.php:157
+msgid "Number of columns:"
+msgstr ""
+
+#: widgets/class-widget-recent-posts-grid.php:164
+msgid ""
+"List posts only from the category of current page and its parent categories"
+msgstr ""
+
+#: widgets/class-wp-widget-archives.php:19
+msgid "A monthly archive of your site&#8217;s Posts."
+msgstr ""
+
+#: widgets/class-wp-widget-archives.php:22
+#: widgets/class-wp-widget-archives.php:39
+msgid "Archives"
+msgstr ""
+
+#: widgets/class-wp-widget-archives.php:72
+msgid "Select Year"
+msgstr ""
+
+#: widgets/class-wp-widget-archives.php:75
+msgid "Select Month"
+msgstr ""
+
+#: widgets/class-wp-widget-archives.php:78
+msgid "Select Day"
+msgstr ""
+
+#: widgets/class-wp-widget-archives.php:81
+msgid "Select Week"
+msgstr ""
+
+#: widgets/class-wp-widget-archives.php:84
+msgid "Select Post"
+msgstr ""
+
+#: widgets/class-wp-widget-archives.php:170
+msgid "Display as dropdown"
+msgstr ""
+
+#: widgets/class-wp-widget-archives.php:172
+msgid "Show post counts"
+msgstr ""
+
+#: widgets/class-wp-widget-archives.php:175
+msgid "Limit displayed items to:"
+msgstr ""
