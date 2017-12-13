@@ -19,7 +19,7 @@
 				}
 			}
 			?>
-			<?php mdb_pagination(); ?>
+			<?php seabadgermd_pagination(); ?>
 		</div>
 		<!--Sidebar-->
 		<?php get_sidebar(); ?>

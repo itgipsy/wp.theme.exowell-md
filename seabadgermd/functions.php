@@ -1,12 +1,12 @@
 <?php
 
 // Theme Constants
-define( 'SBMD_THEME_DIR', get_template_directory() );
-define( 'SBMD_THEME_DIR_URI', get_template_directory_uri() );
-define( 'SBMD_STYLESHEET_DIR', get_stylesheet_directory() );
-define( 'SBMD_STYLESHEET_DIR_URI', get_stylesheet_directory_uri() );
+define( 'SEABADGERMD_THEME_DIR', get_template_directory() );
+define( 'SEABADGERMD_THEME_DIR_URI', get_template_directory_uri() );
+define( 'SEABADGERMD_STYLESHEET_DIR', get_stylesheet_directory() );
+define( 'SEABADGERMD_STYLESHEET_DIR_URI', get_stylesheet_directory_uri() );
 $sbmd_theme = wp_get_theme();
-define( 'SBMD_THEME_VERSION', $sbmd_theme->get( 'Version' ) );
+define( 'SEABADGERMD_THEME_VERSION', $sbmd_theme->get( 'Version' ) );
 
 /**
 * Include external files
@@ -21,14 +21,14 @@ require_once( 'inc/mdb-pagination.php' );
  * Include CSS/JS dependencies
  */
 function theme_enqueue_scripts() {
-	wp_enqueue_style( 'SBMD_Font_Awesome', SBMD_THEME_DIR_URI . '/css/font-awesome.min.css', array(), '4.7.0' );
-	wp_enqueue_style( 'SBMD_Bootstrap_css', SBMD_THEME_DIR_URI . '/css/bootstrap.min.css', array(), '4.0.0' );
-	wp_enqueue_style( 'SBMD_MDB_css', SBMD_THEME_DIR_URI . '/css/mdb.min.css', array(), '4.4.3' );
-	wp_enqueue_style( 'SBMDStyle', SBMD_THEME_DIR_URI . '/style.css', array(), SBMD_THEME_VERSION );
-	wp_enqueue_script( 'SBMD_Tether', SBMD_THEME_DIR_URI . '/js/popper.min.js', array(), '1.0.0', true );
-	wp_enqueue_script( 'SBMD_Bootstrap', SBMD_THEME_DIR_URI . '/js/bootstrap.min.js', array( 'jquery', 'SBMD_Tether' ), '4.0.0', true );
-	wp_enqueue_script( 'SBMD_MDB', SBMD_THEME_DIR_URI . '/js/mdb.min.js', array( 'SBMD_Bootstrap' ), '4.4.3', true );
-	wp_enqueue_script( 'SBMDJS', SBMD_THEME_DIR_URI . '/js/site.min.js', array( 'SBMD_MDB' ), SBMD_THEME_VERSION, true );
+	wp_enqueue_style( 'SEABADGERMD_Font_Awesome', SEABADGERMD_THEME_DIR_URI . '/css/font-awesome.min.css', array(), '4.7.0' );
+	wp_enqueue_style( 'SEABADGERMD_Bootstrap_css', SEABADGERMD_THEME_DIR_URI . '/css/bootstrap.min.css', array(), '4.0.0' );
+	wp_enqueue_style( 'SEABADGERMD_MDB_css', SEABADGERMD_THEME_DIR_URI . '/css/mdb.min.css', array(), '4.4.3' );
+	wp_enqueue_style( 'SEABADGERMDStyle', SEABADGERMD_THEME_DIR_URI . '/style.css', array(), SEABADGERMD_THEME_VERSION );
+	wp_enqueue_script( 'SEABADGERMD_Tether', SEABADGERMD_THEME_DIR_URI . '/js/popper.min.js', array(), '1.0.0', true );
+	wp_enqueue_script( 'SEABADGERMD_Bootstrap', SEABADGERMD_THEME_DIR_URI . '/js/bootstrap.min.js', array( 'jquery', 'SEABADGERMD_Tether' ), '4.0.0', true );
+	wp_enqueue_script( 'SEABADGERMD_MDB', SEABADGERMD_THEME_DIR_URI . '/js/mdb.min.js', array( 'SEABADGERMD_Bootstrap' ), '4.4.3', true );
+	wp_enqueue_script( 'SEABADGERMDJS', SEABADGERMD_THEME_DIR_URI . '/js/site.min.js', array( 'SEABADGERMD_MDB' ), SEABADGERMD_THEME_VERSION, true );
 }
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_scripts' );
 
@@ -45,7 +45,7 @@ function seabadgermd_setup() {
 		$content_width = 1170;
 	}
 	// Add text domain
-	load_theme_textdomain( 'seabadgermd', SBMD_THEME_DIR . '/languages' );
+	load_theme_textdomain( 'seabadgermd', SEABADGERMD_THEME_DIR . '/languages' );
 	// Navigation Menus
 	register_nav_menus(
 		array(
@@ -145,7 +145,7 @@ function seabadgermd_widgets_init() {
 
 	unregister_widget( 'WP_Widget_Archives' );
 	register_widget( 'WP_Widget_ArchivesMD' );
-	register_widget( 'SBMD_Widget_Recent_Posts_Grid' );
+	register_widget( 'SEABADGERMD_Widget_Recent_Posts_Grid' );
 }
 
 add_action( 'widgets_init', 'seabadgermd_widgets_init' );

@@ -1,10 +1,10 @@
 <?php
 /**
- * Widget API: SBMD_Widget_Recent_Posts_Grid - list recent posts on SeaBadgerMD theme
+ * Widget API: SEABADGERMD_Widget_Recent_Posts_Grid - list recent posts on SeaBadgerMD theme
  * Features: image grid, category select
  */
 
-class SBMD_Widget_Recent_Posts_Grid extends WP_Widget {
+class SEABADGERMD_Widget_Recent_Posts_Grid extends WP_Widget {
 
 	/**
 	 * Sets up a new Recent Posts Grid widget instance.
@@ -91,7 +91,7 @@ class SBMD_Widget_Recent_Posts_Grid extends WP_Widget {
 								echo get_the_post_thumbnail($recent_post->ID, 'thumbnail', array('class' => 'img-fluid'));
 							} else {
 								// post has no thumbnail
-								printf('<img src="%s/img/NoThumbnail.png" class="img-fluid">', SBMD_THEME_DIR_URI);
+								printf('<img src="%s/img/NoThumbnail.png" class="img-fluid">', SEABADGERMD_THEME_DIR_URI);
 							}
 							$max_stitle_length = 20;
 							if (strlen($title) > $max_stitle_length) {

@@ -117,11 +117,11 @@ msgctxt "post password form"
 msgid "Enter"
 msgstr ""
 
-#: inc/mdb_pagination.php:27
+#: inc/seabadgermd_pagination.php:27
 msgid "Previous"
 msgstr ""
 
-#: inc/mdb_pagination.php:53
+#: inc/seabadgermd_pagination.php:53
 msgid "Next"
 msgstr ""
 
