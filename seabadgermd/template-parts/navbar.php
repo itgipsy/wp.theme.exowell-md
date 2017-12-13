@@ -6,8 +6,8 @@
 			$navbar_class .= ' autohide';
 		}
 	}
-	$colorThemeConf = seabadgermd_get_color_theme(get_theme_mod('seabadgermd_color_theme'));
-	if ($colorThemeConf['style'] == 'dark') {
+	$color_theme_conf = seabadgermd_get_color_theme(get_theme_mod('seabadgermd_color_theme'));
+	if ($color_theme_conf['style'] == 'dark') {
 		$navbar_class .= ' navbar-dark';
 	}
 ?>
@@ -33,7 +33,7 @@
 								'fallback_cb'			=> '__return_false',
 								'items_wrap'			=> '<ul id="%1$s" class="%2$s">%3$s</ul>',
 								'container'				=> false,
-								'walker'				=> new bootstrap_4_walker_nav_menu())
+								'walker'				=> new Bootstrap_4_Walker_Nav_Menu())
 							);
 						} else {
 					 		echo __('Please assign Navbar Menu in Wordpress Admin -> Appearance -> Menus -> Manage Locations', 'seabadgermd');
