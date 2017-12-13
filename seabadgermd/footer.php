@@ -32,6 +32,7 @@
 		</div>
 		<!--/Copyright-->
 	</div>
+	<!-- Theme author info -->
 	<div class="row footer-themeinfo">
 		<div class="col-12">
 		<?php $sbmd_theme = wp_get_theme(); ?>
@@ -39,10 +40,12 @@
 			<?php echo $sbmd_theme->get( 'Author' ); ?></a>
 		</div>
 	</div>
+	<!-- /Theme author info -->
 </footer>
 <!--/Footer-->
 <button class="btn themecolor" id="to-the-top" title="Back to the top">
-	<i class="fa fa-arrow-circle-up" aria-hidden="true"></i><span class="sr-only">Back to the top</span>
+	<i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+	<span class="sr-only"><?php esc_html_e( 'Back to the top' ); ?></span>
 </button>
 <?php wp_footer(); ?>
 </body>
