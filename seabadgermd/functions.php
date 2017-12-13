@@ -14,7 +14,7 @@ define( 'SBMD_THEME_VERSION', $sbmd_theme->get( 'Version' ) );
 require_once( 'inc/seabadgermd-customizer.php' );
 require_once( 'widgets/class-wp-widget-archives.php' );
 require_once( 'widgets/class-widget-recent-posts-grid.php' );
-require_once( 'inc/mdb-navwalker.php' );
+require_once( 'inc/class-seabadgermd-menuwalker.php' );
 require_once( 'inc/mdb-pagination.php' );
 
 /**

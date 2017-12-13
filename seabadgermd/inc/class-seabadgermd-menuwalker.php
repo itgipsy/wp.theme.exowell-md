@@ -5,7 +5,7 @@ Bootstrap 4.0.0-alpha2 nav walker extension class
 Source: http://simonpadbury.github.io/2016/03/09/bootstrap-4-navbar-with-dropdowns-for-wordpress.html
 =================================================
 */
-class Bootstrap_4_Walker_Nav_Menu extends Walker_Nav_menu {
+class Seabadgermd_Menuwalker extends Walker_Nav_menu {
 
 	function start_lvl( &$output, $depth = 0, $args = array() ) {
 		// ul

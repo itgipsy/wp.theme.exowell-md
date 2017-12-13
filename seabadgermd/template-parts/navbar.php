@@ -33,7 +33,7 @@
 								'fallback_cb'			=> '__return_false',
 								'items_wrap'			=> '<ul id="%1$s" class="%2$s">%3$s</ul>',
 								'container'				=> false,
-								'walker'				=> new Bootstrap_4_Walker_Nav_Menu())
+								'walker'				=> new Seabadgermd_Menuwalker())
 							);
 						} else {
 					 		echo __('Please assign Navbar Menu in Wordpress Admin -> Appearance -> Menus -> Manage Locations', 'seabadgermd');

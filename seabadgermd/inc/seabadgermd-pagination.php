@@ -1,6 +1,6 @@
 <?php
 //Custom pagination
-function mdb_pagination() {
+function seabadgermd_pagination() {
 	if ( is_singular() ) {
 		return;
 	}
