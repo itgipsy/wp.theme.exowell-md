@@ -242,19 +242,21 @@ function seabadgermd_post_gallery( $output, $attr ) {
 		}
 	}
 
-	extract(
-		shortcode_atts(
-			array(
-				'order'      => 'ASC',
-				'orderby'    => 'menu_order ID',
-				'id'         => $post->ID,
-				'columns'    => 3,
-				'size'       => 'thumbnail',
-				'include'    => '',
-				'exclude'    => '',
-			), $attr
-		)
+	$satts = shortcode_atts(
+		array(
+			'order'      => 'ASC',
+			'orderby'    => 'menu_order ID',
+			'id'         => $post->ID,
+			'columns'    => 3,
+			'size'       => 'thumbnail',
+			'include'    => '',
+			'exclude'    => '',
+		), $attr
 	);
+	$satts_keys = array( 'order', 'orderby', 'id', 'columns', 'size', 'include', 'exclude' );
+	foreach ( $satts_keys as $k ) {
+		$$k = $satts[ $k ];
+	}
 
 	$id = intval( $id );
 	if ( 'RAND' == $order ) {
