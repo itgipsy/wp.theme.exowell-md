@@ -111,9 +111,9 @@ class Seabadgermd_Widget_Recent_Posts_Grid extends WP_Widget {
 						echo '<!-- No post in this position -->';
 						echo '<div class="recent-posts-grid-empty"></div>';
 					}
-				} // for cols
+				} // End for() cols
 				echo '</div>';
-			} //for rows
+			} // End for() rows
 			?>
 			</div>
 		</div> <!-- /row recent-posts -->

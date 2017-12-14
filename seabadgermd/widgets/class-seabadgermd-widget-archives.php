@@ -128,7 +128,7 @@ class Seabadgermd_Widget_Archives extends WP_Widget {
 		?>
 		</ul>
 		<?php
-}
+} // End if().
 
 		echo $args['after_widget'];
 	}

@@ -192,7 +192,7 @@ function seabadgermd_breadcrumbs() {
 			echo '<span class="breadcrumb-item active">' . __( 'Error 404', 'seabadgermd' ) . '</span>';
 		} else if ( is_archive() && ! is_tax() && ! is_category() && ! is_tag() ) {
 			echo '<span class="breadcrumb-item active">' . post_type_archive_title( $prefix, false ) . '</span>';
-		}
+		} //End if().
 		echo '</nav>';
 	}
 }
