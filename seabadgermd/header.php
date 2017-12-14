@@ -9,14 +9,15 @@
 </head>
 <body <?php body_class(); ?>>
 	<?php
-		$header_class = "";
-		if (get_theme_mod('seabadgermd_navbar_fixing', 'off') =='on' && !get_theme_mod('navbar_remove', false)) {
-			$header_class = 'fixed';
-		}
+		$header_class = '';
+	if ( get_theme_mod( 'seabadgermd_navbar_fixing', 'off' ) == 'on' &&
+	! get_theme_mod( 'navbar_remove', false ) ) {
+		$header_class = 'fixed';
+	}
 	?>
 	<header class="page_header <?php echo $header_class; ?>">
 		<span id="top" style="display:none"></span>
-		<?php get_template_part('template-parts/navbar'); ?>
-		<?php get_template_part('template-parts/hero'); ?>
-		<?php get_template_part('template-parts/breadcrumb'); ?>
+		<?php get_template_part( 'template-parts/navbar' ); ?>
+		<?php get_template_part( 'template-parts/hero' ); ?>
+		<?php get_template_part( 'template-parts/breadcrumb' ); ?>
 	</header>
