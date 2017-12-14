@@ -172,7 +172,7 @@ function seabadgermd_breadcrumbs() {
 			// Month link
 			echo '<a class="breadcrumb-item" href="' . get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) ) . '" title="' . get_the_time( 'M' ) . '">' . get_the_time( 'M' ) . '</a>';
 			// Day display
-			echo '<span class="breadcrumb-item active"> ' . get_the_time( 'jS' ) . ' ' . get_the_time( 'M' ) . '</span>';
+			echo '<span class="breadcrumb-item active"> ' . get_the_time( 'jS' ) . '</span>';
 		} else if ( is_month() ) {
 			// Month Archive
 			// Year link
