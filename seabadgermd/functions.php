@@ -196,12 +196,22 @@ function seabadgermd_comments_callback( $comment, $args, $depth ) {
 		);
 		?>
 		<div class="col-12 media-body comment">
-			<h5 class="mt-0 comment-header"><?php echo get_comment_author_link( $comment ); ?>
-				<?php printf( __( '%s ago', 'seabadgermd' ), human_time_diff( get_comment_time( 'U' ), current_time( 'timestamp' ) ) ); ?>
+			<h5 class="mt-0 comment-header">
+			<?php
+			echo get_comment_author_link( $comment );
+			/* translators: %: human readable time diff since comment made, e.g. 1 day */
+			printf( esc_html__( '%s ago', 'seabadgermd' ),
+				esc_html(
+					human_time_diff( get_comment_time( 'U' ), current_time( 'timestamp' ) )
+				)
+			);
+			?>
 			</h5>
 			<?php
 			if ( '0' == $comment->comment_approved ) {
-				echo '<div class="alert alert-warning">' . __( 'You comment is awaiting moderation', 'seabadgermd' ) . '</div>';
+				echo '<div class="alert alert-warning">' .
+				esc_html__( 'Your comment is awaiting moderation', 'seabadgermd' ) .
+				'</div>';
 			}
 				comment_text();
 				echo preg_replace(
@@ -218,7 +228,7 @@ function seabadgermd_comments_callback( $comment, $args, $depth ) {
 				);
 				printf(
 					'<a href="%s" class="comment-edit-link btn btn-sm themecolor">%s</a>',
-					get_edit_comment_link( $comment ), __( 'Edit', 'seabadgermd' )
+					get_edit_comment_link( $comment ), esc_html__( 'Edit', 'seabadgermd' )
 				);
 			?>
 		</div>

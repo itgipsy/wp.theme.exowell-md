@@ -26,8 +26,8 @@
 		<!--Copyright-->
 		<div class="footer-copyright col-md-12 col-lg-4">
 			<?php
-			printf( __( 'Copyright &copy; %1$s <a href="%2$s" rel="nofollow">%3$s</a>', 'seabadgermd' ),
-			date( 'Y' ), get_site_url(), get_bloginfo( 'name' ) );
+			printf( 'Copyright &copy; %1$s <a href="%2$s" rel="nofollow">%3$s</a>',
+			esc_html( date( 'Y' ) ), esc_html( get_site_url() ), esc_html( get_bloginfo( 'name' ) ) );
 			?>
 		</div>
 		<!--/Copyright-->
@@ -36,8 +36,8 @@
 	<div class="row footer-themeinfo">
 		<div class="col-12">
 		<?php $sbmd_theme = wp_get_theme(); ?>
-			Theme by <a href="<?php echo $sbmd_theme->get( 'AuthorURI' ); ?>" rel="nofollow">
-			<?php echo $sbmd_theme->get( 'Author' ); ?></a>
+			Theme by <a href="<?php echo esc_html( $sbmd_theme->get( 'AuthorURI' ) ); ?>" rel="nofollow">
+			<?php echo esc_html( $sbmd_theme->get( 'Author' ) ); ?></a>
 		</div>
 	</div>
 	<!-- /Theme author info -->

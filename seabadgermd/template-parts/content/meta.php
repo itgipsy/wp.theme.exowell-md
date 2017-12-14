@@ -2,7 +2,7 @@
 	<div class="card-text post-meta">
 		<span class="badge badge-pill post-author themecolor">
 			<i class="fa fa-user-circle" aria-hidden="true"></i>
-	  <span class="sr-only"><?php _e( 'Author', 'seabadgermd' ); ?>:</span>
+	  <span class="sr-only"><?php esc_html_e( 'Author', 'seabadgermd' ); ?>:</span>
 			<?php
 				printf(
 					'<a href="%s" rel="author">%s</a>',
@@ -13,7 +13,7 @@
 		</span>
 		<span class="badge badge-pill post-date themecolor">
 			<i class="fa fa-calendar" aria-hidden="true"></i>
-	  <span class="sr-only"><?php _e( 'Posted on', 'seabadgermd' ); ?>:</span>
+	  <span class="sr-only"><?php esc_html_e( 'Posted on', 'seabadgermd' ); ?>:</span>
 			<?php echo get_the_date(); ?>
 		</span>
 		<?php
@@ -28,7 +28,7 @@
 		?>
 		<span class="badge badge-pill post-categories themecolor">
 			<i class="fa fa-folder-o" aria-hidden="true"></i>
-	  <span class="sr-only"><?php _e( 'Post categories', 'seabadgermd' ); ?>:</span>
+	  <span class="sr-only"><?php esc_html_e( 'Post categories', 'seabadgermd' ); ?>:</span>
 			<?php echo $cat_str; ?>
 		</span>
 	</div>

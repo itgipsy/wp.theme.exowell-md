@@ -7,14 +7,14 @@ Source: http://simonpadbury.github.io/2016/03/09/bootstrap-4-navbar-with-dropdow
 */
 class Seabadgermd_Menuwalker extends Walker_Nav_menu {
 
-	function start_lvl( &$output, $depth = 0, $args = array() ) {
+	private function start_lvl( &$output, $depth = 0, $args = array() ) {
 		// ul
 			$indent = str_repeat( "\t", $depth ); // indents the outputted HTML
 			$submenu = ( $depth > 0 ) ? ' sub-menu' : '';
 			$output .= "\n$indent<ul class=\"dropdown-menu$submenu depth_$depth themecolor\">\n";
 	}
 
-	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+	private function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 		// li a span
 
 		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';

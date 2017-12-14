@@ -17,8 +17,8 @@ $hero_style .= 'background-size: cover;';
 ?>
 <div class="container hero">
 	<div class="jumbotron row" style="<?php echo $hero_style; ?>">
-		<div class="col-xs-12 col-md-10" style="color:#<?php echo $text_color; ?>!important">
-			<h1 class="hero-title" style="color:#<?php echo $text_color; ?>">
+		<div class="col-xs-12 col-md-10" style="color:#<?php echo esc_attr( $text_color ); ?>!important">
+			<h1 class="hero-title" style="color:#<?php echo esc_attr( $text_color ); ?>">
 				<?php bloginfo( 'name' ); ?>
 			</h1>
 			<p class="lead hero-description"><?php bloginfo( 'description' ); ?></p>

@@ -18,8 +18,11 @@ if ( 'dark' == $color_theme_conf['style'] ) {
 			<!-- Navbar brand -->
 			<!-- <a class="navbar-brand" href="#">Navbar</a> -->
 			<!-- Collapse button -->
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-	  aria-expanded="false" aria-label="<?php echo __( 'Toggle navigation', 'seabadgermd' ); ?>"><span class="navbar-toggler-icon themecolor"></span></button>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+			aria-expanded="false"
+			aria-label="<?php esc_attr_e( 'Toggle navigation', 'seabadgermd' ); ?>">
+			<span class="navbar-toggler-icon themecolor"></span></button>
 			<!-- Collapsible content -->
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
@@ -38,7 +41,7 @@ if ( 'dark' == $color_theme_conf['style'] ) {
 							)
 						);
 					} else {
-						echo __( 'Please assign Navbar Menu in Wordpress Admin -> Appearance -> Menus -> Manage Locations', 'seabadgermd' );
+						esc_html_e( 'Please assign Navbar Menu in Wordpress Admin -> Appearance -> Menus -> Manage Locations', 'seabadgermd' );
 					}
 					?>
 					 
@@ -48,9 +51,10 @@ if ( 'dark' == $color_theme_conf['style'] ) {
 					$s = array_key_exists( 's', $_GET ) ? htmlspecialchars( $_GET['s'] ) : '';
 				?>
 				<form role="search" method="get" id="searchform" class="form-inline" action="">
-		  <input class="form-control mr-sm-2" type="text" placeholder="<?php echo __( 'Search', 'seabadgermd' ); ?>" 
-			aria-label="<?php echo __( 'Search', 'seabadgermd' ); ?>" name="s" 
-						value="<?php echo $s; ?>">
+					<input class="form-control mr-sm-2" type="text"
+					placeholder="<?php esc_attr_e( 'Search', 'seabadgermd' ); ?>" 
+					aria-label="<?php esc_attr_e( 'Search', 'seabadgermd' ); ?>" name="s" 
+					value="<?php echo esc_attr( $s ); ?>">
 				</form>
 				<?php endif ?>
 				</div>

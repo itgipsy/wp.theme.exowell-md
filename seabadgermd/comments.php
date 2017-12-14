@@ -22,8 +22,12 @@ if ( have_comments() ) {
 	?>
 	<h4 class="h4 comments-title">
 	<?php
-		printf( _n( '%1$s response to %2$s', '%1$s responses to %2$s', get_comments_number(), 'seabadgermd' ),
-		number_format_i18n( get_comments_number() ), get_the_title() );
+	printf(
+		esc_html(
+			/* translators: %1$: number of comments, %2$: post title */
+			_n( '%1$s response to %2$s', '%1$s responses to %2$s', get_comments_number(), 'seabadgermd' )
+		), esc_html( number_format_i18n( get_comments_number() ) ), esc_html( get_the_title() )
+	);
 	?>
 	</h4>
 	<div class="row">
@@ -40,13 +44,13 @@ if ( have_comments() ) {
 		<div class="col-6">
 			<?php
 				echo str_replace( '<a ', '<a class="btn btn-sm themecolor" ',
-				get_previous_comments_link( __( 'Older comments', 'seabadgermd' ) ) );
+				get_previous_comments_link( esc_html__( 'Older comments', 'seabadgermd' ) ) );
 			?>
 		</div>
 		<div class="col-6 text-right">
 			<?php
 				echo str_replace( '<a ', '<a class="btn btn-sm themecolor" ',
-				get_next_comments_link( __( 'Newer comments', 'seabadgermd' ) ) );
+				get_next_comments_link( esc_html__( 'Newer comments', 'seabadgermd' ) ) );
 			?>
 		</div>
 	</div>

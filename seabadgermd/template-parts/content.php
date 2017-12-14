@@ -17,7 +17,8 @@
 	</div>
 <?php if ( seabadgermd_has_readmore() ) : ?>
 	<!--"Read more" button-->
-  <a href="<?php echo get_permalink(); ?>"><button class="btn themecolor"><?php echo __( 'Read more', 'seabadgermd' ); ?></button></a>
+	<a href="<?php echo esc_url( get_permalink() ); ?>"><button class="btn themecolor">
+	<?php esc_attr_e( 'Read more', 'seabadgermd' ); ?></button></a>
 <?php endif; ?>
 <!-- Comment button -->
 <?php
