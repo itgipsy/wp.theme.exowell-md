@@ -40,7 +40,7 @@ Theme features include:
    either or both the Site title / description and the Site logo are shown
  * displaying vertical featured images is not ideal
 
-### Credit
+### Credit / Licenses
 
 This theme relies on the following GPL or GPL license compatible open source projects:
  * MDBootstrap free (https://mdbootstrap.com) - Material Design Bootstrap framework (MIT license)
