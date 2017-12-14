@@ -15,7 +15,7 @@ define( 'SEABADGERMD_THEME_VERSION', $sbmd_theme->get( 'Version' ) );
 */
 require_once( 'inc/seabadgermd-customizer.php' );
 require_once( 'inc/class-seabadgermd-menuwalker.php' );
-require_once( 'inc/mdb-pagination.php' );
+require_once( 'inc/seabadgermd-pagination.php' );
 require_once( 'widgets/class-seabadgermd-widget-archives.php' );
 require_once( 'widgets/class-seabadgermd-widget-recent-posts-grid.php' );
 
