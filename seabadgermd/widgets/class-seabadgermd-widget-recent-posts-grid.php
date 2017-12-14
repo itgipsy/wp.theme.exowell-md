@@ -4,7 +4,7 @@
  * Features: image grid, category select
  */
 
-class SEABADGERMD_Widget_Recent_Posts_Grid extends WP_Widget {
+class Seabadgermd_Widget_Recent_Posts_Grid extends WP_Widget {
 
 	/**
 	 * Sets up a new Recent Posts Grid widget instance.
@@ -16,8 +16,8 @@ class SEABADGERMD_Widget_Recent_Posts_Grid extends WP_Widget {
 			'description' => __( 'Show most recent posts of category with thumbnails', 'seabadgermd' ),
 			'customize_selective_refresh' => false,
 		);
-		parent::__construct( 'sbmd-recent-posts-grid', __( 'Recent Posts Grid [SeaBadgerMD]', 'seabadgermd' ), $widget_ops );
-		$this->alt_option_name = 'sbmd_widget_recent_posts_grid';
+		parent::__construct( 'seabadgermd-recent-posts-grid', __( 'Recent Posts Grid [SeaBadgerMD]', 'seabadgermd' ), $widget_ops );
+		$this->alt_option_name = 'seabadgermd_widget_recent_posts_grid';
 	}
 
 	/**
@@ -39,8 +39,10 @@ class SEABADGERMD_Widget_Recent_Posts_Grid extends WP_Widget {
 
 		$rows = ( ! empty( $instance['rows'] ) ) ? absint( $instance['rows'] ) : 2;
 		$cols = ( ! empty( $instance['cols'] ) ) ? absint( $instance['cols'] ) : 2;
-		if ( ! $rows ) { $rows = 2; }
-		if ( ! $cols ) { $cols = 2; }
+		if ( ! $rows ) {
+			$rows = 2; }
+		if ( ! $cols ) {
+			$cols = 2; }
 
 		$from_same_category = isset( $instance['from_same_category'] ) ? $instance['from_same_category'] : false;
 		$category = get_the_category();
@@ -51,10 +53,10 @@ class SEABADGERMD_Widget_Recent_Posts_Grid extends WP_Widget {
 			'ignore_sticky_posts' => true,
 		);
 
-		if (!is_front_page() && $from_same_category && !empty($category)) {
-			$categories = array_values($category);
-			$last_category = end($categories);
-			$parent_categories = rtrim(get_category_parents($last_category->term_id, false, ',', true),',');
+		if ( ! is_front_page() && $from_same_category && ! empty( $category ) ) {
+			$categories = array_values( $category );
+			$last_category = end( $categories );
+			$parent_categories = rtrim( get_category_parents( $last_category->term_id, false, ',', true ), ',' );
 			$query_filter['category_name'] = $parent_categories;
 		}
 		/* query most recent posts */
@@ -74,42 +76,44 @@ class SEABADGERMD_Widget_Recent_Posts_Grid extends WP_Widget {
 			<div class="col-12">
 			<?php
 				$w = 12 / $cols;
-				$posts = ($r->posts);
-				for ($r = 0; $r < $rows; $r++) {
-					echo '<div class="row">';
-					for ($c = 0; $c < $cols; $c++) {
-						$pos = ($r * $cols) + $c;
-						if (count($posts) > $pos) {
-							printf('<div class="col-%d recent-posts-grid-item">', $w);
-							$recent_post = $posts[$pos];
-							$post_title = get_the_title( $recent_post->ID );
-							$title      = ( ! empty( $post_title ) ) ? $post_title : __( '(no title)', 'seabadgermd' );
-							printf('<a href="%s" title="%s">', 
-								get_the_permalink( $recent_post->ID ),
-								wp_strip_all_tags($title));
-							if (get_post_thumbnail_id($recent_post->ID)) {
-								echo get_the_post_thumbnail($recent_post->ID, 'thumbnail', array('class' => 'img-fluid'));
-							} else {
-								// post has no thumbnail
-								printf('<img src="%s/img/NoThumbnail.png" class="img-fluid">', SEABADGERMD_THEME_DIR_URI);
-							}
-							$max_stitle_length = 20;
-							if (strlen($title) > $max_stitle_length) {
-								$stitle = preg_replace('/[\s\.,][^\s\.,]*$/u', '', substr($title, 0, $max_stitle_length)).'...';
-							} else {
-								$stitle = $title;
-							}
-							printf('<span class="recent-posts-grid-textover">%s</span>', $stitle);
-							echo '</a>';
-							echo '</div>';
+				$posts = ( $r->posts );
+			for ( $r = 0; $r < $rows; $r++ ) {
+				echo '<div class="row">';
+				for ( $c = 0; $c < $cols; $c++ ) {
+					$pos = ( $r * $cols ) + $c;
+					if ( count( $posts ) > $pos ) {
+						printf( '<div class="col-%d recent-posts-grid-item">', $w );
+						$recent_post = $posts[ $pos ];
+						$post_title = get_the_title( $recent_post->ID );
+						$title      = ( ! empty( $post_title ) ) ? $post_title : __( '(no title)', 'seabadgermd' );
+						printf(
+							'<a href="%s" title="%s">',
+							get_the_permalink( $recent_post->ID ),
+							wp_strip_all_tags( $title )
+						);
+						if ( get_post_thumbnail_id( $recent_post->ID ) ) {
+							echo get_the_post_thumbnail( $recent_post->ID, 'thumbnail', array( 'class' => 'img-fluid' ) );
 						} else {
-							//no more post to show
-							echo '<!-- No post in this position -->';
-							echo '<div class="recent-posts-grid-empty"></div>';
+							// post has no thumbnail
+							printf( '<img src="%s/img/NoThumbnail.png" class="img-fluid">', SEABADGERMD_THEME_DIR_URI );
 						}
-					} // for cols
-					echo '</div>';
-				} //for rows
+						$max_stitle_length = 20;
+						if ( strlen( $title ) > $max_stitle_length ) {
+							$stitle = preg_replace( '/[\s\.,][^\s\.,]*$/u', '', substr( $title, 0, $max_stitle_length ) ) . '...';
+						} else {
+							$stitle = $title;
+						}
+						printf( '<span class="recent-posts-grid-textover">%s</span>', $stitle );
+						echo '</a>';
+						echo '</div>';
+					} else {
+						//no more post to show
+						echo '<!-- No post in this position -->';
+						echo '<div class="recent-posts-grid-empty"></div>';
+					}
+				} // for cols
+				echo '</div>';
+			} //for rows
 			?>
 			</div>
 		</div> <!-- /row recent-posts -->
@@ -159,7 +163,7 @@ class SEABADGERMD_Widget_Recent_Posts_Grid extends WP_Widget {
 				type="number" step="1" min="1" value="<?php echo $cols; ?>" size="3" /></p>
 		</p>
 
-		<p><input class="checkbox" type="checkbox"<?php checked( $from_same_category); ?> id="<?php echo $this->get_field_id( 'from_same_category' ); ?>" 
+		<p><input class="checkbox" type="checkbox"<?php checked( $from_same_category ); ?> id="<?php echo $this->get_field_id( 'from_same_category' ); ?>" 
 			name="<?php echo $this->get_field_name( 'from_same_category' ); ?>" />
 		<label for="<?php echo $this->get_field_id( 'from_same_category' ); ?>"><?php echo __( 'List posts only from the category of current page and its parent categories', 'seabadgermd' ); ?></label></p>
 <?php

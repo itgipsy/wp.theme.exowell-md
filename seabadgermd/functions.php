@@ -1,6 +1,8 @@
 <?php
 
-// Theme Constants
+/**
+* Theme Constants
+*/
 define( 'SEABADGERMD_THEME_DIR', get_template_directory() );
 define( 'SEABADGERMD_THEME_DIR_URI', get_template_directory_uri() );
 define( 'SEABADGERMD_STYLESHEET_DIR', get_stylesheet_directory() );
@@ -12,10 +14,10 @@ define( 'SEABADGERMD_THEME_VERSION', $sbmd_theme->get( 'Version' ) );
 * Include external files
 */
 require_once( 'inc/seabadgermd-customizer.php' );
-require_once( 'widgets/class-wp-widget-archives.php' );
-require_once( 'widgets/class-widget-recent-posts-grid.php' );
 require_once( 'inc/class-seabadgermd-menuwalker.php' );
 require_once( 'inc/mdb-pagination.php' );
+require_once( 'widgets/class-seabadgermd-widget-archives.php' );
+require_once( 'widgets/class-seabadgermd-widget-recent-posts-grid.php' );
 
 /**
  * Include CSS/JS dependencies
