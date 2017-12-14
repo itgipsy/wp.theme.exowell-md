@@ -145,9 +145,9 @@ function seabadgermd_widgets_init() {
 		)
 	);
 
-	unregister_widget( 'WP_Widget_Archives' );
-	register_widget( 'WP_Widget_ArchivesMD' );
-	register_widget( 'SEABADGERMD_Widget_Recent_Posts_Grid' );
+	// unregister_widget( 'WP_Widget_Archives' );
+	register_widget( 'Seabadgermd_Widget_Archives' );
+	register_widget( 'Seabadgermd_Widget_Recent_Posts_Grid' );
 }
 
 add_action( 'widgets_init', 'seabadgermd_widgets_init' );
