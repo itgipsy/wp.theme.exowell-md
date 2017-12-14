@@ -57,7 +57,7 @@ if ( ! comments_open() ) {
 	<p class="alert themecolor"><?php esc_html_e( 'Comments are disabled', 'seabadgermd' ); ?></p>
 <?php
 }
-} // End if have_comments()
+} // End if(). (have_comments())
 
 if ( comments_open() ) {
 	comment_form( array(

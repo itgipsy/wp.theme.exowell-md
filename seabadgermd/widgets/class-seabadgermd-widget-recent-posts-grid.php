@@ -92,7 +92,8 @@ class Seabadgermd_Widget_Recent_Posts_Grid extends WP_Widget {
 							wp_strip_all_tags( $title )
 						);
 						if ( get_post_thumbnail_id( $recent_post->ID ) ) {
-							echo get_the_post_thumbnail( $recent_post->ID, 'thumbnail', array( 'class' => 'img-fluid' ) );
+							echo get_the_post_thumbnail( $recent_post->ID, 'thumbnail',
+							array( 'class' => 'img-fluid' ) );
 						} else {
 							// post has no thumbnail
 							printf( '<img src="%s/img/NoThumbnail.png" class="img-fluid">', SEABADGERMD_THEME_DIR_URI );
@@ -111,9 +112,9 @@ class Seabadgermd_Widget_Recent_Posts_Grid extends WP_Widget {
 						echo '<!-- No post in this position -->';
 						echo '<div class="recent-posts-grid-empty"></div>';
 					}
-				} // End for() cols
+				} // End for(). (cols)
 				echo '</div>';
-			} // End for() rows
+			} // End for(). (rows)
 			?>
 			</div>
 		</div> <!-- /row recent-posts -->

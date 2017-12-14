@@ -205,7 +205,7 @@ if ( ! function_exists( 'seabadgermd_get_color_themes' ) ) {
 		);
 		return $color_themes;
 	}
-}
+} // End if().
 
 function seabadgermd_get_color_theme( $id ) {
 	$themes = seabadgermd_get_color_themes();

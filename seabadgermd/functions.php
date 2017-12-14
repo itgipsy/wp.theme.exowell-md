@@ -312,7 +312,7 @@ function seabadgermd_post_gallery( $output, $attr ) {
 				'orderby' => $orderby,
 			)
 		);
-	} //End if().
+	} // End if().
 
 	if ( empty( $attachments ) ) {
 		return '';
@@ -380,7 +380,7 @@ function seabadgermd_post_gallery( $output, $attr ) {
 			$output .= '</div>'; //close row
 			$i = 0;
 		}
-	}
+	} // End foreach().
 	// close partial row
 	if ( 0 !== $i ) {
 		$output .= '</div>';
