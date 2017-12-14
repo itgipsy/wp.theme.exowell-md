@@ -96,7 +96,7 @@ function seabadgermd_breadcrumbs() {
 			if ( ! empty( $last_category ) ) {
 				echo $cat_display;
 				echo '<span class="breadcrumb-item active" title="' .
-				esc_attr( wp_strip_all_tags( get_the_title() ) ) . '">' . get_the_title() . '</span>';
+				the_title_attribute() . '">' . get_the_title() . '</span>';
 
 				// Else if post is in a custom taxonomy
 			} else if ( ! empty( $cat_id ) ) {

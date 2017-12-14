@@ -26,7 +26,7 @@ if ( have_comments() ) {
 		esc_html(
 			/* translators: %1$: number of comments, %2$: post title */
 			_n( '%1$s response to %2$s', '%1$s responses to %2$s', get_comments_number(), 'seabadgermd' )
-		), esc_html( number_format_i18n( get_comments_number() ) ), esc_html( get_the_title() )
+		), esc_html( number_format_i18n( get_comments_number() ) ), get_the_title()
 	);
 	?>
 	</h4>
