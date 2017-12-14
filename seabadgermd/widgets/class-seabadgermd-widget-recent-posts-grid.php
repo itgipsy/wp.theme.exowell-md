@@ -69,7 +69,7 @@ class Seabadgermd_Widget_Recent_Posts_Grid extends WP_Widget {
 		<?php echo $args['before_widget']; ?>
 		<?php
 		if ( $title ) {
-			echo $args['before_title'] . $title . $args['after_title'];
+			echo $args['before_title'] . esc_html( $title ) . $args['after_title'];
 		}
 		?>
 		<div class="row recent-posts">
@@ -82,21 +82,22 @@ class Seabadgermd_Widget_Recent_Posts_Grid extends WP_Widget {
 				for ( $c = 0; $c < $cols; $c++ ) {
 					$pos = ( $r * $cols ) + $c;
 					if ( count( $posts ) > $pos ) {
-						printf( '<div class="col-%d recent-posts-grid-item">', $w );
+						printf( '<div class="col-%d recent-posts-grid-item">', intval( $w ) );
 						$recent_post = $posts[ $pos ];
 						$post_title = get_the_title( $recent_post->ID );
 						$title      = ( ! empty( $post_title ) ) ? $post_title : __( '(no title)', 'seabadgermd' );
 						printf(
 							'<a href="%s" title="%s">',
-							get_the_permalink( $recent_post->ID ),
-							wp_strip_all_tags( $title )
+							esc_url( get_the_permalink( $recent_post->ID ) ),
+							esc_attr( wp_strip_all_tags( $title ) )
 						);
 						if ( get_post_thumbnail_id( $recent_post->ID ) ) {
 							echo get_the_post_thumbnail( $recent_post->ID, 'thumbnail',
 							array( 'class' => 'img-fluid' ) );
 						} else {
 							// post has no thumbnail
-							printf( '<img src="%s/img/NoThumbnail.png" class="img-fluid">', SEABADGERMD_THEME_DIR_URI );
+							printf( '<img src="%s/img/NoThumbnail.png" class="img-fluid">',
+							esc_url( get_template_directory_uri() ) );
 						}
 						$max_stitle_length = 20;
 						if ( strlen( $title ) > $max_stitle_length ) {
@@ -104,7 +105,8 @@ class Seabadgermd_Widget_Recent_Posts_Grid extends WP_Widget {
 						} else {
 							$stitle = $title;
 						}
-						printf( '<span class="recent-posts-grid-textover">%s</span>', $stitle );
+						printf( '<span class="recent-posts-grid-textover">%s</span>',
+						esc_html( $stitle ) );
 						echo '</a>';
 						echo '</div>';
 					} else {
@@ -150,23 +152,41 @@ class Seabadgermd_Widget_Recent_Posts_Grid extends WP_Widget {
 		$cols    = isset( $instance['cols'] ) ? absint( $instance['cols'] ) : 2;
 		$from_same_category = isset( $instance['from_same_category'] ) ? (bool) $instance['from_same_category'] : false;
 ?>
-		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php echo __( 'Title:', 'seabadgermd' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>"
-			type="text" value="<?php echo $title; ?>" /></p>
-
-		<p><label for="<?php echo $this->get_field_id( 'rows' ); ?>"><?php echo __( 'Number of rows:', 'seabadgermd' ); ?></label>
-			<input class="tiny-text" id="<?php echo $this->get_field_id( 'rows' ); ?>" name="<?php echo $this->get_field_name( 'rows' ); ?>"
-				type="number" step="1" min="1" value="<?php echo $rows; ?>" size="3" /></p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>">
+				<?php esc_html_e( 'Title:', 'seabadgermd' ); ?>
+			</label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>"
+			name="<?php echo $this->get_field_name( 'title' ); ?>"
+			type="text" value="<?php echo esc_attr( $title ); ?>" />
 		</p>
 
-		<p><label for="<?php echo $this->get_field_id( 'cols' ); ?>"><?php echo __( 'Number of columns:', 'seabadgermd' ); ?></label>
-			<input class="tiny-text" id="<?php echo $this->get_field_id( 'cols' ); ?>" name="<?php echo $this->get_field_name( 'cols' ); ?>"
-				type="number" step="1" min="1" value="<?php echo $cols; ?>" size="3" /></p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'rows' ); ?>">
+				<?php esc_html_e( 'Number of rows:', 'seabadgermd' ); ?>
+			</label>
+			<input class="tiny-text" id="<?php echo $this->get_field_id( 'rows' ); ?>"
+			name="<?php echo $this->get_field_name( 'rows' ); ?>"
+			type="number" step="1" min="1" value="<?php echo intval( $rows ); ?>" size="3" />
 		</p>
 
-		<p><input class="checkbox" type="checkbox"<?php checked( $from_same_category ); ?> id="<?php echo $this->get_field_id( 'from_same_category' ); ?>" 
+		<p>
+			<label for="<?php echo $this->get_field_id( 'cols' ); ?>">
+				<?php esc_html_e( 'Number of columns:', 'seabadgermd' ); ?>
+			</label>
+			<input class="tiny-text" id="<?php echo $this->get_field_id( 'cols' ); ?>"
+			name="<?php echo $this->get_field_name( 'cols' ); ?>"
+			type="number" step="1" min="1" value="<?php echo intval( $cols ); ?>" size="3" />
+		</p>
+
+		<p>
+			<input class="checkbox" type="checkbox"<?php checked( $from_same_category ); ?>
+			id="<?php echo $this->get_field_id( 'from_same_category' ); ?>" 
 			name="<?php echo $this->get_field_name( 'from_same_category' ); ?>" />
-		<label for="<?php echo $this->get_field_id( 'from_same_category' ); ?>"><?php echo __( 'List posts only from the category of current page and its parent categories', 'seabadgermd' ); ?></label></p>
+			<label for="<?php echo $this->get_field_id( 'from_same_category' ); ?>">
+				<?php esc_html_e( 'List posts only from the category of current page and its parent categories', 'seabadgermd' ); ?>
+			</label>
+		</p>
 <?php
 	}
 }

@@ -33,17 +33,19 @@ class Seabadgermd_Widget_Archives extends WP_Widget {
 		};
 
 		/** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
-		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Archives', 'seabadgermd' ) : $instance['title'], $instance, $this->id_base );
+		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? esc_html__( 'Archives', 'seabadgermd' ) : $instance['title'], $instance, $this->id_base );
 
 		echo $args['before_widget'];
 		if ( $title ) {
-			echo $args['before_title'] . $title . $args['after_title'];
+			echo $args['before_title'] . esc_html( $title ) . $args['after_title'];
 		}
 
 		if ( $d ) {
 			$dropdown_id = "{$this->id_base}-dropdown-{$this->number}";
 			?>
-		<label class="screen-reader-text sr-only" for="<?php echo esc_attr( $dropdown_id ); ?>"><?php echo $title; ?></label>
+		<label class="screen-reader-text sr-only" for="<?php echo esc_attr( $dropdown_id ); ?>">
+			<?php echo esc_html( $title ); ?>
+		</label>
 		<!-- <select id="<?php echo esc_attr( $dropdown_id ); ?>" name="archive-dropdown" onchange='document.location.href=this.options[this.selectedIndex].value;'> -->
 			<?php
 			/**
@@ -180,16 +182,35 @@ class Seabadgermd_Widget_Archives extends WP_Widget {
 		$title = sanitize_text_field( $instance['title'] );
 		$limit = isset( $instance['limit'] ) ? absint( $instance['limit'] ) : 12;
 		?>
-		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php __( 'Title:', 'seabadgermd' ); ?></label> <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></p>
+		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>">
+		<?php esc_html__( 'Title:', 'seabadgermd' ); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>"
+			name="<?php echo $this->get_field_name( 'title' ); ?>" type="text"
+			value="<?php echo esc_attr( $title ); ?>" />
+		</p>
 		<p>
-			<input class="checkbox" type="checkbox"<?php checked( $instance['dropdown'] ); ?> id="<?php echo $this->get_field_id( 'dropdown' ); ?>" name="<?php echo $this->get_field_name( 'dropdown' ); ?>" /> <label for="<?php echo $this->get_field_id( 'dropdown' ); ?>"><?php echo __( 'Display as dropdown', 'seabadgermd' ); ?></label>
+			<input class="checkbox" type="checkbox"<?php checked( $instance['dropdown'] ); ?>
+			id="<?php echo $this->get_field_id( 'dropdown' ); ?>"
+			name="<?php echo $this->get_field_name( 'dropdown' ); ?>" />
+			<label for="<?php echo $this->get_field_id( 'dropdown' ); ?>">
+				<?php esc_html_e( 'Display as dropdown', 'seabadgermd' ); ?>
+			</label>
 			<br/>
-			<input class="checkbox" type="checkbox"<?php checked( $instance['count'] ); ?> id="<?php echo $this->get_field_id( 'count' ); ?>" name="<?php echo $this->get_field_name( 'count' ); ?>" /> <label for="<?php echo $this->get_field_id( 'count' ); ?>"><?php echo __( 'Show post counts', 'seabadgermd' ); ?></label>
+			<input class="checkbox" type="checkbox"<?php checked( $instance['count'] ); ?>
+			id="<?php echo $this->get_field_id( 'count' ); ?>"
+			name="<?php echo $this->get_field_name( 'count' ); ?>" />
+			<label for="<?php echo $this->get_field_id( 'count' ); ?>">
+				<?php echo esc_html_e( 'Show post counts', 'seabadgermd' ); ?>
+			</label>
 			<br/>
 		</p>
-		<p><label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php echo __( 'Limit displayed items to:', 'seabadgermd' ); ?></label>
-			<input class="tiny-text" id="<?php echo $this->get_field_id( 'limit' ); ?>" name="<?php echo $this->get_field_name( 'limit' ); ?>"
-				type="number" step="1" min="1" value="<?php echo $limit; ?>" size="3" /></p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'limit' ); ?>">
+				<?php echo esc_html__( 'Limit displayed items to:', 'seabadgermd' ); ?>
+			</label>
+			<input class="tiny-text" id="<?php echo $this->get_field_id( 'limit' ); ?>"
+			name="<?php echo $this->get_field_name( 'limit' ); ?>"
+			type="number" step="1" min="1" value="<?php echo intval( $limit ); ?>" size="3" /></p>
 		</p>
 		<?php
 	}
