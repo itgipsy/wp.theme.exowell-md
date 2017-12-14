@@ -45,7 +45,7 @@
 <!--/Footer-->
 <button class="btn themecolor" id="to-the-top" title="Back to the top">
 	<i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
-	<span class="sr-only"><?php esc_html_e( 'Back to the top' ); ?></span>
+	<span class="sr-only"><?php esc_html_e( 'Back to the top', 'seabadgermd' ); ?></span>
 </button>
 <?php wp_footer(); ?>
 </body>
