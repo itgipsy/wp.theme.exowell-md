@@ -1,4 +1,4 @@
-<?php if ( get_post_type() == 'post' ) : ?>
+<?php if ( get_post_type() === 'post' ) : ?>
 	<div class="card-text post-meta">
 		<span class="badge badge-pill post-author themecolor">
 			<i class="fa fa-user-circle" aria-hidden="true"></i>

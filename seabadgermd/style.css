@@ -2,7 +2,7 @@
 Theme Name: SeaBadgerMD
 Theme URI: https://seabadger.io/seabadgermd-wordpress-theme
 Description: Responsive Material Design WordPress blog theme
-Version: 0.9.3
+Version: 0.9.4
 Author: SeaBadger.io
 Author URI: https://seabadger.io/about
 License: GNU General Public License v3 or later
@@ -20,52 +20,6 @@ main {
 	border-radius: 0;
 }
 
-.btn.btn-round {
-	border-radius: 50%;
-	width: 45px;
-	height: 45px;
-	padding: 0;
-	text-align: center;
-}
-
-.btn.btn-round i {
-	line-height: 45px;
-}
-
-.btn-social > i.fa {
-	font-size: 25px;
-	margin-top: 0;
-}
-
-.form-control:focus {
-	color: inherit;
-}
-
-#to-the-top {
-    display: none;
-    position: fixed;
-	width: 45px;
-	height: 45px;
-    bottom: 20px;
-    right: 20px;
-	padding: 0;
-    z-index: 99;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    border-radius: 50%;
-	box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
-	opacity: 0.8;
-}
-
-#to-the-top .fa {
-	font-size: 45px;
-}
-
-table.table a {
-	color: inherit;
-}
-
 .blockquote {
 	margin-bottom: 1rem;
 	font-size: 1.25rem;
@@ -79,7 +33,7 @@ h1, h2, h3, h4 {
 	font-family: "Roboto Slab", Roboto, sans-serif;
 }
 
-/* Post */
+/* Posts */
 
 @media (max-width: 576px) {
 	.posts-col {
@@ -141,6 +95,18 @@ h1, h2, h3, h4 {
 .tagline {
 	font-size: 0.9rem;
 	line-height: 1rem;
+}
+
+.tagline > a:before {
+	content: '#';
+}
+
+.clear {
+	clear: both;
+	width: 0;
+	height: 0;
+	visibility: hidden;
+	overflow: hidden;
 }
 
 .sticky_icon {
@@ -317,18 +283,6 @@ nav.breadcrumb {
 	padding-bottom: .2rem;
 }
 
-.tagline > a:before {
-	content: '#';
-}
-
-.clear {
-	clear: both;
-	width: 0;
-	height: 0;
-	visibility: hidden;
-	overflow: hidden;
-}
-
 /* Font definition */
 @font-face {
     font-family: 'Roboto Slab';
@@ -348,6 +302,55 @@ nav.breadcrumb {
     font-style: normal;
 }
 
+/* Tables */
+table.table a {
+	color: inherit;
+}
+
+/* Forms */
+.form-control:focus {
+	color: inherit;
+}
+
+/* Buttons */
+.btn.btn-round {
+	border-radius: 50%;
+	width: 45px;
+	height: 45px;
+	padding: 0;
+	text-align: center;
+}
+
+.btn.btn-round i {
+	line-height: 45px;
+}
+
+.btn-social > i.fa {
+	font-size: 25px;
+	margin-top: 0;
+}
+
+/* Floating button displayed dynmically to allow jumping to top of page */
+#to-the-top {
+    display: none;
+    position: fixed;
+	width: 45px;
+	height: 45px;
+    bottom: 20px;
+    right: 20px;
+	padding: 0;
+    z-index: 99;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 50%;
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+	opacity: 0.8;
+}
+
+#to-the-top .fa {
+	font-size: 45px;
+}
 
 /* =WordPress Core
 -------------------------------------------------------------- */

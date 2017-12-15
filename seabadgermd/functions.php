@@ -153,19 +153,19 @@ function seabadgermd_widgets_init() {
 add_action( 'widgets_init', 'seabadgermd_widgets_init' );
 
 function seabadgermd_post_navigation() {
-	if ( '' != get_adjacent_post( false, '', false ) || '' != get_adjacent_post( false, '', true ) ) :
+	if ( '' !== get_adjacent_post( false, '', false ) || '' != get_adjacent_post( false, '', true ) ) :
 ?>
 	<div class="row post-navigation">
 		<div class="col-6 post-navigation-next">
 <?php
-if ( '' != get_adjacent_post( false, '', false ) ) :
+if ( '' !== get_adjacent_post( false, '', false ) ) :
 	next_post_link( '%link', __( 'Next post', 'seabadgermd' ) );
 	endif;
 ?>
 		</div>
 		<div class="col-6 post-navigation-prev">
 <?php
-if ( '' != get_adjacent_post( false, '', true ) ) :
+if ( '' !== get_adjacent_post( false, '', true ) ) :
 	previous_post_link( '%link', __( 'Previous post', 'seabadgermd' ) );
 	endif;
 ?>
@@ -208,7 +208,7 @@ function seabadgermd_comments_callback( $comment, $args, $depth ) {
 			?>
 			</h5>
 			<?php
-			if ( '0' == $comment->comment_approved ) {
+			if ( '0' === $comment->comment_approved ) {
 				echo '<div class="alert alert-warning">' .
 				esc_html__( 'Your comment is awaiting moderation', 'seabadgermd' ) .
 				'</div>';
@@ -277,7 +277,7 @@ function seabadgermd_post_gallery( $output, $attr ) {
 	}
 
 	$id = intval( $id );
-	if ( 'RAND' == $order ) {
+	if ( 'RAND' === $order ) {
 		$orderby = 'none';
 	}
 
@@ -339,8 +339,8 @@ function seabadgermd_post_gallery( $output, $attr ) {
 	$columns = intval( $columns );
 	if ( $columns > 12 ) {
 		$columns = 12;
-	} else if ( 0 != 12 % $columns ) {
-		while ( 0 != 12 % $columns ) {
+	} elseif ( 0 !== 12 % $columns ) {
+		while ( 0 !== 12 % $columns ) {
 			$columns--;
 		}
 	}
@@ -359,7 +359,7 @@ function seabadgermd_post_gallery( $output, $attr ) {
 			$output .= '<div class="row">';
 		}
 		$output .= sprintf( "<div class='col-xs-12 col-md-%d gallery-item'>", $itemwidth );
-		$get_icon = isset( $attr['link'] ) && 'file' == $attr['link'];
+		$get_icon = isset( $attr['link'] ) && 'file' === $attr['link'];
 		$src = ( wp_get_attachment_image_src( $id, $size, $get_icon ) )[0];
 		$srcs = array();
 		foreach ( get_intermediate_image_sizes() as $s ) {

@@ -5,7 +5,7 @@
 $header_image = get_header_image();
 $text_color = get_header_textcolor();
 // only show header if both header image and text or logo are enabled
-if ( ! $header_image || ( 'blank' == $text_color && ! has_custom_logo() ) ) {
+if ( ! $header_image || ( 'blank' === $text_color && ! has_custom_logo() ) ) {
 	return;
 }
 

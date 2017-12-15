@@ -150,7 +150,7 @@ function seabadgermd_sanitize_checkbox( $input ) {
 
 function seabadgermd_sanitize_showhide( $input ) {
 	$choices = array( 'show', 'hide' );
-	if ( in_array( $input, $choices ) ) {
+	if ( in_array( $input, $choices, true ) ) {
 		return $input;
 	} else {
 		return '';
@@ -158,7 +158,7 @@ function seabadgermd_sanitize_showhide( $input ) {
 }
 
 function seabadgermd_sanitize_onoff( $input ) {
-	$choices = array( 'on', 'off' );
+	$choices = array( 'on', 'off', true );
 	if ( in_array( $input, $choices ) ) {
 		return $input;
 	} else {

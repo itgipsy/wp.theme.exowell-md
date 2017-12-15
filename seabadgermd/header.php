@@ -10,7 +10,7 @@
 <body <?php body_class(); ?>>
 	<?php
 		$header_class = '';
-	if ( get_theme_mod( 'seabadgermd_navbar_fixing', 'off' ) == 'on' &&
+	if ( get_theme_mod( 'seabadgermd_navbar_fixing', 'off' ) === 'on' &&
 	! get_theme_mod( 'navbar_remove', false ) ) {
 		$header_class = 'fixed';
 	}

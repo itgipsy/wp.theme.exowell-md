@@ -30,7 +30,7 @@ function seabadgermd_breadcrumbs() {
 			$post_type = get_post_type();
 
 			// If it is a custom post type display name and link
-			if ( 'post' != $post_type ) {
+			if ( 'post' !== $post_type ) {
 
 				$post_type_object = get_post_type_object( $post_type );
 				$post_type_archive = get_post_type_archive_link( $post_type );
@@ -50,7 +50,7 @@ function seabadgermd_breadcrumbs() {
 			$post_type = get_post_type();
 
 			// If it is a custom post type display name and link
-			if ( 'post' != $post_type ) {
+			if ( 'post' !== $post_type ) {
 
 				$post_type_object = get_post_type_object( $post_type );
 				$post_type_archive = get_post_type_archive_link( $post_type );

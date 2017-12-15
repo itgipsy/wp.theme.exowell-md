@@ -3,7 +3,7 @@
  * Comments template
  */
 
-if ( ! empty( $_SERVER['SCRIPT_FILENAME'] ) && 'comments.php' == basename( $_SERVER['SCRIPT_FILENAME'] ) ) {
+if ( ! empty( $_SERVER['SCRIPT_FILENAME'] ) && 'comments.php' === basename( $_SERVER['SCRIPT_FILENAME'] ) ) {
 	die( esc_html_e( 'Can not load page directly', 'seabadgermd' ) );
 }
 
