@@ -49,7 +49,7 @@ if ( 'dark' === $color_theme_conf['style'] ) {
 				</ul>
 				<?php
 				if ( get_theme_mod( 'seabadgermd_navbar_search', 'show' ) === 'show' ) :
-					$s = array_key_exists( 's', $_GET, true ) ? htmlspecialchars( $_GET['s'] ) : '';
+					$s = array_key_exists( 's', $_GET ) ? htmlspecialchars( $_GET['s'] ) : '';
 				?>
 				<form role="search" method="get" id="searchform" class="form-inline" action="">
 					<input class="form-control mr-sm-2" type="text"
