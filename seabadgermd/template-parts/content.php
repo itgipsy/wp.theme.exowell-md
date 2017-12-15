@@ -5,8 +5,7 @@
 	<?php get_template_part( 'template-parts/content/meta' ); ?>
 	<div class="card-text post-content">
 		<?php
-			// this theme only displays excerpt, if one is explicitly defined
-		if ( ! has_excerpt() ) {
+		if ( ! has_excerpt() || ! post_password_required() ) {
 			the_content( '', false );
 		} else {
 			the_excerpt();
