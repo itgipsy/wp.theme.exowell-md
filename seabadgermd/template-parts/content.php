@@ -22,7 +22,7 @@
 <?php endif; ?>
 <!-- Comment button -->
 <?php
-if ( comments_open() || get_comments_number() !== 0 ) {
+if ( comments_open() || get_comments_number() != 0 ) {
 	comments_popup_link(
 		__( 'Comment', 'seabadgermd' ),
 		__( 'View comment', 'seabadgermd' ),
