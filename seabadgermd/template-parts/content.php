@@ -5,7 +5,7 @@
 	<?php get_template_part( 'template-parts/content/meta' ); ?>
 	<div class="card-text post-content">
 		<?php
-		if ( ! has_excerpt() || ! post_password_required() ) {
+		if ( ! has_excerpt() || post_password_required() ) {
 			the_content( '', false );
 		} else {
 			the_excerpt();
