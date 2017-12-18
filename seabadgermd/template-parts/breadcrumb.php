@@ -21,7 +21,7 @@ function seabadgermd_breadcrumbs() {
 		echo '<nav class="breadcrumb container themecolor">';
 
 		// Home page
-		echo '<a class="breadcrumb-item" href="' . esc_attr( get_home_url() ) .
+		echo '<a class="breadcrumb-item" href="' . esc_url( get_home_url() ) .
 		'" title="' . esc_attr( $home_title ) . '">' . esc_html( $home_title ) . '</a>';
 
 		if ( is_archive() && is_tax() && ! is_category() && ! is_tag() ) {
@@ -104,12 +104,12 @@ function seabadgermd_breadcrumbs() {
 				echo '<a class="breadcrumb-item" href="' . esc_html( $cat_link ) .
 				'" title="' . esc_attr( $cat_name ) . '">' . esc_html( $cat_name ) . '</a>';
 				echo '<span class="breadcrumb-item active" title="' .
-				esc_attr( wp_strip_all_tags( get_the_title() ) ) . '">' . get_the_title() . '</span>';
+				the_title_attribute( '', '', false ) . '">' . get_the_title() . '</span>';
 
 			} else {
 
 				echo '<span class="breadcrumb-item active" title="' .
-				esc_attr( wp_strip_all_tags( get_the_title() ) ) . '">' . get_the_title() . '</span>';
+				the_title_attribute( '', '', false ) . '">' . get_the_title() . '</span>';
 
 			}
 		} else if ( is_category() ) {
@@ -141,7 +141,7 @@ function seabadgermd_breadcrumbs() {
 
 				// Current page
 				echo '<span class="breadcrumb-item active" title="' .
-				esc_attr( wp_strip_all_tags( get_the_title() ) ) . '"> ' . get_the_title() . '</span>';
+				the_title_attribute( '', '', false ) . '"> ' . get_the_title() . '</span>';
 
 			} else {
 
