@@ -200,20 +200,21 @@ function seabadgermd_breadcrumbs() {
 			esc_attr( get_query_var( 'paged' ) ) . '">' .
 			esc_html__( 'Page', 'seabadgermd' ) . ' ' . esc_html( get_query_var( 'paged' ) ) .
 			'</span>';
-		} else if ( is_search() ) {
+		} elseif ( is_404() ) {
+			// 404 page
+			echo '<span class="breadcrumb-item active">' .
+			esc_html__( 'Not found', 'seabadgermd' ) . '</span>';
+		} else if ( is_archive() && ! is_tax() && ! is_category() && ! is_tag() ) {
+			echo '<span class="breadcrumb-item active">' . post_type_archive_title( $prefix, false ) . '</span>';
+		} // End if().
+		if ( is_search() ) {
 			// Search results page
 			echo '<span class="breadcrumb-item active" title="' .
 			esc_attr__( 'Search results for: ', 'seabadgermd' ) .
 			esc_attr( wp_strip_all_tags( get_search_query() ) ) . '">' .
 			esc_html__( 'Search results for: ', 'seabadgermd' ) . esc_html( get_search_query() ) .
 			'</span>';
-		} elseif ( is_404() ) {
-			// 404 page
-			echo '<span class="breadcrumb-item active">' .
-			esc_html__( 'Error 404', 'seabadgermd' ) . '</span>';
-		} else if ( is_archive() && ! is_tax() && ! is_category() && ! is_tag() ) {
-			echo '<span class="breadcrumb-item active">' . post_type_archive_title( $prefix, false ) . '</span>';
-		} // End if().
+		}
 		echo '</nav>';
 	} // End if().
 }
