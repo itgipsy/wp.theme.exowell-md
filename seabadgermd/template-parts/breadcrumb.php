@@ -96,7 +96,7 @@ function seabadgermd_breadcrumbs() {
 			if ( ! empty( $last_category ) ) {
 				echo $cat_display;
 				echo '<span class="breadcrumb-item active" title="' .
-				the_title_attribute( array ( 'echo' => false ) ) . '">' . get_the_title() . '</span>';
+				the_title_attribute( array( 'echo' => false ) ) . '">' . get_the_title() . '</span>';
 
 				// Else if post is in a custom taxonomy
 			} else if ( ! empty( $cat_id ) ) {
@@ -104,12 +104,12 @@ function seabadgermd_breadcrumbs() {
 				echo '<a class="breadcrumb-item" href="' . esc_html( $cat_link ) .
 				'" title="' . esc_attr( $cat_name ) . '">' . esc_html( $cat_name ) . '</a>';
 				echo '<span class="breadcrumb-item active" title="' .
-				the_title_attribute( array ( 'echo' => false ) ) . '">' . get_the_title() . '</span>';
+				the_title_attribute( array( 'echo' => false ) ) . '">' . get_the_title() . '</span>';
 
 			} else {
 
 				echo '<span class="breadcrumb-item active" title="' .
-				the_title_attribute( array ( 'echo' => false ) ) . '">' . get_the_title() . '</span>';
+				the_title_attribute( array( 'echo' => false ) ) . '">' . get_the_title() . '</span>';
 
 			}
 		} else if ( is_category() ) {
@@ -143,7 +143,7 @@ function seabadgermd_breadcrumbs() {
 
 				// Current page
 				echo '<span class="breadcrumb-item active" title="' .
-				the_title_attribute( array ( 'echo' => false ) ) . '"> ' . get_the_title() . '</span>';
+				the_title_attribute( array( 'echo' => false ) ) . '"> ' . get_the_title() . '</span>';
 
 			} else {
 
