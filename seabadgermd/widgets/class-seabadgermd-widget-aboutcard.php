@@ -39,6 +39,7 @@ class Seabadgermd_Widget_Aboutcard extends WP_Widget {
 		$headimg = isset( $instance['headimg'] ) ? esc_url( $instance['headimg'] ) : '';
 		$avatar = isset( $instance['avatar'] ) ? esc_url( $instance['avatar'] ) : '';
 		$about = isset( $instance['about'] ) ? wp_kses_post( $instance['about'] ) : '';
+		$aboutpage = isset( $instance['aboutpage'] ) ? esc_html( $instance['aboutpage'] ) : '';
 		$only_on_frontpage = isset( $instance['only_on_frontpage'] ) ? (bool) $instance['only_on_frontpage'] : false;
 
 		if ( $only_on_frontpage && ! is_front_page() ) {
@@ -58,6 +59,18 @@ class Seabadgermd_Widget_Aboutcard extends WP_Widget {
 			<div class="about-body">
 				<p class="about-text"><?php echo wp_kses_post( $about ); ?></p>
 			</div>
+			<?php
+			if ( $aboutpage ) :
+				$abouturl = get_permalink( $aboutpage );
+			?>
+			<div class="about-footer">
+				<a href="<?php echo esc_url( $abouturl ); ?>" class="btn btn-round themecolor">
+				<i class="fa fa-address-card" aria-hidden="true"></i>
+				<span class="sr-only">Visit About page</span></a>
+			</div>
+			<?php
+			endif;
+			?>
 		</div>
 		<?php
 		echo $args['after_widget'];
@@ -76,6 +89,7 @@ class Seabadgermd_Widget_Aboutcard extends WP_Widget {
 		$instance['headimg'] = esc_url( $new_instance['headimg'] );
 		$instance['avatar'] = esc_url( $new_instance['avatar'] );
 		$instance['about'] = wp_kses_post( $new_instance['about'] );
+		$instance['aboutpage'] = esc_html( $new_instance['aboutpage'] );
 		$instance['only_on_frontpage'] = (bool) $new_instance['only_on_frontpage'];
 		return $instance;
 	}
@@ -89,6 +103,7 @@ class Seabadgermd_Widget_Aboutcard extends WP_Widget {
 		$headimg    = isset( $instance['headimg'] ) ? esc_url( $instance['headimg'] ) : '';
 		$avatar    = isset( $instance['avatar'] ) ? esc_url( $instance['avatar'] ) : '';
 		$about = isset( $instance['about'] ) ? wp_kses_post( $instance['about'] ) : '';
+		$aboutpage = isset( $instance['aboutpage'] ) ? esc_html( $instance['aboutpage'] ) : '';
 		$only_on_frontpage = isset( $instance['only_on_frontpage'] ) ? (bool) $instance['only_on_frontpage'] : false;
 ?>
 		<p>
@@ -125,6 +140,23 @@ class Seabadgermd_Widget_Aboutcard extends WP_Widget {
 		</p>
 
 		<p>
+			<label for="<?php echo $this->get_field_id( 'aboutpage' ); ?>">
+				<?php esc_html_e( 'About page:', 'seabadgermd' ); ?>
+			</label>
+			<?php
+				$pargs = array(
+					'selected' => $aboutpage,
+					'echo' => 1,
+					'name' => $this->get_field_name( 'aboutpage' ),
+					'id' => $this->get_field_id( 'aboutpage' ),
+					'class' => '',
+					'show_option_none' => esc_html__( 'Show no "About page" button' ),
+				);
+			?>
+			<?php wp_dropdown_pages( $pargs ); ?>
+		</p>
+
+		<p>
 			<input class="checkbox" type="checkbox"<?php checked( $only_on_frontpage ); ?>
 			id="<?php echo $this->get_field_id( 'only_on_frontpage' ); ?>" 
 			name="<?php echo $this->get_field_name( 'only_on_frontpage' ); ?>" />
@@ -132,6 +164,7 @@ class Seabadgermd_Widget_Aboutcard extends WP_Widget {
 				<?php esc_html_e( 'Only show this widget on the front page', 'seabadgermd' ); ?>
 			</label>
 		</p>
+
 		<small>*This widget doesn't support widget title</small>
 <?php
 	}
