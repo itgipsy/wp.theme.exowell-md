@@ -236,7 +236,8 @@ h1, h2, h3, h4 {
 	padding: 10px;
 }
 
-.about-text {
+.about-text,
+.card .card-body p.about-text {
 	margin-bottom: 0;
 }
 
