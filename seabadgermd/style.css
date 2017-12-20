@@ -208,6 +208,35 @@ h1, h2, h3, h4 {
 	padding: 2px;
 }
 
+/* About card widget */
+.about {
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 2px 5px 0px, rgba(0, 0, 0, 0.12) 0px 2px 10px 0px;
+}
+
+.about-header {
+	text-align: center;
+}
+
+.about-title {
+	font-size: 1.25rem;
+}
+
+.about-avatar {
+	height: 100px;
+	margin-top: -50px;
+	border-radius: 50%!important;
+	border: 5px solid rgba(255,255,255,.8);
+}
+
+.about-body {
+	padding: 10px;
+}
+
+.about-footer {
+	text-align: center;
+	padding: 15px;
+}
+
 /* Navbar */
 /* fix navbar below the wp toolbar */
 .customize-support .navbar.fixed-top {
