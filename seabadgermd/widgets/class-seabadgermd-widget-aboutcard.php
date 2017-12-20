@@ -61,7 +61,7 @@ class Seabadgermd_Widget_Aboutcard extends WP_Widget {
 						<img class="about-avatar" src="<?php echo esc_url( $instance['avatar'] ); ?>">
 					</div>
 					<div class="about-body">
-						<p class="about-text"><?php echo $instance['about']; ?></p>
+						<p class="about-text"><?php echo esc_html( $instance['about'] ); ?></p>
 					</div>
 				</div>
 			</div>
@@ -82,7 +82,7 @@ class Seabadgermd_Widget_Aboutcard extends WP_Widget {
 		$instance = $old_instance;
 		$instance['title'] = sanitize_text_field( $new_instance['title'] );
 		$instance['headimg'] = esc_url( $new_instance['headimg'] );
-		$instance['avatar'] = esc_url( $new_instance['cols'] );
+		$instance['avatar'] = esc_url( $new_instance['avatar'] );
 		$instance['about'] = esc_html( $new_instance['about'] );
 		return $instance;
 	}
@@ -137,9 +137,7 @@ class Seabadgermd_Widget_Aboutcard extends WP_Widget {
 			</label>
 			<textarea name="<?php echo $this->get_field_name( 'about' ); ?>"
 			class="widefat text wp-edit-area" id="<?php echo $this->get_field_id( 'about' ); ?>"
-			style="height:200px" cols=20 rows=16>
-			<?php echo esc_html( $about ); ?>
-			</textarea>
+			style="height:200px" cols=20 rows=16><?php echo esc_html( $about ); ?></textarea>
 		</p>
 
 <?php
