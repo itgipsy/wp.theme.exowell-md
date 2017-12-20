@@ -31,8 +31,7 @@ class Seabadgermd_Widget_Aboutcard extends WP_Widget {
 	/**
 	 * Outputs the content for the current Aboutcard widget instance.
 	 *
-	 * @param array $args     Display arguments including 'before_title', 'after_title',
-	 *                        'before_widget', and 'after_widget'.
+	 * @param array $args     Display arguments including 'before_widget' and 'after_widget'.
 	 * @param array $instance Settings for the current Aboutcard widget instance.
 	 */
 	public function widget( $args, $instance ) {
@@ -40,19 +39,8 @@ class Seabadgermd_Widget_Aboutcard extends WP_Widget {
 			$args['widget_id'] = $this->id;
 		}
 
-		$title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : '';
-
-		/** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
-		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
-
-
 		?>
 		<?php echo $args['before_widget']; ?>
-		<?php
-		if ( $title ) {
-			echo $args['before_title'] . esc_html( $title ) . $args['after_title'];
-		}
-		?>
 		<div class="about aboutwidget">
 			<div class="about-header">
 				<img class="img-fluid" src="<?php echo esc_url( $instance['headimg'] ); ?>">
@@ -76,7 +64,6 @@ class Seabadgermd_Widget_Aboutcard extends WP_Widget {
 	 */
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
-		$instance['title'] = sanitize_text_field( $new_instance['title'] );
 		$instance['headimg'] = esc_url( $new_instance['headimg'] );
 		$instance['avatar'] = esc_url( $new_instance['avatar'] );
 		$instance['about'] = wp_kses_post( $new_instance['about'] );
@@ -89,20 +76,10 @@ class Seabadgermd_Widget_Aboutcard extends WP_Widget {
 	 * @param array $instance Current settings.
 	 */
 	public function form( $instance ) {
-		$title     = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
 		$headimg    = isset( $instance['headimg'] ) ? esc_url( $instance['headimg'] ) : '';
 		$avatar    = isset( $instance['avatar'] ) ? esc_url( $instance['avatar'] ) : '';
 		$about = isset( $instance['about'] ) ? wp_kses_post( $instance['about'] ) : '';
 ?>
-		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>">
-				<?php esc_html_e( 'Title:', 'seabadgermd' ); ?>
-			</label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>"
-			name="<?php echo $this->get_field_name( 'title' ); ?>"
-			type="text" value="<?php echo esc_attr( $title ); ?>" />
-		</p>
-
 		<p>
 			<label for="<?php echo $this->get_field_id( 'headimg' ); ?>">
 				<?php esc_html_e( 'Header image:' ); ?>
@@ -135,7 +112,8 @@ class Seabadgermd_Widget_Aboutcard extends WP_Widget {
 			class="widefat text wp-edit-area" id="<?php echo $this->get_field_id( 'about' ); ?>"
 			style="height:200px" cols=20 rows=16><?php echo esc_textarea( $about ); ?></textarea>
 		</p>
-
+		<br>
+		<small>*This widget doesn't display widget title</small>
 <?php
 	}
 }
