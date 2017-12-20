@@ -35,7 +35,13 @@ class Seabadgermd_Widget_Aboutcard extends WP_Widget {
 	 * @param array $instance Settings for the current Aboutcard widget instance.
 	 */
 	public function widget( $args, $instance ) {
-		if ( $instance['only_on_frontpage'] && ! is_front_page() ) {
+
+		$headimg = isset( $instance['headimg'] ) ? esc_url( $instance['headimg'] ) : '';
+		$avatar = isset( $instance['avatar'] ) ? esc_url( $instance['avatar'] ) : '';
+		$about = isset( $instance['about'] ) ? wp_kses_post( $instance['about'] ) : '';
+		$only_on_frontpage = is_set( $instance['only_on_frontpage'] ) ? (bool) $instance['only_on_frontpage'] : false;
+
+		if ( $only_on_frontpage && ! is_front_page() ) {
 			return;
 		}
 		if ( ! isset( $args['widget_id'] ) ) {
@@ -46,11 +52,11 @@ class Seabadgermd_Widget_Aboutcard extends WP_Widget {
 		<?php echo $args['before_widget']; ?>
 		<div class="about aboutwidget">
 			<div class="about-header">
-				<img class="img-fluid" src="<?php echo esc_url( $instance['headimg'] ); ?>">
-				<img class="about-avatar" src="<?php echo esc_url( $instance['avatar'] ); ?>">
+				<img class="img-fluid" src="<?php echo esc_url( $headimg ); ?>">
+				<img class="about-avatar" src="<?php echo esc_url( $avatar ); ?>">
 			</div>
 			<div class="about-body">
-				<p class="about-text"><?php echo wp_kses_post( $instance['about'] ); ?></p>
+				<p class="about-text"><?php echo wp_kses_post( $about ); ?></p>
 			</div>
 		</div>
 		<?php
