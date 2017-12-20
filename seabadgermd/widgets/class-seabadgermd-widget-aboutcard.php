@@ -64,8 +64,9 @@ class Seabadgermd_Widget_Aboutcard extends WP_Widget {
 				$abouturl = get_permalink( $aboutpage );
 			?>
 			<div class="about-footer">
-				<a href="<?php echo esc_url( $abouturl ); ?>" class="btn btn-round themecolor">
-				<i class="fa fa-address-card" aria-hidden="true"></i>
+				<a href="<?php echo esc_url( $abouturl ); ?>" class="btn btn-round themecolor"
+				title="<?php esc_attr_e( 'Visit About page', 'sesabadgermd' ); ?>">
+				<i class="fa fa-id-card-o" aria-hidden="true"></i>
 				<span class="sr-only">Visit About page</span></a>
 			</div>
 			<?php

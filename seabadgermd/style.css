@@ -236,9 +236,13 @@ h1, h2, h3, h4 {
 	padding: 10px;
 }
 
+.about-text {
+	margin-bottom: 0;
+}
+
 .about-footer {
 	text-align: center;
-	padding: 15px;
+	padding: 5px;
 }
 
 /* Navbar */
