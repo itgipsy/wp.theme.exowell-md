@@ -39,7 +39,7 @@ class Seabadgermd_Widget_Aboutcard extends WP_Widget {
 		$headimg = isset( $instance['headimg'] ) ? esc_url( $instance['headimg'] ) : '';
 		$avatar = isset( $instance['avatar'] ) ? esc_url( $instance['avatar'] ) : '';
 		$about = isset( $instance['about'] ) ? wp_kses_post( $instance['about'] ) : '';
-		$only_on_frontpage = is_set( $instance['only_on_frontpage'] ) ? (bool) $instance['only_on_frontpage'] : false;
+		$only_on_frontpage = isset( $instance['only_on_frontpage'] ) ? (bool) $instance['only_on_frontpage'] : false;
 
 		if ( $only_on_frontpage && ! is_front_page() ) {
 			return;
@@ -89,7 +89,7 @@ class Seabadgermd_Widget_Aboutcard extends WP_Widget {
 		$headimg    = isset( $instance['headimg'] ) ? esc_url( $instance['headimg'] ) : '';
 		$avatar    = isset( $instance['avatar'] ) ? esc_url( $instance['avatar'] ) : '';
 		$about = isset( $instance['about'] ) ? wp_kses_post( $instance['about'] ) : '';
-		$only_on_frontpage = is_set( $instance['only_on_frontpage'] ) ? (bool) $instance['only_on_frontpage'] : false;
+		$only_on_frontpage = isset( $instance['only_on_frontpage'] ) ? (bool) $instance['only_on_frontpage'] : false;
 ?>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'headimg' ); ?>">
