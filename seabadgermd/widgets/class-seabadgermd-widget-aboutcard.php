@@ -53,17 +53,13 @@ class Seabadgermd_Widget_Aboutcard extends WP_Widget {
 			echo $args['before_title'] . esc_html( $title ) . $args['after_title'];
 		}
 		?>
-		<div class="row">
-			<div class="col-12">
-				<div class="about">
-					<div class="about-header">
-						<img class="img-fluid" src="<?php echo esc_url( $instance['headimg'] ); ?>">
-						<img class="about-avatar" src="<?php echo esc_url( $instance['avatar'] ); ?>">
-					</div>
-					<div class="about-body">
-						<p class="about-text"><?php echo esc_html( $instance['about'] ); ?></p>
-					</div>
-				</div>
+		<div class="about aboutwidget">
+			<div class="about-header">
+				<img class="img-fluid" src="<?php echo esc_url( $instance['headimg'] ); ?>">
+				<img class="about-avatar" src="<?php echo esc_url( $instance['avatar'] ); ?>">
+			</div>
+			<div class="about-body">
+				<p class="about-text"><?php echo wp_kses_post( $instance['about'] ); ?></p>
 			</div>
 		</div>
 		<?php
@@ -83,7 +79,7 @@ class Seabadgermd_Widget_Aboutcard extends WP_Widget {
 		$instance['title'] = sanitize_text_field( $new_instance['title'] );
 		$instance['headimg'] = esc_url( $new_instance['headimg'] );
 		$instance['avatar'] = esc_url( $new_instance['avatar'] );
-		$instance['about'] = esc_html( $new_instance['about'] );
+		$instance['about'] = wp_kses_post( $new_instance['about'] );
 		return $instance;
 	}
 
@@ -96,7 +92,7 @@ class Seabadgermd_Widget_Aboutcard extends WP_Widget {
 		$title     = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
 		$headimg    = isset( $instance['headimg'] ) ? esc_url( $instance['headimg'] ) : '';
 		$avatar    = isset( $instance['avatar'] ) ? esc_url( $instance['avatar'] ) : '';
-		$about = isset( $instance['about'] ) ? esc_html( $instance['about'] ) : '';
+		$about = isset( $instance['about'] ) ? wp_kses_post( $instance['about'] ) : '';
 ?>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>">
@@ -137,7 +133,7 @@ class Seabadgermd_Widget_Aboutcard extends WP_Widget {
 			</label>
 			<textarea name="<?php echo $this->get_field_name( 'about' ); ?>"
 			class="widefat text wp-edit-area" id="<?php echo $this->get_field_id( 'about' ); ?>"
-			style="height:200px" cols=20 rows=16><?php echo esc_html( $about ); ?></textarea>
+			style="height:200px" cols=20 rows=16><?php echo esc_textarea( $about ); ?></textarea>
 		</p>
 
 <?php

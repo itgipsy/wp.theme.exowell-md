@@ -189,7 +189,7 @@ h1, h2, h3, h4 {
 	box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
 }
 
-/* Custom widgets */
+/* Recent posts grid widget */
 .recent-posts-grid-item {
 	padding: 5px;
 	max-width: 170px;
@@ -209,6 +209,10 @@ h1, h2, h3, h4 {
 }
 
 /* About card widget */
+.about.aboutwidget {
+	margin: -20px;
+}
+
 .about {
 	box-shadow: rgba(0, 0, 0, 0.16) 0px 2px 5px 0px, rgba(0, 0, 0, 0.12) 0px 2px 10px 0px;
 }
