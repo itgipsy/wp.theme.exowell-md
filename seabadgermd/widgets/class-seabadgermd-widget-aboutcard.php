@@ -35,6 +35,9 @@ class Seabadgermd_Widget_Aboutcard extends WP_Widget {
 	 * @param array $instance Settings for the current Aboutcard widget instance.
 	 */
 	public function widget( $args, $instance ) {
+		if ( $instance['only_on_frontpage'] && ! is_front_page() ) {
+			return;
+		}
 		if ( ! isset( $args['widget_id'] ) ) {
 			$args['widget_id'] = $this->id;
 		}
@@ -67,6 +70,7 @@ class Seabadgermd_Widget_Aboutcard extends WP_Widget {
 		$instance['headimg'] = esc_url( $new_instance['headimg'] );
 		$instance['avatar'] = esc_url( $new_instance['avatar'] );
 		$instance['about'] = wp_kses_post( $new_instance['about'] );
+		$instance['only_on_frontpage'] = (bool) $new_instance['only_on_frontpage'];
 		return $instance;
 	}
 
@@ -79,6 +83,7 @@ class Seabadgermd_Widget_Aboutcard extends WP_Widget {
 		$headimg    = isset( $instance['headimg'] ) ? esc_url( $instance['headimg'] ) : '';
 		$avatar    = isset( $instance['avatar'] ) ? esc_url( $instance['avatar'] ) : '';
 		$about = isset( $instance['about'] ) ? wp_kses_post( $instance['about'] ) : '';
+		$only_on_frontpage = is_set( $instance['only_on_frontpage'] ) ? (bool) $instance['only_on_frontpage'] : false;
 ?>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'headimg' ); ?>">
@@ -112,8 +117,16 @@ class Seabadgermd_Widget_Aboutcard extends WP_Widget {
 			class="widefat text wp-edit-area" id="<?php echo $this->get_field_id( 'about' ); ?>"
 			style="height:200px" cols=20 rows=16><?php echo esc_textarea( $about ); ?></textarea>
 		</p>
-		<br>
-		<small>*This widget doesn't display widget title</small>
+
+		<p>
+			<input class="checkbox" type="checkbox"<?php checked( $only_on_frontpage ); ?>
+			id="<?php echo $this->get_field_id( 'only_on_frontpage' ); ?>" 
+			name="<?php echo $this->get_field_name( 'only_on_frontpage' ); ?>" />
+			<label for="<?php echo $this->get_field_id( 'only_on_frontpage' ); ?>">
+				<?php esc_html_e( 'Only show this widget on the front page', 'seabadgermd' ); ?>
+			</label>
+		</p>
+		<small>*This widget doesn't support widget title</small>
 <?php
 	}
 }
