@@ -146,6 +146,18 @@ function seabadgermd_widgets_init() {
 		)
 	);
 
+	register_sidebar(
+		array(
+			'name'          => __( 'Front page', 'seabadgermd' ),
+			'id'            => 'frontpage',
+			'description'   => __( 'Fron page content', 'seabadgermd' ),
+			'before_widget' => '<div id="%1$s" class="card front-content %2$s"><div class="card-body">',
+			'after_widget'  => '</div></div>',
+			'before_title'  => '<div class="card-title front-content-title themecolor">',
+			'after_title'    => '</div>',
+		)
+	);
+
 	// unregister_widget( 'WP_Widget_Archives' );
 	register_widget( 'Seabadgermd_Widget_Archives' );
 	register_widget( 'Seabadgermd_Widget_Recent_Posts_Grid' );
