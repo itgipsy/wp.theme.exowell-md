@@ -5,7 +5,6 @@
 	<div class="row">
 		<!--Main column-->
 		<div class="col-md-12 col-lg-8 posts-col">
-
 			<?php
 			if ( is_active_sidebar( 'frontpage' ) ) {
 				dynamic_sidebar( 'frontpage' );
@@ -15,7 +14,7 @@
 			?>
 			<!--Post-->
 			<div <?php post_class( 'card post-wrapper' ); ?>>
-				<?php get_template_part('template-parts/content', get_post_format()); ?>
+				<?php get_template_part( 'template-parts/content', get_post_format() ); ?>
 			</div>
 			<!--/Post-->
 			<?php
@@ -24,6 +23,7 @@
 			}
 			?>
 		</div>
+		<!--/Main column-->
 		<!--Sidebar-->
 		<?php get_sidebar(); ?>
 		<!--/Sidebar-->	
