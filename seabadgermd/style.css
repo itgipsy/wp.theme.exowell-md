@@ -404,6 +404,12 @@ div.aligncenter {
 	max-width: 100%;
 }
 
+img.aligncenter,
+img.alignright,
+img.alignleft {
+	height: auto;
+}
+
 .alignright {
     float:right;
     margin: 5px 0 20px 20px;
