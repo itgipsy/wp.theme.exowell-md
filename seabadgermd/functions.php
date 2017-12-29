@@ -19,7 +19,7 @@ require_once( 'inc/seabadgermd-pagination.php' );
 require_once( 'widgets/class-seabadgermd-widget-archives.php' );
 require_once( 'widgets/class-seabadgermd-widget-recent-posts-grid.php' );
 require_once( 'widgets/class-seabadgermd-widget-aboutcard.php' );
-require_once( 'widgets/frontpage/class-seabadgermd-widget-fp-posts' );
+require_once( 'widgets/frontpage/class-seabadgermd-widget-fp-posts.php' );
 
 /**
  * Include CSS/JS dependencies
@@ -151,7 +151,7 @@ function seabadgermd_widgets_init() {
 		array(
 			'name'          => __( 'Front page', 'seabadgermd' ),
 			'id'            => 'frontpage',
-			'description'   => __( 'Fron page content', 'seabadgermd' ),
+			'description'   => __( 'Front page content', 'seabadgermd' ),
 			'before_widget' => '<div id="%1$s" class="card front-content %2$s"><div class="card-body">',
 			'after_widget'  => '</div></div>',
 			'before_title'  => '<div class="card-title front-content-title themecolor">',

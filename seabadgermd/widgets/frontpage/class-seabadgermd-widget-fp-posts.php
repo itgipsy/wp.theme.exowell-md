@@ -37,14 +37,13 @@ class Seabadgermd_Widget_Fp_Posts extends WP_Widget {
 		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
 
 		$limit = ( ! empty( $instance['limit'] ) ) ? absint( $instance['limit'] ) : 3;
-		$offset = ( ! empty( $instance['offset'] ) ) ? absint( $instance['offset'] ) : 2;
+		$offset = ( ! empty( $instance['offset'] ) ) ? absint( $instance['offset'] ) : 1;
 		if ( ! $limit ) {
 			$limit = 3; }
 		if ( ! $offset ) {
-			$offset = 2; }
+			$offset = 1; }
 
-		$category = isset( $instance['category'] ) ? $instance['category'] : -1;
-		$category = int( $category );
+		$category = isset( $instance['category'] ) ? (int) $instance['category'] : -1;
 
 		$ignore_sticky = isset( $instance['ignore_sticky'] ) ? $instance['ignore_sticky'] : true;
 
@@ -75,7 +74,11 @@ class Seabadgermd_Widget_Fp_Posts extends WP_Widget {
 		global $post;
 		while ( $r->have_posts() ) {
 			$r->the_post();
-			get_template_part( 'template-parts/content' );
+		?>
+			<div <?php post_class( 'card post-wrapper' ); ?>>
+			<?php get_template_part( 'template-parts/content' ); ?>
+			</div>
+		<?php
 		}
 		wp_reset_postdata();
 
@@ -132,11 +135,11 @@ class Seabadgermd_Widget_Fp_Posts extends WP_Widget {
 
 		<p>
 			<label for="<?php echo $this->get_field_id( 'offset' ); ?>">
-				<?php esc_html_e( 'Skip latest posts:', 'seabadgermd' ); ?>
+				<?php esc_html_e( 'Offset (skip x latest posts):', 'seabadgermd' ); ?>
 			</label>
 			<input class="tiny-text" id="<?php echo $this->get_field_id( 'offset' ); ?>"
 			name="<?php echo $this->get_field_name( 'offset' ); ?>"
-			type="number" step="1" min="1" value="<?php echo intval( $offset ); ?>" size="3" />
+			type="number" step="1" min="0" value="<?php echo intval( $offset ); ?>" size="3" />
 		</p>
 
 		<p>
