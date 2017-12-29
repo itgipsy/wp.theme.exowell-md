@@ -15,8 +15,8 @@ class Seabadgermd_Widget_Fp_Posts extends WP_Widget {
 			'description' => __( 'Show recent posts on Front Page', 'seabadgermd' ),
 			'customize_selective_refresh' => false,
 		);
-		parent::__construct( 'seabadgermd-recent-posts-grid', __( 'FP Posts [SeaBadgerMD]', 'seabadgermd' ), $widget_ops );
-		$this->alt_option_name = 'seabadgermd_widget_recent_posts_grid';
+		parent::__construct( 'seabadgermd-fp-posts', __( 'FP Posts [SeaBadgerMD]', 'seabadgermd' ), $widget_ops );
+		$this->alt_option_name = 'seabadgermd_widget_fp_posts';
 	}
 
 	/**
