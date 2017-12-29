@@ -152,10 +152,10 @@ function seabadgermd_widgets_init() {
 			'name'          => __( 'Front page', 'seabadgermd' ),
 			'id'            => 'frontpage',
 			'description'   => __( 'Front page content', 'seabadgermd' ),
-			'before_widget' => '<div id="%1$s" class="card front-content %2$s"><div class="card-body">',
-			'after_widget'  => '</div></div>',
-			'before_title'  => '<div class="card-title front-content-title themecolor">',
-			'after_title'    => '</div>',
+			'before_widget' => '',
+			'after_widget'  => '',
+			'before_title'  => '',
+			'after_title'    => '',
 		)
 	);
 
