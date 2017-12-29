@@ -151,7 +151,7 @@ class Seabadgermd_Widget_Aboutcard extends WP_Widget {
 					'name' => $this->get_field_name( 'aboutpage' ),
 					'id' => $this->get_field_id( 'aboutpage' ),
 					'class' => '',
-					'show_option_none' => esc_html__( 'Show no "About page" button' ),
+					'show_option_none' => esc_html__( 'Show no "About page" button', 'seabadgermd' ),
 				);
 			?>
 			<?php wp_dropdown_pages( $pargs ); ?>
