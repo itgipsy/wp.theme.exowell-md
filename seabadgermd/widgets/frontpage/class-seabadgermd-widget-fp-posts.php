@@ -34,6 +34,14 @@ class Seabadgermd_Widget_Fp_Posts extends WP_Widget {
 		$title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : '';
 
 		/** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
+		$add_category_link = isset( $instance['add_category_link'] ) ? $instance['add_category_link'] : false;
+		$category = isset( $instance['category'] ) ? (int) $instance['category'] : -1;
+
+		if ( ! empty( $category ) && $category >= 0 && $add_category_link ) {
+			$title = sprintf( '<a href="%s" class="category-link">%s</a>',
+			get_category_link( $category ), $title );
+		}
+
 		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
 
 		$limit = ( ! empty( $instance['limit'] ) ) ? absint( $instance['limit'] ) : 3;
@@ -42,8 +50,6 @@ class Seabadgermd_Widget_Fp_Posts extends WP_Widget {
 			$limit = 3; }
 		if ( ! $offset ) {
 			$offset = 1; }
-
-		$category = isset( $instance['category'] ) ? (int) $instance['category'] : -1;
 
 		$ignore_sticky = isset( $instance['ignore_sticky'] ) ? $instance['ignore_sticky'] : true;
 
@@ -100,6 +106,7 @@ class Seabadgermd_Widget_Fp_Posts extends WP_Widget {
 		$instance['offset'] = (int) $new_instance['offset'];
 		$instance['category'] = isset( $new_instance['category'] ) ? (int) $new_instance['category'] : -1;
 		$instance['ignore_sticky'] = isset( $new_instance['ignore_sticky'] ) ? (bool) $new_instance['ignore_sticky'] : true;
+		$instance['add_category_link'] = isset( $new_instance['add_category_link'] ) ? (bool) $new_instance['add_category_link'] : false;
 		return $instance;
 	}
 
@@ -114,7 +121,8 @@ class Seabadgermd_Widget_Fp_Posts extends WP_Widget {
 		$offset = isset( $instance['offset'] ) ? absint( $instance['offset'] ) : 2;
 		$category = isset( $instance['category'] ) ? (int) $instance['category'] : -1;
 		$ignore_sticky = isset( $instance['ignore_sticky'] ) ? (bool) $instance['ignore_sticky'] : true;
-?>
+		$add_category_link = isset( $instance['add_category_link'] ) ? (bool) $instance['add_category_link'] : false;
+		?>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>">
 				<?php esc_html_e( 'Title:', 'seabadgermd' ); ?>
@@ -165,11 +173,20 @@ class Seabadgermd_Widget_Fp_Posts extends WP_Widget {
 		</p>
 
 		<p>
+			<input class="checkbox" type="checkbox"<?php checked( $add_category_link ); ?>
+			id="<?php echo $this->get_field_id( 'add_category_link' ); ?>" 
+			name="<?php echo $this->get_field_name( 'add_category_link' ); ?>" />
+			<label for="<?php echo $this->get_field_id( 'add_category_link' ); ?>">
+				<?php esc_html_e( 'Add link to title, poiting to selected category', 'seabadgermd' ); ?>
+			</label>
+		</p>
+
+		<p>
 			<input class="checkbox" type="checkbox"<?php checked( $ignore_sticky ); ?>
 			id="<?php echo $this->get_field_id( 'ignore_sticky' ); ?>" 
 			name="<?php echo $this->get_field_name( 'ignore_sticky' ); ?>" />
 			<label for="<?php echo $this->get_field_id( 'ignore_sticky' ); ?>">
-				<?php esc_html_e( 'Ignore sticky post setting', 'seabadgermd' ); ?>
+				<?php esc_html_e( 'Ignore sticky posts', 'seabadgermd' ); ?>
 			</label>
 		</p>
 <?php
