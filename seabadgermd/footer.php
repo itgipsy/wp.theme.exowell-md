@@ -10,8 +10,8 @@
 		</div>
 	
 		<!--Footer menu -->
-		<?php if ( has_nav_menu( 'footer' ) ) : ?>
 		<div class="footer-menu col-md-6 col-lg-5">
+		<?php if ( has_nav_menu( 'footer' ) ) : ?>
 			<?php
 			wp_nav_menu( array(
 				'menu' => 'footer',
@@ -19,8 +19,8 @@
 				'depth' => 1,
 			));
 			?>
-		</div>
 		<?php endif; ?>
+		</div>
 		<!--/Footer menu-->
 	
 		<!--Copyright-->
