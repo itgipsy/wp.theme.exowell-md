@@ -1,5 +1,5 @@
 <?php
-	$navbar_class = '';
+$navbar_class = '';
 if ( get_theme_mod( 'seabadgermd_navbar_fixing', 'on' ) === 'on' &&
 ! get_theme_mod( 'navbar_remove', false ) ) {
 	$navbar_class .= ' fixed-top scrolling-navbar';
@@ -7,7 +7,8 @@ if ( get_theme_mod( 'seabadgermd_navbar_fixing', 'on' ) === 'on' &&
 		$navbar_class .= ' autohide';
 	}
 }
-	$color_theme_conf = seabadgermd_get_color_theme( get_theme_mod( 'seabadgermd_color_theme' ) );
+
+$color_theme_conf = seabadgermd_get_color_theme( get_theme_mod( 'seabadgermd_color_theme' ) );
 if ( 'dark' === $color_theme_conf['style'] ) {
 	$navbar_class .= ' navbar-dark';
 }
