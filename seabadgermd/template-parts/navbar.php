@@ -13,7 +13,7 @@ if ( 'dark' === $color_theme_conf['style'] ) {
 }
 ?>
 <!--Navbar-->
-<?php if ( ! get_theme_mod( 'seabadgermd_navbar_remove', false ) ) : ?>
+<?php if ( ! get_theme_mod( 'seabadgermd_navbar_remove', false ) && has_nav_menu( 'navbar' ) ) : ?>
 	<nav id="main-navbar" class="navbar navbar-expand-lg themecolor<?php echo $navbar_class; ?>" role="navigation">
 		<div class="container">
 			<!-- Navbar brand -->
@@ -41,8 +41,6 @@ if ( 'dark' === $color_theme_conf['style'] ) {
 								'walker'                => new Seabadgermd_Menuwalker(),
 							)
 						);
-					} else {
-						esc_html_e( 'Please assign Navbar Menu in Wordpress Admin -> Appearance -> Menus -> Manage Locations', 'seabadgermd' );
 					}
 					?>
 					 
