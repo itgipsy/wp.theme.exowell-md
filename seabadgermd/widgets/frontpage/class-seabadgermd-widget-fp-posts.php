@@ -37,11 +37,6 @@ class Seabadgermd_Widget_Fp_Posts extends WP_Widget {
 		$add_category_link = isset( $instance['add_category_link'] ) ? $instance['add_category_link'] : false;
 		$category = isset( $instance['category'] ) ? (int) $instance['category'] : -1;
 
-		if ( ! empty( $category ) && $category >= 0 && $add_category_link ) {
-			$title = sprintf( '<a href="%s" class="category-link">%s</a>',
-			get_category_link( $category ), $title );
-		}
-
 		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
 
 		$limit = ( ! empty( $instance['limit'] ) ) ? absint( $instance['limit'] ) : 3;
@@ -87,6 +82,13 @@ class Seabadgermd_Widget_Fp_Posts extends WP_Widget {
 		<?php
 		}
 		wp_reset_postdata();
+
+		if ( ! empty( $category ) && $category >= 0 && $add_category_link ) {
+			printf( '<div class="category-readmore"><a href="%s" class="btn btn-sm themecolor">%s</a></div>',
+				get_category_link( $category ),
+				sprintf( esc_html__( 'Read more from %1$s', 'seabadgermd' ), get_cat_name( $category ) )
+			);
+		}
 
 		echo $args['after_widget'];
 	}
@@ -177,7 +179,7 @@ class Seabadgermd_Widget_Fp_Posts extends WP_Widget {
 			id="<?php echo $this->get_field_id( 'add_category_link' ); ?>" 
 			name="<?php echo $this->get_field_name( 'add_category_link' ); ?>" />
 			<label for="<?php echo $this->get_field_id( 'add_category_link' ); ?>">
-				<?php esc_html_e( 'Add link to title, poiting to selected category', 'seabadgermd' ); ?>
+				<?php esc_html_e( 'Add "Read more from category" link if a category is selected', 'seabadgermd' ); ?>
 			</label>
 		</p>
 

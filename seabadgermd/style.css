@@ -390,6 +390,20 @@ table.table a {
 	font-size: 45px;
 }
 
+/* Magazin Front Page */
+
+/* FP Posts */
+.category-readmore {
+	text-align: right;
+	margin-top: -1.5rem;
+}
+
+.category-readmore a.btn.btn-sm {
+	font-family: "Roboto Slab";
+	text-transform: none;
+	font-size: .8rem;
+}
+
 /* =WordPress Core
 -------------------------------------------------------------- */
 .alignnone {
