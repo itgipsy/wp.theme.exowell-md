@@ -1,3 +1,10 @@
+<?php
+// If blog posts configured for front page, pass on handling
+if ( 'posts' == get_option( 'show_on_front' ) ) {
+		include( get_home_template() );
+		return;
+}
+?>
 <?php get_header(); ?>
 <main>
 <!--Main layout-->
