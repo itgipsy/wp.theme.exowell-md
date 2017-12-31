@@ -103,6 +103,12 @@ class Seabadgermd_Widget_Fp_Postcards extends WP_Widget {
 				</div>
 				<div class="card-footer">
 					<?php
+					if ( has_tag() ) {
+						echo '<span class="text-muted tagline">' . esc_html__( 'Tagged with ', 'seabadgermd' );
+						echo get_the_tag_list( '', ' ' );
+						echo '</span>';
+					}
+
 					printf( '<a href="%s" class="btn btn-sm themecolor">%s</a>',
 						get_permalink(),
 						esc_html__( 'Read more', 'seabadgermd' )
