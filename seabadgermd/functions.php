@@ -20,6 +20,7 @@ require_once( 'widgets/class-seabadgermd-widget-archives.php' );
 require_once( 'widgets/class-seabadgermd-widget-recent-posts-grid.php' );
 require_once( 'widgets/class-seabadgermd-widget-aboutcard.php' );
 require_once( 'widgets/frontpage/class-seabadgermd-widget-fp-posts.php' );
+require_once( 'widgets/frontpage/class-seabadgermd-widget-fp-postcards.php' );
 
 /**
  * Include CSS/JS dependencies
@@ -62,6 +63,7 @@ function seabadgermd_setup() {
 	add_image_size( 'main-full', 1078, 516, false ); // main post image in full width
 	add_image_size( 'small-size', 300 );
 	add_image_size( 'large-size', 750 );
+	set_post_thumbnail_size( 750, 250, array( 'center', 'center' ) );
 	// Allow custom background
 	add_theme_support( 'custom-background' );
 	// Support custom header image
@@ -164,6 +166,7 @@ function seabadgermd_widgets_init() {
 	register_widget( 'Seabadgermd_Widget_Recent_Posts_Grid' );
 	register_widget( 'Seabadgermd_Widget_Aboutcard' );
 	register_widget( 'Seabadgermd_Widget_Fp_Posts' );
+	register_widget( 'Seabadgermd_Widget_Fp_Postcards' );
 }
 
 add_action( 'widgets_init', 'seabadgermd_widgets_init' );

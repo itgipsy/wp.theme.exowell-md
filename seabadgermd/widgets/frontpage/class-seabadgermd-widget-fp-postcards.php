@@ -1,30 +1,30 @@
 <?php
 /**
- * Widget API: Seabadgermd_Widget_Fp_Posts - display posts on front page
+ * Widget API: Seabadgermd_Widget_Fp_Postcards - display posts on front page
  */
 
-class Seabadgermd_Widget_Fp_Posts extends WP_Widget {
+class Seabadgermd_Widget_Fp_Postcards extends WP_Widget {
 
 	/**
-	 * Sets up a new FrontPage Posts widget instance.
+	 * Sets up a new FrontPage Postcards widget instance.
 	 *
 	 */
 	public function __construct() {
 		$widget_ops = array(
-			'classname' => 'seabadgermd_widget_fp_posts',
-			'description' => __( 'Show recent posts on Front Page', 'seabadgermd' ),
+			'classname' => 'seabadgermd_widget_fp_postcards',
+			'description' => __( 'Show recent posts as cards on Front Page', 'seabadgermd' ),
 			'customize_selective_refresh' => false,
 		);
-		parent::__construct( 'seabadgermd-fp-posts', __( 'FrontPage Posts', 'seabadgermd' ), $widget_ops );
-		$this->alt_option_name = 'seabadgermd_widget_fp_posts';
+		parent::__construct( 'seabadgermd-fp-postcards', __( 'FrontPage Postcards', 'seabadgermd' ), $widget_ops );
+		$this->alt_option_name = 'seabadgermd_widget_fp_postcards';
 	}
 
 	/**
-	 * Outputs the content for the current FrontPage Posts widget instance.
+	 * Outputs the content for the current FrontPage Postcards widget instance.
 	 *
 	 * @param array $args     Display arguments including 'before_title', 'after_title',
 	 *                        'before_widget', and 'after_widget'.
-	 * @param array $instance Settings for the current FrontPage Posts widget instance.
+	 * @param array $instance Settings for the current FrontPage Postcards widget instance.
 	 */
 	public function widget( $args, $instance ) {
 		if ( ! isset( $args['widget_id'] ) ) {
@@ -41,12 +41,13 @@ class Seabadgermd_Widget_Fp_Posts extends WP_Widget {
 
 		$limit = ( ! empty( $instance['limit'] ) ) ? absint( $instance['limit'] ) : 3;
 		$offset = ( ! empty( $instance['offset'] ) ) ? absint( $instance['offset'] ) : 1;
-		if ( ! $limit ) {
+		if ( ! $limit || $limit > 3 ) {
 			$limit = 3; }
 		if ( ! $offset ) {
 			$offset = 1; }
 
 		$ignore_sticky = isset( $instance['ignore_sticky'] ) ? $instance['ignore_sticky'] : true;
+		$disable_image = isset( $instance['disable_image'] ) ? $instance['disable_image'] : false;
 
 		$query_filter = array(
 			'posts_per_page'      => $limit,
@@ -59,7 +60,7 @@ class Seabadgermd_Widget_Fp_Posts extends WP_Widget {
 		if ( ! empty( $category ) && $category >= 0 ) {
 			$query_filter['cat'] = $category;
 		}
-
+		/* query most recent posts */
 		$r = new WP_Query( apply_filters( 'widget_posts_args', $query_filter, $instance ) );
 
 		if ( ! $r->have_posts() ) {
@@ -73,14 +74,45 @@ class Seabadgermd_Widget_Fp_Posts extends WP_Widget {
 		}
 
 		global $post;
+		echo '<div class="card-deck post-wrapper">';
 		while ( $r->have_posts() ) {
 			$r->the_post();
+			if ( ! has_excerpt() || post_password_required() ) {
+				$the_text = wp_strip_all_tags( get_the_content( '', false ) );
+			} else {
+				$the_text = wp_strip_all_tags( get_the_excerpt() );
+			}
+			$max_text_length = 340 - ( 80 * ( $limit - 1 ) );
+			if ( strlen( $the_text ) > $max_text_length ) {
+				$the_text_excerpt = preg_replace( '/[\s\.,][^\s\.,]*$/u', '', substr( $the_text, 0, $max_text_length ) ) . '...';
+			} else {
+				$the_text_excerpt = $the_text;
+			}
 		?>
-			<div <?php post_class( 'card post-wrapper' ); ?>>
-			<?php get_template_part( 'template-parts/content' ); ?>
+			<div <?php post_class( 'card' ); ?>>
+				<?php if ( has_post_thumbnail() && ! $disable_image ) : ?>
+					<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="post-image">
+						<?php the_post_thumbnail( 'post-thumbnail', array( 'class' => 'img-fluid' ) ); ?>
+					</a>
+				<?php endif; ?>
+				<h4 class="card-title postcard-title">
+					<a href="<?php echo esc_attr( get_permalink() ); ?>"><?php the_title(); ?></a>
+				</h4>
+				<div class="card-body">
+					<p class="card-text"><?php echo $the_text_excerpt; ?></p>
+				</div>
+				<div class="card-footer">
+					<?php
+					printf( '<a href="%s" class="btn btn-sm themecolor">%s</a>',
+						get_permalink(),
+						esc_html__( 'Read more', 'seabadgermd' )
+					);
+					?>
+				</div>
 			</div>
 		<?php
 		}
+		echo '</div>';
 		wp_reset_postdata();
 
 		if ( ! empty( $category ) && $category >= 0 && $add_category_link ) {
@@ -94,7 +126,7 @@ class Seabadgermd_Widget_Fp_Posts extends WP_Widget {
 	}
 
 	/**
-	 * Handles updating the settings for the current FrontPage Posts widget instance.
+	 * Handles updating the settings for the current FrontPage Postcards widget instance.
 	 *
 	 * @param array $new_instance New settings for this instance as input by the user via
 	 *                            WP_Widget::form().
@@ -109,11 +141,12 @@ class Seabadgermd_Widget_Fp_Posts extends WP_Widget {
 		$instance['category'] = isset( $new_instance['category'] ) ? (int) $new_instance['category'] : -1;
 		$instance['ignore_sticky'] = isset( $new_instance['ignore_sticky'] ) ? (bool) $new_instance['ignore_sticky'] : true;
 		$instance['add_category_link'] = isset( $new_instance['add_category_link'] ) ? (bool) $new_instance['add_category_link'] : false;
+		$instance['disable_image'] = isset( $new_instance['disable_image'] ) ? (bool) $new_instance['disable_image'] : false;
 		return $instance;
 	}
 
 	/**
-	 * Outputs the settings form for the FrontPage Posts widget.
+	 * Outputs the settings form for the FrontPage Postcards widget.
 	 *
 	 * @param array $instance Current settings.
 	 */
@@ -124,6 +157,7 @@ class Seabadgermd_Widget_Fp_Posts extends WP_Widget {
 		$category = isset( $instance['category'] ) ? (int) $instance['category'] : -1;
 		$ignore_sticky = isset( $instance['ignore_sticky'] ) ? (bool) $instance['ignore_sticky'] : true;
 		$add_category_link = isset( $instance['add_category_link'] ) ? (bool) $instance['add_category_link'] : false;
+		$disable_image = isset( $instance['disable_image'] ) ? (bool) $instance['disable_image'] : false;
 		?>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>">
@@ -136,11 +170,11 @@ class Seabadgermd_Widget_Fp_Posts extends WP_Widget {
 
 		<p>
 			<label for="<?php echo $this->get_field_id( 'limit' ); ?>">
-				<?php esc_html_e( 'Maximum number of posts:', 'seabadgermd' ); ?>
+				<?php esc_html_e( 'Number of cards:', 'seabadgermd' ); ?>
 			</label>
 			<input class="tiny-text" id="<?php echo $this->get_field_id( 'limit' ); ?>"
 			name="<?php echo $this->get_field_name( 'limit' ); ?>"
-			type="number" step="1" min="1" value="<?php echo intval( $limit ); ?>" size="3" />
+			type="number" step="1" min="1" max="3" value="<?php echo intval( $limit ); ?>" size="3" />
 		</p>
 
 		<p>
@@ -189,6 +223,15 @@ class Seabadgermd_Widget_Fp_Posts extends WP_Widget {
 			name="<?php echo $this->get_field_name( 'ignore_sticky' ); ?>" />
 			<label for="<?php echo $this->get_field_id( 'ignore_sticky' ); ?>">
 				<?php esc_html_e( 'Ignore sticky posts', 'seabadgermd' ); ?>
+			</label>
+		</p>
+
+		<p>
+			<input class="checkbox" type="checkbox"<?php checked( $disable_image ); ?>
+			id="<?php echo $this->get_field_id( 'disable_image' ); ?>" 
+			name="<?php echo $this->get_field_name( 'disable_image' ); ?>" />
+			<label for="<?php echo $this->get_field_id( 'disable_image' ); ?>">
+				<?php esc_html_e( 'Disable featured image', 'seabadgermd' ); ?>
 			</label>
 		</p>
 <?php
