@@ -23,11 +23,13 @@
 <?php
 if ( comments_open() || get_comments_number() != 0 ) {
 	comments_popup_link(
-		__( 'Comment', 'seabadgermd' ),
-		__( 'View comment', 'seabadgermd' ),
-		__( 'View comments (%)', 'seabadgermd' ),
-		'btn themecolor comment-link',
-		__( 'Comments off', 'seabadgermd' )
+		// __( 'Comment', 'seabadgermd' ),
+		sprintf( '<i class="fa fa-comments-o" aria-hidden="true"></i><span class="sr-only">%s</span>',
+		esc_html__( 'Comment' ) ),
+		esc_html__( 'View comment', 'seabadgermd' ),
+		esc_html__( 'View comments (%)', 'seabadgermd' ),
+		'btn btn-round themecolor comment-link',
+		esc_html__( 'Comments off', 'seabadgermd' )
 	);
 }
 ?>
