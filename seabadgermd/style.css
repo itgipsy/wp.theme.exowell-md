@@ -414,6 +414,15 @@ table.table a {
 
 .postcard-title {
 	padding: 5px;
+	font-size: 1.2rem;
+}
+
+.postcard-body {
+	padding-top: 0;
+}
+
+.postcard-meta {
+	text-align: center;
 }
 
 /* =WordPress Core

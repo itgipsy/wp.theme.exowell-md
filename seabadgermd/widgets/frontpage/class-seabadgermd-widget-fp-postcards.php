@@ -98,7 +98,7 @@ class Seabadgermd_Widget_Fp_Postcards extends WP_Widget {
 				<h4 class="card-title postcard-title">
 					<a href="<?php echo esc_attr( get_permalink() ); ?>"><?php the_title(); ?></a>
 				</h4>
-				<div class="card-body">
+				<div class="card-body postcard-body">
 					<p class="card-text"><?php echo $the_text_excerpt; ?></p>
 				</div>
 				<div class="card-footer">
@@ -117,9 +117,8 @@ class Seabadgermd_Widget_Fp_Postcards extends WP_Widget {
 				</div>
 			</div>
 		<?php
-		}
+		} // end if(). have_posts()
 		echo '</div>';
-		wp_reset_postdata();
 
 		if ( ! empty( $category ) && $category >= 0 && $add_category_link ) {
 			printf( '<div class="category-readmore"><a href="%s" class="btn btn-sm themecolor">%s</a></div>',
@@ -127,6 +126,8 @@ class Seabadgermd_Widget_Fp_Postcards extends WP_Widget {
 				sprintf( esc_html__( 'More posts from %1$s', 'seabadgermd' ), get_cat_name( $category ) )
 			);
 		}
+
+		wp_reset_postdata();
 
 		echo $args['after_widget'];
 	}
