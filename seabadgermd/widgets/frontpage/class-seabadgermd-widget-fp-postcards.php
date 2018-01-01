@@ -40,11 +40,11 @@ class Seabadgermd_Widget_Fp_Postcards extends WP_Widget {
 		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
 
 		$limit = ( ! empty( $instance['limit'] ) ) ? absint( $instance['limit'] ) : 3;
-		$offset = ( ! empty( $instance['offset'] ) ) ? absint( $instance['offset'] ) : 1;
+		$offset = ( ! empty( $instance['offset'] ) ) ? absint( $instance['offset'] ) : 0;
 		if ( ! $limit || $limit > 3 ) {
 			$limit = 3; }
 		if ( ! isset( $offset ) ) {
-			$offset = 1; }
+			$offset = 0; }
 
 		$ignore_sticky = isset( $instance['ignore_sticky'] ) ? $instance['ignore_sticky'] : true;
 		$disable_image = isset( $instance['disable_image'] ) ? $instance['disable_image'] : false;
@@ -160,7 +160,7 @@ class Seabadgermd_Widget_Fp_Postcards extends WP_Widget {
 	public function form( $instance ) {
 		$title = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
 		$limit = isset( $instance['limit'] ) ? absint( $instance['limit'] ) : 2;
-		$offset = isset( $instance['offset'] ) ? absint( $instance['offset'] ) : 2;
+		$offset = isset( $instance['offset'] ) ? absint( $instance['offset'] ) : 0;
 		$category = isset( $instance['category'] ) ? (int) $instance['category'] : -1;
 		$ignore_sticky = isset( $instance['ignore_sticky'] ) ? (bool) $instance['ignore_sticky'] : true;
 		$add_category_link = isset( $instance['add_category_link'] ) ? (bool) $instance['add_category_link'] : false;
