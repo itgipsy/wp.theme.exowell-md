@@ -43,7 +43,7 @@ class Seabadgermd_Widget_Fp_Postcards extends WP_Widget {
 		$offset = ( ! empty( $instance['offset'] ) ) ? absint( $instance['offset'] ) : 1;
 		if ( ! $limit || $limit > 3 ) {
 			$limit = 3; }
-		if ( ! $offset ) {
+		if ( ! isset( $offset ) ) {
 			$offset = 1; }
 
 		$ignore_sticky = isset( $instance['ignore_sticky'] ) ? $instance['ignore_sticky'] : true;
