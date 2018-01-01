@@ -19,6 +19,9 @@ require_once( 'inc/seabadgermd-pagination.php' );
 require_once( 'widgets/class-seabadgermd-widget-archives.php' );
 require_once( 'widgets/class-seabadgermd-widget-recent-posts-grid.php' );
 require_once( 'widgets/class-seabadgermd-widget-aboutcard.php' );
+require_once( 'widgets/frontpage/class-seabadgermd-widget-fp-posts.php' );
+require_once( 'widgets/frontpage/class-seabadgermd-widget-fp-postcards.php' );
+require_once( 'widgets/frontpage/class-seabadgermd-widget-fp-pagecards.php' );
 
 /**
  * Include CSS/JS dependencies
@@ -61,6 +64,7 @@ function seabadgermd_setup() {
 	add_image_size( 'main-full', 1078, 516, false ); // main post image in full width
 	add_image_size( 'small-size', 300 );
 	add_image_size( 'large-size', 750 );
+	set_post_thumbnail_size( 750, 250, array( 'center', 'center' ) );
 	// Allow custom background
 	add_theme_support( 'custom-background' );
 	// Support custom header image
@@ -146,10 +150,25 @@ function seabadgermd_widgets_init() {
 		)
 	);
 
+	register_sidebar(
+		array(
+			'name'          => __( 'Front page', 'seabadgermd' ),
+			'id'            => 'frontpage',
+			'description'   => __( 'Front page content', 'seabadgermd' ),
+			'before_widget' => '<div class="row fp-widget"><div class="col-12">',
+			'after_widget'  => '</div></div>',
+			'before_title'  => '<h4 class="fp-widget-title">',
+			'after_title'    => '</h4>',
+		)
+	);
+
 	// unregister_widget( 'WP_Widget_Archives' );
 	register_widget( 'Seabadgermd_Widget_Archives' );
 	register_widget( 'Seabadgermd_Widget_Recent_Posts_Grid' );
 	register_widget( 'Seabadgermd_Widget_Aboutcard' );
+	register_widget( 'Seabadgermd_Widget_Fp_Posts' );
+	register_widget( 'Seabadgermd_Widget_Fp_Postcards' );
+	register_widget( 'Seabadgermd_Widget_Fp_Pagecards' );
 }
 
 add_action( 'widgets_init', 'seabadgermd_widgets_init' );

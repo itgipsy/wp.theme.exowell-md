@@ -1,6 +1,6 @@
 <?php
 /**
- * Widget API: SEABADGERMD_Widget_Recent_Posts_Grid - list recent posts on SeaBadgerMD theme
+ * Widget API: Seabadgermd_Widget_Recent_Posts_Grid - list recent posts on SeaBadgerMD theme
  * Features: image grid, category select
  */
 
@@ -39,6 +39,7 @@ class Seabadgermd_Widget_Recent_Posts_Grid extends WP_Widget {
 
 		$rows = ( ! empty( $instance['rows'] ) ) ? absint( $instance['rows'] ) : 2;
 		$cols = ( ! empty( $instance['cols'] ) ) ? absint( $instance['cols'] ) : 2;
+		$offset = ( ! empty( $instance['offset'] ) ) ? absint( $instance['offset'] ) : 0;
 		if ( ! $rows ) {
 			$rows = 2; }
 		if ( ! $cols ) {
@@ -51,6 +52,7 @@ class Seabadgermd_Widget_Recent_Posts_Grid extends WP_Widget {
 			'no_found_rows'       => true,
 			'post_status'         => 'publish',
 			'ignore_sticky_posts' => true,
+			'offset' => $offset,
 		);
 
 		if ( ! is_front_page() && $from_same_category && ! empty( $category ) ) {
@@ -137,6 +139,7 @@ class Seabadgermd_Widget_Recent_Posts_Grid extends WP_Widget {
 		$instance['title'] = sanitize_text_field( $new_instance['title'] );
 		$instance['rows'] = (int) $new_instance['rows'];
 		$instance['cols'] = (int) $new_instance['cols'];
+		$instance['offset'] = (int) $new_instance['offset'];
 		$instance['from_same_category'] = isset( $new_instance['from_same_category'] ) ? (bool) $new_instance['from_same_category'] : false;
 		return $instance;
 	}
@@ -150,6 +153,7 @@ class Seabadgermd_Widget_Recent_Posts_Grid extends WP_Widget {
 		$title     = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
 		$rows    = isset( $instance['rows'] ) ? absint( $instance['rows'] ) : 2;
 		$cols    = isset( $instance['cols'] ) ? absint( $instance['cols'] ) : 2;
+		$offset    = isset( $instance['offset'] ) ? absint( $instance['offset'] ) : 0;
 		$from_same_category = isset( $instance['from_same_category'] ) ? (bool) $instance['from_same_category'] : false;
 ?>
 		<p>
@@ -177,6 +181,15 @@ class Seabadgermd_Widget_Recent_Posts_Grid extends WP_Widget {
 			<input class="tiny-text" id="<?php echo $this->get_field_id( 'cols' ); ?>"
 			name="<?php echo $this->get_field_name( 'cols' ); ?>"
 			type="number" step="1" min="1" value="<?php echo intval( $cols ); ?>" size="3" />
+		</p>
+
+		<p>
+			<label for="<?php echo $this->get_field_id( 'offset' ); ?>">
+				<?php esc_html_e( 'Offset (skip x latest posts):', 'seabadgermd' ); ?>
+			</label>
+			<input class="tiny-text" id="<?php echo $this->get_field_id( 'offset' ); ?>"
+			name="<?php echo $this->get_field_name( 'offset' ); ?>"
+			type="number" step="1" min="0" value="<?php echo intval( $offset ); ?>" size="3" />
 		</p>
 
 		<p>
