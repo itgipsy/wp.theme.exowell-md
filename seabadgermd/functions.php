@@ -21,6 +21,7 @@ require_once( 'widgets/class-seabadgermd-widget-recent-posts-grid.php' );
 require_once( 'widgets/class-seabadgermd-widget-aboutcard.php' );
 require_once( 'widgets/frontpage/class-seabadgermd-widget-fp-posts.php' );
 require_once( 'widgets/frontpage/class-seabadgermd-widget-fp-postcards.php' );
+require_once( 'widgets/frontpage/class-seabadgermd-widget-fp-pagecards.php' );
 
 /**
  * Include CSS/JS dependencies
@@ -167,6 +168,7 @@ function seabadgermd_widgets_init() {
 	register_widget( 'Seabadgermd_Widget_Aboutcard' );
 	register_widget( 'Seabadgermd_Widget_Fp_Posts' );
 	register_widget( 'Seabadgermd_Widget_Fp_Postcards' );
+	register_widget( 'Seabadgermd_Widget_Fp_Pagecards' );
 }
 
 add_action( 'widgets_init', 'seabadgermd_widgets_init' );
