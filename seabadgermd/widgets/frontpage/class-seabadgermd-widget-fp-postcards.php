@@ -78,15 +78,11 @@ class Seabadgermd_Widget_Fp_Postcards extends WP_Widget {
 		while ( $r->have_posts() ) {
 			$r->the_post();
 			if ( ! has_excerpt() || post_password_required() ) {
-				$the_text = wp_strip_all_tags( get_the_content( '', false ) );
+				$content = get_the_content( $more_link_text, $strip_teaser );
+				$content = apply_filters( 'the_content', $content );
+				$the_text = str_replace( ']]>', ']]&gt;', $content );
 			} else {
-				$the_text = wp_strip_all_tags( get_the_excerpt() );
-			}
-			$max_text_length = 340 - ( 80 * ( $limit - 1 ) );
-			if ( strlen( $the_text ) > $max_text_length ) {
-				$the_text_excerpt = preg_replace( '/[\s\.,][^\s\.,]*$/u', '', substr( $the_text, 0, $max_text_length ) ) . '...';
-			} else {
-				$the_text_excerpt = $the_text;
+				$the_text = get_the_excerpt();
 			}
 		?>
 			<div <?php post_class( 'card' ); ?>>
@@ -99,14 +95,14 @@ class Seabadgermd_Widget_Fp_Postcards extends WP_Widget {
 					<a href="<?php echo esc_attr( get_permalink() ); ?>"><?php the_title(); ?></a>
 				</h4>
 				<div class="card-body postcard-body">
-					<p class="card-text"><?php echo $the_text_excerpt; ?></p>
+					<p class="card-text"><?php echo $the_text; ?></p>
 				</div>
 				<div class="card-footer">
 					<?php
 					if ( has_tag() ) {
 						echo '<span class="text-muted tagline">' . esc_html__( 'Tagged with ', 'seabadgermd' );
 						echo get_the_tag_list( '', ' ' );
-						echo '</span>';
+						echo '</span><br class="clear">';
 					}
 
 					printf( '<a href="%s" class="btn btn-sm themecolor">%s</a>',
