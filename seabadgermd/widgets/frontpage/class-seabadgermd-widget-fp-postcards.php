@@ -78,7 +78,7 @@ class Seabadgermd_Widget_Fp_Postcards extends WP_Widget {
 		while ( $r->have_posts() ) {
 			$r->the_post();
 			if ( ! has_excerpt() || post_password_required() ) {
-				$content = get_the_content( $more_link_text, $strip_teaser );
+				$content = get_the_content( '', false );
 				$content = apply_filters( 'the_content', $content );
 				$the_text = str_replace( ']]>', ']]&gt;', $content );
 			} else {
