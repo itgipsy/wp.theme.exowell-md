@@ -65,7 +65,7 @@ class Seabadgermd_Widget_Aboutcard extends WP_Widget {
 			?>
 			<div class="about-footer">
 				<a href="<?php echo esc_url( $abouturl ); ?>" class="btn btn-round themecolor"
-				title="<?php esc_attr_e( 'Visit About page', 'sesabadgermd' ); ?>">
+				title="<?php esc_attr_e( 'Visit About page', 'seabadgermd' ); ?>">
 				<i class="fa fa-id-card-o" aria-hidden="true"></i>
 				<span class="sr-only">Visit About page</span></a>
 			</div>
@@ -109,7 +109,7 @@ class Seabadgermd_Widget_Aboutcard extends WP_Widget {
 ?>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'headimg' ); ?>">
-				<?php esc_html_e( 'Header image:' ); ?>
+				<?php esc_html_e( 'Header image:', 'seabadgermd' ); ?>
 			</label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'headimg' ); ?>" 
 			name="<?php echo $this->get_field_name( 'headimg' ); ?>" type="text" 
@@ -121,7 +121,7 @@ class Seabadgermd_Widget_Aboutcard extends WP_Widget {
 
 		<p>
 			<label for="<?php echo $this->get_field_id( 'avatar' ); ?>">
-				<?php esc_html_e( 'Avatar:' ); ?>
+				<?php esc_html_e( 'Avatar:', 'seabadgermd' ); ?>
 			</label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'avatar' ); ?>" 
 			name="<?php echo $this->get_field_name( 'avatar' ); ?>" type="text" 

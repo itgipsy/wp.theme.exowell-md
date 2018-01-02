@@ -68,8 +68,8 @@ function seabadgermd_setup() {
 	// Allow custom background
 	add_theme_support( 'custom-background' );
 	// Support custom header image
-	add_theme_support(
-		'custom-header', array(
+	add_theme_support( 'custom-header',
+		array(
 			'width' => 1160,
 			'flex-width' => true,
 			'flex-height' => true,

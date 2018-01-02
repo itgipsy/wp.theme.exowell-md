@@ -25,7 +25,7 @@ if ( comments_open() || get_comments_number() != 0 ) {
 	comments_popup_link(
 		// __( 'Comment', 'seabadgermd' ),
 		sprintf( '<i class="fa fa-comments-o" aria-hidden="true"></i><span class="sr-only">%s</span>',
-		esc_html__( 'Comment' ) ),
+		esc_html__( 'Comment', 'seabadgermd' ) ),
 		esc_html__( 'View comment', 'seabadgermd' ),
 		esc_html__( 'View comments (%)', 'seabadgermd' ),
 		'btn btn-round themecolor comment-link',
