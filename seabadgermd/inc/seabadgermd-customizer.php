@@ -13,15 +13,15 @@ function seabadgermd_customize_register( $wp_customize ) {
 			'type' => 'select',
 			'priority' => 10,
 			'section' => 'colors',
-			'label' => __( 'Color theme', 'seabadgermd' ),
-			'description' => __( 'Defines tone of the theme', 'seabadgermd' ),
+			'label' => esc_html__( 'Color theme', 'seabadgermd' ),
+			'description' => esc_html__( 'Defines tone of the theme', 'seabadgermd' ),
 			'choices' => seabadgermd_get_color_theme_names(),
 		)
 	);
 
 	$wp_customize->add_section(
 		'navbar', array(
-			'title' => __( 'Navigation bar', 'seabadgermd' ),
+			'title' => esc_html__( 'Navigation bar', 'seabadgermd' ),
 			'priority' => 20,
 		)
 	);
@@ -36,8 +36,8 @@ function seabadgermd_customize_register( $wp_customize ) {
 		'seabadgermd_navbar_remove', array(
 			'type' => 'checkbox',
 			'section' => 'navbar',
-			'label' => __( 'Hide navigation bar', 'seabadgermd' ),
-			'description' => __( 'Hide top navigation bar', 'seabadgermd' ),
+			'label' => esc_html__( 'Hide navigation bar', 'seabadgermd' ),
+			'description' => esc_html__( 'Hide top navigation bar', 'seabadgermd' ),
 		)
 	);
 	/* Search form in navigation bar */
@@ -51,11 +51,11 @@ function seabadgermd_customize_register( $wp_customize ) {
 		'seabadgermd_navbar_search', array(
 			'type' => 'radio',
 			'section' => 'navbar',
-			'label' => __( 'Search bar', 'seabadgermd' ),
-			'description' => __( 'Show search form in navigation bar', 'seabadgermd' ),
+			'label' => esc_html__( 'Search bar', 'seabadgermd' ),
+			'description' => esc_html__( 'Show search form in navigation bar', 'seabadgermd' ),
 			'choices' => array(
-				'show' => __( 'Show', 'seabadgermd' ),
-				'hide' => __( 'Hide', 'seabadgermd' ),
+				'show' => esc_html__( 'Show', 'seabadgermd' ),
+				'hide' => esc_html__( 'Hide', 'seabadgermd' ),
 			),
 		)
 	);
@@ -70,11 +70,11 @@ function seabadgermd_customize_register( $wp_customize ) {
 		'seabadgermd_navbar_fixing', array(
 			'type' => 'radio',
 			'section' => 'navbar',
-			'label' => __( 'Navbar fixed on top', 'seabadgermd' ),
-			'description' => __( 'Fix the navigation bar on the top of the screen', 'seabadgermd' ),
+			'label' => esc_html__( 'Navbar fixed on top', 'seabadgermd' ),
+			'description' => esc_html__( 'Fix the navigation bar on the top of the screen', 'seabadgermd' ),
 			'choices' => array(
-				'on' => __( 'Fixed', 'seabadgermd' ),
-				'off' => __( 'Scrolling', 'seabadgermd' ),
+				'on' => esc_html__( 'Fixed', 'seabadgermd' ),
+				'off' => esc_html__( 'Scrolling', 'seabadgermd' ),
 			),
 		)
 	);
@@ -89,14 +89,55 @@ function seabadgermd_customize_register( $wp_customize ) {
 		'seabadgermd_navbar_transparent', array(
 			'type' => 'checkbox',
 			'section' => 'navbar',
-			'label' => __( 'Transparent navbar', 'seabadgermd' ),
-			'description' => __( 'Hide/show the main navigation bar on scroll (when fixed)', 'seabadgermd' ),
+			'label' => esc_html__( 'Transparent navbar', 'seabadgermd' ),
+			'description' => esc_html__( 'Hide/show the main navigation bar on scroll (when fixed)', 'seabadgermd' ),
 		)
 	);
+
+	/* Navbar brand */
+	$wp_customize->add_setting(
+		'seabadgermd_navbar_brand', array(
+			'default' => 'off',
+			'sanitize_callback' => 'seabadgermd_sanitize_select',
+		)
+	);
+	$wp_customize->add_control(
+		'seabadgermd_navbar_brand', array(
+			'type' => 'select',
+			'priority' => 10,
+			'section' => 'navbar',
+			'label' => esc_html__( 'Navbar brand', 'seabadgermd' ),
+			'description' => esc_html__( 'Display brand in navigation bar', 'seabadgermd' ),
+			'choices' => array(
+				'off' => esc_html__( 'Off', 'seabadgermd' ),
+				'title' => esc_html__( 'Blog name', 'seabadgermd' ),
+				'logo' => esc_html__( 'Custom site logo', 'seabadgermd' ),
+				'custom' => esc_html__( 'Custom text', 'seabadgermd' ),
+			),
+		)
+	);
+
+	/* Custom text in navbar brand */
+	$wp_customize->add_setting(
+		'seabadgermd_navbar_brand_text', array(
+			'default' => '',
+			'sanitize_callback' => 'esc_html',
+		)
+	);
+	$wp_customize->add_control(
+		'seabadgermd_navbar_brand_text', array(
+			'type' => 'text',
+			'priority' => 10,
+			'section' => 'navbar',
+			'label' => esc_html__( 'Brand custom text', 'seabadgermd' ),
+			'description' => esc_html__( 'Display this text if custom brand is selected', 'seabadgermd' ),
+		)
+	);
+
 	/* Breadcrumb section */
 	$wp_customize->add_section(
 		'seabadgermd_breadcrumb', array(
-			'title' => __( 'Breadcrumb', 'seabadgermd' ),
+			'title' => esc_html__( 'Breadcrumb', 'seabadgermd' ),
 			'priority' => 20,
 		)
 	);
@@ -110,7 +151,7 @@ function seabadgermd_customize_register( $wp_customize ) {
 		'seabadgermd_breadcrumb_show', array(
 			'type' => 'checkbox',
 			'section' => 'seabadgermd_breadcrumb',
-			'label' => __( 'Display breadcrumb', 'seabadgermd' ),
+			'label' => esc_html__( 'Display breadcrumb', 'seabadgermd' ),
 		)
 	);
 	$wp_customize->add_setting(
@@ -123,8 +164,8 @@ function seabadgermd_customize_register( $wp_customize ) {
 		'seabadgermd_breadcrumb_home', array(
 			'type' => 'text',
 			'section' => 'seabadgermd_breadcrumb',
-			'label' => __( 'Homepage text', 'seabadgermd' ),
-			'description' => __( 'Text of the link pointing to the homepage', 'seabadgermd' ),
+			'label' => esc_html__( 'Homepage text', 'seabadgermd' ),
+			'description' => esc_html__( 'Text of the link pointing to the homepage', 'seabadgermd' ),
 		)
 	);
 	/* /Breadcrumb section */
@@ -173,32 +214,32 @@ if ( ! function_exists( 'seabadgermd_get_color_themes' ) ) {
 	function seabadgermd_get_color_themes() {
 		$color_themes = array(
 			'mdb_dark' => array(
-				'name' => __( 'Dark', 'seabadgermd' ),
+				'name' => esc_html__( 'Dark', 'seabadgermd' ),
 				'css' => '/css/themes/mdb_dark.css',
 				'style' => 'dark',
 			),
 			'mdb_blue' => array(
-				'name' => __( 'Blue', 'seabadgermd' ),
+				'name' => esc_html__( 'Blue', 'seabadgermd' ),
 				'css' => '/css/themes/mdb_blue.css',
 				'style' => 'dark',
 			),
 			'mdb_light' => array(
-				'name' => __( 'Light', 'seabadgermd' ),
+				'name' => esc_html__( 'Light', 'seabadgermd' ),
 				'css' => '/css/themes/mdb_light.css',
 				'style' => 'light',
 			),
 			'mdb_brown' => array(
-				'name' => __( 'Brown', 'seabadgermd' ),
+				'name' => esc_html__( 'Brown', 'seabadgermd' ),
 				'css' => '/css/themes/mdb_brown.css',
 				'style' => 'dark',
 			),
 			'mdb_red' => array(
-				'name' => __( 'Red', 'seabadgermd' ),
+				'name' => esc_html__( 'Red', 'seabadgermd' ),
 				'css' => '/css/themes/mdb_red.css',
 				'style' => 'dark',
 			),
 			'mdb_green' => array(
-				'name' => __( 'Green', 'seabadgermd' ),
+				'name' => esc_html__( 'Green', 'seabadgermd' ),
 				'css' => '/css/themes/mdb_green.css',
 				'style' => 'dark',
 			),

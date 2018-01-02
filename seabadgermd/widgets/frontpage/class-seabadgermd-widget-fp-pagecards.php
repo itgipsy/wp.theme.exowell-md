@@ -69,7 +69,7 @@ class Seabadgermd_Widget_Fp_Pagecards extends WP_Widget {
 		global $post;
 		while ( $r->have_posts() ) {
 			$r->the_post();
-			if ( $pagetext[ get_the_ID() ] === '' ) {
+			if ( '' === $pagetext[ get_the_ID() ] ) {
 				$the_text = wp_strip_all_tags( get_the_content( '', false ) );
 				$max_text_length = 340 - ( 80 * ( $limit - 1 ) );
 				if ( strlen( $the_text ) > $max_text_length ) {

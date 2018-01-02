@@ -15,10 +15,37 @@ if ( 'dark' === $color_theme_conf['style'] ) {
 ?>
 <!--Navbar-->
 <?php if ( ! get_theme_mod( 'seabadgermd_navbar_remove', false ) ) : ?>
-	<nav id="main-navbar" class="navbar navbar-expand-lg themecolor<?php echo $navbar_class; ?>" role="navigation">
-		<div class="container">
-			<!-- Navbar brand -->
-			<!-- <a class="navbar-brand" href="#">Navbar</a> -->
+<nav id="main-navbar" class="navbar navbar-expand-lg themecolor<?php echo $navbar_class; ?>" role="navigation">
+	<div class="container">
+		<!-- Navbar brand -->
+		<?php
+		if ( get_theme_mod( 'seabadgermd_navbar_brand', 'off' ) !== 'off' ) {
+			switch ( get_theme_mod( 'seabadgermd_navbar_brand', 'off' ) ) {
+				case 'logo':
+					if ( has_custom_logo() ) {
+						$custom_logo_id = get_theme_mod( 'custom_logo' );
+						$image = wp_get_attachment_image_src( $custom_logo_id, 'thumbnail' );
+						$navbar_brand = sprintf( '<img src="%s" class="img-fluid navbar-brand-logo" alt="%s">', $image[0],
+						esc_html__( 'Home', 'seabadgermd' ) );
+					} else {
+						$navbar_brand = '';
+					}
+					break;
+				case 'title':
+					$navbar_brand = get_bloginfo( 'name' );
+					break;
+				case 'custom':
+					$navbar_brand = get_theme_mod( 'seabadgermd_navbar_brand_text', get_bloginfo( 'name' ) );
+					break;
+				default:
+					$navbar_brand = '[' . get_bloginfo( 'name' ) . ']';
+			}
+			printf( '<a class="navbar-brand" href="%s">%s</a>',
+				esc_url( get_site_url() ),
+				$navbar_brand
+			);
+		}
+		?>
 			<!-- Collapse button -->
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"

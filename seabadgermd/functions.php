@@ -155,7 +155,7 @@ function seabadgermd_widgets_init() {
 			'name'          => __( 'Front page', 'seabadgermd' ),
 			'id'            => 'frontpage',
 			'description'   => __( 'Front page content', 'seabadgermd' ),
-			'before_widget' => '<div class="row fp-widget"><div class="col-12">',
+			'before_widget' => '<div class="row fp-widget"><div class="col-12 posts-col">',
 			'after_widget'  => '</div></div>',
 			'before_title'  => '<h4 class="fp-widget-title">',
 			'after_title'    => '</h4>',
