@@ -15,6 +15,7 @@ The SeaBadgerMD supports the following customizations via the Customizer:
  * navigation bar with menu and search bar
  * navigation bar can stick to the top of the page and hide automatically
  * display breadcrumb
+ * magazine front-page customized using widgets
 
 == Features ==
 
@@ -29,6 +30,7 @@ Theme features include:
  * responsive image gallery
  * display featured image
  * recent posts grid widget
+ * customizable magazine front page
 
 == Limitations ==
 
@@ -38,9 +40,8 @@ Theme features include:
    displayed
  * the custom header is only shown if header background image is set and
    either or both the Site title / description and the Site logo are shown
- * displaying vertical featured images is not ideal
 
-== Credit ==
+== Credit / Licenses ==
 
 This theme relies on the following GPL or GPL license compatible open source projects:
  * MDBootstrap free (https://mdbootstrap.com) - Material Design Bootstrap framework (MIT license)
@@ -54,3 +55,6 @@ This theme relies on the following GPL or GPL license compatible open source pro
 
 This theme is released under the GNU General Public License v3
 https://www.gnu.org/licenses/gpl-3.0.en.html
+
+The screen shot and the images appearing on it are property of SeaBadger.io and
+only allowed to be used to promote or demonstrate the SeaBadgerMD theme.
