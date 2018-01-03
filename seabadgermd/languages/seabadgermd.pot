@@ -204,7 +204,7 @@ msgid "Blog name"
 msgstr ""
 
 #: inc/seabadgermd-customizer.php:114
-msgid "Custom site logo"
+msgid "Site logo"
 msgstr ""
 
 #: inc/seabadgermd-customizer.php:115
