@@ -26,8 +26,9 @@
 		<!--Copyright-->
 		<div class="footer-copyright col-md-12 col-lg-4">
 			<?php
-			printf( 'Copyright &copy; %1$s <a href="%2$s" rel="nofollow">%3$s</a>',
-			esc_html( date( 'Y' ) ), esc_html( get_site_url() ), esc_html( get_bloginfo( 'name' ) ) );
+			printf( '%1$s &copy; %2$s <a href="%3$s" rel="nofollow">%4$s</a>',
+				esc_html__( 'Copyright', 'seabadgermd' ), esc_html( date( 'Y' ) ),
+				esc_html( get_site_url() ), esc_html( get_bloginfo( 'name' ) ) );
 			?>
 		</div>
 		<!--/Copyright-->
@@ -36,14 +37,16 @@
 	<div class="row footer-themeinfo">
 		<div class="col-12">
 		<?php $sbmd_theme = wp_get_theme(); ?>
-			Theme by <a href="<?php echo esc_html( $sbmd_theme->get( 'AuthorURI' ) ); ?>" rel="nofollow">
+			<?php esc_html_e( 'Theme by', 'seabadgermd' ); ?>
+			<a href="<?php echo esc_html( $sbmd_theme->get( 'AuthorURI' ) ); ?>" rel="nofollow">
 			<?php echo esc_html( $sbmd_theme->get( 'Author' ) ); ?></a>
 		</div>
 	</div>
 	<!-- /Theme author info -->
 </footer>
 <!--/Footer-->
-<button class="btn themecolor" id="to-the-top" title="Back to the top">
+<button class="btn themecolor" id="to-the-top"
+title="<?php esc_attr_e( 'Back to the top', 'seabadgermd' ); ?>">
 	<i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
 	<span class="sr-only"><?php esc_html_e( 'Back to the top', 'seabadgermd' ); ?></span>
 </button>

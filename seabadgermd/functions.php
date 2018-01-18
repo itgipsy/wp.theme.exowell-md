@@ -26,7 +26,7 @@ require_once( 'widgets/frontpage/class-seabadgermd-widget-fp-pagecards.php' );
 /**
  * Include CSS/JS dependencies
  */
-function theme_enqueue_scripts() {
+function seabadgermd_theme_enqueue_scripts() {
 	wp_enqueue_style( 'SEABADGERMD_Font_Awesome', SEABADGERMD_THEME_DIR_URI . '/css/font-awesome.min.css', array(), '4.7.0' );
 	wp_enqueue_style( 'SEABADGERMD_Bootstrap_css', SEABADGERMD_THEME_DIR_URI . '/css/bootstrap.min.css', array(), '4.0.0' );
 	wp_enqueue_style( 'SEABADGERMD_MDB_css', SEABADGERMD_THEME_DIR_URI . '/css/mdb.min.css', array(), '4.4.3' );
@@ -36,7 +36,7 @@ function theme_enqueue_scripts() {
 	wp_enqueue_script( 'SEABADGERMD_MDB', SEABADGERMD_THEME_DIR_URI . '/js/mdb.min.js', array( 'SEABADGERMD_Bootstrap' ), '4.4.3', true );
 	wp_enqueue_script( 'SEABADGERMDJS', SEABADGERMD_THEME_DIR_URI . '/js/site.min.js', array( 'SEABADGERMD_MDB' ), SEABADGERMD_THEME_VERSION, true );
 }
-add_action( 'wp_enqueue_scripts', 'theme_enqueue_scripts' );
+add_action( 'wp_enqueue_scripts', 'seabadgermd_theme_enqueue_scripts' );
 
 /**
  * Setup Theme
@@ -55,15 +55,15 @@ function seabadgermd_setup() {
 	// Navigation Menus
 	register_nav_menus(
 		array(
-			'navbar' => __( 'Navbar Menu', 'seabadgermd' ),
-			'footer' => __( 'Footer Menu', 'seabadgermd' ),
+			'navbar' => esc_html__( 'Navbar Menu', 'seabadgermd' ),
+			'footer' => esc_html__( 'Footer Menu', 'seabadgermd' ),
 		)
 	);
 	// Add featured image support
 	add_theme_support( 'post-thumbnails' );
-	add_image_size( 'main-full', 1078, 516, false ); // main post image in full width
-	add_image_size( 'small-size', 300 );
-	add_image_size( 'large-size', 750 );
+	add_image_size( 'seabadgermd-main-full', 1078, 516, false ); // main post image in full width
+	add_image_size( 'seabadgermd-small-size', 300 );
+	add_image_size( 'seabadgermd-large-size', 750 );
 	set_post_thumbnail_size( 750, 250, array( 'center', 'center' ) );
 	// Allow custom background
 	add_theme_support( 'custom-background' );
@@ -128,9 +128,9 @@ function seabadgermd_widgets_init() {
 
 	register_sidebar(
 		array(
-			'name'          => __( 'Sidebar', 'seabadgermd' ),
+			'name'          => esc_html__( 'Sidebar', 'seabadgermd' ),
 			'id'            => 'sidebar',
-			'description'   => __( 'Main sidebar', 'seabadgermd' ),
+			'description'   => esc_html__( 'Main sidebar', 'seabadgermd' ),
 			'before_widget' => '<div id="%1$s" class="card widget %2$s"><div class="card-body">',
 			'after_widget'  => '</div></div>',
 			'before_title'  => '<div class="card-title widget-title themecolor">',
@@ -140,9 +140,9 @@ function seabadgermd_widgets_init() {
 
 	register_sidebar(
 		array(
-			'name'          => __( 'Footer', 'seabadgermd' ),
+			'name'          => esc_html__( 'Footer', 'seabadgermd' ),
 			'id'            => 'footer',
-			'description'   => __( 'Footer area', 'seabadgermd' ),
+			'description'   => esc_html__( 'Footer area', 'seabadgermd' ),
 			'before_widget' => '',
 			'after_widget'  => '',
 			'before_title'  => '<span style="display:none">',
@@ -152,9 +152,9 @@ function seabadgermd_widgets_init() {
 
 	register_sidebar(
 		array(
-			'name'          => __( 'Front page', 'seabadgermd' ),
+			'name'          => esc_html__( 'Front page', 'seabadgermd' ),
 			'id'            => 'frontpage',
-			'description'   => __( 'Front page content', 'seabadgermd' ),
+			'description'   => esc_html__( 'Front page content', 'seabadgermd' ),
 			'before_widget' => '<div class="row fp-widget"><div class="col-12 posts-col">',
 			'after_widget'  => '</div></div>',
 			'before_title'  => '<h4 class="fp-widget-title">',
@@ -180,14 +180,14 @@ function seabadgermd_post_navigation() {
 		<div class="col-6 post-navigation-next">
 <?php
 if ( '' !== get_adjacent_post( false, '', false ) ) :
-	next_post_link( '%link', __( 'Next post', 'seabadgermd' ) );
+	next_post_link( '%link', esc_html__( 'Next post', 'seabadgermd' ) );
 	endif;
 ?>
 		</div>
 		<div class="col-6 post-navigation-prev">
 <?php
 if ( '' !== get_adjacent_post( false, '', true ) ) :
-	previous_post_link( '%link', __( 'Previous post', 'seabadgermd' ) );
+	previous_post_link( '%link', esc_html__( 'Previous post', 'seabadgermd' ) );
 	endif;
 ?>
 		</div>
@@ -433,11 +433,11 @@ function seabadgermd_format_passwordform( $output ) {
 	$post = get_post();
 	$label = 'pwbox-' . ( empty( $post->ID ) ? rand() : $post->ID );
 	$output = '<form action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" class="post-password-form" method="post">
-		    <p>' . __( 'This content is password protected. To view it please enter your password below:', 'seabadgermd' ) . '</p>
+		    <p>' . esc_html__( 'This content is password protected. To view it please enter your password below:', 'seabadgermd' ) . '</p>
 			<div class="form-row align-items-center">
 				<div class="col-auto">
-					<label for="' . $label . '" class="sr-only">' . __( 'Password', 'seabadgermd' ) . '</label>
-					<input class="form-control" name="post_password" id="' . $label . '" type="password" size="20" placeholder="' . __( 'Password', 'seabadgermd' ) . '">
+					<label for="' . $label . '" class="sr-only">' . esc_html__( 'Password', 'seabadgermd' ) . '</label>
+					<input class="form-control" name="post_password" id="' . $label . '" type="password" size="20" placeholder="' . esc_attr__( 'Password', 'seabadgermd' ) . '">
 				</div>
 				<div class="col-auto">
 					<input class="btn themecolor" type="submit" name="Submit" value="' . esc_attr_x( 'Enter', 'post password form', 'seabadgermd' ) . '">

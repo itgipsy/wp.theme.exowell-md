@@ -12,10 +12,10 @@ class Seabadgermd_Widget_Fp_Posts extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array(
 			'classname' => 'seabadgermd_widget_fp_posts',
-			'description' => __( 'Show recent posts on Front Page', 'seabadgermd' ),
+			'description' => esc_html__( 'Show recent posts on Front Page', 'seabadgermd' ),
 			'customize_selective_refresh' => false,
 		);
-		parent::__construct( 'seabadgermd-fp-posts', __( 'FrontPage Posts', 'seabadgermd' ), $widget_ops );
+		parent::__construct( 'seabadgermd-fp-posts', esc_html__( 'FrontPage Posts', 'seabadgermd' ), $widget_ops );
 		$this->alt_option_name = 'seabadgermd_widget_fp_posts';
 	}
 

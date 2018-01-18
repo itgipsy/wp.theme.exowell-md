@@ -12,10 +12,10 @@ class Seabadgermd_Widget_Fp_Postcards extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array(
 			'classname' => 'seabadgermd_widget_fp_postcards',
-			'description' => __( 'Show recent posts as cards on Front Page', 'seabadgermd' ),
+			'description' => esc_html__( 'Show recent posts as cards on Front Page', 'seabadgermd' ),
 			'customize_selective_refresh' => false,
 		);
-		parent::__construct( 'seabadgermd-fp-postcards', __( 'FrontPage Postcards', 'seabadgermd' ), $widget_ops );
+		parent::__construct( 'seabadgermd-fp-postcards', esc_html__( 'FrontPage Postcards', 'seabadgermd' ), $widget_ops );
 		$this->alt_option_name = 'seabadgermd_widget_fp_postcards';
 	}
 

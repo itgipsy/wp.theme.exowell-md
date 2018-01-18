@@ -31,7 +31,7 @@ function seabadgermd_pagination() {
 		printf( ' <li>%s</li>
 			' . "\n", get_previous_posts_link('
 			<span aria-hidden="true"><i class="fa fa-angle-left"></i></span>
-			<span class="sr-only">' . __( 'Previous', 'seabadgermd' ) . '</span>
+			<span class="sr-only">' . esc_html__( 'Previous', 'seabadgermd' ) . '</span>
 			')
 		);
 	}
@@ -62,7 +62,7 @@ function seabadgermd_pagination() {
 	if ( get_next_posts_link() ) {
 		printf( '<li class="page-item">%s</li>
 				' . "\n", get_next_posts_link( '<span aria-hidden="true"><i class="fa fa-angle-right"></i></span>
-				<span class="sr-only">' . __( 'Next', 'seabadgermd' ) . '</span>' )
+				<span class="sr-only">' . esc_html__( 'Next', 'seabadgermd' ) . '</span>' )
 		);
 	}
 	echo '</ul>' . "\n";

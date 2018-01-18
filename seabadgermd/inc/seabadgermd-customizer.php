@@ -121,7 +121,7 @@ function seabadgermd_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'seabadgermd_navbar_brand_text', array(
 			'default' => '',
-			'sanitize_callback' => 'esc_html',
+			'sanitize_callback' => 'sanitize_text_field',
 		)
 	);
 	$wp_customize->add_control(

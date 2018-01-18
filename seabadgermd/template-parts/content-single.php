@@ -9,7 +9,7 @@
 		<br class="clear">
 		<?php
 			$wplink_options = array(
-				'before'           => '<div class="row"><div class="post-paging col-12">' . __( 'Jump to page ', 'seabadgermd' ),
+				'before'           => '<div class="row"><div class="post-paging col-12">' . esc_html__( 'Jump to page ', 'seabadgermd' ),
 				'after'            => '</div></div>',
 				'link_before'      => '<span class="post-paging-link themecolor">',
 				'link_after'       => '</span>',

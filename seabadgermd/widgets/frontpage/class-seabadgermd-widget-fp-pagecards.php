@@ -12,10 +12,10 @@ class Seabadgermd_Widget_Fp_Pagecards extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array(
 			'classname' => 'seabadgermd_widget_fp_pagecards',
-			'description' => __( 'List pages as cards on Front Page', 'seabadgermd' ),
+			'description' => esc_html__( 'List pages as cards on Front Page', 'seabadgermd' ),
 			'customize_selective_refresh' => false,
 		);
-		parent::__construct( 'seabadgermd-fp-pagecards', __( 'FrontPage Pagecards', 'seabadgermd' ), $widget_ops );
+		parent::__construct( 'seabadgermd-fp-pagecards', esc_html__( 'FrontPage Pagecards', 'seabadgermd' ), $widget_ops );
 		$this->alt_option_name = 'seabadgermd_widget_fp_pagecards';
 	}
 

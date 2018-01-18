@@ -11,10 +11,10 @@ class Seabadgermd_Widget_Archives extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array(
 			'classname' => 'seabadgermd_widget_archives',
-			'description' => __( 'A monthly archive of your site&#8217;s Posts.', 'seabadgermd' ),
+			'description' => esc_html__( 'A monthly archive of your site&#8217;s Posts.', 'seabadgermd' ),
 			'customize_selective_refresh' => true,
 		);
-		parent::__construct( 'seabadgermd_widget_archives', __( 'Archives [SeabadgerMD]', 'seabadgermd' ), $widget_ops );
+		parent::__construct( 'seabadgermd_widget_archives', esc_html__( 'Archives [SeabadgerMD]', 'seabadgermd' ), $widget_ops );
 	}
 
 	/**

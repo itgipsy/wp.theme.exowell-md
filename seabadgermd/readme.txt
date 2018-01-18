@@ -55,6 +55,3 @@ This theme relies on the following GPL or GPL license compatible open source pro
 
 This theme is released under the GNU General Public License v3
 https://www.gnu.org/licenses/gpl-3.0.en.html
-
-The screen shot and the images appearing on it are property of SeaBadger.io and
-only allowed to be used to promote or demonstrate the SeaBadgerMD theme.

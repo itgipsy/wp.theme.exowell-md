@@ -14,10 +14,10 @@ class Seabadgermd_Widget_Aboutcard extends WP_Widget {
 		add_action( 'admin_enqueue_scripts', array( $this, 'scripts' ) );
 		$widget_ops = array(
 			'classname' => 'seabadgermd_widget_aboutcard',
-			'description' => __( 'Display About Card on selected pages', 'seabadgermd' ),
+			'description' => esc_html__( 'Display About Card on selected pages', 'seabadgermd' ),
 			'customize_selective_refresh' => false,
 		);
-		parent::__construct( 'seabadgermd-aboutcard', __( 'About Card [SeaBadgerMD]', 'seabadgermd' ), $widget_ops );
+		parent::__construct( 'seabadgermd-aboutcard', esc_html__( 'About Card [SeaBadgerMD]', 'seabadgermd' ), $widget_ops );
 		$this->alt_option_name = 'seabadgermd_widget_aboutcard';
 	}
 
