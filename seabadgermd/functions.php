@@ -62,7 +62,7 @@ function seabadgermd_setup() {
 	// Add featured image support
 	add_theme_support( 'post-thumbnails' );
 	add_image_size( 'main-full', 1078, 516, false ); // main post image in full width
-	add_image_size( 'small-size', 300 );
+	add_image_size( 'small-size', 350 );
 	add_image_size( 'large-size', 750 );
 	set_post_thumbnail_size( 750, 250, array( 'center', 'center' ) );
 	// Allow custom background
