@@ -111,8 +111,9 @@ function seabadgermd_customize_register( $wp_customize ) {
 			'choices' => array(
 				'off' => esc_html__( 'Off', 'seabadgermd' ),
 				'title' => esc_html__( 'Blog name', 'seabadgermd' ),
-				'logo' => esc_html__( 'Custom site logo', 'seabadgermd' ),
+				'logo' => esc_html__( 'Site logo', 'seabadgermd' ),
 				'custom' => esc_html__( 'Custom text', 'seabadgermd' ),
+				'custom_logo' => esc_html__( 'Custom logo', 'seabadgermd' ),
 			),
 		)
 	);
@@ -130,9 +131,28 @@ function seabadgermd_customize_register( $wp_customize ) {
 			'priority' => 10,
 			'section' => 'navbar',
 			'label' => esc_html__( 'Brand custom text', 'seabadgermd' ),
-			'description' => esc_html__( 'Display this text if custom brand is selected', 'seabadgermd' ),
+			'description' => esc_html__( 'Display this text if custom text is selected', 'seabadgermd' ),
 		)
 	);
+
+	/* Custom logo in navbar brand */
+	$wp_customize->add_setting(
+		'seabadgermd_navbar_brand_logo', array(
+			'default' => '',
+			'sanitize_callback' => 'absint',
+		)
+	);
+	$wp_customize->add_control( new WP_Customize_Cropped_Image_Control( $wp_customize,
+		'seabadgermd_navbar_brand_logo',
+		array(
+			'section' => 'navbar',
+			'label' => esc_html__( 'Brand custom logo', 'seabadgermd' ),
+			'description' => esc_html__( 'Custom logo to display, maximum height 30px', 'seabadgermd' ),
+			'height' => 30,
+			'width' => 60,
+			'flex-width' => true,
+		)
+	));
 
 	/* Breadcrumb section */
 	$wp_customize->add_section(

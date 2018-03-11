@@ -88,7 +88,10 @@ class Seabadgermd_Widget_Fp_Postcards extends WP_Widget {
 			<div <?php post_class( 'card' ); ?>>
 				<?php if ( has_post_thumbnail() && ! $disable_image ) : ?>
 					<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="post-image">
-						<?php the_post_thumbnail( 'post-thumbnail', array( 'class' => 'img-fluid' ) ); ?>
+						<?php
+						$limit > 1 ? $psize = 'small-size' : 'post-thumbnail';
+						the_post_thumbnail( $psize, array( 'class' => 'img-fluid' ) );
+						?>
 					</a>
 				<?php endif; ?>
 				<h4 class="card-title postcard-title">

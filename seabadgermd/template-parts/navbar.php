@@ -23,8 +23,8 @@ if ( 'dark' === $color_theme_conf['style'] ) {
 			switch ( get_theme_mod( 'seabadgermd_navbar_brand', 'off' ) ) {
 				case 'logo':
 					if ( has_custom_logo() ) {
-						$custom_logo_id = get_theme_mod( 'custom_logo' );
-						$image = wp_get_attachment_image_src( $custom_logo_id, 'thumbnail' );
+						$site_logo_id = get_theme_mod( 'custom_logo' );
+						$image = wp_get_attachment_image_src( $site_logo_id, 'thumbnail' );
 						$navbar_brand = sprintf( '<img src="%s" class="img-fluid navbar-brand-logo" alt="%s">', $image[0],
 						esc_html__( 'Home', 'seabadgermd' ) );
 					} else {
@@ -36,6 +36,16 @@ if ( 'dark' === $color_theme_conf['style'] ) {
 					break;
 				case 'custom':
 					$navbar_brand = get_theme_mod( 'seabadgermd_navbar_brand_text', get_bloginfo( 'name' ) );
+					break;
+				case 'custom_logo':
+					$id = get_theme_mod( 'seabadgermd_navbar_brand_logo', 0 );
+					if ( $id !== 0 ) {
+						$src = wp_get_attachment_url( $id );
+						$navbar_brand = sprintf( '<img src="%s" class="img-fluid navbar-brand-logo" alt="%s">',
+							$src,
+							esc_html__( 'Home', 'seabadgermd' )
+						);
+					}
 					break;
 				default:
 					$navbar_brand = '[' . get_bloginfo( 'name' ) . ']';
