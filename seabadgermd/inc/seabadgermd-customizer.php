@@ -274,7 +274,8 @@ function seabadgermd_get_color_theme( $id ) {
 	if ( array_key_exists( $id, $themes ) ) {
 		return $themes[ $id ];
 	} else {
-		return $themes[ array_keys( $themes )[0] ];
+		$keys = array_keys( $themes );
+		return $themes[ $keys[0] ];
 	}
 }
 
