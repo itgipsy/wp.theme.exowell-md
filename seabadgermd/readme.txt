@@ -13,7 +13,7 @@ The SeaBadgerMD supports the following customizations via the Customizer:
  * custom predefined color themes
  * custom header with background-image, logo and site title/description
  * navigation bar with menu and search bar
- * navigation bar can stick to the top of the page and hide automatically
+ * navigation bar can stick to the top of the page and hide on scroll
  * display breadcrumb
  * magazine front-page customized using widgets
 
@@ -38,8 +38,6 @@ Theme features include:
  * automatic excerpts are not implemented, it's expected to add read more tag
    or explicitly specify an excerpt for the post, otherwise the whole post is
    displayed
- * the custom header is only shown if header background image is set and
-   either or both the Site title / description and the Site logo are shown
 
 == Credit / Licenses ==
 

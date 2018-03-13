@@ -278,6 +278,10 @@ img.navbar-brand-logo {
 }
 
 /* Hero */
+.jumbotron {
+	background-color: #444;
+}
+
 .hero-button-area {
 	text-align: right;
 }
