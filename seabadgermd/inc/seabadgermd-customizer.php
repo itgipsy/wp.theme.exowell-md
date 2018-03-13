@@ -270,7 +270,12 @@ if ( ! function_exists( 'seabadgermd_get_color_themes' ) ) {
 
 function seabadgermd_get_color_theme( $id ) {
 	$themes = seabadgermd_get_color_themes();
-	return $themes[ $id ];
+	$id = $id ? $id : 'mdb_dark';
+	if ( array_key_exists( $id, $themes ) ) {
+		return $themes[ $id ];
+	} else {
+		return $themes[ array_keys( $themes )[0] ];
+	}
 }
 
 function seabadgermd_get_color_theme_names() {
