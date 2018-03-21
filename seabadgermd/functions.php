@@ -375,42 +375,64 @@ function seabadgermd_post_gallery( $output, $attr ) {
 
 	$i = 0;
 	foreach ( $attachments as $id => $attachment ) {
-		// $link = isset($attr['link']) && 'file' == $attr['link'] ? wp_get_attachment_link($id, $size, false, false) : wp_get_attachment_link($id, $size, true, false);
-		if ( 0 === $i ) {
-			$output .= '<div class="row">';
-		}
-		$output .= sprintf( "<div class='col-xs-12 col-md-%d gallery-item'>", $itemwidth );
 		$get_icon = isset( $attr['link'] ) && 'file' === $attr['link'];
-		$src = ( wp_get_attachment_image_src( $id, $size, $get_icon ) )[0];
-		$srcs = array();
-		foreach ( get_intermediate_image_sizes() as $s ) {
-			$imgsrc = wp_get_attachment_image_src( $id, $s, $get_icon );
-			if ( $imgsrc ) {
-				array_push( $srcs, $imgsrc[0] . ' ' . $imgsrc[1] . 'w' );
+		$src = wp_get_attachment_image_src( $id, $size, $get_icon );
+		if ( is_array( $src ) ){
+			$src = $src[0];
+			if ( 0 === $i ) {
+				$output .= '<div class="row">';
 			}
-		}
-		$srcset = implode( ',', $srcs );
-		$sizelist = array();
-		array_push( $sizelist, '(max-width: 767px) 750px' ); // no columns on xs screen
-		array_push( $sizelist, sprintf( '(max-width: 992px) %dpx', 750 / $columns ) ); // a very rough maximum width of space to fill
-		array_push( $sizelist, sprintf( '(max-width: 1200px) %dpx', 970 / $columns ) );
-		array_push( $sizelist, sprintf( '%dpx', 1170 / $columns ) );
-		$sizes = implode( ',', $sizelist );
-		//$output .= preg_replace('/class="/', 'class="img-fluid ', $link);
-		$output .= sprintf( '<img src="%s" srcset="%s" sizes="%s" class="img-thumbnail">', $src, $srcset, $sizes );
-		if ( trim( $attachment->post_excerpt ) ) {
-			$output .= "
-                <p class='wp-caption-text gallery-caption'>
-                " . wptexturize( $attachment->post_excerpt ) . '
-                </p>';
-		} else {
-			$output .= '<p class="wp-caption-text gallery-caption"><!-- no caption --></p>';
-		} // End if().
-		$output .= '</div>';
-		if ( ++$i === $columns ) {
-			$output .= '</div>'; //close row
-			$i = 0;
-		}
+			$output .= sprintf( "<div class='col-xs-12 col-md-%d gallery-item'>", $itemwidth );
+			$srcs = array();
+			foreach ( get_intermediate_image_sizes() as $s ) {
+				$imgsrc = wp_get_attachment_image_src( $id, $s, $get_icon );
+				if ( $imgsrc ) {
+					array_push( $srcs, $imgsrc[0] . ' ' . $imgsrc[1] . 'w' );
+				}
+			}
+			$srcset = implode( ',', $srcs );
+			$sizelist = array();
+			array_push( $sizelist, '(max-width: 767px) 750px' ); // no columns on xs screen
+			array_push( $sizelist, sprintf( '(max-width: 992px) %dpx', 750 / $columns ) ); // a very rough maximum width of space to fill
+			array_push( $sizelist, sprintf( '(max-width: 1200px) %dpx', 970 / $columns ) );
+			array_push( $sizelist, sprintf( '%dpx', 1170 / $columns ) );
+			$sizes = implode( ',', $sizelist );
+			if (array_key_exists('link', $attr)) {
+				if ( 'file' === $attr['link'] ) {
+					$link = wp_get_attachment_url( $id );
+				} else {
+					$link = '';
+				}
+			} else {
+				$link = get_attachment_link( $id );
+			}
+			if ( $link ) {
+				$output .= sprintf( '<a href="%s">', $link );
+			}
+			$meta = wp_prepare_attachment_for_js( $id );
+			$imgtitle = $meta['title'] == '' ?
+				esc_html_e( 'Missing title', 'seabadgermd' ) : 
+				$meta['title'];
+			$imgalt = $meta['alt'] == '' ? $imgtitle : $meta['alt'];
+			$output .= sprintf( '<img src="%s" srcset="%s" sizes="%s" alt="%s" title="%s" class="img-thumbnail">',
+				$src, $srcset, $sizes, $imgalt, $imgtitle );
+			if ( $link ) {
+				$output .= '</a>';
+			}
+			if ( trim( $attachment->post_excerpt ) ) {
+				$output .= "
+					<p class='wp-caption-text gallery-caption'>
+					" . wptexturize( $attachment->post_excerpt ) . '
+					</p>';
+			} else {
+				$output .= '<p class="wp-caption-text gallery-caption"><!-- no caption --></p>';
+			} // End if().
+			$output .= '</div>';
+			if ( ++$i === $columns ) {
+				$output .= '</div>'; //close row
+				$i = 0;
+			}
+		} // End is_array($src)
 	} // End foreach().
 	// close partial row
 	if ( 0 !== $i ) {
