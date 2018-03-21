@@ -1,0 +1,7 @@
+Changelog:
+
+1.1.2:
+    Fix responsive gallery
+        * add missing alt/title tags
+        * skip image if no src is returned by wp_get_attachment_image_src
+        * properly link to media file / attachment page
