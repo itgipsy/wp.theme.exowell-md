@@ -1,7 +1,7 @@
 <?php
 // If blog posts configured for front page, pass on handling
 if ( 'posts' == get_option( 'show_on_front' ) ) {
-		include( get_home_template() );
+		load_template( get_home_template() );
 		return;
 }
 ?>
