@@ -1,6 +1,6 @@
 <!--Post data-->
 <div class="card-body post-block">
-	<?php get_template_part( 'template-parts/content/title' ); ?>
+	<?php get_template_part( 'template-parts/content/title', 'single' ); ?>
 	<?php get_template_part( 'template-parts/content/meta' ); ?>
 	<div class="card-text post-content">
 		<?php
