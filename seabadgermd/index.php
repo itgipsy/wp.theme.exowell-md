@@ -17,6 +17,8 @@
 			<!--/Post-->
 			<?php
 				}
+			} else {
+				get_template_part( 'template-parts/404' );
 			}
 			?>
 			<?php seabadgermd_pagination(); ?>

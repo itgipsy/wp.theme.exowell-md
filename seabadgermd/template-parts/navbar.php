@@ -89,7 +89,8 @@ if ( 'dark' === $color_theme_conf['style'] ) {
 				if ( get_theme_mod( 'seabadgermd_navbar_search', 'show' ) === 'show' ) :
 					$s = array_key_exists( 's', $_GET ) ? htmlspecialchars( $_GET['s'] ) : '';
 				?>
-				<form role="search" method="get" id="searchform" class="form-inline" action="">
+				<form role="search" method="get" id="searchform" class="form-inline"
+					action="<?php echo esc_url( home_url( '/' ) ); ?>">
 					<input class="form-control mr-sm-2" type="text"
 					placeholder="<?php esc_attr_e( 'Search', 'seabadgermd' ); ?>" 
 					aria-label="<?php esc_attr_e( 'Search', 'seabadgermd' ); ?>" name="s" 
