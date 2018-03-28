@@ -24,9 +24,9 @@
 if ( comments_open() || get_comments_number() != 0 ) {
 	comments_popup_link(
 		// __( 'Comment', 'seabadgermd' ),
-		sprintf( '<i class="fa fa-comments-o" aria-hidden="true"></i><span class="sr-only">%s</span>',
+		sprintf( '<i class="fa fa-comment-o" aria-hidden="true"></i><span class="sr-only">%s</span>',
 		esc_html__( 'Comment', 'seabadgermd' ) ),
-		sprintf( '<i class="fa fa-comments-o" aria-hidden="true"></i><span class="sr-only">%s</span>',
+		sprintf( '<i class="fa fa-comment" aria-hidden="true"></i><span class="sr-only">%s</span>',
 		esc_html__( 'View comment', 'seabadgermd' ) ),
 		sprintf( '<i class="fa fa-comments-o" aria-hidden="true"></i><span class="sr-only">%s</span>',
 		esc_html__( 'View comments (%)', 'seabadgermd' ) ),
