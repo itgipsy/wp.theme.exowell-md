@@ -20,7 +20,7 @@
 		$categories = array();
 		foreach ( array_slice( ( get_the_category() ), 0, 5 ) as $category ) {
 			$categories[] = sprintf(
-				'<a href="%s">%s</a>', get_category_link( $category->term_id ),
+				'<a href="%s">%s</a>', esc_url( get_category_link( $category->term_id ) ),
 				$category->cat_name
 			);
 		}

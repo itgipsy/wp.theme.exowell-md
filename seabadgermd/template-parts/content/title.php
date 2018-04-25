@@ -1,7 +1,7 @@
 <?php
 	$is_sticky = is_sticky() && is_home() && ! is_paged();
 ?>
-<a href="<?php echo esc_attr( get_permalink() ); ?>">
+<a href="<?php echo esc_url( get_permalink() ); ?>">
 	<h4 class="card-title post-title <?php echo ( $is_sticky ) ? 'sticky' : ''; ?>">
 		<?php the_title(); ?>
 		<?php

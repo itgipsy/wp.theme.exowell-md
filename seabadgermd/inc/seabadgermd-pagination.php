@@ -10,7 +10,7 @@ function seabadgermd_pagination() {
 		return;
 	}
 	$paged = get_query_var( 'paged' ) ? absint( get_query_var( 'paged' ) ) : 1;
-	$max = intval( $wp_query->max_num_pages );
+	$max   = intval( $wp_query->max_num_pages );
 	/** Add current page to the array */
 	if ( $paged >= 1 ) {
 		$links[] = $paged;
@@ -38,7 +38,8 @@ function seabadgermd_pagination() {
 	/** Link to first page, plus ellipses if necessary */
 	if ( ! in_array( 1, $links, true ) ) {
 		$class = 1 === $paged ? ' active' : '';
-		printf( '<li class="page-item%s"><a href="%s" class="page-link">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( 1 ) ), '1' );
+		printf( '<li class="page-item%s"><a href="%s" class="page-link">%s</a></li>' . "\n",
+		$class, esc_url( get_pagenum_link( 1 ) ), '1' );
 		if ( ! in_array( 2, $links, true ) ) {
 			echo '<li class="page-item">&hellip;</i></li>';
 		}
@@ -47,7 +48,8 @@ function seabadgermd_pagination() {
 	sort( $links );
 	foreach ( (array) $links as $link ) {
 		$class = $paged === $link ? ' active' : '';
-		printf( '<li class="page-item%s"><a href="%s" class="page-link">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $link ) ), $link );
+		printf( '<li class="page-item%s"><a href="%s" class="page-link">%s</a></li>' . "\n",
+		$class, esc_url( get_pagenum_link( $link ) ), $link );
 	}
 	/** Link to last page, plus ellipses if necessary */
 	if ( ! in_array( $max, $links, true ) ) {

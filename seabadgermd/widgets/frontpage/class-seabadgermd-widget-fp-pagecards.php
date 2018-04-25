@@ -91,7 +91,7 @@ class Seabadgermd_Widget_Fp_Pagecards extends WP_Widget {
 					</a>
 				<?php endif; ?>
 				<h4 class="card-title postcard-title">
-					<a href="<?php echo esc_attr( get_permalink() ); ?>"><?php the_title(); ?></a>
+					<a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title(); ?></a>
 				</h4>
 				<div class="card-body postcard-body">
 					<p class="card-text"><?php echo $the_text_excerpt; ?></p>

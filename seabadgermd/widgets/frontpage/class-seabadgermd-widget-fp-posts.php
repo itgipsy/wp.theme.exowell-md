@@ -85,7 +85,7 @@ class Seabadgermd_Widget_Fp_Posts extends WP_Widget {
 
 		if ( ! empty( $category ) && $category >= 0 && $add_category_link ) {
 			printf( '<div class="category-readmore"><a href="%s" class="btn btn-sm themecolor">%s</a></div>',
-				get_category_link( $category ),
+				esc_url( get_category_link( $category ) ),
 				sprintf( esc_html__( 'More posts from %1$s', 'seabadgermd' ), get_cat_name( $category ) )
 			);
 		}
