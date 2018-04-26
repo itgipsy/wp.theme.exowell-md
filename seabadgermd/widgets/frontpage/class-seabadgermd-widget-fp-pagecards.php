@@ -33,12 +33,12 @@ class Seabadgermd_Widget_Fp_Pagecards extends WP_Widget {
 
 		$title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : '';
 
-		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
+		$title         = apply_filters( 'widget_title', $title, $instance, $this->id_base );
 		$disable_image = isset( $instance['disable_image'] ) ? $instance['disable_image'] : false;
-		$pages = array();
-		$pagetext = array();
+		$pages         = array();
+		$pagetext      = array();
 		for ( $i = 1; $i < 4; $i++ ) {
-			$id = 'page-' . $i;
+			$id    = 'page-' . $i;
 			$idtxt = $id . '-text';
 			if ( isset( $instance[ $id ] ) && '' != $instance[ $id ] ) {
 				array_push( $pages, (int) $instance[ $id ] );
@@ -59,18 +59,18 @@ class Seabadgermd_Widget_Fp_Pagecards extends WP_Widget {
 
 		echo '<div class="card-deck post-wrapper">';
 		$qargs = array(
-			'post_type' => 'page',
-			'post__in' => $pages,
+			'post_type'   => 'page',
+			'post__in'    => $pages,
 			'post_status' => 'publish',
-			'orderby' => 'post__in',
+			'orderby'     => 'post__in',
 		);
-		$r = new WP_Query( apply_filters( 'widget_posts_args', $qargs, $instance ) );
+		$r     = new WP_Query( apply_filters( 'widget_posts_args', $qargs, $instance ) );
 
 		global $post;
 		while ( $r->have_posts() ) {
 			$r->the_post();
 			if ( '' === $pagetext[ get_the_ID() ] ) {
-				$the_text = wp_strip_all_tags( get_the_content( '', false ) );
+				$the_text        = wp_strip_all_tags( get_the_content( '', false ) );
 				$max_text_length = 340 - ( 80 * ( $limit - 1 ) );
 				if ( strlen( $the_text ) > $max_text_length ) {
 					$the_text_excerpt = preg_replace( '/[\s\.,][^\s\.,]*$/u', '', substr( $the_text, 0, $max_text_length ) ) . '...';
@@ -83,7 +83,9 @@ class Seabadgermd_Widget_Fp_Pagecards extends WP_Widget {
 		?>
 			<div <?php post_class( 'card' ); ?>>
 				<?php if ( has_post_thumbnail() && ! $disable_image ) : ?>
-					<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="post-image">
+					<a href="<?php esc_url( the_permalink() ); ?>"
+						title="<?php esc_attr( the_title_attribute() ); ?>"
+						class="post-image">
 						<?php
 						$limit > 1 ? $psize = 'small-size' : 'post-thumbnail';
 						the_post_thumbnail( $psize, array( 'class' => 'img-fluid' ) );
@@ -94,12 +96,12 @@ class Seabadgermd_Widget_Fp_Pagecards extends WP_Widget {
 					<a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title(); ?></a>
 				</h4>
 				<div class="card-body postcard-body">
-					<p class="card-text"><?php echo $the_text_excerpt; ?></p>
+					<p class="card-text"><?php echo wp_kses_post( $the_text_excerpt ); ?></p>
 				</div>
 				<div class="card-footer">
 					<?php
 					printf( '<a href="%s" class="btn btn-sm themecolor">%s</a>',
-						get_permalink(),
+						esc_url( get_permalink() ),
 						esc_html__( 'Read more', 'seabadgermd' )
 					);
 					?>
@@ -123,14 +125,14 @@ class Seabadgermd_Widget_Fp_Pagecards extends WP_Widget {
 	 * @return array Updated settings to save.
 	 */
 	public function update( $new_instance, $old_instance ) {
-		$instance = $old_instance;
-		$instance['title'] = sanitize_text_field( $new_instance['title'] );
+		$instance                  = $old_instance;
+		$instance['title']         = sanitize_text_field( $new_instance['title'] );
 		$instance['disable_image'] = isset( $new_instance['disable_image'] ) ? (bool) $new_instance['disable_image'] : false;
 		for ( $i = 1; $i < 4; $i++ ) {
-			$id = 'page-' . $i;
-			$idtxt = $id . '-text';
-			$instance[ $id ] = isset( $new_instance[ $id ] ) ? (int) $new_instance[ $id ] : '';
-			$instance[ $idtxt ] = isset( $new_instance[ $idtxt ] ) ? $new_instance[ $idtxt ] : '';
+			$id                 = 'page-' . $i;
+			$idtxt              = $id . '-text';
+			$instance[ $id ]    = isset( $new_instance[ $id ] ) ? (int) $new_instance[ $id ] : '';
+			$instance[ $idtxt ] = isset( $new_instance[ $idtxt ] ) ? esc_attr( $new_instance[ $idtxt ] ) : '';
 		}
 		return $instance;
 	}
@@ -141,36 +143,36 @@ class Seabadgermd_Widget_Fp_Pagecards extends WP_Widget {
 	 * @param array $instance Current settings.
 	 */
 	public function form( $instance ) {
-		$title = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
+		$title         = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
 		$disable_image = isset( $instance['disable_image'] ) ? (bool) $instance['disable_image'] : false;
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>">
+			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
 				<?php esc_html_e( 'Title:', 'seabadgermd' ); ?>
 			</label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>"
-			name="<?php echo $this->get_field_name( 'title' ); ?>"
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"
+			name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>"
 			type="text" value="<?php echo esc_attr( $title ); ?>" />
 		</p>
 
 		<?php
 		for ( $i = 1; $i < 4; $i++ ) {
-			$id = 'page-' . $i;
-			$idtxt = $id . '-text';
-			$value = isset( $instance[ $id ] ) ? (int) $instance[ $id ] : '';
+			$id       = 'page-' . $i;
+			$idtxt    = $id . '-text';
+			$value    = isset( $instance[ $id ] ) ? (int) $instance[ $id ] : '';
 			$valuetxt = isset( $instance[ $idtxt ] ) ? $instance[ $idtxt ] : '';
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id( $id ); ?>">
+			<label for="<?php echo esc_attr( $this->get_field_id( $id ) ); ?>">
 				<?php printf( esc_html__( 'Page on card %d:', 'seabadgermd' ), $i ); ?>
 			</label>
 			<?php
 				$pargs = array(
-					'selected' => $value,
-					'echo' => 1,
-					'name' => $this->get_field_name( $id ),
-					'id' => $this->get_field_id( $id ),
-					'class' => '',
+					'selected'         => $value,
+					'echo'             => 1,
+					'name'             => $this->get_field_name( $id ),
+					'id'               => $this->get_field_id( $id ),
+					'class'            => '',
 					'show_option_none' => esc_html__( 'Skip this card', 'seabadgermd' ),
 				);
 			?>
@@ -178,12 +180,13 @@ class Seabadgermd_Widget_Fp_Pagecards extends WP_Widget {
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( $idtxt ); ?>">
+			<label for="<?php echo esc_attr( $this->get_field_id( $idtxt ) ); ?>">
 				<?php printf( esc_html__( 'Card text of page card %d:', 'seabadgermd' ), $i ); ?>
 			</label>
-			<textarea name="<?php echo $this->get_field_name( $idtxt ); ?>"
-			class="widefat text wp-edit-area" id="<?php echo $this->get_field_id( $idtxt ); ?>"
-			style="height:150px" cols=20 rows=16><?php echo esc_textarea( $valuetxt ); ?></textarea>
+			<input type="text" name="<?php echo esc_attr( $this->get_field_name( $idtxt ) ); ?>"
+			class="widefat"
+			id="<?php echo esc_attr( $this->get_field_id( $idtxt ) ); ?>"
+			value="<?php echo esc_html( $valuetxt ); ?>">
 		</p>
 		<?php
 		}
@@ -191,9 +194,9 @@ class Seabadgermd_Widget_Fp_Pagecards extends WP_Widget {
 
 		<p>
 			<input class="checkbox" type="checkbox"<?php checked( $disable_image ); ?>
-			id="<?php echo $this->get_field_id( 'disable_image' ); ?>" 
-			name="<?php echo $this->get_field_name( 'disable_image' ); ?>" />
-			<label for="<?php echo $this->get_field_id( 'disable_image' ); ?>">
+			id="<?php echo esc_attr( $this->get_field_id( 'disable_image' ) ); ?>" 
+			name="<?php echo esc_attr( $this->get_field_name( 'disable_image' ) ); ?>" />
+			<label for="<?php echo esc_attr( $this->get_field_id( 'disable_image' ) ); ?>">
 				<?php esc_html_e( 'Disable featured image', 'seabadgermd' ); ?>
 			</label>
 		</p>
