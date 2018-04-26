@@ -40,7 +40,7 @@ class Seabadgermd_Widget_Fp_Pagecards extends WP_Widget {
 		for ( $i = 1; $i < 4; $i++ ) {
 			$id    = 'page-' . $i;
 			$idtxt = $id . '-text';
-			if ( isset( $instance[ $id ] ) && '' != $instance[ $id ] ) {
+			if ( isset( $instance[ $id ] ) && '' !== $instance[ $id ] ) {
 				array_push( $pages, (int) $instance[ $id ] );
 				$pagetext[ $instance[ $id ] ] = $instance [ $idtxt ] ? $instance [ $idtxt ] : '';
 			}
@@ -164,7 +164,7 @@ class Seabadgermd_Widget_Fp_Pagecards extends WP_Widget {
 		?>
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( $id ) ); ?>">
-				<?php printf( esc_html__( 'Page on card %d:', 'seabadgermd' ), $i ); ?>
+				<?php printf( esc_html__( 'Page on card %d:', 'seabadgermd' ), absint( $i ) ); ?>
 			</label>
 			<?php
 				$pargs = array(
@@ -181,7 +181,7 @@ class Seabadgermd_Widget_Fp_Pagecards extends WP_Widget {
 
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( $idtxt ) ); ?>">
-				<?php printf( esc_html__( 'Card text of page card %d:', 'seabadgermd' ), $i ); ?>
+				<?php printf( esc_html__( 'Card text of page card %d:', 'seabadgermd' ), absint( $i ) ); ?>
 			</label>
 			<input type="text" name="<?php echo esc_attr( $this->get_field_name( $idtxt ) ); ?>"
 			class="widefat"

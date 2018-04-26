@@ -69,10 +69,10 @@ function seabadgermd_setup() {
 	// Support custom header image
 	add_theme_support( 'custom-header',
 		array(
-			'width' => 1160,
-			'flex-width' => true,
-			'flex-height' => true,
-			'header-text' => true,
+			'width'              => 1160,
+			'flex-width'         => true,
+			'flex-height'        => true,
+			'header-text'        => true,
 			'default-text-color' => '#ffffff',
 		)
 	);
@@ -80,7 +80,7 @@ function seabadgermd_setup() {
 	add_theme_support(
 		'custom-logo', array(
 			'height' => 150,
-			'width' => 150,
+			'width'  => 150,
 		)
 	);
 }
@@ -133,7 +133,7 @@ function seabadgermd_widgets_init() {
 			'before_widget' => '<div id="%1$s" class="card widget %2$s"><div class="card-body">',
 			'after_widget'  => '</div></div>',
 			'before_title'  => '<div class="card-title widget-title themecolor">',
-			'after_title'    => '</div>',
+			'after_title'   => '</div>',
 		)
 	);
 
@@ -145,7 +145,7 @@ function seabadgermd_widgets_init() {
 			'before_widget' => '',
 			'after_widget'  => '',
 			'before_title'  => '<span style="display:none">',
-			'after_title'    => '</span>',
+			'after_title'   => '</span>',
 		)
 	);
 
@@ -157,14 +157,13 @@ function seabadgermd_widgets_init() {
 			'before_widget' => '<div class="row fp-widget"><div class="col-12 posts-col">',
 			'after_widget'  => '</div></div>',
 			'before_title'  => '<h4 class="fp-widget-title">',
-			'after_title'    => '</h4>',
+			'after_title'   => '</h4>',
 		)
 	);
 
 	// unregister_widget( 'WP_Widget_Archives' );
 	register_widget( 'Seabadgermd_Widget_Archives' );
 	register_widget( 'Seabadgermd_Widget_Recent_Posts_Grid' );
-	register_widget( 'Seabadgermd_Widget_Aboutcard' );
 	register_widget( 'Seabadgermd_Widget_Fp_Posts' );
 	register_widget( 'Seabadgermd_Widget_Fp_Postcards' );
 	register_widget( 'Seabadgermd_Widget_Fp_Pagecards' );
@@ -173,7 +172,7 @@ function seabadgermd_widgets_init() {
 add_action( 'widgets_init', 'seabadgermd_widgets_init' );
 
 function seabadgermd_post_navigation() {
-	if ( '' !== get_adjacent_post( false, '', false ) || '' != get_adjacent_post( false, '', true ) ) :
+	if ( '' !== get_adjacent_post( false, '', false ) || '' !== get_adjacent_post( false, '', true ) ) :
 ?>
 	<div class="row post-navigation">
 		<div class="col-6 post-navigation-next">
@@ -240,7 +239,7 @@ function seabadgermd_comments_callback( $comment, $args, $depth ) {
 						array_merge(
 							$args, array(
 								'add_below' => 'div-comment',
-								'depth'      => $depth,
+								'depth'     => $depth,
 								'max_depth' => $args['max_depth'],
 							)
 						)
@@ -248,7 +247,7 @@ function seabadgermd_comments_callback( $comment, $args, $depth ) {
 				);
 				printf(
 					'<a href="%s" class="comment-edit-link btn btn-sm themecolor">%s</a>',
-					get_edit_comment_link( $comment ), esc_html__( 'Edit', 'seabadgermd' )
+					esc_url( get_edit_comment_link( $comment ) ), esc_html__( 'Edit', 'seabadgermd' )
 				);
 			?>
 		</div>
@@ -280,15 +279,15 @@ function seabadgermd_post_gallery( $output, $attr ) {
 		}
 	}
 
-	$satts = shortcode_atts(
+	$satts      = shortcode_atts(
 		array(
-			'order'      => 'ASC',
-			'orderby'    => 'menu_order ID',
-			'id'         => $post->ID,
-			'columns'    => 3,
-			'size'       => 'thumbnail',
-			'include'    => '',
-			'exclude'    => '',
+			'order'   => 'ASC',
+			'orderby' => 'menu_order ID',
+			'id'      => $post->ID,
+			'columns' => 3,
+			'size'    => 'thumbnail',
+			'include' => '',
+			'exclude' => '',
 		), $attr
 	);
 	$satts_keys = array( 'order', 'orderby', 'id', 'columns', 'size', 'include', 'exclude' );
@@ -302,15 +301,15 @@ function seabadgermd_post_gallery( $output, $attr ) {
 	}
 
 	if ( ! empty( $include ) ) {
-		$include = preg_replace( '/[^0-9,]+/', '', $include );
+		$include      = preg_replace( '/[^0-9,]+/', '', $include );
 		$_attachments = get_posts(
 			array(
-				'include' => $include,
-				'post_status' => 'inherit',
-				'post_type' => 'attachment',
+				'include'        => $include,
+				'post_status'    => 'inherit',
+				'post_type'      => 'attachment',
 				'post_mime_type' => 'image',
-				'order' => $order,
-				'orderby' => $orderby,
+				'order'          => $order,
+				'orderby'        => $orderby,
 			)
 		);
 
@@ -319,27 +318,27 @@ function seabadgermd_post_gallery( $output, $attr ) {
 			$attachments[ $val->ID ] = $_attachments[ $key ];
 		}
 	} elseif ( ! empty( $exclude ) ) {
-		$exclude = preg_replace( '/[^0-9,]+/', '', $exclude );
+		$exclude     = preg_replace( '/[^0-9,]+/', '', $exclude );
 		$attachments = get_children(
 			array(
-				'post_parent' => $id,
-				'exclude' => $exclude,
-				'post_status' => 'inherit',
-				'post_type' => 'attachment',
+				'post_parent'    => $id,
+				'exclude'        => $exclude,
+				'post_status'    => 'inherit',
+				'post_type'      => 'attachment',
 				'post_mime_type' => 'image',
-				'order' => $order,
-				'orderby' => $orderby,
+				'order'          => $order,
+				'orderby'        => $orderby,
 			)
 		);
 	} else {
 		$attachments = get_children(
 			array(
-				'post_parent' => $id,
-				'post_status' => 'inherit',
-				'post_type' => 'attachment',
+				'post_parent'    => $id,
+				'post_status'    => 'inherit',
+				'post_type'      => 'attachment',
 				'post_mime_type' => 'image',
-				'order' => $order,
-				'orderby' => $orderby,
+				'order'          => $order,
+				'orderby'        => $orderby,
 			)
 		);
 	} // End if().
@@ -369,34 +368,34 @@ function seabadgermd_post_gallery( $output, $attr ) {
 	$selector = "gallery-{$instance}";
 
 	$size_class = sanitize_html_class( $size );
-	$output = "<div id='$selector' class='row gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
-	$output .= '<div class="col-12">';
+	$output     = "<div id='$selector' class='row gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
+	$output    .= '<div class="col-12">';
 
 	$i = 0;
 	foreach ( $attachments as $id => $attachment ) {
 		$get_icon = isset( $attr['link'] ) && 'file' === $attr['link'];
-		$src = wp_get_attachment_image_src( $id, $size, $get_icon );
-		if ( is_array( $src ) ){
+		$src      = wp_get_attachment_image_src( $id, $size, $get_icon );
+		if ( is_array( $src ) ) {
 			$src = $src[0];
 			if ( 0 === $i ) {
 				$output .= '<div class="row">';
 			}
 			$output .= sprintf( "<div class='col-xs-12 col-md-%d gallery-item'>", $itemwidth );
-			$srcs = array();
+			$srcs    = array();
 			foreach ( get_intermediate_image_sizes() as $s ) {
 				$imgsrc = wp_get_attachment_image_src( $id, $s, $get_icon );
 				if ( $imgsrc ) {
 					array_push( $srcs, $imgsrc[0] . ' ' . $imgsrc[1] . 'w' );
 				}
 			}
-			$srcset = implode( ',', $srcs );
+			$srcset   = implode( ',', $srcs );
 			$sizelist = array();
 			array_push( $sizelist, '(max-width: 767px) 750px' ); // no columns on xs screen
 			array_push( $sizelist, sprintf( '(max-width: 992px) %dpx', 750 / $columns ) ); // a very rough maximum width of space to fill
 			array_push( $sizelist, sprintf( '(max-width: 1200px) %dpx', 970 / $columns ) );
 			array_push( $sizelist, sprintf( '%dpx', 1170 / $columns ) );
 			$sizes = implode( ',', $sizelist );
-			if (array_key_exists('link', $attr)) {
+			if ( array_key_exists( 'link', $attr ) ) {
 				if ( 'file' === $attr['link'] ) {
 					$link = wp_get_attachment_url( $id );
 				} else {
@@ -408,13 +407,13 @@ function seabadgermd_post_gallery( $output, $attr ) {
 			if ( $link ) {
 				$output .= sprintf( '<a href="%s">', $link );
 			}
-			$meta = wp_prepare_attachment_for_js( $id );
-			$imgtitle = $meta['title'] == '' ?
-				esc_html_e( 'Missing title', 'seabadgermd' ) : 
+			$meta     = wp_prepare_attachment_for_js( $id );
+			$imgtitle = '' === $meta['title'] ?
+				esc_html_e( 'Missing title', 'seabadgermd' ) :
 				$meta['title'];
-			$imgalt = $meta['alt'] == '' ? $imgtitle : $meta['alt'];
-			$output .= sprintf( '<img src="%s" srcset="%s" sizes="%s" alt="%s" title="%s" class="img-thumbnail">',
-				$src, $srcset, $sizes, $imgalt, $imgtitle );
+			$imgalt   = '' === $meta['alt'] ? $imgtitle : $meta['alt'];
+			$output  .= sprintf( '<img src="%s" srcset="%s" sizes="%s" alt="%s" title="%s" class="img-thumbnail">',
+			$src, $srcset, $sizes, $imgalt, $imgtitle );
 			if ( $link ) {
 				$output .= '</a>';
 			}
@@ -429,7 +428,7 @@ function seabadgermd_post_gallery( $output, $attr ) {
 			$output .= '</div>';
 			if ( ++$i === $columns ) {
 				$output .= '</div>'; //close row
-				$i = 0;
+				$i       = 0;
 			}
 		} // End is_array($src)
 	} // End foreach().
@@ -451,8 +450,8 @@ function seabadgermd_default_table_format( $content ) {
 add_filter( 'the_content', 'seabadgermd_default_table_format' );
 
 function seabadgermd_format_passwordform( $output ) {
-	$post = get_post();
-	$label = 'pwbox-' . ( empty( $post->ID ) ? rand() : $post->ID );
+	$post   = get_post();
+	$label  = 'pwbox-' . ( empty( $post->ID ) ? rand() : $post->ID );
 	$output = '<form action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" class="post-password-form" method="post">
 		    <p>' . esc_html__( 'This content is password protected. To view it please enter your password below:', 'seabadgermd' ) . '</p>
 			<div class="form-row align-items-center">
