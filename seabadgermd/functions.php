@@ -18,7 +18,6 @@ require_once SEABADGERMD_THEME_DIR . '/inc/class-seabadgermd-menuwalker.php';
 require_once SEABADGERMD_THEME_DIR . '/inc/seabadgermd-pagination.php';
 require_once SEABADGERMD_THEME_DIR . '/widgets/class-seabadgermd-widget-archives.php';
 require_once SEABADGERMD_THEME_DIR . '/widgets/class-seabadgermd-widget-recent-posts-grid.php';
-require_once SEABADGERMD_THEME_DIR . '/widgets/class-seabadgermd-widget-aboutcard.php';
 require_once SEABADGERMD_THEME_DIR . '/widgets/frontpage/class-seabadgermd-widget-fp-posts.php';
 require_once SEABADGERMD_THEME_DIR . '/widgets/frontpage/class-seabadgermd-widget-fp-postcards.php';
 require_once SEABADGERMD_THEME_DIR . '/widgets/frontpage/class-seabadgermd-widget-fp-pagecards.php';
